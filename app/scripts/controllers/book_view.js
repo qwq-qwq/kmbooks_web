@@ -16,7 +16,7 @@ angular.module('angularApp')
           response[0].image = '/img/pics/' + response[0].code + '_big.jpg';
           response[0].images[0] = {
             'url': '/img/pics/' + code + '_big.jpg',
-            'thumbUrl': '/img/pics/' + code + '_small.jpg',
+            'thumbUrl': '/img/pics/' + code + '.jpg',
             'thmb_index': 0
           };
         };
