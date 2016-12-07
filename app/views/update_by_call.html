@@ -1,0 +1,42 @@
+<h1 style="color: #428bca">Примусове оновлення</h1>
+<br>
+
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th class="col-md-12">Дія</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-if="isAdmin()">
+    <th>
+      <button class="btn btn-default" ng-click="updateAllImages()">
+        Оновити всі картинки
+      </button>
+    </th>
+  </tr>
+  <tr ng-if="isEditor()">
+    <th>
+      <button class="btn btn-default" ng-click="updateCatalog()">
+        Оновити каталог
+      </button>
+    </th>
+  </tr>
+  <tr ng-if="isEditor()">
+    <th>
+      <button class="btn btn-default" ng-click="updateImages()">
+        Оновити картинки
+      </button>
+    </th>
+  </tr>
+  <tr ng-if="isEditor()">
+    <th>
+      <button class="btn btn-default" ng-click="updateDescription()">
+        Оновити описання
+      </button>
+    </th>
+  </tr>
+  </tbody>
+</table>
+
+

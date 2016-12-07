@@ -1,0 +1,99 @@
+ <h2 style="color: #428bca">Пошук товарів</h2>
+ <form class="form-horizontal" role="form" ng-submit="my_search()">
+    <div class="form-group">
+      <label for="auto_name" class="col-sm-2 control-label">Найменування</label>
+      <div class="col-sm-10">
+        <input type="text" name="name" id="auto_name" class="form-control" ng-model="name">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="auto_autor" class="col-sm-2 control-label">Автор</label>
+      <div class="col-sm-3">
+        <input type="text" name="autor" id="auto_autor" class="form-control" ng-model="autor">
+      </div>
+      <label for="ISBN" class="col-sm-1 control-label">ISBN</label>
+      <div class="col-sm-3">
+        <input type="text" name="ISBN" id="ISBN" class="form-control" ng-model="isbn">
+      </div>
+      <label for="code" class="col-sm-1 control-label">Код</label>
+      <div class="col-sm-2">
+        <input type="text" name="code" id="code" class="form-control" ng-model="code">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="shop" class="col-sm-2 control-label">Магазин</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="shop" id="shop" ng-model="selectedShop" ng-options="shop.id as shop.id for shop in shops" ng-change="my_search()">
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-7">
+        <button class="btn btn-primary" type="submit">Шукати</button>
+      </div>
+      <div class="col-sm-3 text-right">
+        <a href="/#/requests_stat">Статистика по запитам</a>
+      </div>
+    </div>
+ </form>
+
+<div uib-accordion ng-repeat="book in books" span ng-if="isSelectedAllShops()">
+  <div uib-accordion-group class="panel-default">
+    <div uib-accordion-heading>
+          <div class="row" ng-click="book.opened = true;">
+           <div class="col-md-3 text-center">
+              <img src="{{book.image}}" class="img-rounded">
+           </div>
+           <div class="col-md-6 book-info">
+              <b>Код: </b>{{book.code}}
+              <br> <b>Найменування: </b>{{book.name}}
+              <span ng-if="book.autor"><br> <b>Автор: </b>{{book.autor}}</span>
+              <span ng-if="book.seriya"><br> <b>Серія: </b>{{book.seriya}}</span>
+              <span ng-if="book.sk"><br> <b>Штрихкод: </b>{{book.sk}}</span><span ng-if="book.isbn">, <b>ISBN: </b>{{book.isbn}}</span>
+              <span ng-if="book.izdatel"><br> <b>Видавець: </b>{{book.izdatel}}</span>
+              <span ng-if="book.katalog"><br> <b>Каталог: </b>{{book.katalog}}</span>
+              <span ng-if="book.pereplet"><br><b>Обкладинка: </b> {{book.pereplet}}</span>
+              <span ng-if="book.str"><br><b>Сторінок: </b> {{book.str}}</span>
+              <span ng-if="book.year"><br><b>Рік видання: </b> {{book.year}}</span>
+           </div>
+          <div class="col-md-3 text-center remains"><b>Наявнiсть: {{book.kvo}} шт.</b></div>
+        </div>
+    </div>
+    <bk-book-detail book="book"></bk-book-detail>
+  </div>
+</div>
+<div class="panel panel-default" ng-if="!isSelectedAllShops()" ng-repeat="book in books">
+   <div class="row">
+      <div class="col-md-3 text-center">
+        <a href="#/book_view?code={{book.code}}">
+          <img src="{{book.image}}" class="img-rounded">
+        </a>
+      </div>
+      <div class="col-md-6 book-info">
+        <p>
+          <b>Код: </b>{{book.code}}
+          <br> <b>Найменування: </b>{{book.name}}
+          <span ng-if="book.autor"><br> <b>Автор: </b>{{book.autor}}</span>
+          <span ng-if="book.seriya"><br> <b>Серія: </b>{{book.seriya}}</span>
+          <span ng-if="book.sk"><br> <b>Штрихкод: </b>{{book.sk}}</span><span ng-if="book.isbn">, <b>ISBN: </b>{{book.isbn}}</span>
+          <span ng-if="book.izdatel"><br> <b>Видавець: </b>{{book.izdatel}}</span>
+          <span ng-if="book.katalog"><br> <b>Каталог: </b>{{book.katalog}}</span>
+          <span ng-if="book.pereplet"><br><b>Обкладинка: </b> {{book.pereplet}}</span>
+          <span ng-if="book.str"><br><b>Сторінок: </b> {{book.str}}</span>
+          <span ng-if="book.year"><br><b>Рік видання: </b> {{book.year}}</span>
+        </p>
+        <p class="lead"><a href="http://bukva.ua/catalog/browse/{{book.codeGroup}}/1/{{book.code}}"><button class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити в інтернет магазині</button></a></p>
+      </div>
+      <div class="col-md-3 text-center remains"><b>Наявнiсть: {{book.kvo}} шт.</b></div>
+   </div>
+</div>
+
+<div class="jumbotron" ng-if="proceedSearch == true">
+   <p>Зачекайте, йде пошук ...</p>
+   <img class="img-responsive center-block" src="/img/loading.gif">
+</div>
+
+<div class="jumbotron" ng-if="books.length == 0 && proceedSearch != true && searchString != ''">
+   <p>На жаль, за таким запитом книги відсутні</p>
+</div>
+

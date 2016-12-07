@@ -1,0 +1,182 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/textAngular/dist/textAngular.css" />
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
+    <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="angularApp">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="header" ng-controller="HeaderCtrl">
+      <div class="navbar navbar-inverse navbar-fixed-top" style="opacity: 0.9">
+        <div class="container">
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" ng-click="isCollapsed = !isCollapsed">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="#/" title="bukva">
+              <img style="max-width:100px; margin-top: -8px;"
+                   src="/images/logo_km.png">
+            </a>
+          </div>
+
+          <div class="collapse navbar-collapse" uib-collapse="isCollapsed">
+            <ul class="nav navbar-nav">
+              <li ng-repeat="item in menu" ng-class="{active: item.route == menuActive}"><a href="#{{item.route}}" >{{item.label}}</a> </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li ng-show="!authenticated">
+                <a href="#/login"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Вхід</a>
+              <li>
+              <li ng-show="authenticated">
+                <a href="#/edit">{{username}}</a>
+              </li>
+              <li ng-show="authenticated" ng-class="{active: '\login' == menuActive}" ng-controller="LoginCtrl">
+                <a href="" ng-click="logout()">Вийти</a>
+              </li>
+            </ul>
+          </div>
+          </div>
+      </div>
+    </div>
+    <span ng-controller="HeaderCtrl">
+      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" ng-if="isMain()">
+        <div uib-slide ng-repeat="slide in slides track by slide.id" active="slide.active" index="slide.id">
+          <div class="item" style="background-image:url('{{slide.image}}');"></div>
+          <div class="carousel-caption">
+            <h2>{{slide.header}}</h2>
+            <p>{{slide.text}}</p>
+          </div>
+        </div>
+      </div>
+      <span ng-show="removeDiv()"></span>
+    </span>
+    <span ng-controller="HeaderCtrl">
+      <div class="event-item" style="height: 30px;" ng-if="isMain()"></div>
+      <div class="event-item" style="height: 20px;" ng-if="!isMain()"></div>
+    </span>
+    <span ng-controller="HeaderCtrl">
+      <span ng-if="isBookPage()">
+        <div style="height: 50%" ng-controller="BookViewCtrl">
+            <div style="background-image:url('{{book.bannerImage}}'); background-position: center; background-size: cover; height: 100%; margin-top: -40px">
+              <div style="position: relative; top: 45%; left: 65px; color: white">
+                <h2>{{book.name}}</h2>
+                <p>{{book.autor}}</p>
+              </div>
+            </div>
+        </div>
+      </span>
+    </span>
+    <div class="container" style="margin-top: 30px">
+      <div ng-view=""></div>
+    </div>
+    <span ng-controller="HeaderCtrl">
+      <div class="container-fluid" style="height: 50%">
+        <div class="row" style="padding-left: 10px; padding-right: 10px; height: 100%" ng-controller="ContactsViewCtrl" ng-if="isContacts()">
+          <div class="col-md-12" id="map-canvas" ng-init="initialize()" style="height: 100%"></div>
+        </div>
+      </div>
+    </span>
+    <!--<div class="footer">
+      <div class="container">
+        <p><span class="glyphicon glyphicon-heart"></span> from the Bukva team</p>
+      </div>
+    </div>-->
+
+       <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-71463339-1');
+       ga('send', 'pageview');
+    </script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-bootstrap-lightbox/dist/angular-bootstrap-lightbox.js"></script>
+    <script src="bower_components/rangy/rangy-core.js"></script>
+    <script src="bower_components/rangy/rangy-classapplier.js"></script>
+    <script src="bower_components/rangy/rangy-highlighter.js"></script>
+    <script src="bower_components/rangy/rangy-selectionsaverestore.js"></script>
+    <script src="bower_components/rangy/rangy-serializer.js"></script>
+    <script src="bower_components/rangy/rangy-textrange.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular.js"></script>
+    <script src="bower_components/textAngular/dist/textAngular-sanitize.js"></script>
+    <script src="bower_components/textAngular/dist/textAngularSetup.js"></script>
+    <script src="bower_components/angular-dynamic-layout/dist/angular-dynamic-layout.min.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+    <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+    <script src="bower_components/angular-scroll-animate/dist/angular-scroll-animate.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/services/config.js"></script>
+    <script src="scripts/services/authorization.js"></script>
+    <script src="scripts/services/api.js"></script>
+    <script src="scripts/directives/thumb.js"></script>
+    <script src="scripts/directives/book_detail.js"></script>
+    <script src="scripts/directives/compare_to.js"></script>
+    <script src="scripts/controllers/log.js"></script>
+    <script src="scripts/controllers/books_table.js"></script>
+    <script src="scripts/controllers/book_view.js"></script>
+    <script src="scripts/controllers/requests_stat.js"></script>
+    <script src="scripts/controllers/search.js"></script>
+    <script src="scripts/controllers/map.js"></script>
+    <script src="scripts/controllers/header.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/events_edit_table.js"></script>
+    <script src="scripts/controllers/map_edit_table.js"></script>
+    <script src="scripts/controllers/settings_edit_table.js"></script>
+    <script src="scripts/controllers/event_view.js"></script>
+    <script src="scripts/controllers/events_view.js"></script>
+    <script src="scripts/controllers/contacts.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+    <script src="scripts/controllers/edit.js"></script>
+    <script src="scripts/controllers/banners_edit_table.js"></script>
+    <script src="scripts/controllers/update_by_call.js"></script>
+    <script src="scripts/controllers/users_edit_table.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

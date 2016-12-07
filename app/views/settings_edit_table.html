@@ -1,0 +1,37 @@
+<style>
+  th {
+    font-weight: normal;
+  }
+</style>
+<h1 style="color: #428bca">Редагування налаштуваннь</h1>
+<br>
+<div class="container-fluid">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th class="col-md-8">Найменування</th>
+      <th class="col-md-2">Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th>
+        <h4 class="text-left" ng-hide="settngs.editing" ng-dblclick="editItem(settngs)">Рекомендуємо: {{settngs.recomended}}</h4>
+        <div ng-show="settngs.editing" class="form-group">
+          <label for="name" class="col-md-12" ng-show="settngs.editing">Рекомендуємо</label>
+          <textarea id="name" class="form-control" rows="2" ng-show="settngs.editing" ng-model="settngs.recomended"
+                    autofocus></textarea>
+        </div>
+      </th>
+      <th>
+        <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(settngs)" ng-disabled="settngs.editing">
+          <span class="glyphicon glyphicon-edit"></span> Редагувати
+        </button>
+        <button type="button" class="btn btn-success btn-xs" ng-click="doneEditing(settngs)" ng-disabled="!settngs.editing">
+          <span class="glyphicon glyphicon-save"></span> Зберігти
+        </button>
+      </th>
+    </tr>
+    </tbody>
+  </table>
+</div>

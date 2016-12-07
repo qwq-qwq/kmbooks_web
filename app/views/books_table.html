@@ -1,0 +1,28 @@
+<h1 style="color: #428bca">{{myHeader}}</h1>
+<div uib-accordion ng-repeat="book in books">
+  <div uib-accordion-group>
+    <div uib-accordion-heading>
+        <div class="row" ng-click="book.opened = true;">
+          <div class="col-md-3 text-center">
+              <img src="{{book.image}}">
+          </div>
+          <div class="col-md-6 book-info">
+            <b>Код: </b>{{book.code}}
+            <br> <b>Найменування: </b>{{book.name}}
+            <span ng-if="book.autor"><br> <b>Автор: </b>{{book.autor}}</span>
+            <span ng-if="book.seriya"><br> <b>Серія: </b>{{book.seriya}}</span>
+            <span ng-if="book.sk"><br> <b>Штрихкод: </b>{{book.sk}}</span><span ng-if="book.isbn">, <b>ISBN: </b>{{book.isbn}}</span>
+            <span ng-if="book.izdatel"><br> <b>Видавець: </b>{{book.izdatel}}</span>
+            <span ng-if="book.katalog"><br> <b>Каталог: </b>{{book.katalog}}</span>
+            <span ng-if="book.pereplet"><br><b>Обкладинка: </b> {{book.pereplet}}</span>
+            <span ng-if="book.str"><br><b>Сторінок: </b> {{book.str}}</span>
+            <span ng-if="book.year"><br><b>Рік видання: </b> {{book.year}}</span>
+          </div>
+          <div class="col-md-3 text-center remains">
+            <span ng-if="book.rests"><b>{{book.type_rests}} </b> {{book.rests}}</span>
+          </div>
+        </div>
+  </div>
+  <bk-book-detail book="book"></bk-book-detail>
+  </div>
+</div>

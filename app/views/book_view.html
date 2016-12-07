@@ -1,0 +1,44 @@
+
+<div style="position: fixed; top: 70px; margin-left: 930px">
+   <img class="img img-responsive" src="{{book.image}}" height="350" width="300">
+</div>
+
+    <div class="row">
+      <div class="col-md-4 hidden-xs hidden-sm" ng-if="book.images.length > 1">
+        <div ng-repeat="image in book.images">
+          <a ng-click="openLightboxModal($index)">
+            <img src="{{image.thumbUrl}}" class="point_img img img-responsive" ng-mouseover="book.image = image.thumbUrl.replace('.jpg', '_big.jpg'); book.thmb_index = image.thmb_index;">
+          </a>
+        </div>
+      </div>
+      <div class="col-md-5 hidden-xs hidden-sm">
+        <a ng-click="openLightboxModal(book.thmb_index)">
+
+
+        </a>
+      </div>
+      <div class="hidden-md hidden-lg" style="text-align: center">
+          <br>
+          <img src="{{book.image.replace('_big.jpg', '.jpg')}}" class="point_img img-rounded">
+      </div>
+      <div class="col-md-8 book-data">
+        <b><br>Код:</b><span style="color: slategray">&nbsp;{{book.code}}</span>
+        <span ng-if="book.autor"><br> <b>Автор: </b><a href="#/search?autor={{book.autor}}">{{book.autor}}</a></span>
+        <span ng-if="book.seriya"><br> <b>Серія: </b>{{book.seriya}}</span>
+        <span ng-if="book.sk"><br> <b>Штрихкод: </b>{{book.sk}}</span>
+        <span ng-if="book.isbn"><br><b>ISBN: </b>{{book.isbn}}</span>
+        <span ng-if="book.izdatel"><br> <b>Видавець: </b>{{book.izdatel}}</span>
+        <span ng-if="book.katalog"><br> <b>Каталог: </b>{{book.katalog}}</span>
+        <span ng-if="book.pereplet"><br><b>Обкладинка: </b> {{book.pereplet}}</span>
+        <span ng-if="book.str"><br><b>Сторінок: </b> {{book.str}}</span>
+        <span ng-if="book.year"><br><b>Рік видання: </b> {{book.year}}</span>
+        <span ng-if="description"><h3 style="color: slategray">Анотація</h3></span>
+        <span ng-if="description" ng-bind-html="description"><br>{{description}}</span>
+        <p class="lead" style="margin-top: 30px"><a href="http://bukva.ua/catalog/browse/{{book.codeGroup}}/1/{{book.code}}"><button class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити в інтернет магазині</button></a></p>
+      </div>
+    </div>
+
+    <bk-book-detail book="book"></bk-book-detail>
+
+
+

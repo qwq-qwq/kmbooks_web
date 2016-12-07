@@ -1,0 +1,204 @@
+ <div class="row">
+   <div class="col-md-12">
+   <h2>
+     Рекомендуємо
+   </h2>
+   </div>
+      <span ng-repeat="recomended in recomendeds">
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="bukva-item">
+              <a href="#/book_view?code={{recomended.code}}">
+                <div class="cover_img" style="background-image:url('{{recomended.image}}');"> </div>
+              </a>
+              <div class="size">
+                <h4>
+                  <a href="#/book_view?code={{recomended.code}}">
+                    {{recomended.name}}
+                  </a>
+                </h4>
+                <p>
+                  <b> Код: </b> {{recomended.code}}
+                  <span ng-if="recomended.autor"> <b>Автор:&nbsp;</b><a href="#/search?autor={{recomended.autor}}">{{recomended.autor}}</a></span>
+                </p>
+                <p>
+                  <span ng-if="recomended.description">{{recomended.description}}</span>
+                </p>
+                <a href="http://bukva.ua/catalog/browse/{{recomended.codeGroup}}/1/{{recomended.code}}" style="align: center; text-decoration:none">
+                  <button class="btn btn-primary bukva-btn center-block"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити в інтернет магазині</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix visible-sm-block" ng-if="$odd"></div>
+      </span>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+    <a href="/#/bestsellers">
+      <h2>
+        Бестселери
+      </h2>
+    </a>
+    <div class="pull-right" style="margin-top: -42px">
+      <h4><a style="text-decoration: underline" href="/#/bestsellers">Всi бестселери</a></h4>
+    </div>
+    </div>
+      <span ng-repeat="bestseller in bestsellers">
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="bukva-item">
+              <a href="#/book_view?code={{bestseller.code}}">
+                <div class="cover_img" style="background-image:url('{{bestseller.image}}');"> </div>
+              </a>
+              <div class="size">
+                <h4>
+                  <a href="#/book_view?code={{bestseller.code}}">
+                    {{bestseller.name}}
+                  </a>
+                </h4>
+                <p>
+                  <b> Код: </b> {{bestseller.code}}
+                  <span ng-if="bestseller.autor"> <b>Автор:&nbsp;</b><a href="#/search?autor={{bestseller.autor}}">{{bestseller.autor}}</a></span>
+                </p>
+                <p>
+                  <span ng-if="bestseller.description">{{bestseller.description}}</span>
+                </p>
+                <a href="http://bukva.ua/catalog/browse/{{bestseller.codeGroup}}/1/{{bestseller.code}}" style="text-decoration:none">
+                  <button class="btn btn-primary bukva-btn center-block"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити в інтернет магазині</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix visible-sm-block" ng-if="$odd"></div>
+      </span>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+       <a href="/#/novelties">
+         <h2>
+           Новинки
+         </h2>
+       </a>
+       <div class="pull-right" style="margin-top: -42px">
+         <h4><a style="text-decoration: underline" href="/#/novelties">Всi новинки</a></h4>
+       </div>
+    </div>
+      <span ng-repeat="novelty in noveltys">
+           <div class="col-xs-12 col-sm-6 col-md-3">
+             <div class="bukva-item">
+               <a href="#/book_view?code={{novelty.code}}">
+                 <div class="cover_img" style="background-image:url('{{novelty.image}}');"> </div>
+               </a>
+               <div class="size">
+                 <h4>
+                   <a href="#/book_view?code={{novelty.code}}">
+                     {{novelty.name}}
+                   </a>
+                 </h4>
+                 <p>
+                   <b> Код: </b> {{novelty.code}}
+                   <span ng-if="novelty.autor"> <b>Автор:&nbsp;</b><a
+                     href="#/search?autor={{novelty.autor}}">{{novelty.autor}}</a></span>
+                 </p>
+                 <p>
+                   <span ng-if="novelty.description">{{novelty.description}}</span>
+                 </p>
+                 <a href="http://bukva.ua/catalog/browse/{{novelty.codeGroup}}/1/{{novelty.code}}" style="align: center; text-decoration:none">
+                   <button class="btn btn-primary bukva-btn center-block"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити в інтернет магазині</button>
+                 </a>
+               </div>
+             </div>
+           </div>
+           <div class="clearfix visible-sm-block" ng-if="$odd"></div>
+      </span>
+  </div>
+
+  <h2>
+    Події
+  </h2>
+  <div dynamic-layout items="cards"></div>
+  <!--<div>
+
+  <div class="container-fluid">
+    <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="event in events">
+      <div class="event-item scale">
+        <img class="event_image"
+             style="background-image:url('{{event.image}}');">
+        </img>
+        <img class="even_image_small" style="background-image:url('{{event.image}}');">
+        </img>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="col-sm-8">
+      <div class="row" ng-repeat="event in events">
+        <div ng-if="$even">
+          <img class="show_image"
+               style="float: left; margin: 0px 10px; background-image:url('{{event.image}}');"> </img>
+          <h3>{{event.title}}</h3>
+          <p><i class="glyphicon glyphicon-time"></i><em style="margin-left: 5px">{{event.when | date: 'dd.MM.yyyy'}} o
+            {{event.when | date: 'HH-mm'}}</em></p>
+          <a ng-show="event.codeShop !== 0" href="#/map?code_shop={{event.codeShop}}">
+            <i class="glyphicon glyphicon-map-marker"></i><em style="margin-left: 5px">{{event.where}}</em>
+          </a>
+          <span ng-hide="event.codeShop !== 0">
+            <i class="glyphicon glyphicon-map-marker"></i><em style="margin-left: 5px">{{event.where}}</em>
+          </span>
+          <p ta-bind ng-model="event.text" style="margin-top: 10px; text-align: justify;">
+          </p>
+        </div>
+        <div ng-if="$odd">
+          <img class="show_image"
+               style="float: right; margin: 0px 10px; background-image:url('{{event.image}}');"> </img>
+          <h3>{{event.title}}</h3>
+          <p><i class="glyphicon glyphicon-time"></i><em style="margin-left: 5px">{{event.when | date: 'dd.MM.yyyy'}} o
+            {{event.when | date: 'HH-mm'}}</em></p>
+          <a ng-show="event.codeShop !== 0" href="#/map?code_shop={{event.codeShop}}">
+            <i class="glyphicon glyphicon-map-marker"></i><em style="margin-left: 5px">{{event.where}}</em>
+          </a>
+          <span ng-hide="event.codeShop !== 0">
+            <i class="glyphicon glyphicon-map-marker"></i><em style="margin-left: 5px">{{event.where}}</em>
+          </span>
+          <p ta-bind ng-model="event.text" style="margin-top: 10px; text-align: justify;"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-body" style="text-align: center">
+          <a href="http://bukva.ua"><img class="img-rounded" src="/images/logo_bukva.png"></img></a>
+          <hr>
+          <a href="http://kmbooks.com.ua"><img class="img-rounded" src="/images/logo_km.png"></img></a>
+        </div>
+      </div>
+      <hr>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <iframe
+            src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FBukvashops%3Fref%3Dhl&amp;width=240px&amp;height=300&amp;connections=8&amp;stream=false&amp;header=true&amp;"
+            scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100%; height:300px;"
+            allowtransparency="true"></iframe>
+        </div>
+      </div>
+      <hr>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <iframe name="fXDf7fac" frameborder="0"
+                  src="http://vk.com/widget_community.php?app=0&amp;width=240px&amp;_ver=1&amp;gid=33383310&amp;mode=0&amp;color1=&amp;color2=&amp;color3=&amp;class_name=&amp;height=290&amp;url=http%3A%2F%2Fbukvashops.com.ua%2Fcategory%2Fsobytiya%2F&amp;14dda628b1d"
+                  width=100% height="300" scrolling="no" id="vkwidget1"
+                  style="overflow: hidden; height: 290px;"></iframe>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <hr>
+  </div>-->
+
+
+
+
+

@@ -1,0 +1,37 @@
+<style>
+  html, body, #map-canvas {
+    height: 500px;
+    margin: 0px;
+  }
+</style>
+
+<div class="row">
+  <div class="col-md-12"><h2 style="color: #428bca">Магазини на мапi</h2></div>
+</div>
+
+<div class="row" style="padding-left: 10px; padding-right: 10px;">
+  <div class="col-md-12" id="map-canvas" ng-init="initialize()"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-hover">
+       <thead>
+        <tr>
+          <th class="col-md-3"><h4>Магазин</h4></th>
+          <th class="col-md-9"><h4>Інформація</h4></th>
+        </tr>
+       </thead>
+       <tbody>
+         <tr class="map-table" ng-repeat="gmp in gmap" ng-click="goToMarker(gmp)">
+           <td>
+             <b style="color: #428bca">{{gmp.name}}</b>
+           </td>
+           <td ng-bind-html = "gmp.description"></td>
+          </tr>
+       </tbody>
+    </table>
+  </div>
+</div>
+
+

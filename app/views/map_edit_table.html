@@ -1,0 +1,83 @@
+<style>
+  html, body, #map-canvas {
+    height: 600px;
+    margin: 0px;
+    padding: 0px
+  }
+  th {
+    font-weight: normal;
+  }
+</style>
+<h1 style="color: #428bca">Редагування мапи</h1>
+<br>
+<div class="container-fluid">
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th class="col-md-2">Картинка</th>
+      <th class="col-md-8">Найменування</th>
+      <th class="col-md-2">Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <div id="map-canvas" ng-init="initialize()"></br></div>
+    <tr ng-repeat="gmp in gmap">
+      <th>
+        <p class="text-center" ng-hide="gmp.editing" ng-dblclick="editItem(gmp)"><b>{{gmp.sortIndex}}</b></p>
+        <div ng-show="gmp.editing" class="form-group">
+          <label for="name" class="col-md-12" ng-show="gmp.editing">Позиция в списке</label>
+          <input type = "number" class="form-control" ng-show="gmp.editing" ng-model="gmp.sortIndex" autofocus>
+        </div>
+      </th>
+      <th>
+        <h3 class="text-left" ng-hide="gmp.editing" ng-dblclick="editItem(gmp)">{{gmp.name}}</h3>
+        <div ng-show="gmp.editing" class="form-group">
+          <label for="name" class="col-md-12" ng-show="gmp.editing">Найменування</label>
+          <input id="name" class="form-control" ng-show="gmp.editing" ng-model="gmp.name"
+                 autofocus>
+        </div>
+
+        <div ng-show="gmp.editing" class="form-group">
+          <label for="name" class="col-md-12" ng-show="gmp.editing">Де</label>
+            <div class="input-group ">
+            <input class="form-control" ng-show="gmp.editing" ng-model="gmp.lat" autofocus>
+            <input class="form-control" ng-show="gmp.editing" ng-model="gmp.longit" autofocus>
+            <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="goToMarker(gmp)"><i
+              class="glyphicon glyphicon-map-marker"></i></button>
+            </span>
+          </div>
+        </div>
+
+        <div ng-show="gmp.editing" class="form-group">
+          <label for="name" class="number col-md-12" ng-show="gmp.editing">Код в Спрут</label>
+          <input class="form-control" ng-show="gmp.editing" ng-model="gmp.sprut_code" autofocus>
+        </div>
+
+        <p class="text-left" ng-hide="gmp.editing" ng-bind-html="gmp.description" ng-dblclick="editItem(gmp)"></p>
+        <div ng-show="gmp.editing" class="form-group">
+          <label for="name" class="col-md-12" ng-show="gmp.editing">Описання</label>
+          <text-angular ng-show="gmp.editing" ng-model="gmp.description"
+                    autofocus></text-angular>
+        </div>
+
+      </th>
+      <th>
+        <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(gmp)" ng-disabled="gmp.editing">
+          <span class="glyphicon glyphicon-edit"></span> Редагувати
+        </button>
+        <button type="button" class="btn btn-success btn-xs" ng-click="doneEditing(gmp)" ng-disabled="!gmp.editing">
+          <span class="glyphicon glyphicon-save"></span> Зберігти
+        </button>
+        <button type="button" class="btn btn-danger btn-xs" ng-click="deleteItem(gmp)" ng-disabled="gmp.editing">
+          <span class="glyphicon glyphicon-remove"></span> Видалити
+        </button>
+      </th>
+    </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-primary" ng-click="AddItem()">
+    Додати новий магазин
+  </button>
+</div>
+

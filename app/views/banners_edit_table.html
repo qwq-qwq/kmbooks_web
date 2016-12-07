@@ -1,0 +1,57 @@
+<style>
+  th {
+    font-weight: normal;
+  }
+</style>
+<h1>Редагування акцій</h1>
+<br>
+  <button type="button" class="btn btn-primary" ng-click="AddItem()">
+      Додати новий банер
+  </button>
+  <button type="button" class="btn btn-primary" ng-disabled="!SortChanged" ng-click="SaveSort()">
+      Зберегти сортування
+  </button>
+
+    <ul class="list-group" ui-sortable="sortableOptions" ng-model="banners" style="margin-top: 30px">
+
+    <li ng-repeat="banner in banners" class="row list-group-item" style="list-style-type: none;">
+      <div class="col-md-8">
+        <img class="actions_small_img thumbnail" style="background-image:url('{{banner.image}}');">
+        </img>
+        <div ng-if="banner.upl_item" style="margin-top: 20px">
+          <div ng-thumb="{ file: banner.upl_item._file, height: 200 }"></div>
+          <p> Имя файла: {{banner.upl_item.file.name}}</p>
+        </div>
+        <span ng-show="banner.editing">
+          <div nv-file-drop uploader="uploader" nv-file-over="" options="{formData: [{id: banner.id, row_id: banner.row_id}]}" class="actions_small_img thumbnail my-drop-zone">
+            Перетягніть файл сюди
+          </div>
+          <input type="file" nv-file-select="" uploader="uploader" multiple="" options="{formData: [{id: banner.id, row_id: banner.row_id}]}">
+        </span>
+      </div>
+      <div class="col-md-2">
+        <p>{{$index}}</p>
+        <h3 class="text-left" ng-hide="banner.editing" ng-dblclick="editItem(banner)">{{banner.header}}</h3>
+        <div ng-show="banner.editing" class="form-group">
+          <label for="name" class="col-md-12" ng-show="banner.editing">Заголовок</label>
+          <input id="name" class="form-control" rows="2" ng-show="banner.editing" ng-model="banner.header"
+                    autofocus>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(banner)" ng-disabled="banner.editing">
+          <span class="glyphicon glyphicon-edit"></span> Редагувати
+        </button>
+        <button type="button" class="btn btn-success btn-xs" ng-click="doneEditing(banner)" ng-disabled="!banner.editing">
+          <span class="glyphicon glyphicon-save"></span> Зберігти
+        </button>
+        <button type="button" class="btn btn-danger btn-xs" ng-click="deleteItem(banner)" ng-disabled="banner.editing">
+          <span class="glyphicon glyphicon-remove"></span> Видалити
+        </button>
+      </div>
+      </li>
+    </ul>
+
+
+
+

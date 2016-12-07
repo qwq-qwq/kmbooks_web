@@ -1,0 +1,42 @@
+{
+  "name": "angular",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "1.5.8",
+    "bootstrap": "3.3.4",
+    "angular-animate": "1.5.8",
+    "angular-cookies": "1.5.8",
+    "angular-resource": "1.5.8",
+    "angular-route": "1.5.8",
+    "angular-sanitize": "1.5.8",
+    "angular-touch": "1.5.8",
+    "angular-file-upload": "^2.2.0",
+    "angular-bootstrap-lightbox": "~0.10.0",
+    "textAngular": "1.5.0",
+    "font-awesome": "^4.0.0",
+    "angular-dynamic-layout": "latest",
+    "angular-ui-sortable": "^0.14.3",
+    "angular-ui-calendar": "^1.0.2",
+    "angular-scroll-animate": "^0.9.9",
+    "animate.css": "^3.5.2",
+    "angular-bootstrap": "2.2.0",
+    "angular-messages": "^1.5.8"
+  },
+  "overrides": {
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css"
+      ]
+    }
+  },
+  "devDependencies": {
+    "angular-mocks": "1.5.8"
+  },
+  "appPath": "app",
+  "moduleName": "angularApp",
+  "resolutions": {
+    "angular": "1.5.8",
+    "angular-animate": "1.5.8",
+    "angular-bootstrap": "2.2.0"
+  }
+}

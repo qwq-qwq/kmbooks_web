@@ -1,0 +1,119 @@
+<style>
+  th {
+    font-weight: normal;
+  }
+</style>
+<h1>Редагування акцій</h1>
+<br>
+  <button type="button" class="btn btn-primary" ng-click="AddItem()">
+    Додати нову Акцію
+  </button>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th class="col-md-3">Картинка</th>
+      <th class="col-md-8">Найменування</th>
+      <th class="col-md-1">Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="event in events">
+      <th>
+        <img class="actions_small_img thumbnail" style="background-image:url('{{event.image}}');">
+        </img>
+        <div ng-if="event.upl_item" style="margin-top: 20px">
+          <div ng-thumb="{ file: event.upl_item._file, height: 200, width: 270 }"></div>
+          <p> Имя файла: {{event.upl_item.file.name}}</p>
+        </div>
+        <span ng-show="event.editing">
+          <div nv-file-drop uploader="uploader" nv-file-over="" options="{formData: [{id: event.id, row_id: event.row_id}]}" class="actions_small_img thumbnail my-drop-zone">
+            Перетягніть файл сюди
+          </div>
+          <input type="file" nv-file-select="" uploader="uploader" multiple="" options="{formData: [{id: event.id, row_id: event.row_id}]}">
+        </span>
+      </th>
+      <th>
+        <h3 class="text-left" ng-hide="event.editing" ng-dblclick="editItem(event)">{{event.title}}</h3>
+        <div ng-show="event.editing" class="form-group">
+          <label for="name" class="col-md-12" ng-show="event.editing">Найменування:</label>
+          <textarea id="name" class="form-control" rows="2" ng-show="event.editing" ng-model="event.title"
+                    autofocus></textarea>
+        </div>
+
+        <p class="text-left" ng-hide="event.editing" ng-dblclick="editItem(event)"><i class="glyphicon glyphicon-time"></i><em style="margin-left: 5px">{{event.when | date:
+          'dd.MM.yyyy'}} o {{event.when | date: 'HH-mm'}}</em></p>
+        <div ng-show="event.editing" class="form-group">
+          <label class="col-md-12" for="name" ng-show="event.editing">Коли:</label>
+          <div class="input-group col-md-6">
+            <input type="text" class="form-control col-md-6" uib-datepicker-popup="dd.MM.yyyy" ng-model="event.when"
+                   is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i
+              class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label class="col-md-12" for="name" ng-show="event.editing">Час проведення початок:</label>
+            <div ng-show="event.editing" class="form-group">
+              <div uib-timepicker class="col-md-2" ng-show="event.editing" ng-model="event.when"
+                              show-meridian="false"></div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label class="col-md-12" for="name" ng-show="event.editing">кінець:</label>
+            <div ng-show="event.editing" class="form-group">
+             <div uib-timepicker class="col-md-2" ng-show="event.editing" ng-model="event.end"
+                   show-meridian="false"></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-left" ng-hide="event.editing" ng-dblclick="editItem(event)">
+          <a ng-show="event.codeShop !== 0" href="#/map?code_shop={{event.codeShop}}">
+            <i class="glyphicon glyphicon-map-marker"></i><em style="margin-left: 5px">{{event.where}}</em>
+          </a>
+          <span ng-hide="event.codeShop !== 0">
+            <i class="glyphicon glyphicon-map-marker"></i><em style="margin-left: 5px">{{event.where}}</em>
+          </span>
+        </p>
+        <div ng-show="event.editing" class="form-group">
+          <label for="name" class="col-md-12" ng-show="event.editing">Де:</label>
+          <div class="input-group col-md-12">
+            <input class="form-control" rows="1" ng-show="event.editing" ng-model="event.where" autofocus></input>
+            <span class="input-group-btn" uib-dropdown on-toggle="toggled(open)">
+            <button type="button" class="btn btn-default" uib-dropdown-toggle><i
+              class="glyphicon glyphicon-map-marker"></i></button>
+                <ul uib-dropdown-menu aria-labelledby="simple-dropdown">
+                  <li ng-repeat="gma in gmap">
+                    <a href ng-click="chooseShop(gma, event)">{{gma.name}}</a>
+                  </li>
+                </ul>
+            </span>
+          </div>
+        </div>
+
+        <p class="text-left" ng-hide="event.editing" ng-bind-html="event.text" ng-dblclick="editItem(event)"></p>
+        <div ng-show="event.editing" class="form-group">
+          <label for="name" class="col-md-12" ng-show="event.editing">Текст:</label>
+          <text-angular ng-show="event.editing" ng-model="event.text" autofocus></text-angular>
+        </div>
+        <br>
+      </th>
+      <th>
+        <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(event)" ng-disabled="event.editing">
+          <span class="glyphicon glyphicon-edit"></span> Редагувати
+        </button>
+        <button type="button" class="btn btn-success btn-xs" ng-click="doneEditing(event)" ng-disabled="!event.editing">
+          <span class="glyphicon glyphicon-save"></span> Зберігти
+        </button>
+        <button type="button" class="btn btn-danger btn-xs" ng-click="deleteItem(event)" ng-disabled="event.editing">
+          <span class="glyphicon glyphicon-remove"></span> Видалити
+        </button>
+      </th>
+    </tr>
+    </tbody>
+  </table>
+

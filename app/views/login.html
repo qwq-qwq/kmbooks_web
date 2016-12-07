@@ -1,0 +1,31 @@
+
+  <div class="card card-container">
+    <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+    <p id="profile-name" class="profile-name-card"></p>
+    <div class="alert alert-danger" ng-show="error">
+       Проблема входу в систему. Будь ласка, спробуйте ще.
+    </div>
+    <form class="form-horizontal" ng-submit="login()">
+      <div class="form-group">
+        <input type="text" id="email" class="form-control" placeholder="Email адрес" ng-model="email" required autofocus>
+      </div>
+      <div class="form-group">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" ng-model="password" required>
+      </div>
+      <div class="form-group">
+        <div id="remember" class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Запам'ятати мене
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" style="width: 100%">Увійти</button>
+      </div>
+      <div class="form-group">
+        <a href="#" class="forgot-password">
+          Забули пароль?
+        </a>
+      </div>
+    </form>
+  </div><!-- /card-container -->

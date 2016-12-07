@@ -1,0 +1,71 @@
+<style>
+  th {
+    font-weight: normal;
+  }
+</style>
+<h1>Редагування користувачів</h1>
+<br>
+
+<button type="button" class="btn btn-primary" ng-click="AddItem()">
+  Додати нового Користувача
+</button>
+
+  <div class="row" style="margin-top: 20px; margin-bottom: 20px; border-bottom-style: solid; border-bottom-width: 1px; border-color: ">
+    <div class="col-md-3">Email</div>
+    <div class="col-md-4">Роль</div>
+    <div class="col-md-4">Пароль</div>
+    <div class="col-md-1">Дії</div>
+  </div>
+
+  <div class="row panel" ng-repeat="user in users">
+    <form name="userForm" ng-submit="registration.submit(userForm.$valid)">
+    <div class="col-md-3">
+      <p class="text-left" ng-hide="user.editing" ng-dblclick="editItem(user)">{{user.email}}</p>
+      <div ng-show="user.editing" class="form-group">
+        <input name="email" type="email" class="form-control" rows="2" placeholder="email" ng-show="user.editing" ng-model="user.email"
+                   required>
+      </div>
+      <div style="color: red" ng-messages="userForm.email.$error">
+        <div ng-message="required">Обов'язкове для заповнення</div>
+        <div ng-message="email">Введіть корректний email</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <p class="text-left" ng-hide="user.editing"  ng-dblclick="editItem(user)">{{user.role}}</p>
+      <div ng-show="user.editing" class="form-group">
+        <select ng-show="user.editing" class="form-control" placeholder="Роль" ng-model="user.role" required>
+            <option ng-repeat="role in roles">{{role}}</option>
+        </select>
+      </div>
+      <br>
+    </div>
+    <div class="col-md-4">
+      <p class="text-left" ng-hide="user.editing" ng-dblclick="editItem(user)">***********</p>
+      <div ng-show="user.editing" class="form-group">
+        <input ng-show="user.editing" type="password" class="form-control" placeholder="Пароль" ng-model="user.password" required>
+      </div>
+      <div ng-show="user.editing" class="form-group">
+        <input ng-show="user.editing" name="passwordRetype" type="password" class="form-control" placeholder="Повторити"  ng-model="user.passwordRetype"  required minlength="10"
+               bk-compare-to="user.password">
+        <div style="color: red" ng-messages="userForm.passwordRetype.$error">
+          <div ng-message="required">Обов'язкове для заповнення</div>
+          <div ng-message="minlength">Мінімальна довжина пароля повинна будти 10 символів</div>
+          <div ng-message="required">Обов'язкове для заповнення</div>
+          <div ng-message="compareTo">Паролі повинні співпадати</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(user)" ng-disabled="user.editing">
+        <span class="glyphicon glyphicon-edit"></span> Редагувати
+      </button>
+      <button type="button" class="btn btn-success btn-xs" ng-click="doneEditing(user)" ng-disabled="!user.editing || !userForm.$valid">
+        <span class="glyphicon glyphicon-save"></span> Зберігти
+      </button>
+      <button type="button" class="btn btn-danger btn-xs" ng-click="deleteItem(user)" ng-disabled="user.editing">
+        <span class="glyphicon glyphicon-remove"></span> Видалити
+      </button>
+    </div>
+    </form>
+  </div>
+

@@ -1,0 +1,36 @@
+
+    <div class="row">
+      <div class="col-md-12">
+        <h2 style="color: #428bca">{{event.title}}</h2>
+      </div>
+      <div class = "col-md-7">
+        <div style="font-size: 14px; margin-bottom: 6px;">
+          <i class="glyphicon glyphicon-time"></i><span style="margin-left: 5px">{{event.when | date: 'dd.MM.yyyy'}} o {{event.when | date: 'HH-mm'}}</span>
+        </div>
+        <a style="font-size: 14px;" ng-show="event.codeShop !== 0" href="#/map?code_shop={{event.codeShop}}">
+           <div><span class="glyphicon glyphicon-map-marker"></span>&nbsp;{{event.where}}</div>
+        </a>
+        <span style="font-size: 14px;" ng-hide="event.codeShop !== 0">
+            <i class="glyphicon glyphicon-map-marker"></i><em style="margin-left: 5px">{{event.where}}</em>
+        </span>
+        <img class="img-rounded img-responsive visible-md visible-lg" src="{{bigImage}}" style="margin-top: 10px; margin-bottom: 25px;">
+        <img class="img-rounded img-responsive visible-xs visible-sm" src="{{bigImage}}" style="margin-top: 10px; margin-bottom: 25px;">
+        <p ta-bind ng-model="event.text" style="margin-top: 10px; text-align: justify;"></p>
+        <div style="padding-bottom: 50px; text-align: center"></div>
+      </div>
+      <div class = "col-md-5" style="padding-top: 0px;">
+        <h3 style="color: black; border-bottom: 1px solid grey; margin-bottom: 13px;">
+          Інші події
+        </h3>
+        <div ng-repeat="ev in events">
+          <div style="font-size: 18px; line-height: 22px; margin-bottom: 5px;">
+            <a style="" href = "#/event_view?id={{ev.id}}">
+               {{ev.title}}
+            </a>
+          </div>
+          <div style="font-size: 12px; color: #a09e98; margin-bottom: 15px;">
+            {{ev.when | date: 'dd.MM.yyyy'}} o {{ev.when | date: 'HH-mm'}}
+          </div>
+        </div>
+      </div>
+    </div>

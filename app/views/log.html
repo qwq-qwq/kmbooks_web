@@ -1,0 +1,18 @@
+<h1 style="color: #428bca">Лог оновлень</h1>
+<table id="anchor1" class="table table-bordered">
+  <thead>
+  <tr>
+    <th class="col-md-2">Дата</th>
+    <th class="col-md-3">Наименование</th>
+    <th class="col-md-7">Событие</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="log in logs">
+    <th>{{toDateTime(log.id)}}</th>
+    <th>{{log.title}}</th>
+    <th>{{log.text}}</th>
+  </tr>
+  </tbody>
+</table>
+

@@ -1,0 +1,41 @@
+<div class="dynamic-layout-item dynamic-layout-col-8 bootcards-cards" ng-controller = "Work1Controller">
+  <div class="panel panel-default">
+    <div class="panel-heading clearfix">
+      <div class="pull-left" style="color: #428bca">
+        <i class="glyphicon glyphicon-time"></i><em style="margin-left: 5px; margin-top: 5px">{{it.data.when | date: 'dd.MM.yyyy'}} o
+        {{it.data.when | date: 'HH-mm'}}</em>
+      </div>
+      <a class="btn btn-xs pull-right" ng-click='externalScope().deleteCard(it.data.id)'>
+        <span class="glyphicon glyphicon-remove"></span>
+      </a>
+    </div>
+    <div class="list-group">
+      <div class="list-group-item event-item">
+        <a style="color: #333;" href = "#/event_view?id={{it.data.id}}">
+          <h4>{{it.data.title}}</h4>
+        </a>
+      </div>
+      <a style="color: #333;" href = "#/event_view?id={{it.data.id}}">
+        <div class="show_image list-group-item" style="background-image:url('{{it.bigImage}}');"></div>
+      </a>
+      <div class="list-group-item">
+        <a ng-show="it.data.codeShop !== 0" href="#/map?code_shop={{it.data.codeShop}}">
+          <i class="glyphicon glyphicon-map-marker"></i><em style="margin-left: 5px">{{it.data.where}}</em>
+        </a>
+        <span ng-hide="it.data.codeShop !== 0">
+          <i class="glyphicon glyphicon-map-marker"></i><em style="margin-left: 5px">{{it.data.where}}</em>
+        </span>
+      </div>
+      <div class="list-group-item">
+        <p class="list-group-item-text" ng-hide='showingMoreText' ta-bind ng-model="it.textShort">
+        <p class="list-group-item-text" ng-show='showingMoreText' ta-bind ng-model="it.data.text">
+      </div>
+      <a class="btn btn-xs pull-right" ng-hide='showingMoreText' ng-click='toggleText()'>
+        <span class="glyphicon glyphicon-chevron-down" style="margin-left: 5px;"><span style="margin-left: 5px;">Бiльше</span></span>
+      </a>
+      <a class="btn btn-xs pull-right" ng-show='showingMoreText' ng-click='toggleText()'>
+        <span class="glyphicon glyphicon-chevron-up"><span style="margin-left: 5px;">Менше</span></span>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<h1 style="color: #428bca">Редагування</h1>
+<br>
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th class="col-md-12">Дія</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-if="isAdmin()">
+      <th>
+        <a href="#/users_edit_table">
+          <h4 class="text-left">Користувачі</h4>
+        </a>
+      </th>
+    </tr>
+    <tr ng-if="isAdmin()">
+      <th>
+        <a href="#/log_last">
+          <h4 class="text-left">Логі</h4>
+        </a>
+      </th>
+    </tr>
+    <tr ng-if="isEditor()">
+      <th>
+        <a href="#/settings_edit_table">
+          <h4 class="text-left">Налаштування</h4>
+        </a>
+      </th>
+    </tr>
+    <tr ng-if="isEditor()">
+      <th>
+        <a href="#/events_edit_table">
+          <h4 class="text-left">Редагування евентів</h4>
+        </a>
+      </th>
+    </tr>
+    <tr ng-if="isEditor()">
+      <th>
+        <a href="#/map_edit_table">
+          <h4 class="text-left">Редагування мапи</h4>
+        </a>
+      </th>
+    </tr>
+    <tr ng-if="isEditor()">
+      <th>
+        <a href="#/banners_edit_table">
+          <h4 class="text-left">Редагування банерів</h4>
+        </a>
+      </th>
+    </tr>
+    <tr ng-if="isEditor()">
+      <th>
+        <a href="#/update_by_call">
+          <h4 class="text-left">Примусове оновлення</h4>
+        </a>
+      </th>
+    </tr>
+    </tbody>
+  </table>
+

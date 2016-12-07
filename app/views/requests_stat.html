@@ -1,0 +1,74 @@
+<h2 style="color: #428bca">Статистика по запитам з пошуковика</h2>
+  <div id="menu" class="hidden-xs">
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="" ng-click="gotoAnchor(1)">Фільтр</a></li>
+      <li><a href="" ng-click="gotoAnchor(2)">Автори</a></li>
+      <li><a href="" ng-click="gotoAnchor(3)">Найменування</a></li>
+    </ul>
+  </div>
+  <div id="anchor1"><div>
+  <br>
+  <form class="form-horizontal" role="form" ng-submit="search()">
+    <div class="form-group">
+       <label for="dateStart" class="col-sm-2 control-label">Дата начальна</label>
+       <div class="col-sm-3">
+         <div class="input-group">
+           <input type="text" class="form-control col-md-6" uib-datepicker-popup="dd.MM.yyyy" ng-model="dateStart"
+                  is-open="popup1.opened" ng-required="true"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i
+              class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+         </div>
+         <!--<input type="date" name="dateStart" id="dateStart" class="form-control" ng-model="dateStart">-->
+       </div>
+       <label for="dateEnd" class="col-sm-2 control-label">Дата кінцева</label>
+       <div class="col-sm-3">
+         <div class="input-group">
+           <input type="text" class="form-control col-md-6" uib-datepicker-popup="dd.MM.yyyy" ng-model="dateEnd"
+                  is-open="popup2.opened" ng-required="true"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open2()"><i
+              class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+         </div>
+         <!--<input type="date" name="dateEnd" id="dateEnd" class="form-control" ng-model="dateEnd">-->
+       </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button class="btn btn-primary" type="submit">Шукати</button>
+      </div>
+    </div>
+  </form>
+  <table id="anchor2" class="table table-hover">
+    <caption><h4>Запити к пошуковику в магазинах за Автором</h4></caption>
+    <thead>
+      <tr>
+        <th class="col-md-10"><h4>Запит</h4></th>
+        <th class="col-md-2 text-center"><h4>Кількість</h4></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="request_author in requests_author">
+        <th>{{request_author.id}}</th>
+        <th>{{request_author.count}}</th>
+      </tr>
+    </tbody>
+  </table>
+  <table id="anchor3" class="table table-hover">
+    <caption><h4>Запити к пошуковику в магазинах за Найменуванням</h4></caption>
+    <thead>
+      <tr>
+        <th class="col-md-10"><h4>Запит</h4></th>
+        <th class="col-md-2 text-center"><h4>Кількість</h4></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="request_name in requests_name">
+        <th>{{request_name.id}}</th>
+        <th>{{request_name.count}}</th>
+      </tr>
+    </tbody>
+  </table>
+
