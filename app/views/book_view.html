@@ -7,7 +7,7 @@
       <div class="col-md-4 hidden-xs hidden-sm" ng-if="book.images.length > 1">
         <div ng-repeat="image in book.images">
           <a ng-click="openLightboxModal($index)">
-            <img src="{{image.thumbUrl}}" class="point_img img img-responsive" ng-mouseover="book.image = image.thumbUrl.replace('.jpg', '_big.jpg'); book.thmb_index = image.thmb_index;">
+            <img src="{{image.thumbUrl}}" class="point_img img img-responsive" style="max-height: 250px" ng-mouseover="book.image = image.thumbUrl.replace('.jpg', '_big.jpg'); book.thmb_index = image.thmb_index;">
           </a>
         </div>
       </div>
@@ -18,7 +18,6 @@
         </a>
       </div>
       <div class="hidden-md hidden-lg" style="text-align: center">
-          <br>
           <img src="{{book.image.replace('_big.jpg', '.jpg')}}" class="point_img img-rounded">
       </div>
       <div class="col-md-8 book-data">
