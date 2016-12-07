@@ -13,7 +13,7 @@ angular.module('angularApp')
         if (response[0].image === '') {
           response[0].image = '/img/no_picture_ru_165.jpg';
         } else {
-          response[0].image = '/img/pics/' + response[0].code + '.jpg';
+          response[0].image = '/img/pics/' + response[0].code + '_big.jpg';
           /*response[0].images[0] = {
             'url': '/img/pics/' + code + '_big.jpg',
             'thumbUrl': '/img/pics/' + code + '.jpg',
