@@ -14,14 +14,14 @@ angular.module('angularApp')
           response[0].image = '/img/no_picture_ru_165.jpg';
         } else {
           response[0].image = '/img/pics/' + response[0].code + '.jpg';
-          response[0].images[0] = {
+          /*response[0].images[0] = {
             'url': '/img/pics/' + code + '_big.jpg',
             'thumbUrl': '/img/pics/' + code + '.jpg',
             'thmb_index': 0
-          };
+          };*/
         };
         $scope.book = response[0];
-        for (var i = 1; i <= 5; i++) {//response[0].imagesCount - 1; i++) {
+        for (var i = 1; i <= response[0].imagesCount - 1; i++) {
           $scope.book.images[i] = {
             'url': '/img/pics/' + code + '_' + i + '.jpg',
             'thumbUrl': '/img/pics/' + code + '_' + i + '.jpg',
