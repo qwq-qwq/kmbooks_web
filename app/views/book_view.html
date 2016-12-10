@@ -1,6 +1,6 @@
 
     <div class="row">
-      <div class="col-md-4 hidden-xs hidden-sm" ng-if="book.images.length > 1">
+      <div class="col-md-4 hidden-xs hidden-sm" ng-if="book.images.length > 0">
         <div ng-repeat="image in book.images">
           <a ng-click="openLightboxModal($index)">
             <img src="{{image.thumbUrl}}" class="point_img img-responsive" style="max-height: 250px">
@@ -33,7 +33,7 @@
       <div class="col-md-1">
         <div style="position: fixed; top: 60px;">
           <div style="background: rgba( 255, 255, 255, 0.7); padding: 20px">
-            <img class="img-responsive" src="{{book.image}}" style="max-width: 230px">
+            <img class="img-responsive" src="{{book.image}}" style="max-width: 250px">
             <p style="margin-top: 30px"><a href="http://bukva.ua/catalog/browse/{{book.codeGroup}}/1/{{book.code}}"><button class="btn btn-default"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити в інтернет магазині</button></a></p>
           </div>
         </div>
