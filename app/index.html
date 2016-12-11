@@ -44,7 +44,7 @@
 
           <div class="collapse navbar-collapse" uib-collapse="isCollapsed">
             <ul class="nav navbar-nav">
-              <li ng-repeat="item in menu" ng-class="{active: item.route == menuActive}"><a href="#{{item.route}}" >{{item.label}}</a> </li>
+              <li ng-repeat="item in menu" ng-class="{active: item.route == menuActive}"><a href="#{{item.route}}" >{{item.label.toUpperCase()}}</a> </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li ng-show="!authenticated">

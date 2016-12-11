@@ -6,7 +6,7 @@ angular.module('angularApp')
     $scope.menu = [
       {label:'ГОЛОВНА', route:'/'},
       {label:'ПОДІЇ', route:'/events'},
-      {label:'МАГАЗИНИ', route:'/map'},
+      {label:'Пункти самовивозу', route:'/map'},
       {label:'ПОШУК ТОВАРІВ', route:'/search'},
       {label:'КОНТАКТИ', route:'/contacts'}
     ]
