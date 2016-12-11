@@ -43,9 +43,6 @@
         $scope.proceedSearch = false;
         return
       }
-    	if ($scope.selectedShop != 'Все магазины') {
-             link += "&shop=" + $scope.selectedShop;
-    	}
       $http.get(config.url() + "/api/books/search?"+link)
         .success(function(response) {
           for (var key in response) {
