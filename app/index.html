@@ -48,10 +48,13 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <a href="#/cart"><span class="glyphicon glyphicon-cart"></span>&nbsp;&nbsp;</a>
+                <a href="#/cart"><span style="font-size: large;" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;</a>
               <li>
               <li ng-show="!authenticated">
-                <a href="#/login"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Вхід</a>
+                <a href="#/login" style="display: inline-block"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Вхід</a>
+              <li>
+              <li ng-show="!authenticated">
+                <a href="#/registration">Реєстрація</a>
               <li>
               <li ng-show="authenticated">
                 <a href="#/edit">{{username}}</a>
