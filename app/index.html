@@ -37,7 +37,7 @@
             </button>
 
             <a class="navbar-brand" href="#/" title="bukva">
-              <img style="max-width:100px; margin-top: -8px;"
+              <img style="margin-top: -10px;"
                    src="/images/logo_km.png">
             </a>
           </div>
@@ -47,6 +47,9 @@
               <li ng-repeat="item in menu" ng-class="{active: item.route == menuActive}"><a href="#{{item.route}}" >{{item.label.toUpperCase()}}</a> </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+              <li>
+                <a href="#/cart"><span class="glyphicon glyphicon-cart"></span>&nbsp;&nbsp;</a>
+              <li>
               <li ng-show="!authenticated">
                 <a href="#/login"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Вхід</a>
               <li>
