@@ -9,6 +9,7 @@
       </div>
       <div class="hidden-md hidden-lg" style="text-align: center">
           <img src="{{book.image.replace('_big.jpg', '.jpg')}}" class="point_img img-rounded">
+          <p style="margin-top: 30px; text-align: center"><a href="http://bukva.ua/catalog/browse/{{book.codeGroup}}/1/{{book.code}}"><span style="font-size: medium; color: black;">Ціна: {{book.price}} грн</span><button class="btn btn-default" style="margin-left: 20px"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити</button></a></p>
       </div>
       <div class="col-md-7 book-data">
         <b><br>Код:</b><span style="color: slategray">&nbsp;{{book.code}}</span>
@@ -24,7 +25,7 @@
         <span ng-if="description"><h3 style="color: slategray">Анотація</h3></span>
         <span ng-if="description" ng-bind-html="description"><br>{{description}}</span>
       </div>
-      <div class="col-md-1">
+      <div class="col-md-1 hidden-xs hidden-sm">
         <div style="position: fixed; top: 60px;">
           <div style="background: rgba( 255, 255, 255, 0.7); padding: 20px">
             <img class="img-responsive" src="{{book.image}}" style="max-width: 250px">
