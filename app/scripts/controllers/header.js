@@ -4,7 +4,7 @@ angular.module('angularApp')
   .controller('HeaderCtrl', function($scope, $rootScope, $location, $anchorScroll, $http, config) {
 
     $scope.menu = [
-      {label:'ГОЛОВНА', route:'/'},
+      {label:'Видавництво', route:'/'},
       {label:'ПОДІЇ', route:'/events'},
       {label:'Пункти самовивозу', route:'/map'},
       {label:'ПОШУК ТОВАРІВ', route:'/search'},
