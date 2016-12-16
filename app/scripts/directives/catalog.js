@@ -6,7 +6,7 @@ angular.module('angularApp').directive('bkAfterCatalog', ['$timeout', function($
     link: function($scope, element, attributes) {
       $scope.$on('menuloaded', function () {
          $timeout(function () {
-           $("ul.navbar-nav").attr("data-sm-skip", "false");
+           $("ul.navbar-nav").removeAttr("data-sm-skip");
            $.SmartMenus.Bootstrap.init();
          });
       })
