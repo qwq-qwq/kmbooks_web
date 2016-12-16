@@ -28,6 +28,13 @@
       "main": [
         "css/font-awesome.css"
       ]
+    },
+    "smartmenus": {
+      "main": [
+        "./src/addons/bootstrap/jquery.smartmenus.bootstrap.css",
+        "./src/addons/bootstrap/jquery.smartmenus.bootstrap.js",
+        "./src/jquery.smartmenus.js"
+      ]
     }
   },
   "devDependencies": {
