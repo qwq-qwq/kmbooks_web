@@ -29,11 +29,11 @@
         "css/font-awesome.css"
       ]
     },
-    "smartmenus": {
+  "smartmenus": {
       "main": [
+        "./src/jquery.smartmenus.js",
         "./src/addons/bootstrap/jquery.smartmenus.bootstrap.css",
-        "./src/addons/bootstrap/jquery.smartmenus.bootstrap.js",
-        "./src/jquery.smartmenus.js"
+        "./src/addons/bootstrap/jquery.smartmenus.bootstrap.js"
       ]
     }
   },
