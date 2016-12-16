@@ -106,6 +106,10 @@ angular
         templateUrl: 'views/users_edit_table.html',
         controller: 'UsersEditTableCtrl'
       })
+      .when('/catalog', {
+        templateUrl: 'views/books_table.html',
+        controller: 'BooksTableCtrl'
+      })
 
       .otherwise({
         redirectTo: '/'
