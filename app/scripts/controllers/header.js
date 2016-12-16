@@ -4,9 +4,6 @@ angular.module('angularApp')
   .controller('HeaderCtrl', function($scope, $rootScope, $location, $anchorScroll, $http, config) {
 
     $scope.menu = [
-      {label:'Видавництво', route:'/'},
-      {label:'ПОДІЇ', route:'/events'},
-      {label:'Пункти самовивозу', route:'/map'},
       {label:'ПОШУК ТОВАРІВ', route:'/search'},
       {label:'КОНТАКТИ', route:'/contacts'}
     ]
@@ -39,6 +36,68 @@ angular.module('angularApp')
           }
         })
     }
+
+    $scope.initMenu = function () {
+      $http.get(config.url() + "/api/get_catalog")
+        .success(function(response) {
+          var strMenu = "";
+          var previous_level = 0;
+          var current_level = 0;
+          var count = 0;
+          for (var key in response) {
+            if (response[key].menu_code.substring(3) == '00.00'){
+              current_level = 1;
+            }else if (response[key].menu_code.substring(6) == '00'){
+              current_level = 2;
+            }else{
+              current_level = 3;
+            };
+            if(current_level > previous_level){
+              if (current_level > 1){
+                response[key-1].is_parent = true;
+              }
+            }
+            previous_level = current_level;
+            response[key].level = current_level;
+          };
+          var previous_level = 0;
+          var caret_text = '';
+          for (var key in response) {
+            current_level = response[key].level;
+            if (response[key].is_parent === true) {
+              caret_text = '<span class="caret"></span>';
+            }else{
+              caret_text = '';
+            };
+            if (current_level == previous_level) {
+              strMenu += '</li>';
+            }else if(current_level > previous_level){
+              if (current_level > 1) {
+                strMenu += '<ul class="dropdown-menu">';
+              }
+            }else{
+              var diff = previous_level - current_level;
+              if (diff == 1){
+                strMenu += '</li>';
+                strMenu += '</ul>';
+                strMenu += '</li>';
+              }else{
+                strMenu += '</li>';
+                strMenu += '</ul>';
+                strMenu += '</li>';
+                strMenu += '</li>';
+                strMenu += '</ul>';
+              };
+            };
+            strMenu += '<li><a href = "#/catalog?group_id=' + response[key].group_id + '">' + response[key].name + caret_text + '</a>';
+            previous_level = current_level;
+          };
+          $scope.strMenu = strMenu;
+          $scope.$broadcast('menuloaded');
+        })
+    };
+
+    $scope.initMenu();
 
     $scope.isCollapsed = true;
 

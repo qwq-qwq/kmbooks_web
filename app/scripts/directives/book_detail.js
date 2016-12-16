@@ -28,15 +28,16 @@ angular.module('angularApp').directive('bkBookDetail', ['$http', 'config', 'auth
           .success(function(response) {
               scope.description = response.text.replace(/([^>])\n/g, '$1<br/>') ; //nl2br
           })
-        scope.isUser = function() {
-          return authorization.isUser();
-        }
-        scope.isBookPage = function() {
-          if ($location.path().search('book_view') != -1) {
-            return true
-          }else{
-            return false}
-        }
-      }, true)}
+      }, true)
+      scope.isUser = function() {
+        return authorization.isUser();
+      }
+      scope.isBookPage = function() {
+        if ($location.path().search('book_view') != -1) {
+          return true
+        }else{
+          return false}
+      }
+    }
   };
 }])
