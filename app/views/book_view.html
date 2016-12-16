@@ -1,6 +1,6 @@
 
     <div class="row">
-      <div class="col-md-2 hidden-xs hidden-sm" ng-if="book.images.length > 0">
+      <div class="col-md-4 hidden-xs hidden-sm" ng-if="book.images.length > 0">
         <div ng-repeat="image in book.images">
           <a ng-click="openLightboxModal($index)">
             <img src="{{image.thumbUrl}}" class="point_img img-responsive" style="max-height: 250px">
@@ -25,7 +25,7 @@
         <span ng-if="description"><h3 style="color: #428bca">Анотація</h3></span>
         <span ng-if="description" ng-bind-html="description"><br>{{description}}</span>
       </div>
-      <div class="col-md-4 hidden-xs hidden-sm">
+      <div class="col-md-2 hidden-xs hidden-sm">
         <div style="position: fixed; top: 60px;">
           <div style="background: rgba( 255, 255, 255, 0.7); padding: 20px">
             <img class="img-responsive" src="{{book.image}}" style="max-width: 250px">
