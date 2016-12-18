@@ -7,6 +7,29 @@
 angular.module('angularApp')
   .controller('BooksTableCtrl', function($scope, $http, $location, config) {
 
+    if ($location.path() == '/catalog') {
+       var group = $location.search().group;
+       $scope.myTitle = 'Каталог';
+       $scope.myHeader = 'Каталог';
+       $http.get(config.url() + "/api/books/search?group=" + group)
+        .success(function(response) {
+          for (var key in response) {
+            if (response[key].image == '') {
+              response[key].image = '/img/no_picture_ru_165.jpg';
+            }
+            if (response[key].sale > 0) {
+              response[key].table_caption = 'Залишки шт. (продаж шт.)';
+              response[key].type_rests = 'Продано: ';
+              response[key].rests = '(' + response[key].sale + ' шт.)';
+            }else{
+              response[key].table_caption = 'Залишки шт.';
+              response[key].rests = '';
+            }
+          }
+          $scope.books = response;
+        })
+    }
+
     if ($location.path() == '/bestsellers') {
       $scope.myTitle = 'Бестселери';
       $scope.myHeader = 'Бестселери';

@@ -3,23 +3,6 @@
 	angular.module('angularApp')
   .controller('SearchCtrl', function($scope, $http, $location, config) {
     $scope.searchString = "";
-    $scope.isSelectedAllShops = function() {
-       if ($scope.selectedShop == 'Все магазины') {
-         return true
-       }else{
-         return false}
-    }
-
-    $http.get(config.url() + "/api/books/shops")
-       .success(function(response) {
-          $scope.shops = response;
-          $scope.selectedShop = $scope.shops[0].id;
-          var autor = $location.search().autor;
-          if (autor !== ''){
-            $scope.autor = autor;
-            $scope.my_search();
-          }
-    })
 
     $scope.my_search = function() {
       $scope.books = "";
@@ -54,5 +37,16 @@
         	$scope.books = response;
           $scope.proceedSearch = false;
         })
-    }
+    };
+    var autor = $location.search().autor;
+    if (autor !== ''){
+      $scope.autor = autor;
+      $scope.my_search();
+    };
+
+    var name = $location.search().name;
+    if (name !== ''){
+      $scope.name = name;
+      $scope.my_search();
+    };
   });

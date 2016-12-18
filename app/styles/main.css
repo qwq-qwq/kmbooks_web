@@ -5,6 +5,24 @@
   padding: 0.2em 0;
 }
 
+.navbar-collapse form[role="search"] {
+  margin: 3px;
+  padding-top: 7px;
+}
+
+.navbar-collapse form[role="search"] input,
+.navbar-collapse form[role="search"] button{
+  border-radius: 0px;
+  border-width: 0px;
+  top: 0px;
+  margin: 0px;
+  box-shadow: none;
+  outline: none;
+  color: rgb(160, 160, 160);
+  background-color: inherit;
+  font-size: 18pt;
+}
+
 .not-visible {
   visibility: hidden;
 }

@@ -44,8 +44,8 @@
           </div>
 
           <div class="collapse navbar-collapse" uib-collapse="isCollapsed">
-            <ul class="nav navbar-nav" data-sm-skip="true">
-              <li class="dropdown">
+            <ul ng-show="!showSearch" class="nav navbar-nav" data-sm-skip="true">
+              <li class="dropdown animated fadeInLeft">
                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ВИДАВНИЦТВО<span class="caret"></span></a>
                  <ul class="dropdown-menu">
                    <li><a href="#/">ГОЛОВНА</a></li>
@@ -53,20 +53,21 @@
                    <li><a href="#/for_authors">АВТОРАМ</a></li>
                  </ul>
               </li>
-              <li class="dropdown">
+              <li class="dropdown animated fadeInLeft">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">КНИГАРНЯ<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="#/map">ПУНКТИ САМОВИВОЗУ</a></li>
                   <li><a href="#/">УМОВИ ПРИДБАННЯ</a></li>
                 </ul>
               </li>
-              <li class="dropdown" bk-after-catalog>
+              <li class="dropdown animated fadeInLeft" bk-after-catalog>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;КАТАЛОГ<span class="caret"></span></a>
                 <ul class="dropdown-menu" ng-bind-html="strMenu"></ul>
               </li>
-              <li ng-repeat="item in menu" ng-class="{active: item.route == menuActive}"><a href="#{{item.route}}" >{{item.label}}</a></li>
+              <li ng-repeat="item in menu" class="animated fadeInLeft" ng-class="{active: item.route == menuActive}"><a href="#{{item.route}}" >{{item.label}}</a></li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+
+            <ul ng-show="!showSearch" class="nav navbar-nav navbar-right">
               <li>
                 <a href="#/cart"><span style="font-size: large;" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;</a>
               <li>
@@ -80,9 +81,26 @@
                 <a href="" ng-click="logout()">Вийти</a>
               </li>
               <li>
-                <a href="#/search"><span style="font-size: large;" class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;</a>
+                <a href="#" ng-click="toggleSearch()" ><span style="font-size: large;" class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;</a>
               <li>
             </ul>
+
+            <form ng-show="showSearch" class="nav navbar-form" role="search">
+              <div class="input-group" style="width: 80%">
+                <span class="input-group-btn" style="width: 20px">
+                <button ng-click="searchGo()" class="btn btn-default" style="margin-top: -7px">
+                  <span class="glyphicon glyphicon-search" style="font-size: large; background-color: inherit"></span>
+                </button>
+                </span>
+                <input type="text" ng-model="search" class="form-control" placeholder="Пошук">
+                <span class="input-group-btn">
+                <button ng-click="searchReset()" class="btn btn-default" style="margin-top: -7px">
+                  <span class="fa fa-times-circle" style="font-size: large; background-color: inherit"></span>
+                </button>
+                </span>
+              </div>
+            </form>
+
           </div>
           </div>
       </div>
@@ -207,5 +225,6 @@
     <script src="scripts/controllers/update_by_call.js"></script>
     <script src="scripts/controllers/users_edit_table.js"></script>
     <!-- endbuild -->
+
 </body>
 </html>

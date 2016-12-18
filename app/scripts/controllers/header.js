@@ -88,7 +88,7 @@ angular.module('angularApp')
                 strMenu += '</ul>';
               };
             };
-            strMenu += '<li><a href = "#/catalog?group_id=' + response[key].group_id + '">' + response[key].name + caret_text + '</a>';
+            strMenu += '<li><a href = "#/catalog?group=' + response[key].group_id + '">' + response[key].name + caret_text + '</a>';
             previous_level = current_level;
           };
           $scope.strMenu = strMenu;
@@ -119,7 +119,25 @@ angular.module('angularApp')
         return true
       }else{
         return false}
-    }
+    };
+
+    $scope.toggleSearch = function() {
+      if ($scope.showSearch === true) {
+        $scope.showSearch = false;
+      }else{
+        $scope.showSearch = true;
+      }
+    };
+
+    $scope.searchReset = function() {
+        $scope.showSearch = false;
+    };
+
+    $scope.searchGo = function() {
+      $scope.showSearch = false;
+      $location.search().name = $scope.search;
+      $location.path('/search');
+    };
 
   });
 
