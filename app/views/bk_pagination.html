@@ -1,0 +1,17 @@
+<div ng-if="pages.length > 1" class="row">
+  <div class="col-md-12" style="text-align: center">
+    <ul class="pagination">
+      <li>
+        <a href="{{pagePrevious}}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li ng-class="{active: page.active}" ng-repeat="page in pages"><a href="{{page.url}}">{{page.page}}</a></li>
+      <li>
+        <a href="{{pageNext}}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,23 +1,7 @@
 <h1 style="color: #428bca">{{myHeader}}</h1>
 <p>Знайдено {{goodsCount}} товарів</p>
 
-<div class="row">
-  <div class="col-md-12" style="text-align: center">
-    <ul class="pagination">
-      <li>
-        <a href="{{pagePrevious}}" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li ng-class="{active: page.active}" ng-repeat="page in pages"><a href="{{page.url}}">{{page.page}}</a></li>
-      <li>
-        <a href="{{pageNext}}" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
+<bk-pagination></bk-pagination>
 
 <div uib-accordion ng-repeat="book in books">
   <div uib-accordion-group>
@@ -47,20 +31,4 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12" style="text-align: center">
-    <ul class="pagination">
-      <li>
-        <a href="{{pagePrevious}}" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li ng-class="{active: page.active}" ng-repeat="page in pages"><a href="{{page.url}}">{{page.page}}</a></li>
-      <li>
-        <a href="{{pageNext}}" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
+<bk-pagination></bk-pagination>

@@ -92,7 +92,7 @@
                   <span class="glyphicon glyphicon-search" style="font-size: large; background-color: inherit"></span>
                 </button>
                 </span>
-                <input type="text" ng-model="search_string" class="form-control" placeholder="Пошук">
+                <input type="text" ng-model="search_string" class="form-control animated fadeInRight" placeholder="Пошук" autofocus>
                 <span class="input-group-btn">
                 <button ng-click="searchReset()" class="btn btn-default" style="margin-top: -9px">
                   <span class="fa fa-times-circle" style="font-size: large; background-color: inherit"></span>
@@ -205,6 +205,7 @@
     <script src="scripts/directives/book_detail.js"></script>
     <script src="scripts/directives/compare_to.js"></script>
     <script src="scripts/directives/catalog.js"></script>
+    <script src="scripts/directives/pagination.js"></script>
     <script src="scripts/controllers/log.js"></script>
     <script src="scripts/controllers/books_table.js"></script>
     <script src="scripts/controllers/book_view.js"></script>

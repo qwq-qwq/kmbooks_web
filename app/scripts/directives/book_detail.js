@@ -11,22 +11,10 @@ angular.module('angularApp').directive('bkBookDetail', ['$http', 'config', 'auth
       scope.$watch('book.opened', function () {
         if (!scope.book.opened) return;
         scope.proceedSearch = true;
-        if (authorization.isUser()){
-          $http.get(config.url() + "/api/user/get_item_prop_table?code=" + scope.book.code, {withCredentials: true})
-            .success(function (response) {
-              scope.remains = response;
-              scope.proceedSearch = false;
-            })
-        }else{
-          $http.get(config.url() + "/api/books/remains?code=" + scope.book.code)
-            .success(function (response) {
-              scope.remains = response;
-              scope.proceedSearch = false;
-            })
-        }
         $http.get(config.url() + "/api/books/description?code=" + scope.book.code)
           .success(function(response) {
               scope.description = response.text.replace(/([^>])\n/g, '$1<br/>') ; //nl2br
+              scope.proceedSearch = false;
           })
       }, true)
       scope.isUser = function() {

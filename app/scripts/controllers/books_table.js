@@ -36,29 +36,29 @@ angular.module('angularApp')
               booksList[key].rests = '';
             }
           }
-          $scope.pages = [];
           $scope.books = booksList;
           $scope.goodsCount = response.countInList;
+          $scope.pages = [];
           var pagesCount = Math.ceil($scope.goodsCount / 40);
           var startPage = 1;
           if (page <= 4) {
-             startPage = 1;
+            startPage = 1;
           }else{
-             startPage = page - 4;
+            startPage = page - 4;
           }
           var endPage = 10;
           if (pagesCount > 10) {
             if (page > 5){
               if ((page + 4) > pagesCount) {
-                 endPage = pagesCount;
+                endPage = pagesCount;
               }else{
-                 endPage = page + 4;
+                endPage = page + 4;
               }
             }else{
               endPage = 10;
             }
           }else{
-             endPage = pagesCount;
+            endPage = pagesCount;
           }
           for(var i = startPage; i <= endPage; i++){
             var active = false;

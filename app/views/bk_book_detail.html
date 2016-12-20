@@ -1,42 +1,5 @@
 <p ng-if="!isBookPage()" class="lead col-md-3 text-center"><a href="http://bukva.ua/catalog/browse/{{book.codeGroup}}/1/{{book.code}}"><button class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити в інтернет магазині</button></a></p>
 <p ng-if="!isBookPage()" class="col-md-9" ng-bind-html="description">{{description}}</p>
-<table class="table table-hover">
-  <caption ng-show="!isBookPage()">Наявнiсть в магазинах по товару: <a href="#/book_view?code={{book.code}}"><b> Код: </b> {{book.code}}: <b>{{book.name}}</b>, <b>ISBN: </b>{{book.isbn}}</a></caption>
-  <thead>
-  <tr ng-if="!isUser()">
-    <th class="col-md-10">Магазин</th>
-    <th class="col-md-2 text-center">Наявнiсть</th>
-  </tr>
-  <tr ng-if="isUser()">
-    <th class="col-md-3">Магазин</th>
-    <th class="col-md-3 text-center">Ціна</th>
-    <th class="col-md-2 text-center">Наявнiсть</th>
-    <th class="col-md-2 text-center">Продаж 30 днів</th>
-    <th class="col-md-2 text-center">Продаж 30 днів</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr ng-if="!isUser()" ng-repeat="rem in remains">
-    <th><a href="#/map?code_shop={{rem.codeShop}}">{{rem.shop}}</a></th>
-    <th class="text-center" ng-if="rem.sale === 0"><b>{{rem.kvo}} шт.</b></th>
-    <th class="text-center" ng-if="rem.sale > 0"><b>{{rem.kvo}} шт.</b> ({{rem.sale}} шт. )</th>
-  </tr>
-  <tr ng-if="isUser()" ng-repeat="rem in remains">
-    <th><a href="#/map?code_shop={{rem.codeShop}}">{{rem.shop}}</a></th>
-    <th class="text-center">{{rem.price}} грн</th>
-    <th class="text-center">{{rem.kvo}} шт</th>
-    <th class="text-center">{{rem.sale}} шт</th>
-    <th class="text-center">{{rem.sumSale}} грн</th>
-  </tr>
-  <tr ng-if="isUser()">
-    <th class="col-md-3"><b>Всього</b></th>
-    <th class="col-md-3 text-center"><b>{{avgPrice}} грн</b></th>
-    <th class="col-md-2 text-center"><b>{{sumKbo}} шт</b></th>
-    <th class="col-md-2 text-center"><b>{{sumSale}} шт</b></th>
-    <th class="col-md-2 text-center"><b>{{sumSumSale}} грн</b></th>
-  </tr>
-  </tbody>
-</table>
 <div ng-if="proceedSearch">
   <img class="img-responsive center-block" src="/img/loading.gif">
 </div>
