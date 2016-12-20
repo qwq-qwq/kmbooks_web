@@ -36,7 +36,8 @@ angular
       })
       .when('/search', {
         templateUrl: 'views/search.html',
-        controller: 'DetailSearchCtrl'
+        controller: 'SearchCtrl'
+      })
       .when('/detail_search', {
         templateUrl: 'views/detail_search.html',
         controller: 'DetailSearchCtrl'

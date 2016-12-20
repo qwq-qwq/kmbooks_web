@@ -10,17 +10,17 @@ angular.module('angularApp')
     if ($location.path() == '/catalog') {
        var group = $location.search().group;
        var page = $location.search().page;
-       var url = "";
        if (page === undefined){
          page = 1;
        }else{
          page = parseInt(page);
        };
-       $http.get(config.url() + "/api/books/get_catalog_element?group=" + group)
+       /*$http.get(config.url() + "/api/books/get_catalog_element?group=" + group)
         .success(function(response) {
           $scope.myTitle = response.name;
           $scope.myHeader = response.name;
-        }
+        });
+        */
        $http.get(config.url() + "/api/books/search?group=" + group + "&page=" + (page - 1))
         .success(function(response) {
           var booksList = response.booksList;
