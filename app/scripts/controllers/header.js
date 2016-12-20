@@ -135,7 +135,7 @@ angular.module('angularApp')
 
     $scope.searchGo = function() {
       $scope.showSearch = false;
-      $location.search().name = $scope.search;
+      $location.search().search_string = $scope.search_string;
       $location.path('/search');
     };
 

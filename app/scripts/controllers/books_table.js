@@ -70,7 +70,7 @@ angular.module('angularApp')
           var pagePrevious = page > 2 ? page - 1: 1;
           var pageNext = page < pagesCount ? page + 1: pagesCount;
           $scope.pagePrevious = "#/catalog?group=" + group + "&page=" + pagePrevious;
-          $scope.pageNext = "#/catalog?group=" + group + "&page=" + pageNext;//
+          $scope.pageNext = "#/catalog?group=" + group + "&page=" + pageNext;
         })
     }
 
