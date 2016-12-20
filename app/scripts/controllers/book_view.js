@@ -9,19 +9,20 @@ angular.module('angularApp')
     $http.get(config.url() + '/api/books/search?code=' + code)
       .success(function (response) {
         var images = new Array();
-        response[0].images = images;
-        if (response[0].image === '') {
-          response[0].image = '/img/no_picture_ru_165.jpg';
+        var book = response.booksList[0];
+        book.images = images;
+        if (book.image === '') {
+          book.image = '/img/no_picture_ru_165.jpg';
         } else {
-          response[0].image = '/img/pics/' + response[0].code + '_big.jpg';
+          book.image = '/img/pics/' + book.code + '_big.jpg';
           /*response[0].images[0] = {
             'url': '/img/pics/' + code + '_big.jpg',
             'thumbUrl': '/img/pics/' + code + '.jpg',
             'thmb_index': 0
           };*/
         };
-        $scope.book = response[0];
-        for (var i = 1; i <= response[0].imagesCount - 1; i++) {
+        $scope.book = book;
+        for (var i = 1; i <= $scope.book.imagesCount - 1; i++) {
           $scope.book.images[i] = {
             'url': '/img/pics/' + code + '_' + i + '.jpg',
             'thumbUrl': '/img/pics/' + code + '_' + i + '.jpg',
