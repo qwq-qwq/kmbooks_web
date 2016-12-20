@@ -71,6 +71,7 @@
     var search_string = $location.search().search_string;
     if (search_string !== ''){
       $scope.search_string = search_string;
+      $location.search().page = 1;
       $scope.my_search();
     };
   });
