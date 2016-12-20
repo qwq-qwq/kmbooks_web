@@ -1,7 +1,7 @@
 'use strict';
 
 	angular.module('angularApp')
-  .controller('SearchCtrl', function($scope, $http, $location, config) {
+  .controller('DetailSearchCtrl', function($scope, $http, $location, config) {
     $scope.searchString = "";
 
     $scope.my_search = function() {

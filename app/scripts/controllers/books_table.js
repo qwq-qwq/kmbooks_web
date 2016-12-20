@@ -16,10 +16,12 @@ angular.module('angularApp')
        }else{
          page = parseInt(page);
        };
-       url = config.url() + "/api/books/search?group=" + group + "&page=" + (page - 1);
-       $scope.myTitle = 'Каталог';
-       $scope.myHeader = 'Каталог';
-       $http.get(url)
+       $http.get(config.url() + "/api/books/get_catalog_element?group=" + group)
+        .success(function(response) {
+          $scope.myTitle = response.name;
+          $scope.myHeader = response.name;
+        }
+       $http.get(config.url() + "/api/books/search?group=" + group + "&page=" + (page - 1))
         .success(function(response) {
           var booksList = response.booksList;
           for (var key in booksList) {
