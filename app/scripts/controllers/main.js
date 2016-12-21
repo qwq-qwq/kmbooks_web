@@ -95,7 +95,7 @@ angular.module('angularApp')
     }
 
     function loadingRecomended() {
-      $http.get(config.url() + "/api/books/recomended")
+      $http.get(config.url() + "/api/books/recommended")
         .success(function(response) {
           for (var key in response) {
             if (response[key].description !== null) {
