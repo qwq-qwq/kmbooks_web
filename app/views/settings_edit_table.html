@@ -16,18 +16,18 @@
     <tbody>
     <tr>
       <th>
-        <h4 class="text-left" ng-hide="settngs.editing" ng-dblclick="editItem(settngs)">Рекомендуємо: {{settngs.recomended}}</h4>
-        <div ng-show="settngs.editing" class="form-group">
-          <label for="name" class="col-md-12" ng-show="settngs.editing">Рекомендуємо</label>
-          <textarea id="name" class="form-control" rows="2" ng-show="settngs.editing" ng-model="settngs.recomended"
+        <h4 class="text-left" ng-hide="settings.editing" ng-dblclick="editItem(settings)">Рекомендуємо: {{settings.recommended}}</h4>
+        <div ng-show="settings.editing" class="form-group">
+          <label for="name" class="col-md-12" ng-show="settings.editing">Рекомендуємо</label>
+          <textarea id="name" class="form-control" rows="2" ng-show="settings.editing" ng-model="settings.recommended"
                     autofocus></textarea>
         </div>
       </th>
       <th>
-        <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(settngs)" ng-disabled="settngs.editing">
+        <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(settings)" ng-disabled="settings.editing">
           <span class="glyphicon glyphicon-edit"></span> Редагувати
         </button>
-        <button type="button" class="btn btn-success btn-xs" ng-click="doneEditing(settngs)" ng-disabled="!settngs.editing">
+        <button type="button" class="btn btn-success btn-xs" ng-click="doneEditing(settings)" ng-disabled="!settings.editing">
           <span class="glyphicon glyphicon-save"></span> Зберігти
         </button>
       </th>

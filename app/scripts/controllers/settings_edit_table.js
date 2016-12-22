@@ -9,7 +9,7 @@ angular.module('angularApp')
 
     $http.get(config.url() + "/api/settings")
       .success(function (response) {
-        $scope.settngs = response;
+        $scope.settings = response;
       })
 
     $scope.editItem = function (item) {
