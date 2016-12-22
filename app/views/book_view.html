@@ -12,18 +12,18 @@
           <p style="margin-top: 30px; text-align: center"><a href="http://bukva.ua/catalog/browse/{{book.codeGroup}}/1/{{book.code}}"><span style="font-size: medium; color: black;">Ціна: {{book.price}} грн</span><button class="btn btn-primary" style="margin-left: 20px"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити</button></a></p>
       </div>
       <div class="col-md-6 book-data">
-        <b><br>Код:</b><span style="color: #428bca">&nbsp;{{book.code}}</span>
-        <span ng-if="book.autor"><br> <b>Автор: </b><a href="#/search?autor={{book.autor}}">{{book.autor}}</a></span>
-        <span ng-if="book.seriya"><br> <b>Серія: </b>{{book.seriya}}</span>
-        <span ng-if="book.sk"><br> <b>Штрихкод: </b>{{book.sk}}</span>
-        <span ng-if="book.isbn"><br><b>ISBN: </b>{{book.isbn}}</span>
-        <span ng-if="book.izdatel"><br> <b>Видавець: </b>{{book.izdatel}}</span>
-        <span ng-if="book.katalog"><br> <b>Каталог: </b>{{book.katalog}}</span>
-        <span ng-if="book.pereplet"><br><b>Обкладинка: </b> {{book.pereplet}}</span>
-        <span ng-if="book.str"><br><b>Сторінок: </b> {{book.str}}</span>
-        <span ng-if="book.year"><br><b>Рік видання: </b> {{book.year}}</span>
+        <div><b>Код: </b><span style="color: #428bca">{{book.code}}</span></div>
+        <div ng-if="book.autor"><b>Автор: </b>{{book.autor}}</div>
+        <div ng-if="book.seriya"><b>Серія: </b>{{book.seriya}}</div>
+        <div>
+          <span ng-if="book.sk"><b>Штрихкод: </b>{{book.sk}}</span>
+          <span ng-if="book.isbn">, <b>ISBN: </b>{{book.isbn}}</span>
+        </div>
+        <div ng-if="book.pereplet"><b>Обкладинка: </b> {{book.pereplet}}</div>
+        <div ng-if="book.str"><b>Сторінок: </b> {{book.str}}</div>
+        <div ng-if="book.year"><b>Рік видання: </b> {{book.year}}</div>
         <span ng-if="description"><h3 style="color: #428bca">Анотація</h3></span>
-        <span ng-if="description" ng-bind-html="description"><br>{{description}}</span>
+        <span ng-if="description" ng-bind-html="description"></span>
       </div>
       <div class="col-md-2 hidden-xs hidden-sm">
         <div style="position: fixed; top: 60px; margin-left: -30px">
