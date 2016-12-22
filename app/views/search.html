@@ -5,7 +5,8 @@
 <bk-pagination></bk-pagination>
 
 <div ng-repeat="book in books">
-  <div class="panel-default">
+  <div class="panel-default" style="margin-top: 15px">
+    <div class="row">
            <div class="col-md-3 text-center">
               <a href="#/book_view?code={{book.code}}">
                 <img src="{{book.image}}" class="img-rounded">
@@ -23,8 +24,9 @@
               <span ng-if="book.pereplet"><br><b>Обкладинка: </b> {{book.pereplet}}</span>
               <span ng-if="book.str"><br><b>Сторінок: </b> {{book.str}}</span>
               <span ng-if="book.year"><br><b>Рік видання: </b> {{book.year}}</span>
-              <span ng-if="book.description" ng-bind-html="description"><br><b>Описання: </b></span>
+              <span ng-if="book.description"><br><b>Описання: </b>{{book.description}}</span>
            </div>
+      </div>
   </div>
 </div>
 
