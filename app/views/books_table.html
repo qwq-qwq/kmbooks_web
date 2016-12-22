@@ -4,7 +4,7 @@
 <bk-pagination></bk-pagination>
 
 <div ng-repeat="book in books">
-  <div class="panel-default" style="margin-top: 15px">
+  <div class="panel-default" style="margin-top: 25px">
     <div class="row">
       <div class="col-md-3 text-center">
         <a href="#/book_view?code={{book.code}}">
@@ -14,7 +14,7 @@
       </div>
       <div class="col-md-9">
         <a href="#/book_view?code={{book.code}}">
-          <h4 style="color: #428bca">{{book.name}}</h4>
+          <h4 style="color: #428bca; margin-top: 0px">{{book.name}}</h4>
         </a>
         <div><b>Код: </b><span style="color: #428bca">{{book.code}}</span></div>
         <div ng-if="book.autor"><b>Автор: </b>{{book.autor}}</div>
