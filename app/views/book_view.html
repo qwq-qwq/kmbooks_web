@@ -16,8 +16,8 @@
         <div ng-if="book.autor"><b>Автор: </b>{{book.autor}}</div>
         <div ng-if="book.seriya"><b>Серія: </b>{{book.seriya}}</div>
         <div>
-          <span ng-if="book.sk"><b>Штрихкод: </b>{{book.sk}}</span>
-          <span ng-if="book.isbn">, <b>ISBN: </b>{{book.isbn}}</span>
+          <span ng-if="book.sk"><b>Штрихкод: </b>{{book.sk}}</span>,&nbsp;
+          <span ng-if="book.isbn"><b>ISBN: </b>{{book.isbn}}</span>
         </div>
         <div ng-if="book.pereplet"><b>Обкладинка: </b> {{book.pereplet}}</div>
         <div ng-if="book.str"><b>Сторінок: </b> {{book.str}}</div>
@@ -30,7 +30,7 @@
           <div style="background: rgba( 255, 255, 255, 0.7); padding: 20px">
             <img class="img-responsive" src="{{book.image}}" style="max-width: 250px;">
             <p style="margin-top: 30px; text-align: center"><a href="http://bukva.ua/catalog/browse/{{book.codeGroup}}/1/{{book.code}}"><span style="font-size: medium; color: black;">Ціна: {{book.price}} грн</span><button class="btn btn-primary" ng-disabled = "book.state in (1227, 2008)" style="margin-left: 20px"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити</button></a></p>
-            <div style="margin-top: 20px; text-align: right">
+            <div style="margin-top: 30px; text-align: center">
                <a href="#" style="color: black"><i class="fa fa-facebook" style="font-size: large"></i></a>&nbsp;&nbsp;
                <a href="#" style="color: black"><i class="fa fa-vk" style="font-size: large"></i></a>&nbsp;&nbsp;
                <a href="#" style="color: black"><i class="fa fa-google-plus" style="font-size: large"></i></a>&nbsp;&nbsp;
