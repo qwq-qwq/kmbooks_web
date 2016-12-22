@@ -3,31 +3,32 @@
 
 <bk-pagination></bk-pagination>
 
-<div uib-accordion ng-repeat="book in books">
-  <div uib-accordion-group>
-    <div uib-accordion-heading>
-        <div class="row" ng-click="book.opened = true;">
-          <div class="col-md-3 text-center">
-              <img src="{{book.image}}">
-          </div>
-          <div class="col-md-6 book-info">
-            <b>Код: </b>{{book.code}}
-            <br> <b>Найменування: </b>{{book.name}}
-            <span ng-if="book.autor"><br> <b>Автор: </b>{{book.autor}}</span>
-            <span ng-if="book.seriya"><br> <b>Серія: </b>{{book.seriya}}</span>
-            <span ng-if="book.sk"><br> <b>Штрихкод: </b>{{book.sk}}</span><span ng-if="book.isbn">, <b>ISBN: </b>{{book.isbn}}</span>
-            <span ng-if="book.izdatel"><br> <b>Видавець: </b>{{book.izdatel}}</span>
-            <span ng-if="book.katalog"><br> <b>Каталог: </b>{{book.katalog}}</span>
-            <span ng-if="book.pereplet"><br><b>Обкладинка: </b> {{book.pereplet}}</span>
-            <span ng-if="book.str"><br><b>Сторінок: </b> {{book.str}}</span>
-            <span ng-if="book.year"><br><b>Рік видання: </b> {{book.year}}</span>
-          </div>
-          <div class="col-md-3 text-center remains">
-            <span ng-if="book.rests"><b>{{book.type_rests}} </b> {{book.rests}}</span>
-          </div>
+<div ng-repeat="book in books">
+  <div class="panel-default" style="margin-top: 15px">
+    <div class="row">
+      <div class="col-md-3 text-center">
+        <a href="#/book_view?code={{book.code}}">
+          <img src="{{book.image}}" class="img-rounded">
+        </a>
+        <p style="margin-top: 30px; text-align: center"><a href="http://bukva.ua/catalog/browse/{{book.codeGroup}}/1/{{book.code}}"><span style="font-size: medium; color: black;">Ціна: {{book.price}} грн</span><button class="btn btn-primary" ng-disabled = "[1227, 2008].indexOf(book.state) !== -1" style="margin-left: 20px"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити</button></a></p>
+      </div>
+      <div class="col-md-9 book-info">
+        <div><b>Код: </b>{{book.code}}</div>
+        <div>{{book.name}}</div>
+        <div ng-if="book.autor"><b>Автор: </b>{{book.autor}}</div>
+        <div ng-if="book.seriya"><b>Серія: </b>{{book.seriya}}</div>
+        <div>
+          <span ng-if="book.sk"><b>Штрихкод: </b>{{book.sk}}</span>
+          <span ng-if="book.isbn">, <b>ISBN: </b>{{book.isbn}}</span>
         </div>
-  </div>
-  <bk-book-detail book="book"></bk-book-detail>
+        <div ng-if="book.izdatel"><b>Видавець: </b>{{book.izdatel}}</div>
+        <div ng-if="book.katalog"><b>Каталог: </b>{{book.katalog}}</div>
+        <div ng-if="book.pereplet"><b>Обкладинка: </b> {{book.pereplet}}</div>
+        <div ng-if="book.str"><b>Сторінок: </b> {{book.str}}</div>
+        <div ng-if="book.year"><b>Рік видання: </b> {{book.year}}</div>
+        <div ng-if="book.description"><b>Описання: </b>{{book.description}}...</div>
+      </div>
+    </div>
   </div>
 </div>
 
