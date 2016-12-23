@@ -20,7 +20,13 @@ angular.module('angularApp')
           $scope.myTitle = response.name;
           $scope.myHeader = response.name;
         });
-       $http.get(config.url() + "/api/books/search?group=" + group + "&page=" + (page - 1))
+       var url = "";
+       if (group == undefined) {
+          url = config.url() + "/api/books/search?page=" + (page - 1);
+       }else{
+          url = config.url() + "/api/books/search?group=" + group + "&page=" + (page - 1);
+       };
+       $http.get(url)
         .success(function(response) {
           var booksList = response.booksList;
           for (var key in booksList) {
@@ -65,12 +71,22 @@ angular.module('angularApp')
             if (page == i) {
               active = true;
             }
-            $scope.pages.push({page: i, url: "#/catalog?group=" + group + "&page=" + i, active: active})
+            if (group == undefined) {
+              $scope.pages.push({page: i, url: "#/catalog?page=" + i, active: active})
+            }else{
+              $scope.pages.push({page: i, url: "#/catalog?group=" + group + "&page=" + i, active: active})
+            }
           }
           var pagePrevious = page > 2 ? page - 1: 1;
           var pageNext = page < pagesCount ? page + 1: pagesCount;
-          $scope.pagePrevious = "#/catalog?group=" + group + "&page=" + pagePrevious;
-          $scope.pageNext = "#/catalog?group=" + group + "&page=" + pageNext;
+          if (group == undefined) {
+            $scope.pagePrevious = "#/catalog?page=" + pagePrevious;
+            $scope.pageNext = "#/catalog?page=" + pageNext;
+          }else{
+            $scope.pagePrevious = "#/catalog?group=" + group + "&page=" + pagePrevious;
+            $scope.pageNext = "#/catalog?group=" + group + "&page=" + pageNext;
+          }
+          $scope.$broadcast('sliderloaded');
         })
     }
 
@@ -122,6 +138,13 @@ angular.module('angularApp')
       $el.addClass('not-visible');
       $el.removeClass('animated pulse'); // this example leverages animate.css classes
     };
+
+    $scope.isCatalog = function() {
+      if ($location.path().search('catalog') != -1) {
+        return true
+      }else{
+        return false}
+    }
 
   });
 

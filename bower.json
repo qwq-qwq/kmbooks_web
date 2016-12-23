@@ -21,7 +21,8 @@
     "animate.css": "^3.5.2",
     "angular-bootstrap": "2.2.0",
     "angular-messages": "^1.5.8",
-    "smartmenus": "^1.0.1"
+    "smartmenus": "^1.0.1",
+    "seiyria-bootstrap-slider": "^9.5.4"
   },
   "overrides": {
     "font-awesome": {
@@ -29,7 +30,7 @@
         "css/font-awesome.css"
       ]
     },
-  "smartmenus": {
+    "smartmenus": {
       "main": [
         "./src/jquery.smartmenus.js",
         "./src/addons/bootstrap/jquery.smartmenus.bootstrap.css",
