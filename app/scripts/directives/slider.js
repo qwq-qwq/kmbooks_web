@@ -11,7 +11,7 @@ angular.module('angularApp').directive('bkAfterSlider', ['$timeout', function($t
           scope.priceTo = $('#ex1').bootstrapSlider('getValue')[1];
         });
       })
-      element.on('mousedown', function(event) {
+      element.on('mousemove', function(event) {
         scope.priceFrom = $('#ex1').bootstrapSlider('getValue')[0];
         scope.priceTo = $('#ex1').bootstrapSlider('getValue')[1];
         scope.$apply();
