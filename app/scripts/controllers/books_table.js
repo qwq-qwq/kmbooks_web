@@ -7,26 +7,35 @@
 angular.module('angularApp')
   .controller('BooksTableCtrl', function($scope, $http, $location, config) {
 
-    if ($location.path() == '/catalog') {
-       var group = $location.search().group;
-       var page = $location.search().page;
-       if (page === undefined){
-         page = 1;
-       }else{
-         page = parseInt(page);
-       };
-       $http.get(config.url() + "/api/get_catalog_element?group=" + group)
-        .success(function(response) {
-          $scope.myTitle = response.name;
-          $scope.myHeader = response.name;
-        });
-       var url = "";
-       if (group == undefined) {
-          url = config.url() + "/api/books/search?page=" + (page - 1);
-       }else{
-          url = config.url() + "/api/books/search?group=" + group + "&page=" + (page - 1);
-       };
-       $http.get(url)
+    $scope.catalog = function () {
+      var group = $location.search().group;
+      var page = $location.search().page;
+      //var priceFrom = $location.search().priceFrom;
+      //var priceTo = $location.search().priceTo;
+      if (page === undefined){
+        page = 1;
+      }else{
+        page = parseInt(page);
+      };
+      if (group !== undefined) {
+        $http.get(config.url() + "/api/get_catalog_element?group=" + group)
+          .success(function(response) {
+            $scope.myTitle = response.name;
+            $scope.myHeader = response.name;
+          });
+      }
+      var filter = '';
+      if (group !== undefined) {
+        filter += "&group=" + $scope.name;
+      }
+      if ($scope.priceFrom) {
+        filter += "&priceFrom=" + $scope.priceFrom;
+      }
+      if ($scope.priceTo) {
+        filter += "&priceTo=" + $scope.priceTo;
+      }
+
+      $http.get(config.url() + "/api/books/search?page=" + (page - 1) + filter)
         .success(function(response) {
           var booksList = response.booksList;
           for (var key in booksList) {
@@ -71,23 +80,18 @@ angular.module('angularApp')
             if (page == i) {
               active = true;
             }
-            if (group == undefined) {
-              $scope.pages.push({page: i, url: "#/catalog?page=" + i, active: active})
-            }else{
-              $scope.pages.push({page: i, url: "#/catalog?group=" + group + "&page=" + i, active: active})
-            }
+            $scope.pages.push({page: i, url: "#/catalog?page=" + i + filter, active: active})
           }
           var pagePrevious = page > 2 ? page - 1: 1;
           var pageNext = page < pagesCount ? page + 1: pagesCount;
-          if (group == undefined) {
-            $scope.pagePrevious = "#/catalog?page=" + pagePrevious;
-            $scope.pageNext = "#/catalog?page=" + pageNext;
-          }else{
-            $scope.pagePrevious = "#/catalog?group=" + group + "&page=" + pagePrevious;
-            $scope.pageNext = "#/catalog?group=" + group + "&page=" + pageNext;
-          }
+          $scope.pagePrevious = "#/catalog?page=" + pagePrevious + filter;
+          $scope.pageNext = "#/catalog?page=" + pageNext + filter;
           $scope.$broadcast('sliderloaded');
         })
+    }
+
+    if ($location.path() == '/catalog') {
+       $scope.catalog();
     }
 
     if ($location.path() == '/bestsellers') {
@@ -144,6 +148,10 @@ angular.module('angularApp')
         return true
       }else{
         return false}
+    }
+
+    $scope.priceFilterApply = function () {
+       $scope.catalog();
     }
 
   });

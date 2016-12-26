@@ -22,7 +22,7 @@
     "angular-bootstrap": "2.2.0",
     "angular-messages": "^1.5.8",
     "smartmenus": "^1.0.1",
-    "seiyria-bootstrap-slider": "^9.5.4"
+    "angular-bootstrap-slider": "^0.1.28"
   },
   "overrides": {
     "font-awesome": {
@@ -46,6 +46,7 @@
   "resolutions": {
     "angular": "1.5.8",
     "angular-animate": "1.5.8",
-    "angular-bootstrap": "2.2.0"
+    "angular-bootstrap": "2.2.0",
+    "seiyria-bootstrap-slider": ">= 5.2 < 7.0"
   }
 }
