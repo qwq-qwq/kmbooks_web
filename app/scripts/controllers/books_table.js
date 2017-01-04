@@ -8,10 +8,25 @@ angular.module('angularApp')
   .controller('BooksTableCtrl', function($scope, $http, $location, config) {
 
     $scope.catalog = function () {
+
+      function update_filter() {
+        var filter = '';
+        if (group !== undefined) {
+          filter += "&group=" + group;
+        }
+        if ($scope.priceSliderValue !== undefined) {
+          filter += "&priceFrom=" + $scope.priceSliderValue[0];
+          filter += "&priceTo=" + $scope.priceSliderValue[1];
+        }else{
+          $scope.priceSliderValue = [0, 0];
+        }
+        return filter
+      }
+
       var group = $location.search().group;
       var page = $location.search().page;
-      //var priceFrom = $location.search().priceFrom;
-      //var priceTo = $location.search().priceTo;
+      var priceFrom = $location.search().priceFrom;
+      var priceTo = $location.search().priceTo;
       if (page === undefined){
         page = 1;
       }else{
@@ -24,17 +39,10 @@ angular.module('angularApp')
             $scope.myHeader = response.name;
           });
       }
-      var filter = '';
-      if (group !== undefined) {
-        filter += "&group=" + $scope.name;
+      if (priceFrom !== undefined && priceTo !== undefined){
+        $scope.priceSliderValue = [parseInt(priceFrom), parseInt(priceTo)];
       }
-      if ($scope.priceFrom) {
-        filter += "&priceFrom=" + $scope.priceFrom;
-      }
-      if ($scope.priceTo) {
-        filter += "&priceTo=" + $scope.priceTo;
-      }
-
+      var filter = update_filter();
       $http.get(config.url() + "/api/books/search?page=" + (page - 1) + filter)
         .success(function(response) {
           var booksList = response.booksList;
@@ -53,6 +61,10 @@ angular.module('angularApp')
           }
           $scope.books = booksList;
           $scope.goodsCount = response.countInList;
+          $scope.priceFrom = 1;
+          $scope.priceTo = 1200;
+          $scope.priceSliderValue = [response.priceFrom, response.priceTo];
+          filter = update_filter();
           $scope.pages = [];
           var pagesCount = Math.ceil($scope.goodsCount / 40);
           var startPage = 1;
@@ -86,7 +98,6 @@ angular.module('angularApp')
           var pageNext = page < pagesCount ? page + 1: pagesCount;
           $scope.pagePrevious = "#/catalog?page=" + pagePrevious + filter;
           $scope.pageNext = "#/catalog?page=" + pageNext + filter;
-          $scope.$broadcast('sliderloaded');
         })
     }
 
@@ -151,6 +162,11 @@ angular.module('angularApp')
     }
 
     $scope.priceFilterApply = function () {
+       $location.search().page = 1;
+       if ($scope.priceSliderValue !== undefined) {
+         $location.search().priceFrom = $scope.priceSliderValue[0];
+         $location.search().priceTo = $scope.priceSliderValue[1];
+       }
        $scope.catalog();
     }
 

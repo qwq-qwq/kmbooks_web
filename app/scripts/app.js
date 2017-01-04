@@ -25,7 +25,8 @@ angular
     'ui.sortable',
     'ui.calendar',
     'angular-scroll-animate',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ui.bootstrap-slider'
   ])
   .config(function ($routeProvider) {
 

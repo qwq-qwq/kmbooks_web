@@ -4,12 +4,12 @@
 <bk-pagination></bk-pagination>
 
     <div class="row">
-       <div class="col-md-3" ng-if="isCatalog()">
+       <div class="col-md-3" ng-show="isCatalog()">
          <div class="panel-default">
-            Ціна: <slider ng-model="sliderValue" min="10" step="5" max="1000" value="[250,450]"></slider>
+           Ціна: <slider ng-model="priceSliderValue" range="true" min="priceFrom" step="1" max="priceTo" value="priceSliderValue"></slider>
             <div class="form-group" style="margin-top: 15px">
-              <input class="form-control" ng-model="sliders.sliderValue" style="max-width: 50px; float: left"><span style="float: left; margin-top: 5px">&nbsp;-&nbsp;</span>
-              <input class="form-control" ng-model="sliders.sliderValue" style="max-width: 50px; float: left">&nbsp;грн
+              <input class="form-control" ng-model="priceSliderValue[0]" style="max-width: 60px; float: left"><span style="float: left; margin-top: 5px">&nbsp;-&nbsp;</span>
+              <input class="form-control" ng-model="priceSliderValue[1]" style="max-width: 60px; float: left">&nbsp;грн
               <button ng-click="priceFilterApply()" class="btn btn-primary">Фільтр</button>
             </div>
          </div>
