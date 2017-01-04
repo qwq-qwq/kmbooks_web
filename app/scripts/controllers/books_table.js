@@ -62,7 +62,7 @@ angular.module('angularApp')
           $scope.books = booksList;
           $scope.goodsCount = response.countInList;
           $scope.priceFrom = 1;
-          $scope.priceTo = 1200;
+          $scope.priceTo = 300;
           $scope.priceSliderValue = [response.priceFrom, response.priceTo];
           filter = update_filter();
           $scope.pages = [];
