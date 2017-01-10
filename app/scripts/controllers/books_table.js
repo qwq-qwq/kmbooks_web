@@ -196,6 +196,9 @@ angular.module('angularApp')
       $scope.catalog();
     }
 
+    $scope.$on('$routeUpdate', function(scope, next, current) {
+      $scope.catalog();
+    });
 
     $scope.goToPage = function (page) {
       $location.search('page', page);
