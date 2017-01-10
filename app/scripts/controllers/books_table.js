@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('BooksTableCtrl', function($scope, $http, $location, config) {
+  .controller('BooksTableCtrl', function($scope, $http, $location, config, $route) {
     $scope.catalog = function () {
       var page = $location.search().page;
       var priceFrom = $location.search().priceFrom;
@@ -197,7 +197,7 @@ angular.module('angularApp')
     }
 
     $scope.$on('$routeUpdate', function(scope, next, current) {
-      $scope.catalog();
+      $route.reload();
     });
 
     $scope.goToPage = function (page) {
