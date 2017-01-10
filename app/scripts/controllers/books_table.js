@@ -197,7 +197,9 @@ angular.module('angularApp')
     }
 
     $scope.$on('$routeUpdate', function(scope, next, current) {
-      $route.reload();
+      //if(next.params.size === 1){
+      //  $route.reload();
+      //}
     });
 
     $scope.goToPage = function (page) {
