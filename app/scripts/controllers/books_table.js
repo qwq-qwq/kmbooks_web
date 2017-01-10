@@ -6,103 +6,53 @@
 
 angular.module('angularApp')
   .controller('BooksTableCtrl', function($scope, $http, $location, config) {
-
     $scope.catalog = function () {
-
-      function update_filter() {
-        var filter = '';
-        if (group !== undefined) {
-          filter += "&group=" + group;
-        }
-        if ($scope.priceSliderValue !== undefined) {
-          filter += "&priceFrom=" + $scope.priceSliderValue[0];
-          filter += "&priceTo=" + $scope.priceSliderValue[1];
-        }else{
-          $scope.priceSliderValue = [0, 0];
-        }
-        return filter
-      }
-
-      var group = $location.search().group;
       var page = $location.search().page;
       var priceFrom = $location.search().priceFrom;
       var priceTo = $location.search().priceTo;
+      $scope.filterAuthors = $location.search().authors;
+      $scope.filterSeries = $location.search().series;
+      $scope.filterCovers = $location.search().covers;
+      $scope.filterLanguages = $location.search().languages;
+      $scope.group = $location.search().group;
       if (page === undefined){
         page = 1;
       }else{
         page = parseInt(page);
       };
-      if (group !== undefined) {
-        $http.get(config.url() + "/api/get_catalog_element?group=" + group)
+      $scope.page = page;
+      if ($scope.group !== undefined) {
+        $http.get(config.url() + "/api/get_catalog_element?group=" + $scope.group)
           .success(function(response) {
             $scope.myTitle = response.name;
             $scope.myHeader = response.name;
           });
       }
-      if (priceFrom !== undefined && priceTo !== undefined){
+      if (priceFrom !== undefined && priceTo !== undefined) {
         $scope.priceSliderValue = [parseInt(priceFrom), parseInt(priceTo)];
       }
-      var filter = update_filter();
-      $http.get(config.url() + "/api/books/search?page=" + (page - 1) + filter)
-        .success(function(response) {
-          var booksList = response.booksList;
-          for (var key in booksList) {
-            if (booksList[key].image == '') {
-              booksList[key].image = '/img/no_picture_ru_165.jpg';
-            }
-            if (booksList[key].sale > 0) {
-              booksList[key].table_caption = 'Залишки шт. (продаж шт.)';
-              booksList[key].type_rests = 'Продано: ';
-              booksList[key].rests = '(' + booksList[key].sale + ' шт.)';
-            }else{
-              booksList[key].table_caption = 'Залишки шт.';
-              booksList[key].rests = '';
-            }
-          }
-          $scope.books = booksList;
-          $scope.goodsCount = response.countInList;
-          $scope.priceFrom = 1;
-          $scope.priceTo = 300;
-          $scope.priceSliderValue = [response.priceFrom, response.priceTo];
-          filter = update_filter();
-          $scope.pages = [];
-          var pagesCount = Math.ceil($scope.goodsCount / 40);
-          var startPage = 1;
-          if (page <= 4) {
-            startPage = 1;
-          }else{
-            startPage = page - 4;
-          }
-          var endPage = 10;
-          if (pagesCount > 10) {
-            if (page > 5){
-              if ((page + 4) > pagesCount) {
-                endPage = pagesCount;
-              }else{
-                endPage = page + 4;
-              }
-            }else{
-              endPage = 10;
-            }
-          }else{
-            endPage = pagesCount;
-          }
-          for(var i = startPage; i <= endPage; i++){
-            var active = false;
-            if (page == i) {
-              active = true;
-            }
-            $scope.pages.push({page: i, url: "#/catalog?page=" + i + filter, active: active})
-          }
-          var pagePrevious = page > 2 ? page - 1: 1;
-          var pageNext = page < pagesCount ? page + 1: pagesCount;
-          $scope.pagePrevious = "#/catalog?page=" + pagePrevious + filter;
-          $scope.pageNext = "#/catalog?page=" + pageNext + filter;
-        })
+      $scope.searching = true;
     }
 
     if ($location.path() == '/catalog') {
-       $scope.catalog();
+      var filter = '';
+      if ($location.search().group !== undefined) {
+        filter = "?group=" + $location.search().group;
+      }
+      $http.get(config.url() + "/api/books/criteria" + filter)
+        .success(function (response) {
+          $scope.priceFrom = response.priceFrom;
+          $scope.priceTo = response.priceTo;
+          $scope.authors = response.authors;
+          $scope.series = response.series;
+          $scope.covers = response.covers;
+          $scope.languages = response.languages;
+          if ($location.search().priceFrom == undefined && $location.search().priceTo == undefined) {
+            $scope.priceSliderValue = [response.priceFrom, response.priceTo];
+          }
+          $scope.filters = {};
+          $scope.catalog();
+        })
     }
 
     if ($location.path() == '/bestsellers') {
@@ -162,12 +112,94 @@ angular.module('angularApp')
     }
 
     $scope.priceFilterApply = function () {
-       $location.search().page = 1;
+       $location.search('page', 1);
        if ($scope.priceSliderValue !== undefined) {
-         $location.search().priceFrom = $scope.priceSliderValue[0];
-         $location.search().priceTo = $scope.priceSliderValue[1];
+         $location.search('priceFrom', $scope.priceSliderValue[0]);
+         $location.search('priceTo', $scope.priceSliderValue[1]);
        }
        $scope.catalog();
+    }
+
+    $scope.authorFilterApply = function () {
+      $location.search('page', 1);
+      var authorSearch = '';
+      angular.forEach($scope.filters.authorChecked, function (author, key) {
+        if(authorSearch !== ''){
+          authorSearch += ',';
+        }
+        if (author !== undefined) {
+          authorSearch += author;
+        }
+      })
+      if (authorSearch === ''){
+        $location.search('authors', undefined);
+      }else{
+        $location.search('authors', authorSearch);
+      }
+      $scope.catalog();
+    }
+
+    $scope.seriesFilterApply = function () {
+      $location.search('page', 1);
+      var seriesSearch = '';
+      angular.forEach($scope.filters.seriesChecked, function (series, key) {
+        if(seriesSearch !== ''){
+          seriesSearch += ',';
+        }
+        if (series !== undefined) {
+          seriesSearch += series;
+        }
+      })
+      if (seriesSearch === ''){
+        $location.search('series', undefined);
+      }else{
+        $location.search('series', seriesSearch);
+      }
+      $scope.catalog();
+    }
+
+    $scope.coversFilterApply = function () {
+      $location.search('page', 1);
+      var coversSearch = '';
+      angular.forEach($scope.filters.coversChecked, function (covers, key) {
+        if(coversSearch !== ''){
+          coversSearch += ',';
+        }
+        if (covers !== undefined) {
+          coversSearch += covers;
+        }
+      })
+      if (coversSearch === ''){
+        $location.search('covers', undefined);
+      }else{
+        $location.search('covers', coversSearch);
+      }
+      $scope.catalog();
+    }
+
+    $scope.languagesFilterApply = function () {
+      $location.search('page', 1);
+      var languagesSearch = '';
+      angular.forEach($scope.filters.languagesChecked, function (language, key) {
+        if(languagesSearch !== ''){
+          languagesSearch += ',';
+        }
+        if (language !== undefined) {
+          languagesSearch += language;
+        }
+      })
+      if (languagesSearch === ''){
+        $location.search('languages', undefined);
+      }else{
+        $location.search('languages', languagesSearch);
+      }
+      $scope.catalog();
+    }
+
+
+    $scope.goToPage = function (page) {
+      $location.search('page', page);
+      $scope.catalog();
     }
 
   });

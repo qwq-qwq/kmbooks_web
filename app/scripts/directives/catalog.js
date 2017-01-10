@@ -1,14 +1,85 @@
 'use strict';
 
-angular.module('angularApp').directive('bkAfterCatalog', ['$timeout', function($timeout) {
+angular.module('angularApp').directive('bkCatalog', ['$http', 'config', 'authorization', '$location', function($http, config, authorization, $location) {
   return {
-    restrict: 'A',
-    link: function(scope, element, attributes) {
-      scope.$on('menuloaded', function () {
-         $timeout(function () {
-           $("ul.navbar-nav").removeAttr("data-sm-skip");
-           $.SmartMenus.Bootstrap.init();
-         });
+    restrict: 'E',
+    templateUrl: 'views/bk_catalog.html',
+    link: function(scope, element, attributes){
+      scope.$watch('searching', function () {
+        var filter = '';
+        if (scope.group !== undefined) {
+          filter += "&group=" + scope.group;
+        }
+        if (scope.priceSliderValue !== undefined) {
+          filter += "&priceFrom=" + scope.priceSliderValue[0];
+          filter += "&priceTo=" + scope.priceSliderValue[1];
+        }
+        if (scope.filterAuthors !== undefined) {
+          filter += "&author=" + scope.filterAuthors;
+        }
+        if (scope.filterSeries !== undefined) {
+          filter += "&series=" + scope.filterSeries;
+        }
+        if (scope.filterCovers !== undefined) {
+          filter += "&cover=" + scope.filterCovers;
+        }
+        if (scope.filterLanguages !== undefined) {
+          filter += "&language=" + scope.filterLanguages;
+        }
+        var page = scope.page;
+        $http.get(config.url() + "/api/books/search?page=" + (page - 1) + filter)
+          .success(function(response) {
+            var booksList = response.booksList;
+            for (var key in booksList) {
+              if (booksList[key].image == '') {
+                booksList[key].image = '/img/no_picture_ru_165.jpg';
+              }
+              if (booksList[key].sale > 0) {
+                booksList[key].table_caption = 'Залишки шт. (продаж шт.)';
+                booksList[key].type_rests = 'Продано: ';
+                booksList[key].rests = '(' + booksList[key].sale + ' шт.)';
+              }else{
+                booksList[key].table_caption = 'Залишки шт.';
+                booksList[key].rests = '';
+              }
+            }
+            scope.books = booksList;
+            scope.goodsCount = response.countInList;
+            scope.pages = [];
+            var pagesCount = Math.ceil(scope.goodsCount / 40);
+            var startPage = 1;
+            if (page <= 4) {
+              startPage = 1;
+            }else{
+              startPage = page - 4;
+            }
+            var endPage = 10;
+            if (pagesCount > 10) {
+              if (page > 5){
+                if ((page + 4) > pagesCount) {
+                  endPage = pagesCount;
+                }else{
+                  endPage = page + 4;
+                }
+              }else{
+                endPage = 10;
+              }
+            }else{
+              endPage = pagesCount;
+            }
+            for(var i = startPage; i <= endPage; i++){
+              var active = false;
+              if (page == i) {
+                active = true;
+              }
+              scope.pages.push({page: i, url: "#/catalog?page=" + i, active: active})
+            }
+            var pagePrevious = page > 2 ? page - 1: 1;
+            var pageNext = page < pagesCount ? page + 1: pagesCount;
+            scope.pagePrevious = pagePrevious;
+            scope.pageNext =  pageNext;
+            scope.searching = false;
+          })
       })
     }
   };

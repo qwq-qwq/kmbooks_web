@@ -113,7 +113,8 @@ angular
       })
       .when('/catalog', {
         templateUrl: 'views/books_table.html',
-        controller: 'BooksTableCtrl'
+        controller: 'BooksTableCtrl',
+        reloadOnSearch: false
       })
 
       .otherwise({
