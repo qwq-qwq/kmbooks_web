@@ -11,18 +11,24 @@ angular.module('angularApp')
         var images = new Array();
         var book = response.booksList[0];
         book.images = images;
+        var imagesCount = $scope.book.imagesCount;
         if (book.image === '') {
           book.image = '/img/no_picture_ru_165.jpg';
         } else {
           book.image = '/img/pics/' + book.code + '_big.jpg';
-          /*response[0].images[0] = {
-            'url': '/img/pics/' + code + '_big.jpg',
-            'thumbUrl': '/img/pics/' + code + '.jpg',
-            'thmb_index': 0
-          };*/
+          imagesCount = imagesCount - 1;
+        };
+        if (book.image !== '') {
+          book.image = '/img/pics/' + book.code + '_big.jpg';
+          imagesCount = imagesCount - 1;
+          response[0].images[0] = {
+           'url': '/img/pics/' + code + '_0.jpg',
+           'thumbUrl': '/img/pics/' + code + '_0.jpg',
+           'thmb_index': 0
+           };
         };
         $scope.book = book;
-        for (var i = 1; i <= $scope.book.imagesCount - 1; i++) {
+        for (var i = 1; i <= imagesCount; i++) {
           $scope.book.images[i] = {
             'url': '/img/pics/' + code + '_' + i + '.jpg',
             'thumbUrl': '/img/pics/' + code + '_' + i + '.jpg',

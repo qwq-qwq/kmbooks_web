@@ -181,8 +181,8 @@ body {
 }
 
 .cover_img {
-  width: 175px;
-  height: 260px;
+  #width: 175px;
+  #height: 260px;
   background-position: center;
   background-size: auto;
   background-repeat: no-repeat;
@@ -247,6 +247,13 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   line-height: inherit;
 }
 
+.price_value{
+  text-align: center;
+  font-size: 20px;
+  color: black;
+  margin-bottom: 5px;
+}
+
 @media (min-width: 1100px) {
   [dynamic-layout]{
     width: 1100px;
@@ -302,14 +309,16 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     text-align: center;
   }
 
-  .bukva-btn {
+  .bukva-hidden{
     display: none;
-    margin-top: 14px;
-    text-decoration: none;
   }
 
-  .bukva-item:hover .bukva-btn {
+  .bukva-item:hover .bukva-hidden {
     display: block;
+  }
+
+  .bukva-btn{
+    display: none;
   }
 
 }
