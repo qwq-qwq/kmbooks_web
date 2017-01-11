@@ -196,8 +196,54 @@ angular.module('angularApp')
       $scope.catalog();
     }
 
-    $scope.$on('$routeUpdate', function(scope, next, current) {
-      if(scope.group !== next.params.group){
+    $scope.removeFromAuthorFilter = function (nameInModel) {
+      angular.forEach($scope.filters.authorChecked, function (author, key) {
+        if(key === nameInModel){
+          $scope.filters.authorChecked[key] = undefined;
+        }
+      })
+      $scope.authorFilterApply();
+    }
+
+    $scope.removeFromSeriesFilter = function (nameInModel) {
+      angular.forEach($scope.filters.seriesChecked, function (author, key) {
+        if(key === nameInModel){
+          $scope.filters.seriesChecked[key] = undefined;
+        }
+      })
+      $scope.seriesFilterApply();
+    }
+
+    $scope.removeFromCoversFilter = function (nameInModel) {
+      angular.forEach($scope.filters.coversChecked, function (cover, key) {
+        if(key === nameInModel){
+          $scope.filters.coversChecked[key] = undefined;
+        }
+      })
+      $scope.coversFilterApply();
+    }
+
+    $scope.removeFromLanguagesFilter = function (nameInModel) {
+      angular.forEach($scope.filters.languagesChecked, function (language, key) {
+        if(key === nameInModel){
+          $scope.filters.languagesChecked[key] = undefined;
+        }
+      })
+      $scope.languagesFilterApply();
+    }
+
+    $scope.filterEmpty = function(items) {
+      var result = {};
+      angular.forEach(items, function(value, key) {
+        if (value !== undefined) {
+          result[key] = value;
+        }
+      });
+      return result;
+    }
+
+    $scope.$on('$routeUpdate', function(event, current) {
+      if(current.params.group !== current.scope.group){
         $route.reload();
       }
     });
