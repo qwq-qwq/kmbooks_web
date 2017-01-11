@@ -6,6 +6,7 @@
 
 angular.module('angularApp')
   .controller('BooksTableCtrl', function($scope, $http, $location, config, $route) {
+    $scope.kindOfView = "list";
     $scope.catalog = function () {
       var page = $location.search().page;
       var priceFrom = $location.search().priceFrom;
@@ -240,6 +241,11 @@ angular.module('angularApp')
         }
       });
       return result;
+    }
+
+    $scope.setLayout = function (layout) {
+      $scope.kindOfView = layout;
+      $scope.searching = true;
     }
 
     $scope.$on('$routeUpdate', function(event, current) {

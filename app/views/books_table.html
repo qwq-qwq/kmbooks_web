@@ -66,38 +66,40 @@
        </div>
        <div class="col-md-9">
          <div class="row">
-           <span ng-repeat="(nameInModel, author) in filterEmpty(filters.authorChecked)">
-             <button class="btn btn-default btn-sm" ng-click="removeFromAuthorFilter(nameInModel)">
-               {{author}}
-               <span>
-                   <i class="fa fa-times-circle" style="font-size: small" aria-hidden="true"></i>
-               </span>
-             </button>
-           </span>
-           <span ng-repeat="(nameInModel, series) in filterEmpty(filters.seriesChecked)">
-             <button class="btn btn-default btn-sm" ng-click="removeFromSeriesFilter(nameInModel)">
-               {{series}}
-               <span>
-                   <i class="fa fa-times-circle" style="font-size: small" aria-hidden="true"></i>
-               </span>
-             </button>
-           </span>
-           <span ng-repeat="(nameInModel, cover) in filterEmpty(filters.coversChecked)">
-             <button class="btn btn-default btn-sm" ng-click="removeFromCoversFilter(nameInModel)">
-               {{cover}}
-               <span>
-                   <i class="fa fa-times-circle" style="font-size: small" aria-hidden="true"></i>
-               </span>
-             </button>
-           </span>
-           <span ng-repeat="(nameInModel, language) in filterEmpty(filters.languagesChecked)">
-             <button class="btn btn-default btn-sm" ng-click="removeFromLanguagesFilter(nameInModel)">
-               {{language}}
-               <span>
-                   <i class="fa fa-times-circle" style="font-size: small" aria-hidden="true"></i>
-               </span>
-             </button>
-           </span>
+           <div class="col-md-12">
+            <span ng-repeat="(nameInModel, author) in filterEmpty(filters.authorChecked)">
+              <button class="btn btn-default btn-sm" ng-click="removeFromAuthorFilter(nameInModel)">
+                {{author}}
+                <span>
+                    <i class="fa fa-times-circle" style="font-size: small" aria-hidden="true"></i>
+                </span>
+              </button>
+            </span>
+            <span ng-repeat="(nameInModel, series) in filterEmpty(filters.seriesChecked)">
+              <button class="btn btn-default btn-sm" ng-click="removeFromSeriesFilter(nameInModel)">
+                {{series}}
+                <span>
+                    <i class="fa fa-times-circle" style="font-size: small" aria-hidden="true"></i>
+                </span>
+              </button>
+            </span>
+            <span ng-repeat="(nameInModel, cover) in filterEmpty(filters.coversChecked)">
+              <button class="btn btn-default btn-sm" ng-click="removeFromCoversFilter(nameInModel)">
+                {{cover}}
+                <span>
+                    <i class="fa fa-times-circle" style="font-size: small" aria-hidden="true"></i>
+                </span>
+              </button>
+            </span>
+            <span ng-repeat="(nameInModel, language) in filterEmpty(filters.languagesChecked)">
+              <button class="btn btn-default btn-sm" ng-click="removeFromLanguagesFilter(nameInModel)">
+                {{language}}
+                <span>
+                    <i class="fa fa-times-circle" style="font-size: small" aria-hidden="true"></i>
+                </span>
+              </button>
+            </span>
+           </div>
          </div>
          <bk-catalog></bk-catalog>
        </div>

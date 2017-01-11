@@ -1,26 +1,56 @@
 <span ng-if="searching">
-  <p>Зачекайте ...</p>
+  <p class="visible-xs">Зачекайте ...</p>
   <img class="img-responsive center-block" src="/img/loading.gif">
 </span>
 <span ng-if="!searching">
   <div ng-if="pages.length > 1" class="row">
-  <div class="col-md-12" style="text-align: center">
-    <ul class="pagination">
-      <li>
-        <a href="#" ng-click="goToPage(pagePrevious); $event.preventDefault()" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li ng-class="{active: page.active}" ng-repeat="page in pages"><a href="#" ng-click="goToPage(page.page); $event.preventDefault()">{{page.page}}</a></li>
-      <li>
-        <a href="#" ng-click="goToPage(pageNext); $event.preventDefault()" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
+    <div class="col-md-10" style="text-align: center">
+      <ul class="pagination">
+        <li>
+          <a href="#" ng-click="goToPage(pagePrevious); $event.preventDefault()" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li ng-class="{active: page.active}" ng-repeat="page in pages"><a href="#" ng-click="goToPage(page.page); $event.preventDefault()">{{page.page}}</a></li>
+        <li>
+          <a href="#" ng-click="goToPage(pageNext); $event.preventDefault()" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-2" style="text-align: right">
+        <div class="btn-group" style="margin-top: 20px">
+          <button class="btn btn-default" ng-class="{active: kindOfView==='tails'}" ng-click="setLayout('tails')">
+            <span>
+              <i class="fa fa-th" aria-hidden="true"></i>
+            </span>
+          </button>
+          <button class="btn btn-default" ng-class="{active: kindOfView==='list'}" ng-click="setLayout('list')">
+            <span>
+              <i class="fa fa-th-list" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+    </div>
   </div>
+  <div ng-if="pages.length === 1" class="row">
+    <div class="col-md-12" style="text-align: right">
+      <div class="btn-group" style="margin-top: 20px">
+        <button class="btn btn-default" ng-class="{active: kindOfView==='tails'}" ng-click="setLayout('tails')">
+          <span>
+            <i class="fa fa-th" aria-hidden="true"></i>
+          </span>
+        </button>
+        <button class="btn btn-default" ng-class="{active: kindOfView==='list'}" ng-click="setLayout('list')">
+          <span>
+            <i class="fa fa-th-list" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+    </div>
   </div>
-  <div ng-repeat="book in books" class="row" style="margin-top: 25px">
+  <div ng-if="kindOfView==='list'" ng-repeat="book in books" class="row" style="margin-top: 25px">
     <div class="col-md-4 text-center">
       <a href="#/book_view?code={{book.code}}">
         <img src="{{book.image}}">
@@ -45,5 +75,81 @@
       <div ng-if="book.description"><b>Описання: </b>{{book.description}}...</div>
     </div>
   </div>
-  <bk-pagination></bk-pagination>
+  <span ng-if="kindOfView==='tails'" ng-repeat="book in books">
+     <div class="col-xs-12 col-sm-6 col-md-4">
+       <div class="bukva-item">
+         <a href="#/book_view?code={{book.code}}">
+           <div class="cover_img" style="background-image:url('{{recomended.image}}');"> </div>
+         </a>
+         <div class="size">
+           <h4>
+             <a href="#/book_view?code={{book.code}}">
+               {{book.name}}
+             </a>
+           </h4>
+           <p>
+             <b> Код: </b> {{book.code}}
+             <span ng-if="book.autor"> <b>Автор:&nbsp;</b><a href="#/search?autor={{book.autor}}">{{book.autor}}</a></span>
+           </p>
+           <p>
+             <span ng-if="book.description">{{book.description}}</span>
+           </p>
+           <a href="http://bukva.ua/catalog/browse/{{book.codeGroup}}/1/{{book.code}}" style="align: center; text-decoration:none">
+             <button class="btn btn-primary bukva-btn center-block"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити в інтернет магазині</button>
+           </a>
+         </div>
+       </div>
+     </div>
+     <!--<div class="clearfix visible-md-block" ng-if="($index+1)%3 === 0"></div>
+     <div class="clearfix visible-sm-block" ng-if="($index+1)%3 === 0"></div>-->
+  </span>
+  <div style="margin-top: 20px">
+  </div>
+  <div ng-if="pages.length > 1" class="row">
+    <div class="col-md-10" style="text-align: center;">
+      <ul class="pagination">
+        <li>
+          <a href="#" ng-click="goToPage(pagePrevious); $event.preventDefault()" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li ng-class="{active: page.active}" ng-repeat="page in pages"><a href="#" ng-click="goToPage(page.page); $event.preventDefault()">{{page.page}}</a></li>
+        <li>
+          <a href="#" ng-click="goToPage(pageNext); $event.preventDefault()" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-2" style="text-align: right">
+        <div class="btn-group" style="margin-top: 20px">
+          <button class="btn btn-default" ng-class="{active: kindOfView==='tails'}" ng-click="setLayout('tails')">
+            <span>
+              <i class="fa fa-th" aria-hidden="true"></i>
+            </span>
+          </button>
+          <button class="btn btn-default" ng-class="{active: kindOfView==='list'}" ng-click="setLayout('list')">
+            <span>
+              <i class="fa fa-th-list" aria-hidden="true"></i>
+            </span>
+          </button>
+        </div>
+    </div>
+  </div>
+  <div ng-if="pages.length === 1" class="row">
+    <div class="col-md-12" style="text-align: right">
+      <div class="btn-group" style="margin-top: 20px">
+        <button class="btn btn-default" ng-class="{active: kindOfView==='tails'}" ng-click="setLayout('tails')">
+          <span>
+            <i class="fa fa-th" aria-hidden="true"></i>
+          </span>
+        </button>
+        <button class="btn btn-default" ng-class="{active: kindOfView==='list'}" ng-click="setLayout('list')">
+          <span>
+            <i class="fa fa-th-list" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
 </span>
