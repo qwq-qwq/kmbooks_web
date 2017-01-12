@@ -76,16 +76,16 @@
     </div>
   </div>
   <span ng-if="kindOfView==='tails'" ng-repeat="book in books">
-     <div class="col-xs-12 col-sm-6 col-md-4" style="min-height: 250px">
+     <div class="col-xs-12 col-sm-6 col-md-4" style="min-height: 300px">
        <div class="bukva-item">
          <a href="#/book_view?code={{book.code}}">
            <img class="img-responsive" src="{{book.image}}"> </img>
          </a>
-         <h4 style="text-align:center;">
+         <div style="text-align:center; font-size: 15px">
            <a href="#/book_view?code={{book.code}}">
              {{book.name}}
            </a>
-         </h4>
+         </div>
          <div class="price_value">{{book.price}} грн</div>
          <div class="bukva-hidden">
            <a href="http://bukva.ua/catalog/browse/{{book.codeGroup}}/1/{{book.code}}" style="align: center; text-decoration:none">
