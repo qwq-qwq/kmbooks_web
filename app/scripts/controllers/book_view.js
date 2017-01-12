@@ -11,15 +11,15 @@ angular.module('angularApp')
         var images = new Array();
         var book = response.booksList[0];
         book.images = images;
-        var imagesCount = $scope.book.imagesCount;
+        var imagesCount = book.imagesCount;
         if (book.image === '') {
           book.image = '/img/no_picture_ru_165.jpg';
         } else {
           book.image = '/img/pics/' + book.code + '_big.jpg';
           imagesCount = imagesCount - 1;
         };
-        if (book.image !== '') {
-          book.image = '/img/pics/' + book.code + '_big.jpg';
+        if (book.image_3d !== '') {
+          book.image_ = '/img/pics/' + book.code + '_0_big.jpg';
           imagesCount = imagesCount - 1;
           response[0].images[0] = {
            'url': '/img/pics/' + code + '_0.jpg',

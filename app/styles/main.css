@@ -181,8 +181,8 @@ body {
 }
 
 .cover_img {
-  #width: 175px;
-  #height: 260px;
+  width: 175px;
+  height: 260px;
   background-position: center;
   background-size: auto;
   background-repeat: no-repeat;
