@@ -76,13 +76,11 @@
     </div>
   </div>
   <span ng-if="kindOfView==='tails'" ng-repeat="book in books">
-     <div class="col-xs-12 col-sm-6 col-md-4" style="min-height: 300px">
+     <div class="col-xs-12 col-sm-6 col-md-4" style="min-height: 400px">
        <div class="bukva-item">
-         <div style="text-align:center">
-         <a href="#/book_view?code={{book.code}}" style="text-align:center">
-           <img class="img-responsive" src="{{book.image}}" style="text-align:center"> </img>
+         <a href="#/book_view?code={{book.code}}">
+           <img class="img-responsive center-block" src="{{book.image}}"> </img>
          </a>
-         </div>
          <div style="text-align:center; font-size: 15px">
            <a href="#/book_view?code={{book.code}}">
              {{book.name}}

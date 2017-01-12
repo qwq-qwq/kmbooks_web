@@ -9,11 +9,11 @@ angular.module('angularApp')
     $http.get(config.url() + '/api/books/search?code=' + code)
       .success(function (response) {
         $scope.book = response.booksList[0];
-        var imagesCount = book.imagesCount;
+        var imagesCount = $scope.book.imagesCount;
         if ($scope.book.image === '') {
           $scope.book.image = '/img/no_picture_ru_165.jpg';
         } else {
-          $scope.book.image = '/img/pics/' + book.code + '_big.jpg';
+          $scope.book.image = '/img/pics/' + $scope.book.code + '_big.jpg';
           imagesCount = imagesCount - 1;
         };
         $scope.book.images = [];
