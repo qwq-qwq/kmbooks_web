@@ -39,6 +39,7 @@ angular.module('angularApp')
     };
 
     uploader.onSuccessItem = function(fileItem, response, status, headers) {
+       $scope.book.bannerImage = '';
        $scope.book.bannerImage = '/img/pics/' + code + '_banner.jpg';
        $scope.book.upl_item = null;
     };
