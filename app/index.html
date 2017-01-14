@@ -137,16 +137,17 @@
           <div ng-if="isEditor()">
             <span class="row" ng-show="book.editing">
               <div class="col-md-2">
-                <div nv-file-drop uploader="uploader" nv-file-over="" options="{formData: [{id: book.id}]}" style="width: 200px; height: 200px" class="thumbnail my-drop-zone">
+                <div nv-file-drop uploader="uploader" nv-file-over="" options="{formData: [{id: book.id, rectangle: []}]}" style="width: 100px; height: 200px" class="thumbnail my-drop-zone">
                   Перетягніть файл сюди
                 </div>
-                <input type="file" nv-file-select="" uploader="uploader" multiple="" options="{formData: [{id: book.id}]}">
+                <input type="file" ng-jcrop-input="uploadBanner" nv-file-select="" uploader="uploader" multiple="" options="{formData: [{id: book.id, rectangle: []}]}">
                 <button class="btn btn-primary" ng-click="saveItem(book)" style="margin-top: 20px">Сохранить</button>
               </div>
               <div class="col-md-10">
                 <div ng-if="book.upl_item" style="margin-left: 20px">
-                  <div ng-thumb="{ file: book.upl_item._file, height: 300 }"></div>
-                  <p> Имя файла: {{book.upl_item.file.name}}</p>
+                  <div ng-jcrop="cropSelection.src" ng-jcrop-config-name="uploadBanner" selection="cropSelection.selection" thumbnail="selection.thumbnail"></div>
+                  <!--<div ng-thumb="{ file: book.upl_item._file, height: 300 }"></div>
+                  <p> Имя файла: {{book.upl_item.file.name}}</p>-->
                 </div>
               </div>
             </span>

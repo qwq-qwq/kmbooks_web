@@ -5,6 +5,7 @@
 
 angular.module('angularApp')
   .controller('BookViewCtrl', function ($scope, $http, $location, authorization, Lightbox, FileUploader, config) {
+    $scope.cropSelection = {src:"", selection: [], thumbnail: false};
 
     $scope.uploader = new FileUploader({
       url: config.url() + '/api/edit/books/banner_upload',
@@ -25,13 +26,12 @@ angular.module('angularApp')
     }
 
     $scope.saveItem = function (item) {
-      var banner = {id: item.id, header: '', image: item.image};
       item.editing = false;
-      $http.post(config.url() + "/api/edit/books/banner_upload", banner, {withCredentials: true})
-        .success(function(response) {
-            item.upl_item.formData[0].id = response.id;
-            item.upl_item.upload();
-        });
+      item.upl_item.formData[0].rectangle = [$scope.cropSelection.selection[0],
+                                             $scope.cropSelection.selection[1],
+                                             $scope.cropSelection.selection[4],
+                                             $scope.cropSelection.selection[5]];
+      item.upl_item.upload();
     }
 
     uploader.onAfterAddingFile = function(fileItem) {
