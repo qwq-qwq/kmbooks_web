@@ -4,7 +4,56 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('BookViewCtrl', function ($scope, $http, $location, Lightbox, config) {
+  .controller('BookViewCtrl', function ($scope, $http, $location, authorization, Lightbox, FileUploader, config) {
+
+    $scope.uploader = new FileUploader({
+      url: config.url() + '/api/edit/books/banner_upload',
+      removeAfterUpload: true,
+      withCredentials: true
+    });
+    var uploader = $scope.uploader;
+    uploader.filters.push({
+      name: 'imageFilter',
+      fn: function(item /*{File|FileLikeObject}*/, options) {
+        var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+        return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+      }
+    });
+
+    $scope.editItem = function (item) {
+      item.editing = true;
+    }
+
+    $scope.saveItem = function (item) {
+      var banner = {id: item.id, header: '', image: item.image};
+      item.editing = false;
+      $http.post(config.url() + "/api/edit/books/banner_upload", banner, {withCredentials: true})
+        .success(function(response) {
+            item.upl_item.formData[0].id = response.id;
+            item.upl_item.upload();
+        });
+    }
+
+    uploader.onAfterAddingFile = function(fileItem) {
+       $scope.book.upl_item = fileItem;
+    };
+
+    uploader.onSuccessItem = function(fileItem, response, status, headers) {
+       $scope.book.bannerImage = '/img/pics/' + code + '_banner.jpg';
+       $scope.book.upl_item = null;
+    };
+
+    uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+      alert("Ошибка добавления файла, разрешены только изображения");
+    };
+
+    uploader.onErrorItem = function(fileItem, response, status, headers) {
+      $scope.book.upl_item = null;
+      alert("При загрузке файла на сервер возникла ошибка");
+    };
+
+
+
     var code = $location.search().code;
     $http.get(config.url() + '/api/books/search?code=' + code)
       .success(function (response) {
@@ -52,5 +101,9 @@ angular.module('angularApp')
            $scope.remains = response;
         })
     })
+
+    $scope.isEditor = function() {
+      return authorization.isEditor();
+    }
 
   });

@@ -22,7 +22,8 @@
     "angular-bootstrap": "2.2.0",
     "angular-messages": "^1.5.8",
     "smartmenus": "^1.0.1",
-    "angular-bootstrap-slider": "^0.1.28"
+    "angular-bootstrap-slider": "^0.1.28",
+    "ng-jcrop": "^2.1.2"
   },
   "overrides": {
     "font-awesome": {

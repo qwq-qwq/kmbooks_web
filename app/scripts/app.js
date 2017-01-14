@@ -26,7 +26,8 @@ angular
     'ui.calendar',
     'angular-scroll-animate',
     'ui.bootstrap',
-    'ui.bootstrap-slider'
+    'ui.bootstrap-slider',
+    'ngJcrop'
   ])
   .config(function ($routeProvider) {
 
