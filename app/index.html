@@ -134,23 +134,23 @@
                 </div>
               </div>
           </div>
-          <div ng-if="isEditor()">
-            <span class="row" ng-show="book.editing">
-              <div class="col-md-2">
-                <div nv-file-drop uploader="uploader" nv-file-over="" options="{formData: [{id: book.id, rectangle: []}]}" style="width: 100px; height: 200px" class="thumbnail my-drop-zone">
-                  Перетягніть файл сюди
+          <div class="container" ng-if="isEditor()">
+            <div class="panel panel-default" ng-show="book.editing" style="padding-bottom: 10px">
+              <div class="panel-heading">Редагування банеру</div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-1">
+                    <input type="file" ng-jcrop-input="uploadBanner" nv-file-select="" uploader="uploader" multiple="" options="{formData: [{id: book.id, rectangle: []}]}" style="padding-bottom: 10px">
+                    <button class="btn btn-primary" ng-click="saveItem(book)">Сохранить</button>
+                  </div>
+                  <div class="col-md-11">
+                    <div ng-if="book.upl_item" style="padding-top: 30px; padding-left: 20px;">
+                      <div ng-jcrop="cropSelection.src" ng-jcrop-config-name="uploadBanner" selection="cropSelection.selection" thumbnail="cropSelection.thumbnail"></div>
+                    </div>
+                  </div>
                 </div>
-                <input type="file" ng-jcrop-input="uploadBanner" nv-file-select="" uploader="uploader" multiple="" options="{formData: [{id: book.id, rectangle: []}]}">
-                <button class="btn btn-primary" ng-click="saveItem(book)" style="margin-top: 20px">Сохранить</button>
               </div>
-              <div class="col-md-10">
-                <div ng-if="book.upl_item" style="margin-left: 20px">
-                  <div ng-jcrop="cropSelection.src" ng-jcrop-config-name="uploadBanner" selection="cropSelection.selection" thumbnail="selection.thumbnail"></div>
-                  <!--<div ng-thumb="{ file: book.upl_item._file, height: 300 }"></div>
-                  <p> Имя файла: {{book.upl_item.file.name}}</p>-->
-                </div>
-              </div>
-            </span>
+            </div>
           </div>
         </span>
       </span>

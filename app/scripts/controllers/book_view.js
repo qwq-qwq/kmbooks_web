@@ -52,8 +52,6 @@ angular.module('angularApp')
       alert("При загрузке файла на сервер возникла ошибка");
     };
 
-
-
     var code = $location.search().code;
     $http.get(config.url() + '/api/books/search?code=' + code)
       .success(function (response) {

@@ -150,22 +150,13 @@ angular
       $httpProvider.interceptors.push('httpInterceptor');
    }])
   .config(function(ngJcropConfigProvider){
-  // [optional] To change the jcrop configuration
-  // All jcrop settings are in: http://deepliquid.com/content/Jcrop_Manual.html#Setting_Options
-  ngJcropConfigProvider.setJcropConfig('uploadBanner', {
+    ngJcropConfigProvider.setJcropConfig('uploadBanner', {
     bgColor: 'black',
     bgOpacity: .4,
-    aspectRatio: 2.69591528
+    aspectRatio: 2.69591528,
+    maxHeight: 600,
+    maxWidth: 600
   });
-  //setSelect: [0, 0, 1782, 661]
-  // [optional] To change the css style in the preview image
-  /*ngJcropConfigProvider.setPreviewStyle({
-    'width': '100px',
-    'height': '100px',
-    'overflow': 'hidden',
-    'margin-left': '5px'
-  });*/
-
 });
 
 
