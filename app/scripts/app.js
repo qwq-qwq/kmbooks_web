@@ -154,6 +154,7 @@ angular
     bgColor: 'black',
     bgOpacity: .4,
     aspectRatio: 2.69591528,
+    minSize: [100, 100],
     maxHeight: 600,
     maxWidth: 600
   });
