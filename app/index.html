@@ -135,13 +135,14 @@
               </div>
           </div>
           <div class="container" ng-if="isEditor()">
-            <div class="panel panel-default" ng-show="book.editing" style="padding-bottom: 10px">
+            <div class="panel panel-default" ng-show="book.editing" style="padding-bottom: 10px; margin-top: 15px">
               <div class="panel-heading">Редагування банеру</div>
               <div class="panel-body">
                 <div class="row">
                   <div class="col-md-1">
-                    <input type="file" ng-jcrop-input="uploadBanner" nv-file-select="" uploader="uploader" multiple="" options="{formData: [{id: book.id, rectangle: []}]}" style="padding-bottom: 10px">
-                    <button class="btn btn-primary" ng-click="saveItem(book)">Сохранить</button>
+                    <input type="file" ng-jcrop-input="uploadBanner" nv-file-select="" uploader="uploader" options="{formData: [{id: book.id, rectangle: []}]}" style="padding-bottom: 10px">
+                    <button class="btn btn-default btn-sm" ng-click="book.editing = false" style="min-width: 100px">Отмена</button>
+                    <button class="btn btn-primary btn-sm" ng-click="saveItem(book)" style="min-width: 100px">Сохранить</button>
                   </div>
                   <div class="col-md-11">
                     <div ng-if="book.upl_item" style="padding-top: 30px; padding-left: 20px;">
