@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('BookViewCtrl', function ($scope, $http, $location, authorization, Lightbox, FileUploader, config) {
+  .controller('BookViewCtrl', function ($scope, $http, $route, $location, authorization, Lightbox, FileUploader, config) {
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
 
     $scope.uploader = new FileUploader({
@@ -32,7 +32,6 @@ angular.module('angularApp')
                                              $scope.cropSelection.selection[4],
                                              $scope.cropSelection.selection[5]];
       item.upl_item.upload();
-      $scope.book.bannerImage = '';
     }
 
     uploader.onAfterAddingFile = function(fileItem) {
@@ -40,7 +39,7 @@ angular.module('angularApp')
     };
 
     uploader.onSuccessItem = function(fileItem, response, status, headers) {
-       $scope.book.bannerImage = '/img/pics/' + code + '_banner.jpg';
+       $route.reload();
        $scope.book.upl_item = null;
     };
 
