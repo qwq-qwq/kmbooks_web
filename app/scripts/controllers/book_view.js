@@ -32,6 +32,7 @@ angular.module('angularApp')
                                              $scope.cropSelection.selection[4],
                                              $scope.cropSelection.selection[5]];
       item.upl_item.upload();
+      $scope.book.bannerImage = '';
     }
 
     uploader.onAfterAddingFile = function(fileItem) {
@@ -39,7 +40,6 @@ angular.module('angularApp')
     };
 
     uploader.onSuccessItem = function(fileItem, response, status, headers) {
-       $scope.book.bannerImage = '';
        $scope.book.bannerImage = '/img/pics/' + code + '_banner.jpg';
        $scope.book.upl_item = null;
     };
