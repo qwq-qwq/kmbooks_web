@@ -82,7 +82,7 @@
            <img class="img-responsive center-block" src="{{book.image}}"> </img>
          </a>
          <div style="text-align:center; font-size: 15px; margin-top: 10px; margin-bottom: 5px">
-           <a href="#/book_view?code={{book.code}}">
+           <a href="#/book_view?code={{book.code}}" style="color: black">
              {{book.name}}
            </a>
          </div>
@@ -96,7 +96,7 @@
              <span ng-if="book.author"> <b>Автор:&nbsp;</b><a href="#/search?author={{book.author}}">{{book.author}}</a></span>
            </p>
            <p>
-             <span ng-if="book.description">{{book.description}}</span>
+             <span ng-if="book.description">{{book.description.substring(0, 300) + "..."}}</span>
            </p>
          </div>
        </div>
