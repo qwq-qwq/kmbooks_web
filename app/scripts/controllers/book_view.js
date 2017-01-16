@@ -73,8 +73,8 @@ angular.module('angularApp')
            'thmb_index': 0
            };
           $scope.gallery.images[0] = {
-            'src': '/img/pics/' + code + '_0.jpg',
-             w: 500, h: 500
+            src: '/img/pics/' + code + '_0.jpg',
+              w: 1000, h: 700
           };
         };
         for (var i = 1; i <= imagesCount; i++) {
@@ -84,8 +84,8 @@ angular.module('angularApp')
             'thmb_index': i
           };
           $scope.gallery.images[i] = {
-            'src': '/img/pics/' + code + '_' + i + '.jpg',
-             w: 500, h: 500
+            src: '/img/pics/' + code + '_' + i + '.jpg',
+              w: 1000, h: 2000
           };
         };
         $scope.book.opened = true;
