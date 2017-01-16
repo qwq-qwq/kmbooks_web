@@ -1,5 +1,19 @@
 
     <div class="row">
+      <div class="col-md-4 hidden-xs hidden-sm" ng-if="gallery.images.length > 0">
+        <button ng-click="showGallery()"> Show Gallery (external btn) </button>
+
+        <ul class="slide-list">
+          <li ng-repeat="image in gallery.images track by $index" ng-click="showGallery($index)">
+            <img ng-src="{{ image.src }}" />
+          </li>
+        </ul>
+
+        <div ng-photoswipe slides="gallery.images" open="gallery.open" slide-selector=".slide-list > li > img"
+             on-close="closeGallery()" options="gallery.opts">
+        </div>
+
+      </div>
       <div class="col-md-4 hidden-xs hidden-sm" ng-if="book.images.length > 0">
         <div ng-repeat="image in book.images">
           <a ng-click="openLightboxModal($index)">

@@ -5,6 +5,7 @@
 
 angular.module('angularApp')
   .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization, Lightbox, FileUploader, config) {
+    $scope.gallery = {images: [], opts: "", open: false};
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
 
     $scope.uploader = new FileUploader({
@@ -71,12 +72,20 @@ angular.module('angularApp')
            'thumbUrl': '/img/pics/' + code + '_0.jpg',
            'thmb_index': 0
            };
+          $scope.gallery.images[0] = {
+            'src': '/img/pics/' + code + '_0.jpg',
+             w: 500, h: 500
+          };
         };
         for (var i = 1; i <= imagesCount; i++) {
           $scope.book.images[i] = {
             'url': '/img/pics/' + code + '_' + i + '.jpg',
             'thumbUrl': '/img/pics/' + code + '_' + i + '.jpg',
             'thmb_index': i
+          };
+          $scope.gallery.images[i] = {
+            'src': '/img/pics/' + code + '_' + i + '.jpg',
+             w: 500, h: 500
           };
         };
         $scope.book.opened = true;
@@ -88,6 +97,21 @@ angular.module('angularApp')
       .success(function (response) {
         $scope.description = response.text.replace(/([^>])\n/g, '$1<br/>'); //nl2br
       })
+
+    $scope.gallery.opts = {
+      index: 0
+    };
+
+    $scope.showGallery = function (i) {
+      if(angular.isDefined(i)) {
+        $scope.gallery.opts.index = i;
+      }
+      $scope.gallery.open = true;
+    };
+
+    $scope.closeGallery = function () {
+      $scope.gallery.open = false;
+    };
 
     $scope.openLightboxModal = function (index) {
       Lightbox.openModal($scope.book.images, index);
