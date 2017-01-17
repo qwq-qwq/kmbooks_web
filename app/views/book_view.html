@@ -5,7 +5,7 @@
 
         <ul class="slide-list">
           <li ng-repeat="image in gallery.images track by $index" ng-click="showGallery($index)">
-            <img ng-src="{{ image.src }}" />
+            <img ng-src="{{ image.srcThumbNail }}" />
           </li>
         </ul>
 
