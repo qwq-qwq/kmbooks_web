@@ -57,42 +57,35 @@ angular.module('angularApp')
     $http.get(config.url() + '/api/books/search?code=' + code)
       .success(function (response) {
         $scope.book = response.booksList[0];
-        var imagesCount = $scope.book.imagesCount;
         if ($scope.book.image === '') {
           $scope.book.image = '/img/no_picture_ru_165.jpg';
         } else {
           $scope.book.image = '/img/pics/' + $scope.book.code + '_big.jpg';
-          imagesCount = imagesCount - 1;
         };
-        $scope.book.images = [];
-        if ($scope.book.image_3d !== '') {
-          imagesCount = imagesCount - 1;
-          $scope.book.images[0] = {
+
+          /*$scope.book.images[0] = {
            'url': '/img/pics/' + code + '_0.jpg',
            'thumbUrl': '/img/pics/' + code + '_0.jpg',
            'thmb_index': 0
-           };
-          $scope.gallery.images[0] = {
-            src: '/img/pics/' + code + '_0.jpg',
-              w: 1000, h: 700
-          };
-        };
-        for (var i = 1; i <= imagesCount; i++) {
-          $scope.book.images[i] = {
-            'url': '/img/pics/' + code + '_' + i + '.jpg',
-            'thumbUrl': '/img/pics/' + code + '_' + i + '.jpg',
-            'thmb_index': i
-          };
-          $scope.gallery.images[i] = {
-            src: '/img/pics/' + code + '_' + i + '.jpg',
-              w: 1000, h: 2000
-          };
-        };
+           };*/
         $scope.book.opened = true;
         if ($scope.book.bannerImage === null) {
            $scope.book.bannerImage = '/img/pics/' + code + '_banner.jpg';
         };
       })
+
+    $http.get(config.url() + '/api/books/images?code=' + code)
+      .success(function (response) {
+    angular.forEach(response, function (image, key) {
+
+      $scope.gallery.images[key] = {
+        src: image.src,
+        w: image.width, h: image.height
+      };
+    })
+      })
+
+
     $http.get(config.url() + '/api/books/description?code=' + code)
       .success(function (response) {
         $scope.description = response.text.replace(/([^>])\n/g, '$1<br/>'); //nl2br

@@ -32,7 +32,7 @@
 
           $scope.pages = [];
           $scope.goodsCount = response.countInList;
-          var pagesCount = Math.ceil($scope.goodsCount / 40);
+          var pagesCount = Math.ceil($scope.goodsCount / 42);
           var startPage = 1;
           if (page <= 4) {
             startPage = 1;

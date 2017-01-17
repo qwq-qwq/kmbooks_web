@@ -46,7 +46,7 @@ angular.module('angularApp').directive('bkCatalog', ['$http', 'config', 'authori
             scope.books = booksList;
             scope.goodsCount = response.countInList;
             scope.pages = [];
-            var pagesCount = Math.ceil(scope.goodsCount / 40);
+            var pagesCount = Math.ceil(scope.goodsCount / 42);
             var startPage = 1;
             if (page <= 4) {
               startPage = 1;
