@@ -32,13 +32,7 @@
         "css/font-awesome.css"
       ]
     },
-    "photoswipe": {
-      "main": [
-        "./dist/default-skin/default-skin.png",
-        "./dist/default-skin/default-skin.svg",
-        "./dist/default-skin/preloader.gif"
-      ]
-    },
+
     "smartmenus": {
       "main": [
         "./src/jquery.smartmenus.js",
