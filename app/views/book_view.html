@@ -1,18 +1,14 @@
 
     <div class="row">
       <div class="col-md-4 hidden-xs hidden-sm" ng-if="gallery.images.length > 0">
-        <button ng-click="showGallery()"> Show Gallery (external btn) </button>
-
-        <ul class="slide-list">
-          <li ng-repeat="image in gallery.images track by $index" ng-click="showGallery($index)">
+        <div class="slide-list">
+          <a ng-repeat="image in gallery.images track by $index" ng-click="showGallery($index)">
             <img src="{{image.srcThumbNail}}" class="point_img img-responsive" style="max-height: 250px">
-          </li>
-        </ul>
-
-        <div bk-photoswipe slides="gallery.images" show="gallery.show" slide-selector=".slide-list > li > img"
+          </a>
+        </div>
+        <div bk-photoswipe slides="gallery.images" show="gallery.show" slide-selector=".slide-list > a > img"
              on-close="closeGallery()" options="gallery.opts">
         </div>
-
       </div>
       <div class="col-md-4 hidden-xs hidden-sm" ng-if="book.images.length > 0">
         <div ng-repeat="image in book.images">
