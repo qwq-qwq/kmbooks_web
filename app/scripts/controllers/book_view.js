@@ -93,7 +93,8 @@ angular.module('angularApp')
       })
 
     $scope.gallery.opts = {
-      index: 0
+      index: 0,
+      history: false
     };
 
     $scope.showGallery = function (i) {
