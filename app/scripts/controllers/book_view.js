@@ -62,30 +62,27 @@ angular.module('angularApp')
         } else {
           $scope.book.image = '/img/pics/' + $scope.book.code + '_big.jpg';
         };
-
-          /*$scope.book.images[0] = {
-           'url': '/img/pics/' + code + '_0.jpg',
-           'thumbUrl': '/img/pics/' + code + '_0.jpg',
-           'thmb_index': 0
-           };*/
-        $scope.book.opened = true;
-        if ($scope.book.bannerImage === null) {
-           $scope.book.bannerImage = '/img/pics/' + code + '_banner.jpg';
-        };
       })
 
     $http.get(config.url() + '/api/books/images?code=' + code)
       .success(function (response) {
-    angular.forEach(response, function (image, key) {
-
-      $scope.gallery.images[key] = {
-        srcThumbNail: image.src.replace('.jpg','_big.jpg'),
-        src: image.src,
-        w: image.width, h: image.height
-      };
-    })
+        angular.forEach(response, function (image, key) {
+          $scope.gallery.images[key] = {
+            srcThumbNail: image.src.replace('.jpg','_big.jpg'),
+            src: image.src,
+            w: image.width,
+            h: image.height
+          };
+        })
       })
 
+    $http.get(config.url() + '/api/books/banner_book?code=' + code)
+      .success(function (response) {
+        $scope.book.bannerImage = response.Image
+        if ($scope.book.bannerImage === null) {
+          $scope.book.bannerImage = '/img/pics/' + code + '_banner.jpg';
+        };
+      })
 
     $http.get(config.url() + '/api/books/description?code=' + code)
       .success(function (response) {
