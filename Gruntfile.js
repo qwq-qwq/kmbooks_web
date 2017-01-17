@@ -362,6 +362,13 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>/fonts',
           src: ['*.*'],
           filter: 'isFile'
+        }, {
+          expand: true,
+          flatten: true,
+          cwd: 'bower_components/photoswipe/dist/default-skin',
+          dest: '<%= yeoman.dist %>/styles',
+          src: '{,*/}*.{png,svg,gif}',
+          filter: 'isFile'
         }]
       },
       styles: {
