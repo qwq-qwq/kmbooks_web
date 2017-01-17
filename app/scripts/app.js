@@ -27,8 +27,7 @@ angular
     'angular-scroll-animate',
     'ui.bootstrap',
     'ui.bootstrap-slider',
-    'ngJcrop',
-    'ngPhotoswipe'
+    'ngJcrop'
   ])
   .config(function ($routeProvider) {
 

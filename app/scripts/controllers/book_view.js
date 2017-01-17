@@ -5,7 +5,7 @@
 
 angular.module('angularApp')
   .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization, Lightbox, FileUploader, config) {
-    $scope.gallery = {images: [], opts: "", open: false};
+    $scope.gallery = {images: [], opts: "", show: false};
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
 
     $scope.uploader = new FileUploader({
@@ -98,11 +98,11 @@ angular.module('angularApp')
 
     $scope.showGallery = function (i) {
       $scope.gallery.opts.index = i;
-      $scope.gallery.open = true;
+      $scope.gallery.show = true;
     };
 
     $scope.closeGallery = function () {
-      $scope.gallery.open = false;
+      $scope.gallery.show = false;
     };
 
     $scope.openLightboxModal = function (index) {
