@@ -97,9 +97,7 @@ angular.module('angularApp')
     };
 
     $scope.showGallery = function (i) {
-      if(angular.isDefined(i)) {
-        $scope.gallery.opts.index = i;
-      }
+      $scope.gallery.opts.index = i;
       $scope.gallery.open = true;
     };
 
