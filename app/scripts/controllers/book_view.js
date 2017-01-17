@@ -79,7 +79,7 @@ angular.module('angularApp')
     angular.forEach(response, function (image, key) {
 
       $scope.gallery.images[key] = {
-        srcThumbNail: image.src.replace('_','_big'),
+        srcThumbNail: image.src.replace('.jpg','_big.jpg'),
         src: image.src,
         w: image.width, h: image.height
       };
