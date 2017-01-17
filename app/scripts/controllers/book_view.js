@@ -94,7 +94,8 @@ angular.module('angularApp')
 
     $scope.gallery.opts = {
       index: 0,
-      history: false
+      history: false,
+      bgOpacity: 0.4
     };
 
     $scope.showGallery = function (i) {
