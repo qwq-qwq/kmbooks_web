@@ -5,7 +5,7 @@
 
         <ul class="slide-list">
           <li ng-repeat="image in gallery.images track by $index" ng-click="showGallery($index)">
-            <img ng-src="{{ image.srcThumbNail }}" />
+            <img src="{{image.srcThumbNail}}" class="point_img img-responsive" style="max-height: 250px">
           </li>
         </ul>
 
