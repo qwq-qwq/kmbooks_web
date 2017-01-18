@@ -289,7 +289,7 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     box-sizing: inherit;
     border-radius: 3px;
     white-space: normal;
-    z-index: 2;
+    z-index: 1000;
     position: absolute;
   }
 
