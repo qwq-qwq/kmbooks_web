@@ -5,6 +5,7 @@
 
 angular.module('angularApp')
   .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization, Lightbox, FileUploader, config) {
+    var code = $location.search('code');
     $scope.gallery = {images: [], opts: "", show: false};
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
 
@@ -75,7 +76,6 @@ angular.module('angularApp')
         })
       })
 
-    var code = $location.search().code;
     $http.get(config.url() + '/api/books/banner_book?code=' + code)
       .success(function (response) {
         if (response.image === null) {
