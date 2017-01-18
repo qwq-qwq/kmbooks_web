@@ -5,7 +5,7 @@
 
 angular.module('angularApp')
   .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization, Lightbox, FileUploader, config) {
-    var code = $location.search('code');
+    var code = $location.search().code;
     $scope.gallery = {images: [], opts: "", show: false};
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
 
