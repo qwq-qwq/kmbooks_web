@@ -40,7 +40,7 @@ angular.module('angularApp')
     };
 
     uploader.onSuccessItem = function(fileItem, response, status, headers) {
-       $scope.book.bannerImage = response.fileName;
+       $scope.book.bannerImage = response.image;
        $scope.book.upl_item = null;
     };
 
