@@ -56,9 +56,9 @@ angular.module('angularApp')
     $http.get(config.url() + '/api/books/banner_book?code=' + code)
       .success(function (response) {
         if (response.image === null) {
-          $scope.book.bannerImage = '/img/pics/' + code + '_banner.jpg';
+          $scope.bannerImage = '/img/pics/' + code + '_banner.jpg';
         }else{
-          $scope.book.bannerImage = response.image;
+          $scope.bannerImage = response.image;
         };
       })
 
