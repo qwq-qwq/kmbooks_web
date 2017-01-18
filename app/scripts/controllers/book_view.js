@@ -76,14 +76,14 @@ angular.module('angularApp')
     $http.get(config.url() + '/api/books/images?code=' + code)
       .success(function (response) {
         angular.forEach(response, function (image, key) {
-          if (!image.main) {
+
             $scope.gallery.images[key] = {
               srcThumbNail: image.src.replace('.jpg', '_big.jpg'),
               src: image.src,
               w: image.width,
               h: image.height
             };
-          }
+
         })
       })
 
