@@ -53,16 +53,6 @@ angular.module('angularApp')
       alert("При загрузке файла на сервер возникла ошибка");
     };
 
-    var code = $location.search().code;
-    $http.get(config.url() + '/api/books/banner_book?code=' + code)
-      .success(function (response) {
-        if (response.image === null) {
-          $scope.bannerImage = '/img/pics/' + code + '_banner.jpg';
-        }else{
-          $scope.bannerImage = response.image;
-        };
-      })
-
     $http.get(config.url() + '/api/books/search?code=' + code)
       .success(function (response) {
         $scope.book = response.booksList[0];
@@ -73,18 +63,26 @@ angular.module('angularApp')
         };
       })
 
-    $http.get(config.url() + '/api/books/images?code=' + code)
+    $http.get(config.url() + '/api/books/images_without_main?code=' + code)
       .success(function (response) {
         angular.forEach(response, function (image, key) {
-
             $scope.gallery.images[key] = {
               srcThumbNail: image.src.replace('.jpg', '_big.jpg'),
               src: image.src,
               w: image.width,
               h: image.height
             };
-
         })
+      })
+
+    var code = $location.search().code;
+    $http.get(config.url() + '/api/books/banner_book?code=' + code)
+      .success(function (response) {
+        if (response.image === null) {
+          $scope.bannerImage = '/img/pics/' + code + '_banner.jpg';
+        }else{
+          $scope.bannerImage = response.image;
+        };
       })
 
     $http.get(config.url() + '/api/books/description?code=' + code)
