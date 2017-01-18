@@ -53,6 +53,7 @@ angular.module('angularApp')
       alert("При загрузке файла на сервер возникла ошибка");
     };
 
+    var code = $location.search().code;
     $http.get(config.url() + '/api/books/banner_book?code=' + code)
       .success(function (response) {
         if (response.image === null) {
@@ -62,7 +63,6 @@ angular.module('angularApp')
         };
       })
 
-    var code = $location.search().code;
     $http.get(config.url() + '/api/books/search?code=' + code)
       .success(function (response) {
         $scope.book = response.booksList[0];
