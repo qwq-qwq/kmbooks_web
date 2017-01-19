@@ -10,13 +10,6 @@
              on-close="closeGallery()" options="gallery.opts">
         </div>
       </div>
-      <div class="col-md-4 hidden-xs hidden-sm" ng-if="book.images.length > 0">
-        <div ng-repeat="image in book.images">
-          <a ng-click="openLightboxModal($index)">
-            <img src="{{image.thumbUrl}}" class="point_img img-responsive" style="max-height: 250px">
-          </a>
-        </div>
-      </div>
       <div class="hidden-md hidden-lg" style="text-align: center">
           <img src="{{book.image.replace('_big.jpg', '.jpg')}}" class="point_img img-rounded">
           <bk-buy-button book = "book"></bk-buy-button>

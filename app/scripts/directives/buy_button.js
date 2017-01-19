@@ -1,31 +1,41 @@
 'use strict';
 
-angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'authorization', '$location', function($http, config, authorization, $location) {
+angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'authorization', '$rootScope', '$location', function($http, config, authorization, $rootScope, $location) {
   return {
     restrict: 'E',
     scope: {
-      book: '='
+      book: '=',
+      cart: '='
     },
     templateUrl: 'views/bk_buy_button.html',
     link: function(scope, element, attributes) {
-      scope.$watch('book.opened', function () {
-        if (!scope.book.opened) return;
-        scope.proceedSearch = true;
-        $http.get(config.url() + "/api/books/description?code=" + scope.book.code)
-          .success(function(response) {
-            scope.description = response.text.replace(/([^>])\n/g, '$1<br/>') ; //nl2br
-            scope.proceedSearch = false;
-          })
-      }, true)
-      scope.isUser = function() {
-        return authorization.isUser();
-      }
-      scope.isBookPage = function() {
-        if ($location.path().search('book_view') != -1) {
-          return true
+      scope.AddToCart = function(book) {
+        if (authorization.isAuthorized()) {
+          if ($rootScope.cart !== null){
+            var cart = {email: authorization.username(), goodsTable: {}}
+          }
+          var goodsTable = {code: book.code, quantity: 1, price: book.price}
+          cart.goodsTable = goodsTable;
+          $http.post(config.url() + "/api/edit/carts/update", cart, {withCredentials: true})
+            .success(function(response) {
+               $rootScope.cart = response;
+               scope.$emit('cart_was_added');
+            })
         }else{
-          return false}
+          if ($rootScope.cart !== null){
+            var cart = {email: authorization.username(), goodsTable: []}
+          }
+          var goodsTable = {code: book.code, quantity: 1, price: book.price}
+          cart.goodsTable.push(goodsTable);
+          $http.post(config.url() + "/api/carts/update", cart)
+            .success(function(response) {
+               $rootScope.cart = response;
+               scope.$emit('cart_was_added');
+            })
+        }
+        return 0;
       }
+
     }
   };
 }])

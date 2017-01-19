@@ -6,7 +6,7 @@
 
 angular.module('angularApp')
   .controller('BooksTableCtrl', function($scope, $http, $location, config, $route) {
-    $scope.kindOfView = "list";
+    $scope.kindOfView = "tails";
     $scope.catalog = function () {
       var page = $location.search().page;
       var priceFrom = $location.search().priceFrom;

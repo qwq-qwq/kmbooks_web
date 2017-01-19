@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization, Lightbox, FileUploader, config) {
+  .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization, FileUploader, config) {
     var code = $location.search().code;
     $scope.gallery = {images: [], opts: "", show: false};
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
@@ -93,7 +93,7 @@ angular.module('angularApp')
     $scope.gallery.opts = {
       index: 0,
       history: false,
-      bgOpacity: 0.4
+      bgOpacity: 0.5
     };
 
     $scope.showGallery = function (i) {
@@ -103,10 +103,6 @@ angular.module('angularApp')
 
     $scope.closeGallery = function () {
       $scope.gallery.show = false;
-    };
-
-    $scope.openLightboxModal = function (index) {
-      Lightbox.openModal($scope.book.images, index);
     };
 
     $scope.$on('$viewContentLoaded', function (scope) {

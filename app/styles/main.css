@@ -5,6 +5,10 @@
   padding: 0.2em 0;
 }
 
+.brand-blue-color {
+  color: #428bca;
+}
+
 .navbar-collapse form[role="search"] {
   margin: 3px;
   padding-top: 7px;

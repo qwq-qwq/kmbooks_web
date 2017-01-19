@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('HeaderCtrl', function($scope, $rootScope, $location, $anchorScroll, $http, config) {
+  .controller('HeaderCtrl', function($scope, $rootScope, $location, $anchorScroll, $http, config, cart) {
 
     $scope.menu = [
       {label:'КОНТАКТИ', route:'/contacts'}
@@ -138,6 +138,12 @@ angular.module('angularApp')
       $location.search().search_string = $scope.search_string;
       $location.path('/search');
     };
+
+    $rootScope.$on('cart_was_added', function () {
+       if (cart.IsNotEmpty()) {
+          $scope.cartColor={color: '#428bca'};
+       }
+    })
 
   });
 

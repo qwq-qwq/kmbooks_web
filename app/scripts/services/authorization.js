@@ -15,6 +15,15 @@ angular.module('angularApp').factory('authorization', function ($rootScope, $htt
     logout: function(){
       return $http.post(config.url() + '/logout', {}, {withCredentials: true})
     },
+    username: function () {
+      return $rootScope.username;
+    },
+    isAuthorized: function () {
+      if ($rootScope.authenticated == true) {
+        return true
+      }else{
+        return false}
+    },
     isAdmin: function() {
     if ($rootScope.role == 'ADMIN') {
       return true

@@ -73,7 +73,7 @@
 
             <ul ng-show="!showSearch" class="nav navbar-nav navbar-right">
               <li>
-                <a href="#/cart"><span style="font-size: large;" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;</a>
+                <a href="#/cart"><span style="font-size: large;" ng-style="cartColor" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;</a>
               <li>
               <li ng-show="!authenticated">
                 <a href="#/login" style="display: inline-block"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Вхід</a>
@@ -233,6 +233,7 @@
     <script src="scripts/services/config.js"></script>
     <script src="scripts/services/authorization.js"></script>
     <script src="scripts/services/api.js"></script>
+    <script src="scripts/services/cart.js"></script>
     <script src="scripts/directives/thumb.js"></script>
     <script src="scripts/directives/book_detail.js"></script>
     <script src="scripts/directives/compare_to.js"></script>
@@ -241,6 +242,7 @@
     <script src="scripts/directives/pagination.js"></script>
     <script src="scripts/directives/slider.js"></script>
     <script src="scripts/directives/myphotoswipe.js"></script>
+    <script src="scripts/directives/buy_button.js"></script>
     <script src="scripts/controllers/log.js"></script>
     <script src="scripts/controllers/books_table.js"></script>
     <script src="scripts/controllers/book_view.js"></script>
