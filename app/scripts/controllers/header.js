@@ -7,6 +7,8 @@ angular.module('angularApp')
       {label:'КОНТАКТИ', route:'/contacts'}
     ]
 
+    $scope.templateUrl = 'views/cart_popover.html';
+
     $scope.menuActive = '/';
 
     $rootScope.$on('$viewContentLoaded', function(e, curr, prev) {
@@ -143,12 +145,9 @@ angular.module('angularApp')
       if (cart.IsNotEmpty()) {
         $scope.cartColor={color: '#428bca'};
         $scope.itemsCount = cart.ItemsCount();
+        $scope.cart = cart.Items();
       }
     })
-
-    $rootScope.showCart = function () {
-
-    }
 
   });
 

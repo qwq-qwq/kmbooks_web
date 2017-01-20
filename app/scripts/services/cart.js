@@ -3,7 +3,7 @@
 
 angular.module('angularApp').factory('cart', function ($rootScope) {
   return {
-    Cart: function () {
+    Items: function () {
       return $rootScope.cart;
     },
     IsNotEmpty: function () {

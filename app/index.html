@@ -68,12 +68,12 @@
                   <li><a href="#/">УМОВИ ПРИДБАННЯ</a></li>
                 </ul>
               </li>
-              <li ng-repeat="item in menu" class="animated fadeInLeft" ng-class="{active: item.route == menuActive}"><a href="#{{item.route}}" >{{item.label}}</a></li>
+              <li ng-repeat="item in menu" class="animated fadeInLeft" ng-class="{active: item.route == menuActive}"><a href="#{{item.route}}">{{item.label}}</a></li>
             </ul>
 
             <ul ng-show="!showSearch" class="nav navbar-nav navbar-right">
               <li>
-                <a href="#"><span style="font-size: large;" ng-click="showCart(); $event.preventDefault()" ng-style="cartColor" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;<span style="margin-bottom: 2px">{{itemsCount}}</span></a>
+                <a href="#" uib-popover-template="templateUrl" popover-placement="bottom"><span style="font-size: large;" ng-click="$event.preventDefault()" ng-style="cartColor" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;<span>{{itemsCount}}</span></a>
               <li>
               <li ng-show="!authenticated">
                 <a href="#/login" style="display: inline-block"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Вхід</a>
