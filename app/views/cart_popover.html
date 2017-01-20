@@ -2,7 +2,9 @@
   <span ng-repeat="cartItems in cart.goodsTable">
     <div class="row">
       <div class="col-md-3" style="min-height: 55px;">
-        <img class="img-responsive" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
+        <a href="#/book_view?code={{cart.code}}">
+          <img class="img-responsive" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
+        </a>
       </div>
       <div class="col-md-9">
         <p>{{cartItems.name}}</p>
