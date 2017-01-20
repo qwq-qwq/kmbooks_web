@@ -2,13 +2,13 @@
   <span ng-repeat="cartItems in cart.goodsTable">
     <div class="row">
       <div class="col-md-3">
-        <img ng-src="/img/pics/{{cartItems.code}}_small.jpg}}"/>
+        <img ng-src="/img/pics/{{cartItems.code}}_small.jpg"/>
       </div>
       <div class="col-md-9">
         <p>{{cartItems.name}}</p>
       </div>
     </div>
-    <hr>
+    <hr ng-if="!$last" style="margin: 5px 0 10px 0">
   </span>
   <button class="btn btn-primary">Оформити замовлення</button>
 </div>
