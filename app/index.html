@@ -58,7 +58,9 @@
                  </ul>
               </li>
               <li class="dropdown animated fadeInLeft" bk-after-catalog-tree>
-                <a href="#/catalog" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;КАТАЛОГ<span class="caret"></span></a>
+                <a href="#/catalog" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;КАТАЛОГ<span class="caret"></span>
+                </a>
                 <ul class="dropdown-menu" ng-bind-html="strMenu"></ul>
               </li>
               <li class="dropdown animated fadeInLeft">
@@ -73,22 +75,24 @@
 
             <ul ng-show="!showSearch" class="nav navbar-nav navbar-right">
               <li>
-                <a href="#" uib-popover-template="templateUrl" popover-placement="bottom" style="font-size: large;">
-                  <span ng-click="$event.preventDefault()" ng-style="cartColor" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;
-                  <span>{{itemsCount}}</span>
+                <a href="#" uib-popover-template="templateUrl" popover-placement="bottom" popover-trigger="'mouseenter'" popover-popup-delay="300" popover-title="Кошик" style="font-size: large" ng-click="$event.preventDefault()">
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  <span ng-style="cartColor">&nbsp;{{itemsCount}}</span>
                 </a>
               <li>
               <li ng-show="!authenticated">
-                <a href="#/login" style="display: inline-block"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Вхід</a>
+                <a href="#/login" style="display: inline-block;">
+                  <span style="font-size: large" class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Вхід
+                </a>
               <li>
               <li ng-show="authenticated">
                 <a href="#/edit">{{username}}</a>
               </li>
               <li ng-show="authenticated" ng-class="{active: '\login' == menuActive}" ng-controller="LoginCtrl">
-                <a href="" ng-click="logout()">Вийти</a>
+                <a href="#" ng-click="logout()">Вийти</a>
               </li>
-              <li>
-                <a ng-click="toggleSearch()" ><span style="font-size: large;" class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;</a>
+              <li style="font-size: large">
+                <a ng-click="toggleSearch()"><span style="font-size: large;" class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;</a>
               <li>
             </ul>
 
