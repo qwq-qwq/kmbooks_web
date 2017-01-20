@@ -9,6 +9,8 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
     },
     templateUrl: 'views/bk_buy_button.html',
     link: function(scope, element, attributes) {
+      scope.boughtText = "Купити";
+      scope.boughtDisable = false;
       scope.AddToCart = function(book) {
         if (authorization.isAuthorized()) {
           if ($rootScope.cart === undefined){
@@ -18,6 +20,8 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
           $rootScope.cart.goodsTable = goodsTable;
           $http.post(config.url() + "/api/edit/carts/update", $rootScope.cart, {withCredentials: true})
             .success(function(response) {
+               scope.boughtText = "У кошику";
+              scope.boughtDisable = true;
                $rootScope.cart = response;
                scope.$emit('cart_was_added');
             })
@@ -29,6 +33,8 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
           $rootScope.cart.goodsTable.push(goodsTable);
           $http.post(config.url() + "/api/carts/update", $rootScope.cart)
             .success(function(response) {
+               scope.boughtText = "У кошику";
+               scope.boughtDisable = true;
                $rootScope.cart = response;
                scope.$emit('cart_was_added');
             })

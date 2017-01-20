@@ -73,7 +73,10 @@
 
             <ul ng-show="!showSearch" class="nav navbar-nav navbar-right">
               <li>
-                <a href="#" uib-popover-template="templateUrl" popover-placement="bottom"><span style="font-size: large;" ng-click="$event.preventDefault()" ng-style="cartColor" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;<span>{{itemsCount}}</span></a>
+                <a href="#" uib-popover-template="templateUrl" popover-placement="bottom" style="font-size: large;">
+                  <span ng-click="$event.preventDefault()" ng-style="cartColor" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;
+                  <span>{{itemsCount}}</span>
+                </a>
               <li>
               <li ng-show="!authenticated">
                 <a href="#/login" style="display: inline-block"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Вхід</a>
