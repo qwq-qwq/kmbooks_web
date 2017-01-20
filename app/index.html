@@ -73,7 +73,7 @@
 
             <ul ng-show="!showSearch" class="nav navbar-nav navbar-right">
               <li>
-                <a href="#/cart"><span style="font-size: large;" ng-style="cartColor" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;&nbsp;</a>
+                <a href="#"><span style="font-size: large;" ng-click="showCart(); $event.preventDefault()" ng-style="cartColor" class="glyphicon glyphicon-shopping-cart"></span>&nbsp;<span style="margin-bottom: 2px">{{itemsCount}}</span></a>
               <li>
               <li ng-show="!authenticated">
                 <a href="#/login" style="display: inline-block"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Вхід</a>

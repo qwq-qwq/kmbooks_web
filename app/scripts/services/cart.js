@@ -8,14 +8,14 @@ angular.module('angularApp').factory('cart', function ($rootScope) {
     },
     IsNotEmpty: function () {
       if ($rootScope.cart !== undefined){
-        if ($rootScope.cart.length > 0){
+        if ($rootScope.cart.goodsTable.length > 0){
           return true;
         }
       }
     },
-    Items: function () {
+    ItemsCount: function () {
       if ($rootScope.cart !== undefined) {
-        return $rootScope.cart.length;
+        return $rootScope.cart.goodsTable.length;
       }
     }
   }});
