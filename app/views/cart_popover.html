@@ -1,7 +1,7 @@
 <div style="padding: 5px" ng-controller="HeaderCtrl">
   <span ng-repeat="cartItems in cart.goodsTable">
     <div class="row">
-      <a href="#/bookview?code={{cartItems.code}}">
+      <a href="#/book_view?code={{cartItems.code}}">
         <div class="col-md-3">
           <img class="img-responsive" style="min-height: 55px; min-width: 35px" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
         </div>
