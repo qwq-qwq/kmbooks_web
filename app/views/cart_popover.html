@@ -1,10 +1,10 @@
 <div style="padding: 5px" ng-controller="HeaderCtrl">
   <span ng-repeat="cartItems in cart.goodsTable">
     <div class="row">
-      <div class="col-md-2">
-        <img class="img-responsive" style="min-height: 55px; min-width: 35px" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
+      <div class="col-md-3" style="min-height: 55px;">
+        <img class="img-responsive" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
       </div>
-      <div class="col-md-10">
+      <div class="col-md-9">
         <p>{{cartItems.name}}</p>
       </div>
     </div>
