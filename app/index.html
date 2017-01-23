@@ -75,7 +75,9 @@
 
             <ul ng-show="!showSearch" class="nav navbar-nav navbar-right">
               <li>
-                <a href="#" uib-popover-template="templateUrl" popover-placement="bottom" popover-trigger="'mouseenter'" popover-popup-delay="300" popover-title="Кошик" style="font-size: large" ng-click="$event.preventDefault()">
+                <a href="#/" uib-popover-template="templateUrl" popover-append-to-body="true" popover-placement="bottom"
+                   popover-trigger="{'mouseenter':'outsideClick', 'outsideClick':'outsideClick'}" tooltip-is-open="cartTooltipOpened" popover-title="Кошик"
+                   style="font-size: large;">
                   <span class="glyphicon glyphicon-shopping-cart"></span>
                   <span ng-style="cartColor">&nbsp;{{itemsCount}}</span>
                 </a>

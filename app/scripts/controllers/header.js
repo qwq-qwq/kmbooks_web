@@ -11,6 +11,8 @@ angular.module('angularApp')
 
     $scope.menuActive = '/';
 
+    $scope.cartTooltipOpened = false;
+
     $rootScope.$on('$viewContentLoaded', function(e, curr, prev) {
       $scope.menuActive = $location.path();
       if ($scope.menuActive == '/'){
@@ -148,6 +150,14 @@ angular.module('angularApp')
         $scope.cart = cart.Items();
       }
     })
+
+    $scope.mouseEnter = function () {
+      $scope.cartTooltipOpened = true;
+    }
+
+    $scope.mouseLeave = function () {
+      $scope.cartTooltipOpened = false;
+    }
 
   });
 

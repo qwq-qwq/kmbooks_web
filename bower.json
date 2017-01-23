@@ -19,7 +19,7 @@
     "angular-ui-calendar": "^1.0.2",
     "angular-scroll-animate": "^0.9.9",
     "animate.css": "^3.5.2",
-    "angular-bootstrap": "2.2.0",
+    "angular-bootstrap": "2.4.0",
     "angular-messages": "^1.5.8",
     "smartmenus": "^1.0.1",
     "angular-bootstrap-slider": "^0.1.28",
@@ -33,15 +33,15 @@
       ]
     },
     "photoswipe": {
-  "main": [
-    "dist/photoswipe.js",
-    "dist/photoswipe.css",
-    "dist/photoswipe-ui-default.js",
-    "dist/default-skin/default-skin.css",
-    "dist/default-skin/default-skin.png",
-    "dist/default-skin/default-skin.svg",
-    "dist/default-skin/preloader.gif"
-  ]
+      "main": [
+        "dist/photoswipe.js",
+        "dist/photoswipe.css",
+        "dist/photoswipe-ui-default.js",
+        "dist/default-skin/default-skin.css",
+        "dist/default-skin/default-skin.png",
+        "dist/default-skin/default-skin.svg",
+        "dist/default-skin/preloader.gif"
+      ]
     },
     "smartmenus": {
       "main": [
@@ -59,6 +59,6 @@
   "resolutions": {
     "angular": "1.5.8",
     "angular-animate": "1.5.8",
-    "angular-bootstrap": "2.2.0"
+    "angular-bootstrap": "2.4.0"
   }
 }
