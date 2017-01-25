@@ -144,11 +144,11 @@ angular.module('angularApp')
     };
 
     $rootScope.$on('cart_was_added', function () {
-      if (cart.IsNotEmpty()) {
-        $scope.cartColor={color: '#428bca'};
+      //if (cart.IsNotEmpty()) {
+        //$scope.cartColor={color: '#428bca'};
         $scope.itemsCount = cart.ItemsCount();
         $scope.cart = cart.Items();
-      }
+      //}
     })
 
     $scope.mouseEnter = function () {

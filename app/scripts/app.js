@@ -117,10 +117,14 @@ angular
         controller: 'BooksTableCtrl',
         reloadOnSearch: false
       })
+      .when('/cart', {
+          templateUrl: 'views/cart.html',
+          controller: 'CartCtrl'
+      })
 
       .otherwise({
         redirectTo: '/'
-      });
+      })
 
   })
   .run(function (api) {

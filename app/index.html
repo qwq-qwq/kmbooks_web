@@ -59,7 +59,8 @@
               </li>
               <li class="dropdown animated fadeInLeft" bk-after-catalog-tree>
                 <a href="#/catalog" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                  <span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;КАТАЛОГ<span class="caret"></span>
+                  КАТАЛОГ<span class="caret"></span>
+                  <!--<span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;-->
                 </a>
                 <ul class="dropdown-menu" ng-bind-html="strMenu"></ul>
               </li>
@@ -75,11 +76,11 @@
 
             <ul ng-show="!showSearch" class="nav navbar-nav navbar-right">
               <li>
-                <a href="#/" uib-popover-template="templateUrl" popover-append-to-body="true" popover-placement="bottom"
+                <a href="#/cart" uib-popover-template="templateUrl" popover-append-to-body="true" popover-placement="bottom"
                    popover-trigger="{'mouseenter':'outsideClick', 'outsideClick':'outsideClick'}" tooltip-is-open="cartTooltipOpened" popover-title="Кошик"
                    style="font-size: large;">
                   <span class="glyphicon glyphicon-shopping-cart"></span>
-                  <span ng-style="cartColor">&nbsp;{{itemsCount}}</span>
+                  <span ng-if="itemsCount > 0" style="color: #428bca">&nbsp;{{itemsCount}}</span>
                 </a>
               <li>
               <li ng-show="!authenticated">
@@ -272,6 +273,7 @@
     <script src="scripts/controllers/banners_edit_table.js"></script>
     <script src="scripts/controllers/update_by_call.js"></script>
     <script src="scripts/controllers/users_edit_table.js"></script>
+    <script src="scripts/controllers/cart.js"></script>
     <!-- endbuild -->
 
 </body>

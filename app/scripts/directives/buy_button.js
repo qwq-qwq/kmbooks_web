@@ -28,7 +28,8 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
         if ($rootScope.cart === undefined){
           $rootScope.cart = {email: authorization.username(), goodsTable: []}
         }
-        var goodsTable = {code: book.code, quantity: 1, price: book.price, name: book.name}
+        var preorder = scope.book.kvo > 0 ? false: true;
+        var goodsTable = {code: book.code, quantity: 1, price: book.price, discount: 0, name: book.name, preorder: preorder}
         $rootScope.cart.goodsTable.push(goodsTable);
         if (authorization.isAuthorized()) {
           $http.post(config.url() + "/api/edit/carts/update", $rootScope.cart, {withCredentials: true})
