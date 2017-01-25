@@ -6,6 +6,19 @@ angular.module('angularApp').factory('cart', function ($rootScope) {
     Items: function () {
       return $rootScope.cart;
     },
+    AlreadyInCart: function (code) {
+      if ($rootScope.cart !== undefined) {
+        var result = false;
+        angular.forEach($rootScope.cart.goodsTable, function (value, key) {
+          if (value.code === code) {
+            result = true;
+          }
+        });
+        return result;
+      }else{
+        return false;
+      }
+    },
     IsNotEmpty: function () {
       if ($rootScope.cart !== undefined){
         if ($rootScope.cart.goodsTable.length > 0){

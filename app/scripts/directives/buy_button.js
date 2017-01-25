@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'authorization', '$rootScope', '$location', function($http, config, authorization, $rootScope, $location) {
+angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'authorization', '$rootScope', 'cart', function($http, config, authorization, $rootScope, cart) {
   return {
     restrict: 'E',
     scope: {
@@ -20,6 +20,10 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
             }
           } else {
             scope.boughtText = "Купити";
+            scope.boughtDisable = true;
+          }
+          if (cart.AlreadyInCart(scope.book.code)){
+            scope.boughtText = "У кошику";
             scope.boughtDisable = true;
           }
         }
