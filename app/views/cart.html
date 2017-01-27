@@ -82,25 +82,44 @@
       <label>
         Місто
       </label>
-      <button ng-click="SelectCity()"></button>
-      <select class="form-control" ng-options="label as city.name for city in cities"
-            ng-change="SelectCity(city.id)" ng-model="citySelector">
+      <select class="form-control" ng-model="selector.cityId" ng-change="SelectCity()">
+        <option ng-repeat="city in cities" value="{{city.id}}">{{city.name}}</option>
       </select>
     </div>
     <div class="form-group">
       <label>
         Тип доставки
       </label>
-      <select class="form-control">
-        <option ng-repeat="delivery in selectedCity.delivery">{{delivery.name}}</option>
+      <select class="form-control" ng-model="selector.deliveryIndex" ng-change="SelectDelivery()">
+        <option ng-repeat="delivery in selectedCity.delivery" value={{$index}}>{{delivery.name}}</option>
       </select>
     </div>
     <div class="form-group">
       <label>
         Метод платежу
       </label>
-      <select class="form-control"></select>
+      <select class="form-control" ng-model="selector.paymentIndex" ng-change="SelectPayment()">
+        <option ng-repeat="payment in selectedDelivery.payments" value={{$index}}>{{payment.name}}</option>
+      </select>
     </div>
+    <div ng-if="selectedDelivery.id === '5'" class="form-group">
+      <label>
+        Відділення Нової Пошти:
+      </label>
+      <select class="form-control" ng-model="selector.newPostWHSIndex" ng-change="SelectNewPostWHS()">
+        <option ng-repeat="newPost in selectedCity.newPostWHS" value={{$index}}>{{newPost.name}}</option>
+      </select>
+    </div>
+
+    <div ng-if="selectedDelivery.id === '3'" class="form-group">
+      <label>
+        Магазин:
+      </label>
+      <select class="form-control" ng-model="selector.shopIndex" ng-change="SelectShop()">
+        <option ng-repeat="shop in selectedCity.shop" value={{$index}}>{{newPost.name}}</option>
+      </select>
+    </div>
+
     <h4>Контактна особа</h4>
     <div class="form-group">
       <input class="form-control" placeholder="ПІБ">

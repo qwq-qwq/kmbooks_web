@@ -9,11 +9,27 @@ angular.module('angularApp')
         $rootScope.cities = response;
       })
 
-    $scope.SelectCity = function (id) {
-      $http.get(config.url() + "/api/get_city?id=588a8e6455d2ac7876508020")
+    $scope.SelectCity = function () {
+      var id = $scope.selector.cityId;
+      $http.get(config.url() + "/api/get_city?id=" + id)
         .success(function(response) {
           $rootScope.selectedCity = response;
         })
+    }
+
+    $scope.SelectDelivery = function () {
+      var index = $scope.selector.deliveryIndex;
+      $rootScope.selectedDelivery = $scope.selectedCity.delivery[index];
+    }
+
+    $scope.SelectPayment = function () {
+      var index = $scope.selector.paymentIndex;
+      $rootScope.selectedPayment = $scope.selectedDelivery.payments[index];
+    }
+
+    $scope.SelectNewPostWHS = function () {
+      var index = $scope.selector.newPostWHSIndex;
+      $rootScope.selectednewPostWHS = $scope.selectedCity.newPostWHS[index];
     }
 
     $scope.CartRecalculation = function () {
