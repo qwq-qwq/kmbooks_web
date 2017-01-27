@@ -4,6 +4,18 @@ angular.module('angularApp')
   .controller('CartCtrl', function($scope, $http, $location, config, cart, $rootScope, authorization) {
     $scope.cart = cart.Items();
 
+    $http.get(config.url() + "/api/get_cities")
+      .success(function(response) {
+        $rootScope.cities = response;
+      })
+
+    $scope.SelectCity = function (id) {
+      $http.get(config.url() + "/api/get_city?id=588a8e6455d2ac7876508020")
+        .success(function(response) {
+          $rootScope.selectedCity = response;
+        })
+    }
+
     $scope.CartRecalculation = function () {
       if ($scope.cart !== undefined) {
         var orderAmount = 0;
