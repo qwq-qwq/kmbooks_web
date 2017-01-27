@@ -116,7 +116,7 @@
         Магазин:
       </label>
       <select class="form-control" ng-model="selector.shopIndex" ng-change="SelectShop()">
-        <option ng-repeat="shop in selectedCity.shop" value={{$index}}>{{newPost.name}}</option>
+        <option ng-repeat="shop in selectedCity.shops" value={{$index}}>{{shop.name}}</option>
       </select>
     </div>
 
