@@ -54,6 +54,13 @@
           <input class="form-control" ng-show="gmp.editing" ng-model="gmp.sprut_code" autofocus>
         </div>
 
+        <div ng-show="gmp.editing" class="form-group">
+          <label for="city" class="number col-md-12" ng-show="gmp.editing">Місто</label>
+          <select id="city" class="form-control" ng-model="gmp.controlCity" ng-change="gmp.city = gmp.controlCity.originalId"
+                  ng-options="city as city.name for city in cities"></select>
+          <p style="margin-left: 7px">Id: {{gmp.city}}</p>
+        </div>
+
         <p class="text-left" ng-hide="gmp.editing" ng-bind-html="gmp.description" ng-dblclick="editItem(gmp)"></p>
         <div ng-show="gmp.editing" class="form-group">
           <label for="name" class="col-md-12" ng-show="gmp.editing">Описання</label>

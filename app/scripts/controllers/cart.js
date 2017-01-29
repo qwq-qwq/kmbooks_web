@@ -6,30 +6,40 @@ angular.module('angularApp')
 
     $http.get(config.url() + "/api/get_cities")
       .success(function(response) {
-        $rootScope.cities = response;
+        $scope.cities = response;
+        $scope.selector = {};
+        $scope.selector.city = $scope.cities[0];
+        $scope.SelectCity();
       })
 
     $scope.SelectCity = function () {
-      var id = $scope.selector.cityId;
+      var id = $scope.selector.city.id;
       $http.get(config.url() + "/api/get_city?id=" + id)
         .success(function(response) {
-          $rootScope.selectedCity = response;
+          $scope.selectedCity = response;
+          $scope.selectedDelivery = $scope.selectedCity.delivery[0];
+          $scope.selectedPayment = $scope.selectedDelivery.payments[0];
+          $scope.SelectDelivery();
         })
     }
 
     $scope.SelectDelivery = function () {
-      var index = $scope.selector.deliveryIndex;
-      $rootScope.selectedDelivery = $scope.selectedCity.delivery[index];
+      $scope.selectedPayment = $scope.selectedDelivery.payments[0];
+      if ($scope.selectedDelivery.id === '5'){
+        $scope.selectedNewPostWHS = $scope.selectedCity.newPostWHS[0];
+      }else if ($scope.selectedDelivery.id === '3'){
+        $scope.selectedShop = $scope.selectedCity.shops[0];
+      }
     }
 
     $scope.SelectPayment = function () {
-      var index = $scope.selector.paymentIndex;
-      $rootScope.selectedPayment = $scope.selectedDelivery.payments[index];
+      //var index = $scope.selector.paymentIndex;
+      //$scope.selectedPayment = $scope.selectedDelivery.payments[index];
     }
 
     $scope.SelectNewPostWHS = function () {
-      var index = $scope.selector.newPostWHSIndex;
-      $rootScope.selectednewPostWHS = $scope.selectedCity.newPostWHS[index];
+      //var index = $scope.selector.newPostWHSIndex;
+      //$scope.selectedNewPostWHS = $scope.selectedCity.newPostWHS[index];
     }
 
     $scope.CartRecalculation = function () {

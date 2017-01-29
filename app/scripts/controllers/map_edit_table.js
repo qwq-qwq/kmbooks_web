@@ -6,6 +6,14 @@
 angular.module('angularApp')
   .controller('MapEditTableCtrl', function($scope, $http, $location, $anchorScroll, $route, config) {
 
+    $http.get(config.url() + "/api/get_cities")
+      .success(function(response) {
+        $scope.cities = response;
+        $scope.selector = {};
+        $scope.selector.city = $scope.cities[0];
+        //$scope.SelectCity();
+      })
+
     $scope.goToMarker = function goToMarker(gmap) {
       $scope.map.setCenter(new google.maps.LatLng(gmap.lat, gmap.longit));
       $scope.map.setZoom(15);
@@ -21,10 +29,17 @@ angular.module('angularApp')
 
     $scope.editItem = function (item) {
       item.editing = true;
+      angular.forEach($scope.cities, function (city, key) {
+         if(item.city === city.originalId){
+           item.controlCity = $scope.cities[key];
+         }
+      })
     }
+
     $scope.doneEditing = function (item) {
       item.editing = false;
-      var gmap = {id: item.id, name: item.name, description: item.description, sprut_code: item.sprut_code, sortIndex: item.sortIndex, lat: item.lat, longit: item.longit};
+      var gmap = {id: item.id, name: item.name, description: item.description, sprut_code: item.sprut_code,
+                  sortIndex: item.sortIndex, lat: item.lat, longit: item.longit, city: item.city};
       $http.post(config.url() + "/api/edit/gmap_update", gmap, {withCredentials: true})
         .success(function(response) {
             if (typeof item.upl_item != 'undefined'){

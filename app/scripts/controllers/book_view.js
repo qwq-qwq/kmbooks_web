@@ -56,7 +56,7 @@ angular.module('angularApp')
 
     $http.get(config.url() + '/api/books/search?code=' + code)
       .success(function (response) {
-        $scope.book = response.booksList[0];
+        $scope.book = response.bookList[0];
         if ($scope.book.image === '') {
           $scope.book.image = '/img/no_picture_ru_165.jpg';
         } else {

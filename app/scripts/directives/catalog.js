@@ -29,21 +29,21 @@ angular.module('angularApp').directive('bkCatalog', ['$http', 'config', 'authori
         var page = scope.page;
         $http.get(config.url() + "/api/books/search?page=" + (page - 1) + filter)
           .success(function(response) {
-            var booksList = response.booksList;
-            for (var key in booksList) {
-              if (booksList[key].image == '') {
-                booksList[key].image = '/img/no_picture_ru_165.jpg';
+            var bookList = response.bookList;
+            for (var key in bookList) {
+              if (bookList[key].image == '') {
+                bookList[key].image = '/img/no_picture_ru_165.jpg';
               }
-              if (booksList[key].sale > 0) {
-                booksList[key].table_caption = 'Залишки шт. (продаж шт.)';
-                booksList[key].type_rests = 'Продано: ';
-                booksList[key].rests = '(' + booksList[key].sale + ' шт.)';
+              if (bookList[key].sale > 0) {
+                bookList[key].table_caption = 'Залишки шт. (продаж шт.)';
+                bookList[key].type_rests = 'Продано: ';
+                bookList[key].rests = '(' + bookList[key].sale + ' шт.)';
               }else{
-                booksList[key].table_caption = 'Залишки шт.';
-                booksList[key].rests = '';
+                bookList[key].table_caption = 'Залишки шт.';
+                bookList[key].rests = '';
               }
             }
-            scope.books = booksList;
+            scope.books = bookList;
             scope.goodsCount = response.countInList;
             scope.pages = [];
             var pagesCount = Math.ceil(scope.goodsCount / 42);

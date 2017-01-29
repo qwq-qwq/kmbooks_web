@@ -20,14 +20,14 @@
       };
       $http.get(config.url() + "/api/books/search_by_one_criteria?search_string=" + $scope.search_string + "&page=" + (page - 1))
         .success(function(response) {
-          var booksList = response.booksList;
-          for (var key in booksList) {
-            if (booksList[key].image == '') {
-              booksList[key].image = '/img/no_picture_ru_165.jpg';
+          var bookList = response.bookList;
+          for (var key in bookList) {
+            if (bookList[key].image == '') {
+              bookList[key].image = '/img/no_picture_ru_165.jpg';
             }
-            booksList[key].opened = false;
+            bookList[key].opened = false;
           }
-        	$scope.books = booksList;
+        	$scope.books = bookList;
           $scope.proceedSearch = false;
 
           $scope.pages = [];

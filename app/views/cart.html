@@ -28,28 +28,28 @@
       <tbody>
         <tr ng-repeat="cartItems in cart.goodsTable">
             <a href="#/book_view?code={{cartItems.code}}">
-              <th style="text-align: center">
+              <td style="text-align: center">
                 <span><i class="fa fa-times-circle-o" aria-hidden="true"
                          style="cursor: pointer;" ng-click="removeFromCart(cartItems.code)"></i></span>
-              </th>
-              <th>
+              </td>
+              <td>
                 <img class="img-responsive" style=" min-width: 70px" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
-              </th>
-              <th style="text-align: center">
+              </td>
+              <td style="text-align: center">
                 <p>{{cartItems.name}}</p>
-              </th>
-              <th>
+              </td>
+              <td>
                 <input class="form-control" ng-change="ChangeQuantity()" ng-model="cartItems.quantity">
-              </th>
-              <th style="text-align: center">
+              </td>
+              <td style="text-align: center">
                 <p>{{cartItems.discount}}%</p>
-              </th>
-              <th style="text-align: center">
+              </td>
+              <td style="text-align: center">
                 <p>{{cartItems.price}}</p>
-              </th>
-              <th style="text-align: center">
+              </td>
+              <td style="text-align: center">
                 <p>{{cartItems.quantity * cartItems.price}} грн</p>
-              </th>
+              </td>
             </a>
         </tr>
         <tr>
@@ -82,42 +82,93 @@
       <label>
         Місто
       </label>
-      <select class="form-control" ng-model="selector.cityId" ng-change="SelectCity()">
-        <option ng-repeat="city in cities" value="{{city.id}}">{{city.name}}</option>
+      <select class="form-control"  ng-model="selector.city" ng-change="SelectCity()" ng-options="city as city.name for city in cities">
       </select>
     </div>
     <div class="form-group">
       <label>
         Тип доставки
       </label>
-      <select class="form-control" ng-model="selector.deliveryIndex" ng-change="SelectDelivery()">
-        <option ng-repeat="delivery in selectedCity.delivery" value={{$index}}>{{delivery.name}}</option>
+      <select class="form-control" ng-model="selectedDelivery" ng-change="SelectDelivery()" ng-options="delivery as delivery.name for delivery in selectedCity.delivery">
       </select>
     </div>
     <div class="form-group">
       <label>
         Метод платежу
       </label>
-      <select class="form-control" ng-model="selector.paymentIndex" ng-change="SelectPayment()">
-        <option ng-repeat="payment in selectedDelivery.payments" value={{$index}}>{{payment.name}}</option>
+      <select class="form-control" ng-model="selectedPayment" ng-change="SelectPayment()" ng-options="payment as payment.name for payment in selectedDelivery.payments">
       </select>
     </div>
     <div ng-if="selectedDelivery.id === '5'" class="form-group">
       <label>
         Відділення Нової Пошти:
       </label>
-      <select class="form-control" ng-model="selector.newPostWHSIndex" ng-change="SelectNewPostWHS()">
-        <option ng-repeat="newPost in selectedCity.newPostWHS" value={{$index}}>{{newPost.name}}</option>
+      <select class="form-control" ng-model="selectedNewPostWHS" ng-change="SelectNewPostWHS()" ng-options="newPostWHS as newPostWHS.name for newPostWHS in selectedCity.newPostWHS">
       </select>
+      <!--<div class="row">
+        <div class="col-md-6">-->
+          <table style="margin: 10px 0 0 6px" class="table-striped" width = 100%">
+          <caption>
+            {{selectedNewPostWHS.name}}. {{selectedNewPostWHS.type}}. Часи роботи.
+          </caption>
+          <thead>
+            <th class="col-md-6">
+              День:
+            </th>
+            <th class="col-md-6">
+              Години:
+            </th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Понеділок</td>
+              <td>{{selectedNewPostWHS.open[1]}}</td>
+            </tr>
+            <tr>
+              <td>Вівторок</td>
+              <td>{{selectedNewPostWHS.open[2]}}</td>
+            </tr>
+            <tr>
+              <td>Середа</td>
+              <td>{{selectedNewPostWHS.open[3]}}</td>
+            </tr>
+            <tr>
+              <td>Чертвер</td>
+              <td>{{selectedNewPostWHS.open[4]}}</td>
+            </tr>
+            <tr>
+              <td>Пятниця</td>
+              <td>{{selectedNewPostWHS.open[5]}}</td>
+            </tr>
+            <tr>
+              <td>Субота</td>
+              <td>{{selectedNewPostWHS.open[6]}}</td>
+            </tr>
+            <tr>
+              <td>Неділя</td>
+              <td>{{selectedNewPostWHS.open[7]}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <!--</div>
+        <div class="col-md-6">
+
+        </div>
+      </div>-->
     </div>
 
     <div ng-if="selectedDelivery.id === '3'" class="form-group">
       <label>
         Магазин:
       </label>
-      <select class="form-control" ng-model="selector.shopIndex" ng-change="SelectShop()">
-        <option ng-repeat="shop in selectedCity.shops" value={{$index}}>{{shop.name}}</option>
+      <select class="form-control" ng-model="selectedShop" ng-options="shop as shop.name for shop in selectedCity.shops">
       </select>
+      <div style="margin: 10px 0 0 6px">
+        <a href="#/map?code_shop={{selectedShop.sprut_code}}">
+          {{selectedShop.name}}
+        </a>
+      </div>
+      <p style="margin: 10px 0 0 6px" ng-bind-html="selectedShop.description"></p>
     </div>
 
     <h4>Контактна особа</h4>
