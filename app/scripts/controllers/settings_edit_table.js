@@ -3,7 +3,6 @@
  */
 'use strict';
 
-
 angular.module('angularApp')
   .controller('SettingsEditTableCtrl', function($scope, $http, config) {
 
