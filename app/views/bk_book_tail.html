@@ -1,0 +1,23 @@
+<div class="bukva-item">
+  <a href="#/book_view?code={{book.code}}">
+    <img class="img-responsive center-block" src="{{book.image}}"> </img>
+  </a>
+  <div style="text-align:center; font-size: 15px; margin-top: 10px; margin-bottom: 5px">
+    <a href="#/book_view?code={{book.code}}" style="color: black">
+      {{book.name}}
+    </a>
+  </div>
+  <div class="price_value">{{book.price}} грн</div>
+  <div class="bukva-hidden">
+    <p style="margin-top: 9px; text-align: center">
+      <bk-buy-button book = "book"></bk-buy-button>
+    </p>
+    <p>
+      <b> Код: </b> {{book.code}}
+      <span ng-if="book.author"> <b>Автор:&nbsp;</b><a href="#/search?author={{book.author}}">{{book.author}}</a></span>
+    </p>
+    <p>
+      <span ng-if="book.description">{{book.description.substring(0, 230) + "..."}}</span>
+    </p>
+  </div>
+</div>

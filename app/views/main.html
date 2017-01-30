@@ -4,30 +4,9 @@
      Рекомендуємо
    </h2>
    </div>
-      <span ng-repeat="recomended in recomendeds">
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="bukva-item">
-              <a href="#/book_view?code={{recomended.code}}">
-                <div class="cover_img" style="background-image:url('{{recomended.image}}');"> </div>
-              </a>
-              <div class="size">
-                <h4>
-                  <a href="#/book_view?code={{recomended.code}}">
-                    {{recomended.name}}
-                  </a>
-                </h4>
-                <p>
-                  <b> Код: </b> {{recomended.code}}
-                  <span ng-if="recomended.author"> <b>Автор:&nbsp;</b><a href="#/search?author={{recomended.author}}">{{recomended.author}}</a></span>
-                </p>
-                <p>
-                  <span ng-if="recomended.description">{{recomended.description}}</span>
-                </p>
-                <a href="http://bukva.ua/catalog/browse/{{recomended.codeGroup}}/1/{{recomended.code}}" style="align: center; text-decoration:none">
-                  <button class="btn btn-primary bukva-btn center-block"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити в інтернет магазині</button>
-                </a>
-              </div>
-            </div>
+      <span ng-repeat="recommended in recommendeds">
+          <div class="col-xs-12 col-sm-6 col-md-3" style="min-height: 400px">
+            <bk-book-tail book="recommended"></bk-book-tail>
           </div>
           <div class="clearfix visible-sm-block" ng-if="$odd"></div>
       </span>

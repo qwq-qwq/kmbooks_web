@@ -21,7 +21,7 @@
     </div>
     <div class="col-md-2" style="text-align: right">
         <div class="btn-group" style="margin-top: 20px">
-          <button class="btn btn-default" ng-class="{active: kindOfView==='tails'}" ng-click="setLayout('tails')">
+          <button class="btn btn-default" ng-class="{active: kindOfView==='tiles'}" ng-click="setLayout('tiles')">
             <span>
               <i class="fa fa-th" aria-hidden="true"></i>
             </span>
@@ -37,7 +37,7 @@
   <div ng-if="pages.length === 1" class="row">
     <div class="col-md-12" style="text-align: right">
       <div class="btn-group" style="margin-top: 20px">
-        <button class="btn btn-default" ng-class="{active: kindOfView==='tails'}" ng-click="setLayout('tails')">
+        <button class="btn btn-default" ng-class="{active: kindOfView==='tiles'}" ng-click="setLayout('tiles')">
           <span>
             <i class="fa fa-th" aria-hidden="true"></i>
           </span>
@@ -78,7 +78,7 @@
       <div ng-if="book.description"><b>Описання: </b>{{book.description}}...</div>
     </div>
   </div>
-  <span ng-if="kindOfView==='tails'" ng-repeat="book in books">
+  <span ng-if="kindOfView==='tiles'" ng-repeat="book in books">
      <div class="col-xs-12 col-sm-6 col-md-4" style="min-height: 400px">
        <div class="bukva-item">
          <a href="#/book_view?code={{book.code}}">
@@ -124,7 +124,7 @@
     </div>
     <div class="col-md-2" style="text-align: right">
         <div class="btn-group" style="margin-top: 20px">
-          <button class="btn btn-default" ng-class="{active: kindOfView==='tails'}" ng-click="setLayout('tails')">
+          <button class="btn btn-default" ng-class="{active: kindOfView==='tiles'}" ng-click="setLayout('tiles')">
             <span>
               <i class="fa fa-th" aria-hidden="true"></i>
             </span>
@@ -140,7 +140,7 @@
   <div ng-if="pages.length === 1" class="row">
     <div class="col-md-12" style="text-align: right">
       <div class="btn-group" style="margin-top: 20px">
-        <button class="btn btn-default" ng-class="{active: kindOfView==='tails'}" ng-click="setLayout('tails')">
+        <button class="btn btn-default" ng-class="{active: kindOfView==='tiles'}" ng-click="setLayout('tiles')">
           <span>
             <i class="fa fa-th" aria-hidden="true"></i>
           </span>

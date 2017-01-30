@@ -102,7 +102,7 @@ angular.module('angularApp')
               response[key].description = response[key].description.replace(/<\/?[^>]+>/gi, '').substring(0, 100) + '...';
             }
           }
-          $scope.recomendeds = response;
+          $scope.recommendeds = response;
         })
 
     }
