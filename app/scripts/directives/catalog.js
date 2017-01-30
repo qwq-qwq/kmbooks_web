@@ -26,6 +26,9 @@ angular.module('angularApp').directive('bkCatalog', ['$http', 'config', 'authori
         if (scope.filterLanguages !== undefined) {
           filter += "&language=" + scope.filterLanguages;
         }
+        if (scope.filterSortBy !== undefined) {
+          filter += "&sortBy=" + scope.filterSortBy;
+        }
         var page = scope.page;
         $http.get(config.url() + "/api/books/search?page=" + (page - 1) + filter)
           .success(function(response) {

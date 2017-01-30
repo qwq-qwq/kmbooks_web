@@ -7,6 +7,7 @@
 angular.module('angularApp')
   .controller('BooksTableCtrl', function($scope, $http, $location, config, $route) {
     $scope.kindOfView = "tiles";
+    $scope.sortBy = "noveltiesFirst";
     $scope.catalog = function () {
       var page = $location.search().page;
       var priceFrom = $location.search().priceFrom;
@@ -15,6 +16,7 @@ angular.module('angularApp')
       $scope.filterSeries = $location.search().series;
       $scope.filterCovers = $location.search().covers;
       $scope.filterLanguages = $location.search().languages;
+      $scope.filterSortBy = $location.search().sortBy;
       $scope.group = $location.search().group;
       if (page === undefined){
         page = 1;
@@ -59,22 +61,23 @@ angular.module('angularApp')
     if ($location.path() == '/bestsellers') {
       $scope.myTitle = 'Бестселери';
       $scope.myHeader = 'Бестселери';
-      $http.get(config.url() + "/api/books/best_of_week_all")
-        .success(function(response) {
-          for (var key in response) {
-            if (response[key].image == '') {
-               response[key].image = '/img/no_picture_ru_165.jpg';
-            }
-            if (response[key].sale > 0) {
-               response[key].table_caption = 'Залишки шт. (продаж шт.)';
-               response[key].type_rests = 'Продано: ';
-               response[key].rests = '(' + response[key].sale + ' шт.)';
-            }else{
-               response[key].table_caption = 'Залишки шт.';
-               response[key].rests = '';
-            }
+      var filter = '';
+      if ($location.search().group !== undefined) {
+        filter = "?group=" + $location.search().group;
+      }
+      $http.get(config.url() + "/api/books/criteria" + filter)
+        .success(function (response) {
+          $scope.priceFrom = response.priceFrom;
+          $scope.priceTo = response.priceTo;
+          $scope.authors = response.authors;
+          $scope.series = response.series;
+          $scope.covers = response.covers;
+          $scope.languages = response.languages;
+          if ($location.search().priceFrom == undefined && $location.search().priceTo == undefined) {
+            $scope.priceSliderValue = [response.priceFrom, response.priceTo];
           }
-          $scope.books = response;
+          $scope.filters = {};
+          $scope.catalog();
         })
     }
 
@@ -87,9 +90,6 @@ angular.module('angularApp')
             if (response[key].image == '') {
               response[key].image = '/img/no_picture_ru_165.jpg';
             }
-            response[key].table_caption = 'Залишки шт.';
-            response[key].type_rests = 'Залишки: ';
-            response[key].rests = response[key].kvo + ' шт.';
           }
           $scope.books = response;
         })
@@ -246,6 +246,11 @@ angular.module('angularApp')
     $scope.setLayout = function (layout) {
       $scope.kindOfView = layout;
       $scope.searching = true;
+    }
+
+    $scope.setSortBy = function (sortBy) {
+      $location.search('sortBy', sortBy);
+      $scope.catalog();
     }
 
     $scope.$on('$routeUpdate', function(event, current) {

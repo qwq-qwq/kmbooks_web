@@ -78,6 +78,17 @@
     <p>вартість доставки</p>
     <p>до сплати</p>
     <p style="font-size: small">*- остаточна вартість замовлення буде відома при надходженні товару на склад</p>
+
+    <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="city in cities" md-item-text="city.name">
+      <span md-highlight-text="searchText">{{city.name}}</span>
+    </md-autocomplete>
+
+    <md-input-container style="margin-right: 10px;">
+      <label>Місто</label>
+      <md-select ng-model="selector.city">
+        <md-option ng-repeat="city in cities" value="{{city.id}}">{{city.name}}</md-option>
+      </md-select>
+    </md-input-container>
     <div class="form-group">
       <label>
         Місто
@@ -107,7 +118,7 @@
       </select>
       <!--<div class="row">
         <div class="col-md-6">-->
-          <table style="margin: 10px 0 0 6px" class="table-striped" width = 100%>
+          <table style="margin: 10px 0 0 6px" class="table-striped" width = "100%">
           <caption>
             {{selectedNewPostWHS.name}}. {{selectedNewPostWHS.type}}. Часи роботи.
           </caption>

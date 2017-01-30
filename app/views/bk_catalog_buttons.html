@@ -1,0 +1,27 @@
+<span uib-dropdown>
+  <button class="btn btn-default" uib-dropdown-toggle style="margin-top: 20px">
+    Сортування
+    <span>
+      <i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+    </span>
+  </button>
+  <ul class="dropdown-menu" uib-dropdown-menu role="menu" style="margin-top: 20px" aria-labelledby="single-button">
+    <li ng-class="{active: filterSortBy==='noveltiesFirst'}"><a href="#"  ng-click="setSortBy('noveltiesFirst'); $event.preventDefault()">Новинки зверху</a></li>
+    <li ng-class="{active: filterSortBy==='bestsellersFirst'}"><a href="#" ng-click="setSortBy('bestsellersFirst'); $event.preventDefault()">Бестселери зверху</a></li>
+    <li ng-class="{active: filterSortBy==='priceAsc'}"><a href="#" ng-click="setSortBy('priceAsc'); $event.preventDefault()">Ціна за зростанням</a></li>
+    <li ng-class="{active: filterSortBy==='priceDesc'}"><a href="#" ng-click="setSortBy('priceDesc'); $event.preventDefault()">Ціна за спаданням</a></li>
+  </ul>
+</span>
+<div class="btn-group" style="margin-top: 20px">
+  <button class="btn btn-default" ng-class="{active: kindOfView==='tiles'}" ng-click="setLayout('tiles')">
+     <span>
+       <i class="fa fa-th" aria-hidden="true"></i>
+     </span>
+  </button>
+  <button class="btn btn-default" ng-class="{active: kindOfView==='list'}" ng-click="setLayout('list')">
+    <span>
+      <i class="fa fa-th-list" aria-hidden="true"></i>
+    </span>
+  </button>
+</div>
+

@@ -1,8 +1,10 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('CartCtrl', function($scope, $http, $location, config, cart, $rootScope, authorization) {
+  .controller('CartCtrl', function($scope, $http, $location, config, cart, $rootScope, $cookies, authorization) {
     $scope.cart = cart.Items();
+
+
 
     $http.get(config.url() + "/api/get_cities")
       .success(function(response) {

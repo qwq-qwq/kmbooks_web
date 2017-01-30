@@ -24,7 +24,8 @@
     "smartmenus": "^1.0.1",
     "angular-bootstrap-slider": "^0.1.28",
     "ng-jcrop": "^2.1.2",
-    "photoswipe": "~4.1.0"
+    "photoswipe": "~4.1.0",
+    "angular-material": "^1.1.1"
   },
   "overrides": {
     "font-awesome": {
