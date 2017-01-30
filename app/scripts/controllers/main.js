@@ -11,7 +11,6 @@ angular.module('angularApp')
         return 0;
     }
 
-
     function loadingEvents() {
       $http.get(config.url() + "/api/events")
         .success(function (response) {
@@ -73,11 +72,6 @@ angular.module('angularApp')
     function loadingNovelty() {
       $http.get(config.url() + "/api/books/novelty")
         .success(function(response) {
-          for (var key in response) {
-            if (response[key].description !== null) {
-              response[key].description = response[key].description.replace(/<\/?[^>]+>/gi, '').substring(0, 100) + '...';
-            }
-          }
           $scope.noveltys = response;
         })
     }
@@ -85,11 +79,6 @@ angular.module('angularApp')
     function loadingBest() {
       $http.get(config.url() + "/api/books/best_of_week")
         .success(function (response) {
-          for (var key in response) {
-            if (response[key].description !== null) {
-              response[key].description = response[key].description.replace(/<\/?[^>]+>/gi, '').substring(0, 100) + '...';
-            }
-          }
           $scope.bestsellers = response;
         })
     }
@@ -97,11 +86,6 @@ angular.module('angularApp')
     function loadingRecomended() {
       $http.get(config.url() + "/api/books/recommended")
         .success(function(response) {
-          for (var key in response) {
-            if (response[key].description !== null) {
-              response[key].description = response[key].description.replace(/<\/?[^>]+>/gi, '').substring(0, 100) + '...';
-            }
-          }
           $scope.recommendeds = response;
         })
 

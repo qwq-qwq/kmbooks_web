@@ -24,29 +24,8 @@
     </div>
     </div>
       <span ng-repeat="bestseller in bestsellers">
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="bukva-item">
-              <a href="#/book_view?code={{bestseller.code}}">
-                <div class="cover_img" style="background-image:url('{{bestseller.image}}');"> </div>
-              </a>
-              <div class="size">
-                <h4>
-                  <a href="#/book_view?code={{bestseller.code}}">
-                    {{bestseller.name}}
-                  </a>
-                </h4>
-                <p>
-                  <b> Код: </b> {{bestseller.code}}
-                  <span ng-if="bestseller.author"> <b>Автор:&nbsp;</b><a href="#/search?author={{bestseller.author}}">{{bestseller.author}}</a></span>
-                </p>
-                <p>
-                  <span ng-if="bestseller.description">{{bestseller.description}}</span>
-                </p>
-                <a href="http://bukva.ua/catalog/browse/{{bestseller.codeGroup}}/1/{{bestseller.code}}" style="text-decoration:none">
-                  <button class="btn btn-primary bukva-btn center-block"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити в інтернет магазині</button>
-                </a>
-              </div>
-            </div>
+          <div class="col-xs-12 col-sm-6 col-md-3" style="min-height: 400px">
+            <bk-book-tail book="bestseller"></bk-book-tail>
           </div>
           <div class="clearfix visible-sm-block" ng-if="$odd"></div>
       </span>
@@ -64,30 +43,8 @@
        </div>
     </div>
       <span ng-repeat="novelty in noveltys">
-           <div class="col-xs-12 col-sm-6 col-md-3">
-             <div class="bukva-item">
-               <a href="#/book_view?code={{novelty.code}}">
-                 <div class="cover_img" style="background-image:url('{{novelty.image}}');"> </div>
-               </a>
-               <div class="size">
-                 <h4>
-                   <a href="#/book_view?code={{novelty.code}}">
-                     {{novelty.name}}
-                   </a>
-                 </h4>
-                 <p>
-                   <b> Код: </b> {{novelty.code}}
-                   <span ng-if="novelty.author"> <b>Автор:&nbsp;</b><a
-                     href="#/search?author={{novelty.author}}">{{novelty.author}}</a></span>
-                 </p>
-                 <p>
-                   <span ng-if="novelty.description">{{novelty.description}}</span>
-                 </p>
-                 <a href="http://bukva.ua/catalog/browse/{{novelty.codeGroup}}/1/{{novelty.code}}" style="align: center; text-decoration:none">
-                   <button class="btn btn-primary bukva-btn center-block"><span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;купити в інтернет магазині</button>
-                 </a>
-               </div>
-             </div>
+           <div class="col-xs-12 col-sm-6 col-md-3" style="min-height: 400px">
+             <bk-book-tail book="novelty"></bk-book-tail>
            </div>
            <div class="clearfix visible-sm-block" ng-if="$odd"></div>
       </span>
