@@ -35,7 +35,7 @@
       <div class="col-md-2 hidden-xs hidden-sm">
         <div style="position: fixed; top: 60px; margin-left: -30px;">
           <!--<div style="background: rgba(255, 255, 255, 0.7); padding: 20px;">-->
-            <img class="img-responsive" src="{{book.image}}" style="max-width: 250px;">
+            <img class="img-responsive" src="{{book.image}}" ng-style="flatImageHeight">
             <p style="margin-top: 30px; text-align: center">
               <span style="font-size: 25px; color: black;">{{book.price}} <span style="font-size: 15px">грн</span></span>
               <bk-buy-button book = "book"></bk-buy-button>
