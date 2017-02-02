@@ -147,7 +147,7 @@ angular.module('angularApp')
       //if (cart.IsNotEmpty()) {
         //$scope.cartColor={color: '#428bca'};
         $scope.itemsCount = cart.ItemsCount();
-        $scope.cart = cart.Items();
+        $scope.cart = cart.GetCart();
       //}
     })
 

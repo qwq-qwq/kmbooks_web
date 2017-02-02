@@ -1,4 +1,4 @@
-<div class="row" style="margin-top: 10px">
+<div ng-show="completedOrder === undefined" class="row" style="margin-top: 10px">
   <div class="col-md-6">
     <table ng-if="cart.goodsTable.length > 0" class="table-striped">
       <caption>Кошик. При замовленні на 450.00 грн отримуєте	безкоштовну доставку по Україні</caption>
@@ -48,7 +48,7 @@
                 <p>{{cartItems.price}}</p>
               </td>
               <td style="text-align: center">
-                <p>{{cartItems.quantity * cartItems.price}} грн</p>
+                <p>{{cartItems.amount}} грн</p>
               </td>
             </a>
         </tr>
@@ -73,27 +73,19 @@
   </div>
   <div class="col-md-6">
     <h4>Доставка та оплата</h4>
-    <p>Замовлення №</p>
-    <p>вартість товарів</p>
-    <p>вартість доставки</p>
-    <p>до сплати</p>
+    <p>Замовлення №{{order.number}}</p>
+    <p>вартість товарів: {{cart.orderAmount}} грн</p>
+    <p>вартість доставки: {{deliveryCost}} грн</p>
+    <p>до сплати: {{totalAmount}} грн</p>
     <p style="font-size: small">*- остаточна вартість замовлення буде відома при надходженні товару на склад</p>
-
-    <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="city in cities" md-item-text="city.name">
+    <!--<md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="city in cities" md-item-text="city.name">
       <span md-highlight-text="searchText">{{city.name}}</span>
-    </md-autocomplete>
-
-    <md-input-container style="margin-right: 10px;">
-      <label>Місто</label>
-      <md-select ng-model="selector.city">
-        <md-option ng-repeat="city in cities" value="{{city.id}}">{{city.name}}</md-option>
-      </md-select>
-    </md-input-container>
+    </md-autocomplete>-->
     <div class="form-group">
       <label>
         Місто
       </label>
-      <select class="form-control"  ng-model="selector.city" ng-change="SelectCity()" ng-options="city as city.name for city in cities">
+      <select class="form-control" ng-model="selector.city" ng-change="SelectCity()" ng-options="city as city.name for city in cities">
       </select>
     </div>
     <div class="form-group">
@@ -107,14 +99,14 @@
       <label>
         Метод платежу
       </label>
-      <select class="form-control" ng-model="selectedPayment" ng-change="SelectPayment()" ng-options="payment as payment.name for payment in selectedDelivery.payments">
+      <select class="form-control" ng-model="selectedPayment" ng-options="payment as payment.name for payment in selectedDelivery.payments">
       </select>
     </div>
-    <div ng-if="selectedDelivery.id === '5'" class="form-group">
+    <div ng-show="selectedDelivery.id === '5'" class="form-group">
       <label>
         Відділення Нової Пошти:
       </label>
-      <select class="form-control" ng-model="selectedNewPostWHS" ng-change="SelectNewPostWHS()" ng-options="newPostWHS as newPostWHS.name for newPostWHS in selectedCity.newPostWHS">
+      <select class="form-control" ng-model="selectedNewPostWHS" ng-options="newPostWHS as newPostWHS.name for newPostWHS in selectedCity.newPostWHS">
       </select>
       <!--<div class="row">
         <div class="col-md-6">-->
@@ -168,7 +160,7 @@
       </div>-->
     </div>
 
-    <div ng-if="selectedDelivery.id === '3'" class="form-group">
+    <div ng-show="selectedDelivery.id === '3'" class="form-group">
       <label>
         Магазин:
       </label>
@@ -184,20 +176,25 @@
 
     <h4>Контактна особа</h4>
     <div class="form-group">
-      <input class="form-control" placeholder="ПІБ">
+      <input class="form-control" placeholder="ПІБ" ng-model="name">
     </div>
     <div class="form-group">
-      <input class="form-control" placeholder="Телефон">
+      <input class="form-control" placeholder="Телефон" ng-model="phone">
     </div>
     <div class="form-group">
-      <input class="form-control" placeholder="Email">
+      <input class="form-control" placeholder="Email" ng-model="email">
     </div>
     <div class="form-group">
-      <input class="form-control" placeholder="Адреса доставки">
+      <input class="form-control" placeholder="Адреса доставки" ng-model="address">
     </div>
     <div class="form-group">
-      <textarea class="form-control" placeholder="Додати коментар"></textarea>
+      <textarea class="form-control" placeholder="Додати коментар" ng-model="orderComment"></textarea>
     </div>
-    <button class="btn btn-primary">Замовити</button>
+    <button class="btn btn-primary" ng-click="SaveOrder()">Замовити</button>
+  </div>
+</div>
+<div ng-show="completedOrder !== undefined" class="row" style="margin-top: 10px">
+  <div class="jumbotron">
+    Ваше замовлення № {{completedOrder.number}} на суму {{completedOrder.totalAmount}} грн. успішно оформлено
   </div>
 </div>

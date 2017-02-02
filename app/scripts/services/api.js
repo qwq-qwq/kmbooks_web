@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularApp').factory('api', function ($http, $rootScope, $cookies, authorization) {
+angular.module('angularApp').factory('api', function (cart, order, $http, $rootScope, $cookies, authorization) {
   return {
     init: function () {
       $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
@@ -14,6 +14,7 @@ angular.module('angularApp').factory('api', function ($http, $rootScope, $cookie
         }
       };
       authorization.login().success(success);
+      order.GetStoredOrderData();
     }
   };
 });

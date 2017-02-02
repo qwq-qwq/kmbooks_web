@@ -57,14 +57,9 @@ angular.module('angularApp')
     $http.get(config.url() + '/api/books/search?code=' + code)
       .success(function (response) {
         $scope.book = response.bookList[0];
-        if ($scope.book.image === '') {
-          $scope.book.image = '/img/no_picture_ru_165.jpg';
-        } else {
-          $scope.book.image = '/img/pics/' + $scope.book.code + '_big.jpg';
-        };
       })
 
-    $http.get(config.url() + '/api/books/images_without_main?code=' + code)
+    $http.get(config.url() + '/api/books/images_without_main_and_flat?code=' + code)
       .success(function (response) {
         angular.forEach(response, function (image, key) {
             $scope.gallery.images[key] = {
@@ -74,6 +69,15 @@ angular.module('angularApp')
               h: image.height
             };
         })
+      })
+
+    $http.get(config.url() + '/api/books/flat_image?code=' + code)
+      .success(function (response) {
+        if (response.src !== '') {
+          $scope.book.image = response.src.replace('.jpg', '_big.jpg');
+        }else{
+          $scope.book.image = '/img/pics/' + $scope.book.code + '_big.jpg';
+        };
       })
 
     $http.get(config.url() + '/api/books/banner_book?code=' + code)

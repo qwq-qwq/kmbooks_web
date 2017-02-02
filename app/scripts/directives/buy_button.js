@@ -28,28 +28,28 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
           }
         }
       })
+
       scope.AddToCart = function(book) {
-        if ($rootScope.cart === undefined){
-          $rootScope.cart = {email: authorization.username(), goodsTable: []}
+        function successAdded(response) {
+          scope.boughtText = "У кошику";
+          scope.boughtDisable = true;
+          cart.SetCart(response);
+        }
+        if (!cart.Exist()){
+          cart.SetCart({email: authorization.username(), goodsTable: []});
         }
         var preorder = scope.book.kvo > 0 ? false: true;
-        var goodsTable = {code: book.code, quantity: 1, price: book.price, discount: 0, name: book.name, preorder: preorder}
-        $rootScope.cart.goodsTable.push(goodsTable);
+        cart.AddToGoodsTable({code: book.code, quantity: 1, price: book.price, discount: 0, name: book.name, preorder: preorder});
+
         if (authorization.isAuthorized()) {
-          $http.post(config.url() + "/api/edit/carts/update", $rootScope.cart, {withCredentials: true})
+          $http.post(config.url() + "/api/edit/carts/update", cart.GetCart(), {withCredentials: true})
             .success(function(response) {
-               scope.boughtText = "У кошику";
-               scope.boughtDisable = true;
-               $rootScope.cart = response;
-               scope.$emit('cart_was_added');
+              successAdded(response);
             })
         }else{
-          $http.post(config.url() + "/api/carts/update", $rootScope.cart)
+          $http.post(config.url() + "/api/carts/update", cart.GetCart())
             .success(function(response) {
-               scope.boughtText = "У кошику";
-               scope.boughtDisable = true;
-               $rootScope.cart = response;
-               scope.$emit('cart_was_added');
+              successAdded(response);
             })
         }
         return 0;
