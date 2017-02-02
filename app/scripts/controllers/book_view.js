@@ -77,10 +77,10 @@ angular.module('angularApp')
           if (response.src !== '') {
             $scope.flatImage = response.src.replace('.jpg', '_big.jpg');
           }else{
-            $scope.flatImage = '/img/pics/' + $scope.book.code + '_big.jpg';
+            $scope.flatImage = '/img/pics/' + code + '_big.jpg';
           };
         }else{
-          $scope.flatImage = '/img/pics/' + $scope.book.code + '_big.jpg';
+          $scope.flatImage = '/img/pics/' + code + '_big.jpg';
         }
         var bannerHeight = angular.element('#bookBanner').height();
         var flatImageHeight = bannerHeight - 60 - 10;
