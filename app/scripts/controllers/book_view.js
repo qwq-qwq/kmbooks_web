@@ -73,11 +73,15 @@ angular.module('angularApp')
 
     $http.get(config.url() + '/api/books/flat_image?code=' + code)
       .success(function (response) {
-        if (response.src !== '') {
-          $scope.flatImage = response.src.replace('.jpg', '_big.jpg');
+        if (response !== ''){
+          if (response.src !== '') {
+            $scope.flatImage = response.src.replace('.jpg', '_big.jpg');
+          }else{
+            $scope.flatImage = '/img/pics/' + $scope.book.code + '_big.jpg';
+          };
         }else{
           $scope.flatImage = '/img/pics/' + $scope.book.code + '_big.jpg';
-        };
+        }
         var bannerHeight = angular.element('#bookBanner').height();
         var flatImageHeight = bannerHeight - 60 - 10;
         $scope.flatImageHeight={height: flatImageHeight};
