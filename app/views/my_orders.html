@@ -40,7 +40,7 @@
           <p>{{order.payment.name}}</p>
         </td>
         <td style="text-align: center">
-          <p>{{order.totalAmount}}</p>
+          <p>{{order.totalAmount}} грн</p>
         </td>
       </tr>
     </tbody>
@@ -50,15 +50,15 @@
   <div class="col-md-6">
     <bk-order-goods-table goods-table="goodsTable"></bk-order-goods-table>
   </div>
-  <div class="col-md-6" style="margin-top: 20px">
+  <div ng-if="currentOrder !== undefined" class="col-md-6" style="margin-top: 10px">
     <p>Замовлення №{{currentOrder.number}}</p>
     <p>Дата: {{toDateTime(currentOrder.id)}}</p>
     <p>Статус: {{currentOrder.orderState}}</p>
     <p>Коментар: {{currentOrder.orderComment}}</p>
     <p>Доставка: {{currentOrder.delivery.name}}</p>
     <p>Оплата: {{currentOrder.payment.name}}</p>
-    <p>Сума: {{currentOrder.orderAmount}}</p>
-    <p>Сума доставки: {{currentOrder.deliveryCost}}</p>
-    <p>Сума всього: {{currentOrder.totalAmount}}</p>
+    <p>Сума: {{currentOrder.orderAmount}} грн</p>
+    <p>Сума доставки: {{currentOrder.deliveryCost}} грн</p>
+    <p>Сума всього: {{currentOrder.totalAmount}} грн</p>
   </div>
 </div>
