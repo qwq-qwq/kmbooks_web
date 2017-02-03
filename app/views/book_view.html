@@ -1,60 +1,59 @@
-
-    <div class="row">
-      <div class="col-md-4 hidden-xs hidden-sm" ng-if="gallery.images.length > 0">
-        <div class="slide-list">
-          <a ng-repeat="image in gallery.images track by $index" ng-click="showGallery($index)">
-            <img src="{{image.srcThumbNail}}" class="point_img img-responsive" style="max-height: 250px; margin-bottom: 5px">
+<div class="row">
+  <div class="col-md-4 hidden-xs hidden-sm" ng-if="gallery.images.length > 0">
+    <div class="slide-list">
+      <a ng-repeat="image in gallery.images track by $index" ng-click="showGallery($index)">
+        <img src="{{image.srcThumbNail}}" class="point_img img-responsive center-block" style="max-height: 250px; margin-bottom: 6px">
+      </a>
+    </div>
+    <div bk-photoswipe slides="gallery.images" show="gallery.show" slide-selector=".slide-list > a > img"
+         on-close="closeGallery()" options="gallery.opts">
+    </div>
+  </div>
+  <div class="hidden-md hidden-lg" style="text-align: center">
+      <img src="{{book.image.replace('_big.jpg', '.jpg')}}" class="point_img img-rounded">
+      <p style="margin-top: 30px; text-align: center">
+        <span style="font-size: large; color: black;">{{book.price}} грн</span>
+        <bk-buy-button book = "book"></bk-buy-button>
+      </p>
+  </div>
+  <div class="col-md-6 book-data">
+    <div><b>Код: </b><span style="color: #428bca">{{book.code}}</span></div>
+    <div ng-if="book.author"><b>Автор: </b>{{book.author}}</div>
+    <div ng-if="book.series"><b>Серія: </b>{{book.series}}</div>
+    <div>
+      <span ng-if="book.sk"><b>Штрихкод: </b>{{book.sk}}</span>,&nbsp;
+      <span ng-if="book.isbn"><b>ISBN: </b>{{book.isbn}}</span>
+    </div>
+    <div ng-if="book.cover"><b>Обкладинка: </b> {{book.cover}}</div>
+    <div ng-if="book.str"><b>Сторінок: </b> {{book.str}}</div>
+    <div ng-if="book.year"><b>Рік видання: </b> {{book.year}}</div>
+    <div ng-if="book.language"><b>Мова: </b> {{book.language}}</div>
+    <span ng-if="description"><h3 style="color: #428bca">Анотація</h3></span>
+    <span ng-if="description" ng-bind-html="description"></span>
+  </div>
+  <div class="col-md-2 hidden-xs hidden-sm">
+    <div style="position: fixed; top: 60px; margin-left: -30px;">
+      <div style="background: rgba(255, 255, 255, 0.4); padding: 8px;">
+        <img class="img-responsive" src="{{flatImage}}" ng-style="flatImageHeight" style="box-shadow: 0px 0px 10px #d8d8d8;">
+        <p style="margin-top: 30px; text-align: center">
+          <span style="font-size: 25px; color: black;">{{book.price}} <span style="font-size: 15px">грн</span></span>
+          <bk-buy-button book = "book"></bk-buy-button>
+        </p>
+        <p style="text-align: center">
+          <a href="#" ng-disabled="boughtDisable" ng-click="AddToCart(book)">
+            <span style="font-size: large" class="fa fa-cloud-download"></span>&nbsp;&nbsp;Завантажити
           </a>
-        </div>
-        <div bk-photoswipe slides="gallery.images" show="gallery.show" slide-selector=".slide-list > a > img"
-             on-close="closeGallery()" options="gallery.opts">
-        </div>
-      </div>
-      <div class="hidden-md hidden-lg" style="text-align: center">
-          <img src="{{book.image.replace('_big.jpg', '.jpg')}}" class="point_img img-rounded">
-          <p style="margin-top: 30px; text-align: center">
-            <span style="font-size: large; color: black;">{{book.price}} грн</span>
-            <bk-buy-button book = "book"></bk-buy-button>
-          </p>
-      </div>
-      <div class="col-md-6 book-data">
-        <div><b>Код: </b><span style="color: #428bca">{{book.code}}</span></div>
-        <div ng-if="book.author"><b>Автор: </b>{{book.author}}</div>
-        <div ng-if="book.series"><b>Серія: </b>{{book.series}}</div>
-        <div>
-          <span ng-if="book.sk"><b>Штрихкод: </b>{{book.sk}}</span>,&nbsp;
-          <span ng-if="book.isbn"><b>ISBN: </b>{{book.isbn}}</span>
-        </div>
-        <div ng-if="book.cover"><b>Обкладинка: </b> {{book.cover}}</div>
-        <div ng-if="book.str"><b>Сторінок: </b> {{book.str}}</div>
-        <div ng-if="book.year"><b>Рік видання: </b> {{book.year}}</div>
-        <div ng-if="book.language"><b>Мова: </b> {{book.language}}</div>
-        <span ng-if="description"><h3 style="color: #428bca">Анотація</h3></span>
-        <span ng-if="description" ng-bind-html="description"></span>
-      </div>
-      <div class="col-md-2 hidden-xs hidden-sm">
-        <div style="position: fixed; top: 60px; margin-left: -30px;">
-          <div style="background: rgba(255, 255, 255, 0.4); padding: 8px;">
-            <img class="img-responsive" src="{{flatImage}}" ng-style="flatImageHeight" style="box-shadow: 0px 0px 10px #d8d8d8;">
-            <p style="margin-top: 30px; text-align: center">
-              <span style="font-size: 25px; color: black;">{{book.price}} <span style="font-size: 15px">грн</span></span>
-              <bk-buy-button book = "book"></bk-buy-button>
-            </p>
-            <p style="text-align: center">
-              <a href="#" ng-disabled="boughtDisable" ng-click="AddToCart(book)">
-                <span style="font-size: large" class="fa fa-cloud-download"></span>&nbsp;&nbsp;Завантажити
-              </a>
-            </p>
-            <div style="margin-top: 30px; text-align: center">
-               <a href="#" style="color: black"><i class="fa fa-facebook" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               <a href="#" style="color: black"><i class="fa fa-vk" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               <a href="#" style="color: black"><i class="fa fa-google-plus" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               <a href="#" style="color: black"><i class="fa fa-twitter" style="font-size: large"></i></a>
-            </div>
-          </div>
+        </p>
+        <div style="margin-top: 30px; text-align: center">
+           <a href="#" style="color: black"><i class="fa fa-facebook" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="#" style="color: black"><i class="fa fa-vk" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="#" style="color: black"><i class="fa fa-google-plus" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="#" style="color: black"><i class="fa fa-twitter" style="font-size: large"></i></a>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
 
 
