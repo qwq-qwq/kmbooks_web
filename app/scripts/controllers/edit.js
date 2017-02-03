@@ -11,4 +11,8 @@ angular.module('angularApp')
        return authorization.isEditor();
     }
 
+    $scope.isUser = function() {
+      return authorization.isUser();
+    }
+
   });
