@@ -1,10 +1,7 @@
 
 <table ng-if="goodsTable.length > 0" class="table-striped" width="100%">
-  <caption>Замовлення</caption>
+  <caption>Склад заказу</caption>
   <thead>
-  <th class="col-md-1">
-
-  </th>
   <th class="col-md-2">
 
   </th>
@@ -27,12 +24,8 @@
   <tbody>
   <tr ng-repeat="cartItems in goodsTable">
     <a href="#/book_view?code={{cartItems.code}}">
-      <td style="text-align: center">
-                <span><i class="fa fa-times-circle-o" aria-hidden="true"
-                         style="cursor: pointer;" ng-click="removeFromCart(cartItems.code)"></i></span>
-      </td>
       <td>
-        <img class="img-responsive" style="max-width: 100px; min-width: 70px" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
+        <img class="img-responsive" style="max-width: 70px;" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
       </td>
       <td style="text-align: left">
         <p>{{cartItems.name}}</p>
@@ -55,7 +48,6 @@
     <th>
       Всього:
     </th>
-    <th></th>
     <th></th>
     <th></th>
     <th></th>

@@ -19,5 +19,6 @@ angular.module('angularApp')
 
     $scope.setGoodsTable = function (order){
       $scope.goodsTable = order.goodsTable;
+      $scope.currentOrder = order;
     }
   });
