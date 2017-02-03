@@ -174,7 +174,10 @@
         </span>
       </span>
     </span>
-    <div class="container" style="margin-top: 30px">
+    <span ng-controller="HeaderCtrl">
+      <div style="height: 30px;" ng-if="!isMain()"></div>
+    </span>
+    <div class="container">
       <div ng-view=""></div>
     </div>
     <span ng-controller="HeaderCtrl">
