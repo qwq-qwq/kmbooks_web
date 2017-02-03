@@ -85,7 +85,7 @@ angular.module('angularApp')
         var bannerHeight = angular.element('#bookBanner').height();
         var offset = 10;
         if (bannerHeight > 250) {
-          offset = 20;
+          offset = 15;
         }
         var flatImageHeight = bannerHeight - 60 - offset;
         $scope.flatImageHeight={height: flatImageHeight};
