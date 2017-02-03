@@ -9,8 +9,8 @@
   </div>
   <div class="price_value">{{book.price}} грн</div>
   <div class="bukva-hidden">
-    <a href="#AddToWishList()" style="position: absolute; top: 15px; right: 10px">
-      <i style="font-size: medium" class="fa fa-heart-o" aria-hidden="true"></i>
+    <a href="#" ng-click="AddToWishList(book); $event.preventDefault();" style="position: absolute; top: 15px; right: 15px">
+      <i ng-class="wishHart" ng-mouseleave="" ng-mouseenter="" style="font-size: medium" aria-hidden="true"></i>
     </a>
     <p style="margin-top: 9px; text-align: center">
       <bk-buy-button book = "book"></bk-buy-button>
