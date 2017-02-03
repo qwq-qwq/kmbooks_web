@@ -161,7 +161,7 @@ angular.module('angularApp')
     $scope.SaveCart = function () {
       if ($scope.cart !== undefined) {
         if (authorization.isAuthorized()) {
-          $http.post(config.url() + "/api/edit/carts/update", $scope.cart, {withCredentials: true})
+          $http.post(config.url() + "/api/user/carts/update", $scope.cart, {withCredentials: true})
             .success(function(response) {
               cart.SetCart(response);
             })

@@ -42,7 +42,7 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
         cart.AddToGoodsTable({code: book.code, quantity: 1, price: book.price, discount: 0, name: book.name, preorder: preorder});
 
         if (authorization.isAuthorized()) {
-          $http.post(config.url() + "/api/edit/carts/update", cart.GetCart(), {withCredentials: true})
+          $http.post(config.url() + "/api/user/carts/update", cart.GetCart(), {withCredentials: true})
             .success(function(response) {
               successAdded(response);
             })

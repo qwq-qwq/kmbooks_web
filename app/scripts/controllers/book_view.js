@@ -120,13 +120,6 @@ angular.module('angularApp')
       $scope.gallery.show = false;
     };
 
-    $scope.$on('$viewContentLoaded', function (scope) {
-      $http.get(config.url() + '/api/books/remains?code=' + code)
-        .success(function (response) {
-           $scope.remains = response;
-        })
-    })
-
     $scope.isEditor = function() {
       return authorization.isEditor();
     }
