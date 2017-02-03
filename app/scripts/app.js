@@ -122,7 +122,10 @@ angular
           templateUrl: 'views/cart.html',
           controller: 'CartCtrl'
       })
-
+      .when('/my_orders', {
+        templateUrl: 'views/my_orders.html',
+        controller: 'MyOrdersCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })

@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('LogTableCtrl', function($scope, $http, config) {
+  .controller('LogTableCtrl', function($scope, $http, config, utils) {
 
     $http.get(config.url() + "/api/admin/log/last", {withCredentials: true})
       .success(function(response) {
@@ -12,9 +12,7 @@ angular.module('angularApp')
       })
 
     $scope.toDateTime = function(ObjId) {
-      var ObjDate;
-      ObjDate = new Date(parseInt(ObjId.toString().slice(0,8), 16)*1000);
-      return ObjDate.toLocaleDateString() + ' ' + ObjDate.toLocaleTimeString();
+      return utils.toDateTime(ObjId);
     }
   });
 
