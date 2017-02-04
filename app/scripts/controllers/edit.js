@@ -2,10 +2,7 @@
 
 angular.module('angularApp')
   .controller('EditCtrl', function($scope, authorization) {
-
-    $scope.init = function() {
-      $scope.username = authorization.username();
-    }
+    $scope.username = authorization.username();
 
     $scope.isAdmin = function() {
        return authorization.isAdmin();

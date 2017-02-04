@@ -7,7 +7,9 @@
 angular.module('angularApp')
   .controller('BooksTableCtrl', function($scope, $http, $location, config, $route) {
     $scope.kindOfView = "tiles";
-    $location.search('sortBy', 'noveltiesFirst');
+    if ($location.search().sortBy === ''){
+      $location.search('sortBy', 'noveltiesFirst');
+    }
 
     $scope.catalog = function () {
       var page = $location.search().page;
