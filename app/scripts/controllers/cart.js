@@ -86,7 +86,7 @@ angular.module('angularApp')
                          totalAmount:   $scope.totalAmount,
                          goodsTable:    cart.GetCart().goodsTable};
       if (authorization.isAuthorized()) {
-        $http.post(config.url() + "/api/edit/orders/update", orderUpdate, {withCredentials: true})
+        $http.post(config.url() + "/api/user/orders/update", orderUpdate, {withCredentials: true})
           .success(function(response) {
             successAdded(response);
           })
