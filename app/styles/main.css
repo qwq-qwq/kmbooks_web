@@ -5,8 +5,30 @@
   padding: 0.2em 0;
 }
 
-.brand-blue-color {
-  color: #428bca;
+.brand-color-background:hover{
+  background: #01579B;
+}
+
+.brand-color-background {
+  background: #0089cf;
+  color: white;
+}
+
+.brand-color-background:not([disabled]):hover {
+  background-color: rgba(1, 87, 155, 0.96);
+}
+
+.brand-color-background[disabled] {
+  color : rgba(0,0,0,0.38);
+  background-color: rgba(0,0,0,0.12);
+}
+
+.brand-color{
+  color: #0089cf;
+}
+
+.brand-color-hover{
+  color: #01579B;
 }
 
 .navbar-collapse form[role="search"] {

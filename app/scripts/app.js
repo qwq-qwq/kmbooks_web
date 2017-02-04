@@ -126,6 +126,10 @@ angular
         templateUrl: 'views/my_orders.html',
         controller: 'MyOrdersCtrl'
       })
+      .when('/wish_list', {
+        templateUrl: 'views/wish_list.html',
+        controller: 'WishListCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })
@@ -165,8 +169,11 @@ angular
     minSize: [100, 100],
     maxHeight: 600,
     maxWidth: 600
-  });
-});
+    })
+  })
+   .config(['$mdThemingProvider', function($mdThemingProvider) {
+     $mdThemingProvider.disableTheming();
+  }]);
 
 
 

@@ -99,7 +99,7 @@ angular.module('angularApp')
     }
 
     $rootScope.$on("$routeChangeSuccess", function (event, next, current) {
-      if (current.$$route.originalPath === '/cart'){
+      if (current.$route.originalPath === '/cart'){
         $scope.UpdateOrder();
       }
     });
