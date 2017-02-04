@@ -1,6 +1,9 @@
-<span ng-if="searching">
+<!--<span ng-if="searching">
   <p class="visible-xs">Зачекайте ...</p>
   <img class="img-responsive center-block" src="/img/loading.gif">
+</span>-->
+<span ng-if="searching">
+  <md-progress-circular class="center-block" style="stroke: #0089cf; margin-top: 70px" md-mode="indeterminate"></md-progress-circular>
 </span>
 <span ng-if="!searching">
   <div ng-if="pages.length > 1" class="row">
