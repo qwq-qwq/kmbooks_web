@@ -57,6 +57,7 @@ angular.module('angularApp')
                                                    $scope.cropSelection.selection[1],
                                                    $scope.cropSelection.selection[4],
                                                    $scope.cropSelection.selection[5]];
+            item.upl_item.formData[0].is_video = (item.videoLink.length > 0) ? true : false;
             item.upl_item.upload();
           }
         });
