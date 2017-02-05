@@ -69,8 +69,10 @@ angular.module('angularApp').directive('bkBookTail', ['wishList', '$mdPanel', '$
 
       };
 
-      function PanelDialogCtrl(mdPanelRef) {
-        this.mdMyPanelRef = mdPanelRef;
+      PanelDialogCtrl.$inject = ['mdPanelRef'];
+
+      function PanelDialogCtrl(a) {
+        this.mdMyPanelRef = a;
       }
 
       PanelDialogCtrl.prototype.closeDialog = function() {
