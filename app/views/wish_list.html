@@ -1,1 +1,74 @@
+<h1 style="color: #428bca">Мій лист бажаннь</h1>
+<h4>{{username}}</h4>
+<div class="row">
+  <table ng-if="wishList.length > 0" class="table-striped table-bordered table-hover" width="100%">
+      <caption>Кошик. </caption>
+      <thead>
+      <th class="col-md-1">
 
+      </th>
+      <th class="col-md-2">
+
+      </th>
+      <th class="col-md-5">
+        Товар
+      </th>
+      <th class="col-md-1">
+        Кільк
+      </th>
+      <th class="col-md-1">
+        Знижка
+      </th>
+      <th class="col-md-1">
+        Ціна
+      </th>
+      <th class="col-md-1">
+        Сума
+      </th>
+      </thead>
+      <tbody>
+      <tr ng-repeat="cartItems in wishList">
+        <a href="#/book_view?code={{cartItems.code}}">
+          <td style="text-align: center">
+                <span><i class="fa fa-times-circle-o" aria-hidden="true"
+                         style="cursor: pointer;" ng-click="removeFromCart(cartItems.code)"></i></span>
+          </td>
+          <td>
+            <img class="img-responsive" style=" min-width: 70px" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
+          </td>
+          <td style="text-align: center">
+            <p>{{cartItems.name}}</p>
+          </td>
+          <td>
+            <input class="form-control" ng-change="ChangeQuantity()" ng-model="cartItems.quantity">
+          </td>
+          <td style="text-align: center">
+            <p>{{cartItems.discount}}%</p>
+          </td>
+          <td style="text-align: center">
+            <p>{{cartItems.price}}</p>
+          </td>
+          <td style="text-align: center">
+            <p>{{cartItems.amount}} грн</p>
+          </td>
+        </a>
+      </tr>
+      <tr>
+        <th>
+          Всього:
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th style="text-align: center">
+          {{}} грн
+        </th>
+      </tr>
+      </tbody>
+    </table>
+</div>
+    <div ng-if="!wishList.length > 0" class="jumbotron" style="margin-top: 20px">
+      <p>Ваш лист бажаннь порожній</p>
+    </div>

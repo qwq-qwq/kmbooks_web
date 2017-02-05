@@ -10,7 +10,7 @@ angular.module('angularApp')
 
     $http.get(config.url() + "/api/user/wish_lists/get_by_username?username=" + authorization.username(), {withCredentials: true})
       .success(function(response) {
-        $scope.orders = response;
+        $scope.wishList = response;
       })
 
     $scope.toDateTime = function(ObjId) {

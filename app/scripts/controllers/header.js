@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('HeaderCtrl', function($scope, $rootScope, $location, $anchorScroll, $http, config, cart) {
+  .controller('HeaderCtrl', function(wishList, $scope, $rootScope, $location, $anchorScroll, $http, config, cart) {
 
     $scope.menu = [
       {label:'КОНТАКТИ', route:'/contacts'}
@@ -11,7 +11,7 @@ angular.module('angularApp')
 
     $scope.menuActive = '/';
 
-    $scope.cartTooltipOpened = false;
+    $scope.cartTooltipIsOpen = true;
 
     $rootScope.$on('$viewContentLoaded', function(e, curr, prev) {
       $scope.menuActive = $location.path();
@@ -149,6 +149,10 @@ angular.module('angularApp')
         $scope.itemsCount = cart.ItemsCount();
         $scope.cart = cart.GetCart();
       //}
+    })
+
+    $rootScope.$on('wish_list_has_added', function () {
+      $scope.wishListItemsCount = wishList.ItemsCount();
     })
 
     $scope.mouseEnter = function () {

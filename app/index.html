@@ -78,12 +78,13 @@
             <ul ng-show="!showSearch" class="nav navbar-nav navbar-right">
               <li>
                 <a href="#/wish_list" style="display: inline-block; margin-top: 2px">
-                  <span style="font-size: large" class="fa fa-heart"></span>&nbsp;
+                  <span style="font-size: large" class="fa fa-heart"></span>
+                  <span ng-if="wishListItemsCount > 0" style="font-size: large" class="brand-color">&nbsp;{{wishListItemsCount}}</span>
                 </a>
               <li>
               <li>
                 <a href="#/cart" uib-popover-template="templateUrl" popover-append-to-body="true" popover-placement="bottom"
-                   popover-trigger="{'mouseenter':'outsideClick', 'outsideClick':'outsideClick'}" tooltip-is-open="cartTooltipOpened" popover-title="Кошик"
+                   popover-trigger="{'mouseenter':'outsideClick', 'outsideClick':'outsideClick'}" tooltip-is-open="cartTooltipIsOpen" popover-title="Кошик"
                    style="font-size: large;">
                   <span class="glyphicon glyphicon-shopping-cart"></span>
                   <span ng-if="itemsCount > 0" style="color: #428bca">&nbsp;{{itemsCount}}</span>
@@ -257,6 +258,7 @@
     <script src="scripts/services/cart.js"></script>
     <script src="scripts/services/order.js"></script>
     <script src="scripts/services/utils.js"></script>
+    <script src="scripts/services/wish_list.js"></script>
     <script src="scripts/directives/thumb.js"></script>
     <script src="scripts/directives/book_detail.js"></script>
     <script src="scripts/directives/compare_to.js"></script>
