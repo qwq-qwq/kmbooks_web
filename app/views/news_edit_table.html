@@ -42,7 +42,7 @@
       <div ng-show="oneNews.editing" class="form-group">
         <label class="col-md-12" for="name" ng-show="oneNews.editing">Коли:</label>
         <div class="input-group col-md-6">
-          <input type="text" class="form-control col-md-6" uib-datepicker-popup="dd.MM.yyyy" ng-model="oneNews.when"
+          <input type="text" class="form-control col-md-6" uib-datepicker-popup="dd.MM.yyyy" ng-model="oneNews.date"
                  is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true"/>
           <span class="input-group-btn">
             <button type="button" class="btn btn-default" ng-click="open1()"><i
@@ -55,7 +55,7 @@
         <div class="col-md-6">
           <label class="col-md-12" for="name" ng-show="oneNews.editing">Час:</label>
           <div ng-show="oneNews.editing" class="form-group">
-            <div uib-timepicker class="col-md-2" ng-show="oneNews.editing" ng-model="oneNews.when"
+            <div uib-timepicker class="col-md-2" ng-show="oneNews.editing" ng-model="oneNews.date"
                  show-meridian="false"></div>
           </div>
         </div>
