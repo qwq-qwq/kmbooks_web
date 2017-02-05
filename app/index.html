@@ -87,7 +87,7 @@
                    popover-trigger="{'mouseenter':'outsideClick', 'outsideClick':'outsideClick'}" tooltip-is-open="cartTooltipIsOpen" popover-title="Кошик"
                    style="font-size: large;">
                   <span class="glyphicon glyphicon-shopping-cart"></span>
-                  <span ng-if="itemsCount > 0" style="color: #428bca">&nbsp;{{itemsCount}}</span>
+                  <span ng-if="itemsCount > 0" class="brand-color">&nbsp;{{itemsCount}}</span>
                 </a>
               <li>
               <li ng-show="!authenticated">
@@ -294,6 +294,7 @@
     <script src="scripts/controllers/cart.js"></script>
     <script src="scripts/controllers/my_orders.js"></script>
     <script src="scripts/controllers/wish_list.js"></script>
+    <script src="scripts/controllers/news_edit_table.js"></script>
     <!-- endbuild -->
 
 </body>

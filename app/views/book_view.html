@@ -17,7 +17,7 @@
       </p>
   </div>
   <div class="col-md-6 book-data">
-    <div><b>Код: </b><span style="color: #428bca">{{book.code}}</span></div>
+    <div><b>Код: </b><span class="brand-color">{{book.code}}</span></div>
     <div ng-if="book.author"><b>Автор: </b>{{book.author}}</div>
     <div ng-if="book.series"><b>Серія: </b>{{book.series}}</div>
     <div>
@@ -28,7 +28,7 @@
     <div ng-if="book.str"><b>Сторінок: </b> {{book.str}}</div>
     <div ng-if="book.year"><b>Рік видання: </b> {{book.year}}</div>
     <div ng-if="book.language"><b>Мова: </b> {{book.language}}</div>
-    <span ng-if="description"><h3 style="color: #428bca">Анотація</h3></span>
+    <span ng-if="description"><h3 class="brand-color">Анотація</h3></span>
     <span ng-if="description" ng-bind-html="description"></span>
   </div>
   <div class="col-md-2 hidden-xs hidden-sm">
@@ -39,10 +39,15 @@
           <span style="font-size: 25px; color: black;">{{book.price}} <span style="font-size: 15px">грн</span></span>
           <bk-buy-button book = "book"></bk-buy-button>
         </p>
-        <md-button class="md-fab md-mini brand-color-background" ng-click="AddToCart(book)">
+        <p style="text-align: center">
+          <md-button href="#" class="" ng-click="AddToCart(book)">
+            <span style="font-size: large" class="fa fa-cloud-download brand-color"></span>&nbsp;&nbsp;Завантажити
+          </md-button>
+        </p>
+        <!--<md-button class="md-fab md-mini brand-color-background" ng-click="AddToCart(book)">
           <md-tooltip md-direction="right">Купити та завантажити</md-tooltip>
           <span style="font-size: medium" class="fa fa-cloud-download"></span>
-        </md-button>
+        </md-button>-->
         <div style="margin-top: 30px; text-align: center">
            <a href="#" style="color: black"><i class="fa fa-facebook" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            <a href="#" style="color: black"><i class="fa fa-vk" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

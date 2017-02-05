@@ -1,0 +1,98 @@
+<style>
+  th {
+    font-weight: normal;
+  }
+</style>
+<h1 class="brand-color">Редагування новин</h1>
+<br>
+<button type="button" class="btn btn-primary" ng-click="AddItem()">
+  Додати нову Новину
+</button>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th class="col-md-3">Картинка</th>
+    <th class="col-md-8">Найменування</th>
+    <th class="col-md-1">Дії</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="oneNews in news">
+    <th>
+      <img class="actions_small_img thumbnail" style="background-image:url('{{oneNews.image}}');">
+      </img>
+      <div ng-if="oneNews.upl_item" style="margin-top: 20px">
+        <div ng-jcrop="cropSelection.src" ng-jcrop-config-name="uploadNewsPictures" selection="cropSelection.selection" thumbnail="cropSelection.thumbnail"></div>
+        <p> Имя файла: {{oneNews.upl_item.file.name}}</p>
+      </div>
+      <span ng-show="oneNews.editing">
+        <input type="file" ng-jcrop-input="uploadNewsPictures" nv-file-select="" uploader="uploader" multiple="" options="{formData: [{id: oneNews.id, row_id: oneNews.row_id, rectangle: []}]}">
+      </span>
+    </th>
+    <th>
+      <h3 class="text-left" ng-hide="oneNews.editing" ng-dblclick="editItem(oneNews)">{{oneNews.title}}</h3>
+      <div ng-show="oneNews.editing" class="form-group">
+        <label for="name" class="col-md-12" ng-show="oneNews.editing">Найменування:</label>
+        <textarea id="name" class="form-control" rows="2" ng-show="oneNews.editing" ng-model="oneNews.title"
+                  autofocus></textarea>
+      </div>
+
+      <p class="text-left" ng-hide="oneNews.editing" ng-dblclick="editItem(oneNews)"><i class="glyphicon glyphicon-time"></i><em style="margin-left: 5px">{{oneNews.when | date:
+        'dd.MM.yyyy'}} o {{oneNews.when | date: 'HH-mm'}}</em></p>
+      <div ng-show="oneNews.editing" class="form-group">
+        <label class="col-md-12" for="name" ng-show="oneNews.editing">Коли:</label>
+        <div class="input-group col-md-6">
+          <input type="text" class="form-control col-md-6" uib-datepicker-popup="dd.MM.yyyy" ng-model="oneNews.when"
+                 is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i
+              class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label class="col-md-12" for="name" ng-show="oneNews.editing">Час:</label>
+          <div ng-show="oneNews.editing" class="form-group">
+            <div uib-timepicker class="col-md-2" ng-show="oneNews.editing" ng-model="oneNews.when"
+                 show-meridian="false"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-left" ng-hide="oneNews.editing" ng-dblclick="editItem(oneNews)">{{oneNews.bookCodes}}</p>
+      <div ng-show="oneNews.editing" class="form-group">
+        <label for="bookCodes" class="col-md-12" ng-show="oneNews.editing">Коди книжок:</label>
+        <input id="bookCodes" class="form-control" rows="2" ng-show="oneNews.editing" ng-model="oneNews.bookCodes"
+                  autofocus></input>
+      </div>
+
+      <p class="text-left" ng-hide="oneNews.editing" ng-bind-html="oneNews.videoLink" ng-dblclick="editItem(oneNews)"></p>
+      <div ng-show="oneNews.editing" class="form-group">
+        <label for="name" class="col-md-12" ng-show="oneNews.editing">Відео посилання:</label>
+        <textarea class="form-control" ng-show="oneNews.editing" ng-model="oneNews.videoLink" autofocus></textarea>
+      </div>
+
+      <p class="text-left" ng-hide="oneNews.editing" ng-bind-html="oneNews.text" ng-dblclick="editItem(oneNews)"></p>
+      <div ng-show="oneNews.editing" class="form-group">
+        <label for="name" class="col-md-12" ng-show="oneNews.editing">Текст:</label>
+        <text-angular ng-show="oneNews.editing" ng-model="oneNews.text" autofocus></text-angular>
+      </div>
+      <br>
+    </th>
+    <th>
+      <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(oneNews)" ng-disabled="oneNews.editing">
+        <span class="glyphicon glyphicon-edit"></span> Редагувати
+      </button>
+      <button type="button" class="btn btn-success btn-xs" ng-click="doneEditing(oneNews)" ng-disabled="!oneNews.editing">
+        <span class="glyphicon glyphicon-save"></span> Зберігти
+      </button>
+      <button type="button" class="btn btn-danger btn-xs" ng-click="deleteItem(oneNews)" ng-disabled="oneNews.editing">
+        <span class="glyphicon glyphicon-remove"></span> Видалити
+      </button>
+    </th>
+  </tr>
+  </tbody>
+</table>
+

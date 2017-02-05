@@ -130,6 +130,10 @@ angular
         templateUrl: 'views/wish_list.html',
         controller: 'WishListCtrl'
       })
+      .when('/news_edit_table', {
+        templateUrl: 'views/news_edit_table.html',
+        controller: 'NewsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })
@@ -169,7 +173,15 @@ angular
     minSize: [100, 100],
     maxHeight: 600,
     maxWidth: 600
-    })
+    });
+    ngJcropConfigProvider.setJcropConfig('uploadNewsPictures', {
+      bgColor: 'black',
+      bgOpacity: .4,
+      aspectRatio: 1.4,
+      minSize: [100, 100],
+      maxHeight: 600,
+      maxWidth: 600
+    });
   })
    .config(['$mdThemingProvider', function($mdThemingProvider) {
      $mdThemingProvider.disableTheming();

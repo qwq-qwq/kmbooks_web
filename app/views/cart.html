@@ -1,7 +1,8 @@
 <div ng-show="completedOrder === undefined" class="row" style="margin-top: 10px">
   <div class="col-md-6">
+    <h4 class="brand-color">Кошик</h4>
     <table ng-if="cart.goodsTable.length > 0" class="table-striped">
-      <caption>Кошик. При замовленні на 450.00 грн отримуєте	безкоштовну доставку по Україні</caption>
+      <caption>При замовленні на 450.00 грн отримуєте	безкоштовну доставку по Україні</caption>
       <thead>
         <th class="col-md-1">
 
@@ -72,7 +73,7 @@
     </div>
   </div>
   <div class="col-md-6">
-    <h4>Доставка та оплата</h4>
+    <h4 class="brand-color">Доставка та оплата</h4>
     <p>Замовлення №{{order.number}}</p>
     <p>вартість товарів: {{cart.orderAmount}} грн</p>
     <p>вартість доставки: {{deliveryCost}} грн</p>
@@ -173,8 +174,7 @@
       </div>
       <p style="margin: 10px 0 0 6px" ng-bind-html="selectedShop.description"></p>
     </div>
-
-    <h4>Контактна особа</h4>
+    <h4 class="brand-color">Контактна особа</h4>
     <div class="form-group">
       <input class="form-control" placeholder="ПІБ" ng-model="name">
     </div>
@@ -190,11 +190,14 @@
     <div class="form-group">
       <textarea class="form-control" placeholder="Додати коментар" ng-model="orderComment"></textarea>
     </div>
-    <button class="btn btn-primary" ng-click="SaveOrder()">Замовити</button>
+    <md-button class="md-raised brand-color-background" ng-click="SaveOrder()">Замовити</md-button>
   </div>
 </div>
 <div ng-show="completedOrder !== undefined" class="row" style="margin-top: 10px">
   <div class="jumbotron">
-    Ваше замовлення № {{completedOrder.number}} на суму {{completedOrder.totalAmount}} грн. успішно оформлено
+    <p>
+      Ваше замовлення № <span class="brand-color">{{completedOrder.number}}</span>
+      на суму <span class="brand-color">{{completedOrder.totalAmount}}</span> грн. успішно оформлено
+    </p>
   </div>
 </div>
