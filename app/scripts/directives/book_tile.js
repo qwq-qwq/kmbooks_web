@@ -70,11 +70,11 @@ angular.module('angularApp').directive('bkBookTail', ['wishList', '$mdPanel', '$
       };
 
       function PanelDialogCtrl(mdPanelRef) {
-        this._mdPanelRef = mdPanelRef;
+        this.mdMyPanelRef = mdPanelRef;
       }
 
       PanelDialogCtrl.prototype.closeDialog = function() {
-        var panelRef = this._mdPanelRef;
+        var panelRef = this.mdMyPanelRef;
         panelRef && panelRef.close().then(function() {
           panelRef.destroy();
         });
