@@ -19,7 +19,7 @@
   <tbody>
   <tr ng-repeat="oneNews in news">
     <th>
-      <img class="img-responsive thumbnail" src="{{oneNews.image + '_small.jpg'}}">
+      <img class="img-responsive" src="{{oneNews.image + '_small.jpg'}}">
       </img>
       <div ng-if="oneNews.upl_item" style="margin-top: 20px">
         <div ng-jcrop="cropSelection.src" ng-jcrop-config-name="uploadNewsPictures" selection="cropSelection.selection" thumbnail="cropSelection.thumbnail"></div>
