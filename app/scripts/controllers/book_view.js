@@ -105,6 +105,11 @@ angular.module('angularApp')
         $scope.description = response.text.replace(/([^>])\n/g, '$1<br/>'); //nl2br
       })
 
+    $http.get(config.url() + '/api/news/get_news_by_code_book?code=' + code)
+      .success(function (response) {
+        $scope.news = response;
+      })
+
     $scope.gallery.opts = {
       index: 0,
       history: false,

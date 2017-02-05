@@ -30,6 +30,14 @@
     <div ng-if="book.language"><b>Мова: </b> {{book.language}}</div>
     <span ng-if="description"><h3 class="brand-color">Анотація</h3></span>
     <span ng-if="description" ng-bind-html="description"></span>
+    <div class="row">
+      <div class="col-md-6"><bk-news-tile news="news[0]"></bk-news-tile></div>
+      <div class="col-md-6"><bk-news-tile news="news[1]"></bk-news-tile></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"><bk-news-tile news="news[2]"></bk-news-tile></div>
+      <div class="col-md-6"><bk-news-tile news="news[3]"></bk-news-tile></div>
+    </div>
   </div>
   <div class="col-md-2 hidden-xs hidden-sm">
     <div style="position: fixed; top: 60px; margin-left: -30px;">
