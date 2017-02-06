@@ -1,5 +1,21 @@
-<div style="background-image:url('{{news.image + '_small.jpg'}}'); height: 60px">
-  <div>
-    {{news.name}}
+<div class="news-item" style="overflow: hidden">
+  <div class="news-image" style="background-color: lightgrey;
+            background-image:url('{{news.image + '_small.jpg'}}');
+            height: 180px;
+            ">
+  </div>
+
+  <div class="news-plate" style="position: absolute; width: 70%; height: 70%; top:20px; left: 12%">
+    <div style="position: absolute; top: 50px; width: 100%;
+              text-align: center;
+              color: white;
+              z-index: 5">
+      {{news.title}}
+    </div>
   </div>
 </div>
+
+
+
+
+

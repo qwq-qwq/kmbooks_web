@@ -5,6 +5,32 @@
   padding: 0.2em 0;
 }
 
+ .news-item:hover .news-image{
+  transform: scale(1.2, 1.2);
+  transition: all 0.3s ;
+}
+
+.news-item:hover .news-plate{
+  opacity: 0.9;
+}
+
+.news-image{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  #opacity: 0.45;
+  z-index: 5;
+}
+
+.news-plate{
+  opacity: 0;
+}
+
+.news-plate:hover{
+  transition: all 0.7s ;
+  background-color: #0089cf;
+}
+
 .brand-color-background:hover{
   background: #01579B;
   color: white;
