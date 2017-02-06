@@ -17,10 +17,10 @@ angular.module('angularApp')
     $http.get(config.url() + '/api/news/get_news_by_id?id=' + id)
       .success(function (response) {
         $scope.news = response;
-        if ($scope.news.videoLink !== undefined) {
+        if ($scope.news.videoLink !== '') {
           $scope.news.sceLink = $sce.trustAsResourceUrl($scope.news.videoLink);
         }
-        if ($scope.news.secondImage !== '') {
+        if ($scope.news.secondImage !== null) {
           $scope.news.image = $scope.news.secondImage;
         }
       })

@@ -109,9 +109,9 @@ angular.module('angularApp')
       for(var k in $scope.news) {
         if ($scope.news[k].row_id == fileItem.formData[0].row_id){
           if (!$scope.news[k].is_second){
-            $scope.news[k].image = '/img/' + response.image + '_small.jpg';
+            $scope.news[k].image = '/img/' + response.image;
           }else{
-            $scope.news[k].secondImage = '/img/' + response.secondImage + '_small.jpg';
+            $scope.news[k].secondImage = '/img/' + response.secondImage;
           }
           $scope.news[k].upl_item = null;
         }
