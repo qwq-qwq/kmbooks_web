@@ -20,14 +20,17 @@
       Інші новини
     </h3>
     <div ng-repeat="news in allNews">
-      <div style="font-size: 18px; line-height: 22px; margin-bottom: 5px;">
+      <div class="col-md-12">
+        <bk-news-tile news = "news"></bk-news-tile>
+      </div>
+      <!--<div style="font-size: 18px; line-height: 22px; margin-bottom: 5px;">
         <a style="" href = "#/news?id={{news.id}}">
           {{news.title}}
         </a>
       </div>
       <div style="font-size: 12px; color: #a09e98; margin-bottom: 15px;">
         {{news.date | date: 'dd.MM.yyyy'}} o {{news.date | date: 'HH-mm'}}
-      </div>
+      </div>-->
     </div>
   </div>
 </div>
