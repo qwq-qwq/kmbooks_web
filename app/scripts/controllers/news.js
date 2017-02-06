@@ -19,6 +19,9 @@ angular.module('angularApp')
         $scope.news = response;
         if ($scope.news.videoLink !== undefined) {
           $scope.news.sceLink = $sce.trustAsResourceUrl($scope.news.videoLink);
+          if ($scope.news.secondImage !== '') {
+            $scope.news.image = $scope.news.secondImage;
+          }
         }
       })
 
