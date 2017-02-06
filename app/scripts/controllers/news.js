@@ -17,11 +17,9 @@ angular.module('angularApp')
     $http.get(config.url() + '/api/news/get_news_by_id?id=' + id)
       .success(function (response) {
         $scope.news = response;
-        angular.forEach(response, function(value, key) {
-          if (value.videoLink !== undefined) {
-            value.sceLink = $sce.trustAsResourceUrl(value.videoLink);
-          }
-        });
+        if ($scope.news.videoLink !== undefined) {
+          $scope.news.sceLink = $sce.trustAsResourceUrl($scope.news.videoLink);
+        }
       })
 
     $http.get(config.url() + "/api/news")
