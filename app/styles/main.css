@@ -6,7 +6,7 @@
 }
 
 .news-item:hover .news-image{
-  transform: scale(1.5, 1.7);
+  transform: scale(1.5, 1.5);
   transition: all 0.5s ;
 }
 
