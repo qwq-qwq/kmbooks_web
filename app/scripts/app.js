@@ -132,6 +132,10 @@ angular
       })
       .when('/news_edit_table', {
         templateUrl: 'views/news_edit_table.html',
+        controller: 'NewsEditCtrl'
+      })
+      .when('/news', {
+        templateUrl: 'views/news.html',
         controller: 'NewsCtrl'
       })
       .otherwise({

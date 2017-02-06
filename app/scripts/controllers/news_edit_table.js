@@ -2,7 +2,7 @@
  * Created by sergey on 05.02.17.
  */
 angular.module('angularApp')
-  .controller('NewsCtrl', function($scope, $http, $location, FileUploader, $route, $timeout, config) {
+  .controller('NewsEditCtrl', function($scope, $http, $location, FileUploader, $route, $timeout, config) {
     $scope.editing = 1;
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
 
