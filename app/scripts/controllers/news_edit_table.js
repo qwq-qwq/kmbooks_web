@@ -5,6 +5,7 @@ angular.module('angularApp')
   .controller('NewsEditCtrl', function($scope, $http, $location, FileUploader, $route, $timeout, config) {
     $scope.editing = 1;
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
+    $scope.cropSelectionSecond = {src:"", selection: [], thumbnail: false};
 
     function compare_desc(a,b) {
       if (a.when > b.when)
@@ -42,6 +43,7 @@ angular.module('angularApp')
 
     $scope.editItem = function (item) {
       item.editing = true;
+      item.is_second = false;
     }
 
     $scope.doneEditing = function (item) {
@@ -58,6 +60,7 @@ angular.module('angularApp')
                                                    $scope.cropSelection.selection[4],
                                                    $scope.cropSelection.selection[5]];
             item.upl_item.formData[0].is_video = (item.videoLink.length > 0) ? true : false;
+            item.upl_item.formData[0].is_second = item.is_second;
             item.upl_item.upload();
           }
         });
@@ -105,7 +108,11 @@ angular.module('angularApp')
     uploader.onSuccessItem = function(fileItem, response, status, headers) {
       for(var k in $scope.news) {
         if ($scope.news[k].row_id == fileItem.formData[0].row_id){
-          $scope.news[k].image = '/img/' + fileItem.file.name;
+          if (!$scope.news[k].is_second){
+            $scope.news[k].image = '/img/' + fileItem.file.name + '_small.jpg';
+          }else{
+            $scope.news[k].secondImage = '/img/' + fileItem.file.name + '_small.jpg';
+          }
           $scope.news[k].upl_item = null;
         }
       }

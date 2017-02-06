@@ -11,14 +11,15 @@
 <table class="table table-hover">
   <thead>
   <tr>
-    <th class="col-md-3">Картинка</th>
+    <th class="col-md-2">Картинка</th>
+    <th class="col-md-1">Вторая картинка</th>
     <th class="col-md-8">Найменування</th>
     <th class="col-md-1">Дії</th>
   </tr>
   </thead>
   <tbody>
   <tr ng-repeat="oneNews in news">
-    <th>
+    <td>
       <img class="img-responsive" src="{{oneNews.image + '_small.jpg'}}">
       </img>
       <div ng-if="oneNews.upl_item" style="margin-top: 20px">
@@ -26,10 +27,22 @@
         <p> Имя файла: {{oneNews.upl_item.file.name}}</p>
       </div>
       <span ng-show="oneNews.editing">
-        <input type="file" ng-jcrop-input="uploadNewsPictures" nv-file-select="" uploader="uploader" multiple="" options="{formData: [{id: oneNews.id, row_id: oneNews.row_id, is_video: false, rectangle: []}]}">
+        <input type="file" ng-jcrop-input="uploadNewsPictures" nv-file-select="" uploader="uploader" multiple="" options="{formData: [{id: oneNews.id, row_id: oneNews.row_id, is_second: false, is_video: false, rectangle: []}]}">
+        <div ng-show="oneNews.editing" class="form-group">
+          <div class="radio">
+            <label><input type="radio" ng-model="oneNews.is_second" ng-value="false">главная</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" ng-model="oneNews.is_second" ng-value="true">вторая</label>
+          </div>
+        </div>
       </span>
-    </th>
-    <th>
+    </td>
+    <td>
+      <img class="img-responsive" src="{{oneNews.secondImage + '_small.jpg'}}">
+      </img>
+    </td>
+    <td>
       <h3 class="text-left" ng-hide="oneNews.editing" ng-dblclick="editItem(oneNews)">{{oneNews.title}}</h3>
       <div ng-show="oneNews.editing" class="form-group">
         <label for="name" class="col-md-12" ng-show="oneNews.editing">Найменування:</label>
@@ -80,7 +93,7 @@
         <text-angular ng-show="oneNews.editing" ng-model="oneNews.text" autofocus></text-angular>
       </div>
       <br>
-    </th>
+    </td>
     <th>
       <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(oneNews)" ng-disabled="oneNews.editing">
         <span class="glyphicon glyphicon-edit"></span> Редагувати
