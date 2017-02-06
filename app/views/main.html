@@ -50,10 +50,18 @@
       </span>
   </div>
 
-  <h2 class="brand-color">
-    Події
-  </h2>
-  <div dynamic-layout items="cards"></div>
+
+ <h2 class="brand-color">
+   Новини
+ </h2>
+ <div class="col-md-4 col-xs-12 col-sm-6" style="margin: 0 0; padding: 0 0;" ng-repeat="oneNews in news">
+   <bk-news-tile news="oneNews"></bk-news-tile>
+ </div>
+
+ <h2 class="brand-color">
+   Події
+ </h2>
+ <div dynamic-layout items="cards"></div>
 
 
 

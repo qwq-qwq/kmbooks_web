@@ -69,6 +69,12 @@ angular.module('angularApp')
         })
     }
 
+      $http.get(config.url() + "/api/news")
+        .success(function(response) {
+          $scope.news = response;
+        })
+
+
     function loadingNovelty() {
       $http.get(config.url() + "/api/books/novelty")
         .success(function(response) {
