@@ -69,10 +69,10 @@ angular.module('angularApp')
         })
     }
 
-      $http.get(config.url() + "/api/news")
-        .success(function(response) {
-          $scope.news = response;
-        })
+    $http.get(config.url() + "/api/news/get_last_nine")
+      .success(function(response) {
+        $scope.news = response;
+      })
 
 
     function loadingNovelty() {
