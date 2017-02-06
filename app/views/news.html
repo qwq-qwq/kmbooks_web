@@ -8,7 +8,7 @@
       <i class="glyphicon glyphicon-time"></i><span style="margin-left: 5px">{{news.date | date: 'dd.MM.yyyy'}} o {{news.date | date: 'HH-mm'}}</span>
     </div>
     <div ng-show="news.videoLink !== undefined" class="embed-responsive embed-responsive-4by3">
-      <iframe class="embed-responsive-item" src="{{news.videoLink}}"></iframe>
+      <iframe class="embed-responsive-item" src="{{news.sceLink}}"></iframe>
     </div>
     <img ng-show="news.videoLink === undefined" class="img-rounded img-responsive visible-md visible-lg" src="{{news.image + '_original.jpg'}}" style="margin-top: 10px; margin-bottom: 25px;">
     <img ng-show="news.videoLink === undefined" class="img-rounded img-responsive visible-xs visible-sm" src="{{news.image + '_big.jpg'}}" style="margin-top: 10px; margin-bottom: 25px;">
