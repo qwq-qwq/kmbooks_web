@@ -5,6 +5,10 @@
   padding: 0.2em 0;
 }
 
+@font-face {font-family: "Calibri";
+  src: url("../fonts/calibri.ttf");
+}
+
 .news-item:hover .news-image{
   transform: scale(1.5, 1.5);
   transition: all 0.5s ;
