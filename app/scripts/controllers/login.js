@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularApp').controller('LoginCtrl', function ($scope, $location, $rootScope, $cookieStore, authorization) {
+angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope, $location, $rootScope, $cookieStore, authorization) {
 
   $scope.login = function () {
     var credentials = {
@@ -14,6 +14,7 @@ angular.module('angularApp').controller('LoginCtrl', function ($scope, $location
         $rootScope.authenticated = true;
         $rootScope.username = data.name;
         $rootScope.role = data.principal.role;
+        wishList.GetStoredWishList();
         if (authorization.onlyIsUser()) {
           $location.path("/");
         }else{
@@ -43,6 +44,7 @@ angular.module('angularApp').controller('LoginCtrl', function ($scope, $location
       $rootScope.authenticated = false;
       $rootScope.username = '';
       $rootScope.role = '';
+      wishList.SetWishList({});
       $location.path("/");
     };
     var error = function () {

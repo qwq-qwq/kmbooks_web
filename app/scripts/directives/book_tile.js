@@ -9,8 +9,16 @@ angular.module('angularApp').directive('bkBookTail', ['wishList', '$mdPanel', '$
     },
     templateUrl: 'views/bk_book_tail.html',
     link: function(scope, element, attributes) {
-      scope.alreadyInWishList = false;
-      scope.wishHeart = 'fa fa-heart-o brand-color';
+
+      if (scope.book !== undefined) {
+        if (wishList.AlreadyInWishList(scope.book.code)) {
+          scope.alreadyInWishList = true;
+          scope.wishHeart = 'fa fa-heart brand-color-hover';
+        }else{
+          scope.alreadyInWishList = false;
+          scope.wishHeart = 'fa fa-heart-o brand-color';
+        }
+      }
 
       scope.onMouseLeave = function () {
         if (!scope.alreadyInWishList) {
