@@ -20,10 +20,8 @@
     <div><b>Код: </b><span class="brand-color">{{book.code}}</span></div>
     <div ng-if="book.author"><b>Автор: </b>{{book.author}}</div>
     <div ng-if="book.series"><b>Серія: </b>{{book.series}}</div>
-    <div>
-      <span ng-if="book.sk"><b>Штрихкод: </b>{{book.sk}}</span>,&nbsp;
-      <span ng-if="book.isbn"><b>ISBN: </b>{{book.isbn}}</span>
-    </div>
+    <div ng-if="book.sk"><b>Штрихкод: </b>{{book.sk}}</div>
+    <div ng-if="book.isbn"><b>ISBN: </b>{{book.isbn}}</div>
     <div ng-if="book.cover"><b>Обкладинка: </b> {{book.cover}}</div>
     <div ng-if="book.str"><b>Сторінок: </b> {{book.str}}</div>
     <div ng-if="book.year"><b>Рік видання: </b> {{book.year}}</div>
