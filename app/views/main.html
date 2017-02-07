@@ -1,8 +1,8 @@
  <div class="row">
    <div class="col-md-12">
-   <h2 class="brand-color">
+   <h1 style="font-family: Calibri" class="brand-color">
      Рекомендуємо
-   </h2>
+   </h1>
    </div>
       <span ng-repeat="recommended in recommendeds">
           <div class="col-xs-12 col-sm-6 col-md-3" style="min-height: 400px">
@@ -15,12 +15,12 @@
   <div class="row">
     <div class="col-md-12">
     <a href="/#/catalog?sortBy=bestsellersFirst" class="brand-color">
-      <h2>
+      <h1 style="font-family: Calibri">
         Бестселери
-      </h2>
+      </h1>
     </a>
     <div class="pull-right" style="margin-top: -42px">
-      <h4><a class="brand-color" style="text-decoration: underline" href="/#/catalog?sortBy=bestsellersFirst">Всi бестселери</a></h4>
+      <h3><a class="brand-color" style="font-family: Calibri; text-decoration: underline" href="/#/catalog?sortBy=bestsellersFirst">Всi бестселери</a></h3>
     </div>
     </div>
       <span ng-repeat="bestseller in bestsellers">
@@ -34,12 +34,12 @@
   <div class="row">
     <div class="col-md-12">
        <a href="/#/catalog?sortBy=noveltiesFirst" class="brand-color">
-         <h2>
+         <h1 style="font-family: Calibri">
            Новинки
-         </h2>
+         </h1>
        </a>
        <div class="pull-right" style="margin-top: -42px">
-         <h4><a style="text-decoration: underline" class="brand-color" href="/#/catalog?sortBy=noveltiesFirst">Всi новинки</a></h4>
+         <h3><a style="font-family: Calibri; text-decoration: underline" class="brand-color" href="/#/catalog?sortBy=noveltiesFirst">Всi новинки</a></h3>
        </div>
     </div>
       <span ng-repeat="novelty in noveltys">
@@ -51,9 +51,9 @@
   </div>
 
 
- <h2 class="brand-color">
+ <h1 style="font-family: Calibri" class="brand-color">
    Новини
- </h2>
+ </h1>
  <div class="col-md-4 col-xs-12 col-sm-6" style="margin: 0 0; padding: 1px 1px;" ng-repeat="oneNews in news">
    <bk-news-tile news="oneNews"></bk-news-tile>
  </div>
@@ -62,9 +62,9 @@
    <span style="padding: 1px"></span>
  </div>
 
- <h2 class="brand-color">
+ <h1 style="font-family: Calibri" class="brand-color">
    Події
- </h2>
+ </h1>
  <div dynamic-layout items="cards"></div>
 
 
