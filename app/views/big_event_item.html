@@ -16,7 +16,7 @@
         </a>
       </div>
       <a style="color: #333;" href = "#/event_view?id={{it.data.id}}">
-        <img class="list-group-item" ng-src="it.bigImage">
+        <img class="list-group-item" src={{it.bigImage}}>
       </a>
       <div class="list-group-item">
         <a ng-show="it.data.codeShop !== 0" href="#/map?code_shop={{it.data.codeShop}}">
