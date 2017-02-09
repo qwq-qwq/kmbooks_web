@@ -1,23 +1,29 @@
 
-<h1 ng-if="user.email.length === 0" class="brand-color">Реєстрація</h1>
-<h1 ng-if="user.email.length > 0" class="brand-color">Редагування {{user.email}}</h1>
+<h1 ng-if="isNewUser" class="brand-color">Реєстрація</h1>
+<h1 ng-if="!isNewUser" class="brand-color">Редагування {{user.email}}</h1>
 
 <div class="row panel">
-  <div class="col-md-12">
+  <div ng-if="savedSuccess" class="col-md-12">
     <div uib-alert class="alert-success">
        Дані сбережено
     </div>
   </div>
+  <div ng-if="savedError" class="col-md-12">
+    <div uib-alert class="alert-success">
+      Дані сбережено
+    </div>
+  </div>
   <form name="userForm" ng-submit="registration.submit(userForm.$valid)">
     <div class="col-md-12">
-      <div ng-if="user.length === 0" class="form-group">
+      <div ng-if="isNewUser" class="form-group">
         <label>
           Email:
         </label>
-        <input name="email" type="email" class="form-control" placeholder="email"  ng-model="user.email" required>
+        <input name="email" type="email" class="form-control" placeholder="email"  ng-model="user.email" bk-check-email="user.email" required>
         <div style="color: red" ng-messages="userForm.email.$error">
           <div ng-message="required">Обов'язковий для заповнення</div>
           <div ng-message="email">Введіть корректний email</div>
+          <div ng-message="checkEmailUnique">Користувач з таким email вже зарєєстрований на сайті</div>
         </div>
       </div>
 

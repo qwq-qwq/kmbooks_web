@@ -14,6 +14,7 @@ angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope,
         $rootScope.authenticated = true;
         $rootScope.username = data.name;
         $rootScope.role = data.principal.role;
+        $rootScope.user = data.principal.user;
         wishList.GetStoredWishList();
         if (authorization.onlyIsUser()) {
           $location.path("/");
@@ -24,6 +25,7 @@ angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope,
         $rootScope.authenticated = false;
         $rootScope.username = '';
         $rootScope.role = '';
+        $rootScope.user = undefined;
         $location.path("/login");
         $scope.error = true;
       }
@@ -32,6 +34,7 @@ angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope,
       $rootScope.authenticated = false;
       $rootScope.username = '';
       $rootScope.role = '';
+      $rootScope.user = undefined;
       $location.path("/login");
       $scope.error = true;
     };

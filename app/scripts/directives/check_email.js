@@ -3,7 +3,7 @@
  */
 'use strict';
 
-angular.module('angularApp').directive('bkCheckEmail', '$http', 'config', [function($http, config) {
+angular.module('angularApp').directive('bkCheckEmail', ['$http', 'config', '$q', function($http, config, $q) {
   return {
     restrict: 'A',
     require: "ngModel",
@@ -11,12 +11,21 @@ angular.module('angularApp').directive('bkCheckEmail', '$http', 'config', [funct
       email: '='
     },
     link: function(scope, element, attributes, ngModel) {
-      ngModel.$validators.checkEmailUnique = function(modelValue) {
-        return modelValue == scope.otherValueToCompare;
+      ngModel.$asyncValidators.checkEmailUnique = function(modelValue) {
+        return $http.get(config.url() + "/api/check_user_exist?email=" + modelValue)
+          .then(function successCallback(response) {
+            if (response.data){
+              return $q.reject('exist');
+            }else{
+              return $q.resolve('ok');
+            }
+          }, function errorCallback(response) {
+             return true;
+          })
       };
-
-      scope.$watch("otherValueToCompare", function() {
+     /* scope.$watch("email", function() {
         ngModel.$validate();
-      });}
+      });*/
+    }
   };
 }])

@@ -121,17 +121,6 @@ angular.module('angularApp')
       }
     }
 
-    /*$rootScope.$on("$routeChangeSuccess", function (event, next, current) {
-      if (current.$$route.originalPath === '/cart'){
-        if ($scope.needs_to_save){
-          $scope.UpdateOrder();
-        }
-        $scope.needs_to_save = false;
-      }else if(next.$$route.originalPath === '/cart'){
-        $scope.needs_to_save = true;
-      }
-    });*/
-
     $scope.$on('$locationChangeStart', function(event) {
        $scope.UpdateOrder();
     });
@@ -143,6 +132,13 @@ angular.module('angularApp')
        if (!order.Exist()) {
          $scope.selector.city = $scope.cities[0];
          $scope.SelectCity();
+         if (authorization.isAuthorized()){
+           var user = authorization.getUser();
+           $scope.name = user.name;
+           $scope.phone = user.phone;
+           $scope.email = user.email;
+           $scope.address = user.address;
+         }
        }else{
          $scope.LoadOrder();
        }
