@@ -334,12 +334,12 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     background-size: cover;
   }
 
-  .show_big_image {
+  /*.show_big_image {
     height: 800px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: auto;
-  }
+  }*/
 
   .bukva-item:hover{
     padding: 20px 15px 10px;
