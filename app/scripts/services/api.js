@@ -8,6 +8,7 @@ angular.module('angularApp').factory('api', function (wishList, cart, order, $ht
         if (data.name) {
           $rootScope.authenticated = true;
           $rootScope.username = data.name;
+          $rootScope.user = data.principal.user;
           $rootScope.role = data.principal.role;
           wishList.GetStoredWishList();
         } else {

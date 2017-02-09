@@ -71,7 +71,7 @@ angular.module('angularApp')
         return Math.floor((Math.random()*10000)+1)+1000;
       }
       var news = {id: '', row_id: getRandomId(), title: '', date: new Date(), text: '', videoLink: '',
-                  colorSchema: {}, bookCodes: '', editing: true};
+                  colorSchema: {}, bookCodes: '', editing: true, is_second: false};
       $scope.news.unshift(news);
     }
 

@@ -18,6 +18,9 @@ angular.module('angularApp').factory('authorization', function ($rootScope, $htt
     username: function () {
       return $rootScope.username;
     },
+    getUser: function () {
+      return $rootScope.user;
+    },
     isAuthorized: function () {
       if ($rootScope.authenticated == true) {
         return true

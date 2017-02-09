@@ -23,7 +23,9 @@ angular.module('angularApp').factory('wishList', function ($http, $rootScope, co
       }
     },
     Exist: function () {
-      if ($rootScope.wishList !== undefined){
+      if ($rootScope.wishList === undefined){
+        return false;
+      }else{
         return true;
       }
     },

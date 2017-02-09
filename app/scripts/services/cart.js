@@ -20,7 +20,9 @@ angular.module('angularApp').factory('cart', function ($http, $rootScope, config
       }
     },
     Exist: function () {
-      if ($rootScope.cart !== undefined){
+      if ($rootScope.cart === undefined) {
+        return false;
+      }else{
         return true;
       }
     },

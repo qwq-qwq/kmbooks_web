@@ -61,13 +61,36 @@ angular.module('angularApp')
       function successAdded(response) {
         if (complete){
           $scope.completedOrder = response;
-          order.SetOrder({});
+          order.SetOrder(undefined);
           cart.SetCart({goodsTable: []});
           $cookies.put('orderId', '');
-        }else{
+          $scope.selectedCity = undefined;
+          $scope.selectedDelivery = undefined,
+          $scope.selectedPayment = undefined,
+          $scope.selectedNewPostWHS = undefined,
+          $scope.selectedShop = undefined,
+          $scope.name = '';
+          $scope.phone = '';
+          $scope.email = '';
+          $scope.address = '';
+          $scope.orderComment = '';
+          $scope.deliveryCost = 0;
+          $scope.totalAmount = 0;
+      }else{
           order.SetOrder(response);
           $cookies.put('orderId', response.id);
         }
+      }
+      var orderAmount, goodsTable;
+      if ($scope.selectedCity === undefined){
+         return;
+      }
+      if (cart.Exist()){
+         orderAmount = cart.GetCart().orderAmount;
+         goodsTable = cart.GetCart().goodsTable;
+      }else{
+        orderAmount = 0;
+        goodsTable = [];
       }
       var orderUpdate = {id:            $cookies.get('orderId'),
                          username:      authorization.username(),
@@ -81,10 +104,10 @@ angular.module('angularApp')
                          email:         $scope.email,
                          address:       $scope.address,
                          orderComment:  $scope.orderComment,
-                         orderAmount:   cart.GetCart().orderAmount,
+                         orderAmount:   orderAmount,
                          deliveryCost:  $scope.deliveryCost,
                          totalAmount:   $scope.totalAmount,
-                         goodsTable:    cart.GetCart().goodsTable};
+                         goodsTable:    goodsTable};
       if (authorization.isAuthorized()) {
         $http.post(config.url() + "/api/user/orders/update", orderUpdate, {withCredentials: true})
           .success(function(response) {
@@ -98,10 +121,19 @@ angular.module('angularApp')
       }
     }
 
-    $rootScope.$on("$routeChangeSuccess", function (event, next, current) {
-      if (current.$route.originalPath === '/cart'){
-        $scope.UpdateOrder();
+    /*$rootScope.$on("$routeChangeSuccess", function (event, next, current) {
+      if (current.$$route.originalPath === '/cart'){
+        if ($scope.needs_to_save){
+          $scope.UpdateOrder();
+        }
+        $scope.needs_to_save = false;
+      }else if(next.$$route.originalPath === '/cart'){
+        $scope.needs_to_save = true;
       }
+    });*/
+
+    $scope.$on('$locationChangeStart', function(event) {
+       $scope.UpdateOrder();
     });
 
    $http.get(config.url() + "/api/get_cities")

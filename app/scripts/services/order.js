@@ -7,7 +7,9 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
       return $rootScope.order;
     },
     Exist: function () {
-      if ($rootScope.order !== undefined){
+      if ($rootScope.order === undefined){
+        return false;
+      }else{
         return true;
       }
     },
@@ -46,6 +48,9 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
           $http.get(config.url() + "/api/orders/get_order_by_id?id=" + orderId)
             .success(function(response) {
               $rootScope.order = response;
+              if (response === ''){
+                $rootScope.order = undefined;
+              }
               if ($rootScope.order !== undefined) {
                 if (!cart.Exist()){
                   cart.SetCart({email: authorization.username(), goodsTable: $rootScope.order.goodsTable});

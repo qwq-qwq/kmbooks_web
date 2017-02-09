@@ -44,7 +44,7 @@ angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope,
       $rootScope.authenticated = false;
       $rootScope.username = '';
       $rootScope.role = '';
-      wishList.SetWishList({});
+      wishList.SetWishList(undefined);
       $location.path("/");
     };
     var error = function () {

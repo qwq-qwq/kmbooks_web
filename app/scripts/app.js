@@ -28,7 +28,8 @@ angular
     'ui.bootstrap',
     'ui.bootstrap-slider',
     'ngJcrop',
-    'ngMaterial'
+    'ngMaterial',
+    'ui.mask'
   ])
   .config(function ($routeProvider) {
 
@@ -137,6 +138,10 @@ angular
       .when('/news', {
         templateUrl: 'views/news.html',
         controller: 'NewsCtrl'
+      })
+      .when('/user_registration', {
+        templateUrl: 'views/user_registration.html',
+        controller: 'UserRegistrationCtrl'
       })
       .otherwise({
         redirectTo: '/'
