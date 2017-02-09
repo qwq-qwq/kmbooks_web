@@ -1,22 +1,13 @@
 <div class="dynamic-layout-item dynamic-layout-col-4 bootcards-cards" ng-controller = "Work1Controller">
   <div class="panel panel-default">
-    <div class="panel-heading clearfix">
-      <div  class="pull-left" style="color: #428bca">
-        <i class="glyphicon glyphicon-time"></i><em style="margin-left: 5px; margin-top: 5px;">{{it.data.when | date: 'dd.MM.yyyy'}} o
-        {{it.data.when | date: 'HH-mm'}}</em>
-      </div>
-      <a class="btn btn-xs pull-right" ng-click='externalScope().deleteCard(it.data.id)'>
-        <span class="glyphicon glyphicon-remove"></span>
-      </a>
-    </div>
     <div class="list-group">
-      <div class="list-group-item event-item">
+      <div class="list-group-item">
         <a style="color: #333;" href = "#/event_view?id={{it.data.id}}">
           <h4>{{it.data.title}}</h4>
         </a>
       </div>
       <a style="color: #333;" href = "#/event_view?id={{it.data.id}}">
-        <div class="show_image list-group-item" style="background-image:url('{{it.data.image}}');" when-visible="animateElementIn" when-not-visible="animateElementOut"></div>
+        <img class="img-responsive" ng-src="{{it.data.image}}" when-visible="animateElementIn" when-not-visible="animateElementOut">
       </a>
       <div class="list-group-item">
         <a ng-show="it.data.codeShop !== 0" href="#/map?code_shop={{it.data.codeShop}}">
