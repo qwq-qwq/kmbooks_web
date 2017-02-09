@@ -21,8 +21,13 @@
         <p class="list-group-item-text" ng-hide='showingMoreText' ta-bind ng-model="it.textShort">
         <p class="list-group-item-text" ng-show='showingMoreText' ta-bind ng-model="it.data.text">
       </div>
+    </div>
+    <div class="panel-footer">
+      <i class="glyphicon glyphicon-time"></i><em style="margin-left: 5px; margin-top: 5px">{{it.data.when | date: 'dd.MM.yyyy'}} o
+      {{it.data.when | date: 'HH-mm'}}</em>
       <a class="btn btn-xs pull-right" ng-hide='showingMoreText' ng-click='toggleText()'>
-        <span class="glyphicon glyphicon-chevron-down" style="margin-left: 5px;"><span style="margin-left: 5px;">Бiльше</span></span>
+        <span class="glyphicon glyphicon-chevron-down" style="margin-left: 5px;"></span>
+        Бiльше
       </a>
       <a class="btn btn-xs pull-right" ng-show='showingMoreText' ng-click='toggleText()'>
         <span class="glyphicon glyphicon-chevron-up"><span style="margin-left: 5px;">Менше</span></span>
