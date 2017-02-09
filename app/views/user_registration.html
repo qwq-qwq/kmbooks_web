@@ -3,16 +3,7 @@
 <h1 ng-if="!isNewUser" class="brand-color">Редагування {{user.email}}</h1>
 
 <div class="row panel">
-  <div ng-if="savedSuccess" class="col-md-12">
-    <div uib-alert class="alert-success">
-       Дані сбережено
-    </div>
-  </div>
-  <div ng-if="savedError" class="col-md-12">
-    <div uib-alert class="alert-success">
-      Дані сбережено
-    </div>
-  </div>
+
   <form name="userForm" ng-submit="registration.submit(userForm.$valid)">
     <div class="col-md-12">
       <div ng-if="isNewUser" class="form-group">
@@ -85,3 +76,13 @@
   </form>
 </div>
 
+<div ng-if="savedSuccess" class="col-md-12">
+  <div uib-alert class="alert-success">
+    Дані сбережено
+  </div>
+</div>
+<div ng-if="savedError" class="col-md-12">
+  <div uib-alert class="alert-danger">
+    В процесі збереження виникла помилка
+  </div>
+</div>
