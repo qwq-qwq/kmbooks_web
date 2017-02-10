@@ -362,7 +362,7 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     text-overflow: ellipsis; /* Многоточие */
   }
 
-   .bukva-item:hover .size {
+  .bukva-item:hover .size {
     white-space: normal;  /*Обычный перенос текста */
   }
 
@@ -425,8 +425,8 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     width : 375px;
   }
   .carousel {
-    height: 45%;
-    width: 100%;
+    height: 20%;
+    top: 50px;
   }
 
   .show_image,
@@ -475,8 +475,8 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     width : 310px;
   }
   .carousel {
-    height: 45%;
-    width: 100%;
+    height: 20%;
+    top: 50px;
   }
 
   .show_image,
