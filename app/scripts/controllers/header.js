@@ -154,7 +154,7 @@ angular.module('angularApp')
     })
 
     $scope.OnBannerClick = function (slide) {
-      $location.path(slide.link);
+      $location.url(slide.link);
     }
 
     $scope.mouseEnter = function () {
