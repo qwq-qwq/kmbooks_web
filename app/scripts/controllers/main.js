@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('MainCtrl', function($scope, $http, config, $q) {
+  .controller('MainCtrl', function($scope, $http, config, $q, $timeout, $rootScope) {
     function compare_desc(a,b) {
       if (a.when > b.when)
         return -1;
@@ -94,10 +94,14 @@ angular.module('angularApp')
         .success(function(response) {
           $scope.recommendeds = response;
         })
-
     }
 
     $q.all([loadingRecomended(), loadingBest(), loadingNovelty(), loadingEvents()]).then(function () {
+      $timeout(function(){
+        $rootScope.$broadcast("layout", function(){
+          // The layout animations have completed
+        });
+      }, 2000);
 
     });
 
