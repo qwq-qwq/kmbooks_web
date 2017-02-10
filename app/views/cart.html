@@ -223,10 +223,14 @@
         </div>
 
         <div class="form-group">
+          <label>
+            Коментар:
+          </label>
           <textarea class="form-control" placeholder="Додати коментар" ng-model="orderComment"></textarea>
         </div>
 
-        <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-disabled="!userForm.$valid" ng-click="SaveOrder()">
+        <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-disabled="!userForm.$valid || !(cart.goodsTable.length > 0)" ng-click="SaveOrder()">
+          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
           Замовити
         </md-button>
     </form>
