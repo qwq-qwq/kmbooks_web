@@ -325,11 +325,10 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     width : 700px;
   }
   .carousel {
-    height: 500px;
+    height: 450px;
   }
 
   .show_image {
-    #height: 460px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
