@@ -129,7 +129,7 @@
     </div>
     <span ng-controller="HeaderCtrl">
       <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" ng-if="isMain()">
-        <div class="point_img" uib-slide ng-repeat="slide in slides track by slide.id" active="slide.active" index="slide.id">
+        <div uib-slide ng-repeat="slide in slides track by slide.id" active="slide.active" index="slide.id">
           <div class="item" style="background-image:url('{{slide.image}}');"></div>
           <div style="font-family: Calibri" class="carousel-caption">
             <h1>{{slide.header}}</h1>
