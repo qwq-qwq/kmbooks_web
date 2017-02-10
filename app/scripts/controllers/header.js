@@ -29,7 +29,7 @@ angular.module('angularApp')
     }
 
     $scope.initSlider = function() {
-      $scope.myInterval = 5000;
+      $scope.myInterval = 6000;
       $scope.noWrapSlides = false;
       $scope.slides = [];
       $http.get(config.url() + "/api/banners")
