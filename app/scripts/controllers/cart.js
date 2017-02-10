@@ -207,8 +207,8 @@ angular.module('angularApp')
     })
 
     $scope.ChangeQuantity = function () {
-      $scope.RecalculateDeliveryCost();
       $scope.SaveCart();
+      $scope.RecalculateDeliveryCost();
     }
 
     $scope.removeFromCart = function (code) {
