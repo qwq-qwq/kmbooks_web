@@ -35,7 +35,7 @@ angular.module('angularApp')
 
 
     $scope.doneEditing = function (item) {
-         var banner = {id: item.id, header: item.header, image: item.image};
+         var banner = {id: item.id, header: item.header, image: item.image, link: item.link};
          item.editing = false;
          $http.post(config.url() + "/api/edit/banner_update", banner, {withCredentials: true})
            .success(function(response) {
@@ -53,7 +53,7 @@ angular.module('angularApp')
       function getRandomId() {
         return Math.floor((Math.random()*10000)+1)+1000;
       }
-      var banner = {id: '', row_id: getRandomId(), id_banner: 0, header: '', image: '', editing: true};
+      var banner = {id: '', row_id: getRandomId(), id_banner: 0, header: '', image: '', link: '', editing: true};
       $scope.banners.unshift(banner);
     }
 

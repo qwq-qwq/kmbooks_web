@@ -35,7 +35,8 @@ angular.module('angularApp')
       $http.get(config.url() + "/api/banners")
         .success(function(response) {
           for (var key in response) {
-              $scope.slides.push({id: response[key].id_banner, image:  response[key].image, header: response[key].header});
+              $scope.slides.push({id: response[key].id_banner, image:  response[key].image,
+                header: response[key].header, link: response[key].link});
           }
         })
     }

@@ -37,6 +37,14 @@
           <input id="name" class="form-control" rows="2" ng-show="banner.editing" ng-model="banner.header"
                     autofocus>
         </div>
+
+        <a href="{{banner.link}}" class="text-left" ng-hide="banner.editing" ng-dblclick="editItem(banner)">{{banner.link}}</a>
+        <div ng-show="banner.editing" class="form-group">
+          <label for="link" class="col-md-12" ng-show="banner.editing">Посилання</label>
+          <input id="link" class="form-control" rows="2" ng-show="banner.editing" ng-model="banner.link"
+                 autofocus>
+        </div>
+
       </div>
       <div class="col-md-2">
         <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(banner)" ng-disabled="banner.editing">

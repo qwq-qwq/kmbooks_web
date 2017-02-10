@@ -56,6 +56,7 @@
                    <li><a href="#/">ГОЛОВНА</a></li>
                    <li><a href="#/events">ПОДІЇ</a></li>
                    <li><a href="#/for_authors">АВТОРАМ</a></li>
+                   <li><a href="http://catalog2017.kmbooks.com.ua">КАТАЛОГ</a></li>
                  </ul>
               </li>
               <li class="dropdown animated fadeInLeft" bk-after-catalog-tree>
@@ -129,11 +130,13 @@
     <span ng-controller="HeaderCtrl">
       <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" ng-if="isMain()">
         <div uib-slide ng-repeat="slide in slides track by slide.id" active="slide.active" index="slide.id">
-          <div class="item" style="background-image:url('{{slide.image}}');"></div>
-          <div style="font-family: Calibri" class="carousel-caption">
-            <h1>{{slide.header}}</h1>
-            <p>{{slide.text}}</p>
-          </div>
+          <a href="{{slide.link}}">
+            <div class="item" style="background-image:url('{{slide.image}}');"></div>
+            <div style="font-family: Calibri" class="carousel-caption">
+              <h1>{{slide.header}}</h1>
+              <p>{{slide.text}}</p>
+            </div>
+          </a>
         </div>
       </div>
       <span ng-show="removeDiv()"></span>
