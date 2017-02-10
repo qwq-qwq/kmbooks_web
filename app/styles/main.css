@@ -426,7 +426,8 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     width : 375px;
   }
   .carousel {
-    height: 30%;
+    height: 45%;
+    width: 100%;
   }
 
   .show_image,
@@ -475,7 +476,8 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     width : 310px;
   }
   .carousel {
-    height: 30%;
+    height: 45%;
+    width: 100%;
   }
 
   .show_image,
