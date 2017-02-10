@@ -207,9 +207,7 @@ body {
 
   /* Home Page Carousel */
 
-.carousel {
-  height: 550px;
-}
+
 
  .carousel .item,
  .carousel .item.active,
@@ -326,6 +324,9 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   .dynamic-layout-col-8{
     width : 700px;
   }
+  .carousel {
+    height: 550px;
+  }
 
   .show_image {
     #height: 460px;
@@ -393,6 +394,9 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   .dynamic-layout-col-8{
     width : 700px;
   }
+  .carousel {
+    height: 400px;
+  }
 
   .show_image,
   .show_big_image {
@@ -420,6 +424,9 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   }
   .dynamic-layout-col-8{
     width : 375px;
+  }
+  .carousel {
+    height: 50%;
   }
 
   .show_image,
@@ -466,6 +473,9 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   }
   .dynamic-layout-col-8{
     width : 310px;
+  }
+  .carousel {
+    height: 50%;
   }
 
   .show_image,
