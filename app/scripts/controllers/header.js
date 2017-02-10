@@ -153,6 +153,10 @@ angular.module('angularApp')
       $scope.wishListItemsCount = wishList.ItemsCount();
     })
 
+    $scope.OnBannerClick = function (slide) {
+      $location.path(slide.link);
+    }
+
     $scope.mouseEnter = function () {
       $scope.cartTooltipOpened = true;
     }

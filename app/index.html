@@ -129,14 +129,12 @@
     </div>
     <span ng-controller="HeaderCtrl">
       <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" ng-if="isMain()">
-        <div uib-slide ng-repeat="slide in slides track by slide.id" active="slide.active" index="slide.id">
-           <a href="{{slide.link}}">
-             <div class="item" style="background-image:url('{{slide.image}}');"></div>
-             <div style="font-family: Calibri" class="carousel-caption">
-               <h1>{{slide.header}}</h1>
-               <p>{{slide.text}}</p>
-             </div>
-           </a>
+        <div class="point_img" ng-click="OnBannerClick(slide)" uib-slide ng-repeat="slide in slides track by slide.id" active="slide.active" index="slide.id">
+          <div class="item" style="background-image:url('{{slide.image}}');"></div>
+          <div style="font-family: Calibri" class="carousel-caption">
+            <h1>{{slide.header}}</h1>
+            <p>{{slide.text}}</p>
+          </div>
         </div>
       </div>
       <span ng-show="removeDiv()"></span>
