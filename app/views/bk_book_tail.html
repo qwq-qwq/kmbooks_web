@@ -21,13 +21,10 @@
     </p>
     <p>
       <b> Код: </b> {{book.code}}
-      <div ng-if="book.author"> <b>Автор:&nbsp;</b><a href="#/search?author={{book.author}}">{{book.author}}</a></div>
+      <p ng-if="book.author"> <b>Автор:&nbsp;</b><a href="#/search?author={{book.author}}">{{book.author}}</a></p>
     </p>
     <p class="hidden-xs">
       <span ng-if="book.description">{{book.description.substring(0, 212) + "..."}}</span>
-    </p>
-    <p class="visible-xs">
-      <span ng-if="book.description">{{book.description.substring(0, 50) + "..."}}</span>
     </p>
   </div>
 </div>
