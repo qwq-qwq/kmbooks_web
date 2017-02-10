@@ -192,11 +192,13 @@ angular.module('angularApp')
           $http.post(config.url() + "/api/user/carts/update", $scope.cart, {withCredentials: true})
             .success(function(response) {
               cart.SetCart(response);
+              $scope.RecalculateDeliveryCost();
             })
         }else{
           $http.post(config.url() + "/api/carts/update", $scope.cart)
             .success(function(response) {
               cart.SetCart(response);
+              $scope.RecalculateDeliveryCost();
             })
         }
       }
@@ -208,7 +210,6 @@ angular.module('angularApp')
 
     $scope.ChangeQuantity = function () {
       $scope.SaveCart();
-      $scope.RecalculateDeliveryCost();
     }
 
     $scope.removeFromCart = function (code) {
