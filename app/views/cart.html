@@ -177,7 +177,6 @@
     <h4 class="brand-color">Контактна особа</h4>
 
     <form name="userForm" ng-submit="registration.submit(userForm.$valid)">
-      <div class="col-md-12">
         <div class="form-group">
           <label>
             Email:
@@ -223,11 +222,13 @@
           </div>
         </div>
 
-        <md-button class="md-raised brand-color-background" ng-disabled="!userForm.$valid" ng-click="SaveOrder()">
+        <div class="form-group">
+          <textarea class="form-control" placeholder="Додати коментар" ng-model="orderComment"></textarea>
+        </div>
+
+        <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-disabled="!userForm.$valid" ng-click="SaveOrder()">
           Замовити
         </md-button>
-
-      </div>
     </form>
 
     <!--<div class="form-group">
