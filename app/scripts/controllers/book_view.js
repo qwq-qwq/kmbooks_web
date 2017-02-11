@@ -62,7 +62,7 @@ angular.module('angularApp')
     $http.get(config.url() + '/api/books/images?code=' + code)
       .success(function (response) {
         angular.forEach(response, function (image, key) {
-            if (image.isFlat === true) {
+            if (image.flat === true) {
               $scope.flatImageIndex = key;
               $scope.flatImage = img.src.replace('.jpg', '_big.jpg');
             }
