@@ -46,6 +46,17 @@
               <img style="margin-top: -10px;"
                    src="/images/logo_km2.png" width="152" height="42">
             </a>
+
+            <div class="pull-right">
+              <div style="margin-top: 12px; margin-right: 10px">
+                <a href="#/cart" style="font-size: large; color: lightgrey; text-decoration: none">
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  <span ng-if="itemsCount > 0" class="brand-color">&nbsp;{{itemsCount}}</span>
+                </a>
+              </div>
+
+            </div>
+
           </div>
 
           <div class="collapse navbar-collapse" uib-collapse="isCollapsed">
@@ -83,7 +94,7 @@
                   <span ng-if="wishListItemsCount > 0" style="font-size: large" class="brand-color">&nbsp;{{wishListItemsCount}}</span>
                 </a>
               <li>
-              <li>
+              <li class="hidden-xs">
                 <a href="#/cart" uib-popover-template="templateUrl" popover-append-to-body="true" popover-placement="bottom"
                    popover-trigger="{'mouseenter':'outsideClick', 'outsideClick':'outsideClick'}" tooltip-is-open="cartTooltipIsOpen" popover-title="Кошик"
                    style="font-size: large;">
