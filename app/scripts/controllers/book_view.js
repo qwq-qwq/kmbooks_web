@@ -64,7 +64,7 @@ angular.module('angularApp')
         angular.forEach(response, function (image, key) {
             if (image.flat === true) {
               $scope.flatImageIndex = key;
-              $scope.flatImage = img.src.replace('.jpg', '_big.jpg');
+              $scope.flatImage = image.src.replace('.jpg', '_big.jpg');
             }
             $scope.gallery.images[key] = {
               srcThumbNail: image.src.replace('.jpg', '_big.jpg'),
