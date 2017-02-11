@@ -1,16 +1,16 @@
 <div class="row">
+  <div bk-photoswipe slides="gallery.images" show="gallery.show" slide-selector=".slide-list > a > img"
+       on-close="closeGallery()" options="gallery.opts">
+  </div>
   <div class="col-md-4 hidden-xs hidden-sm" ng-if="gallery.images.length > 0">
     <div class="slide-list">
       <a ng-repeat="image in gallery.images | filter: {flat:false} track by $index" ng-click="showGallery($index)">
         <img src="{{image.srcThumbNail}}" class="point_img img-responsive center-block" style="max-height: 250px; margin-bottom: 6px">
       </a>
     </div>
-    <div bk-photoswipe slides="gallery.images" show="gallery.show" slide-selector=".slide-list > a > img"
-         on-close="closeGallery()" options="gallery.opts">
-    </div>
   </div>
   <div class="hidden-md hidden-lg" style="text-align: center">
-      <img src="{{book.image}}" class="img-responsive point_img" ng-click="showGallery(1)">
+      <img src="{{book.image}}" class="img-responsive point_img center-block" ng-click="showGallery(1)">
       <p style="margin-top: 30px; text-align: center">
         <span style="font-size: large; color: black;">{{book.price}} грн</span>
         <bk-buy-button book = "book"></bk-buy-button>
