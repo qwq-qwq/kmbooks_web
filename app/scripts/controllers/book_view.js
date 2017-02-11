@@ -59,7 +59,7 @@ angular.module('angularApp')
         $scope.book = response.bookList[0];
       })
 
-    $http.get(config.url() + '/api/books/images_without_flat?code=' + code)
+    $http.get(config.url() + '/api/books/images?code=' + code)
       .success(function (response) {
         angular.forEach(response, function (image, key) {
             $scope.gallery.images[key] = {
