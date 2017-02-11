@@ -18,14 +18,19 @@
   </div>
   <div class="col-md-6 book-data">
     <div><b>Код: </b><span class="brand-color">{{book.code}}</span></div>
-    <div ng-if="book.author"><b>Автор: </b>{{book.author}}</div>
-    <div ng-if="book.series"><b>Серія: </b>{{book.series}}</div>
-    <div ng-if="book.sk"><b>Штрихкод: </b>{{book.sk}}</div>
+    <div ng-if="book.author"><b>Автор: </b><a href="#/catalog?authors={{book.author}}">{{book.author}}</a></div>
+    <div ng-if="book.series"><b>Серія: </b><a href="#/catalog?series={{book.series}}">{{book.series}}</a></div>
     <div ng-if="book.isbn"><b>ISBN: </b>{{book.isbn}}</div>
-    <div ng-if="book.cover"><b>Обкладинка: </b> {{book.cover}}</div>
+    <div ng-if="book.cover"><b>Обкладинка: </b><a href="#/catalog?covers={{book.cover}}">{{book.cover}}</a></div>
     <div ng-if="book.str"><b>Сторінок: </b> {{book.str}}</div>
     <div ng-if="book.year"><b>Рік видання: </b> {{book.year}}</div>
-    <div ng-if="book.language"><b>Мова: </b> {{book.language}}</div>
+    <div ng-if="book.language"><b>Мова: </b><a href="#/catalog?languages={{book.language}}">{{book.language}}</a></div>
+    <div ng-if="book.format"><b>Формат: </b> {{book.format}}</div>
+    <div ng-if="book.painter"><b>Художник: </b> {{book.painter}}</div>
+    <div ng-if="book.primeName"><b>Справжня назва: </b> {{book.primeName}}</div>
+    <div ng-if="book.translator"><b>Редактор: </b> {{book.translator}}</div>
+    <div ng-if="book.ageGroup"><b>Вікова група: </b> {{book.ageGroup}}</div>
+    <div ng-if="book.editor"><b>Редактор: </b> {{book.editor}}</div>
     <span ng-if="description"><h3 style="font-family: Calibri" class="brand-color">Анотація</h3></span>
     <span ng-if="description" ng-bind-html="description"></span>
     <h3 ng-if="news.length > 0" style="font-family: Calibri" class="brand-color">Новини</h3>

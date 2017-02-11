@@ -22,7 +22,7 @@
            </div>
            <div class="checkbox" ng-repeat="author in authors | filter: {name:'!!'}">
              <label>
-               <input type="checkbox" ng-click="authorFilterApply()" ng-model="filters.authorChecked['value' + $index]" ng-true-value="'{{author.name}}'"
+               <input type="checkbox" ng-click="authorFilterApply()" ng-model="filters.authorChecked['value' + $index]" ng-true-value="'{{quoteString(author.name)}}'"
                                         ng-false-value="">
                                        {{author.name}}&nbsp;&nbsp;
                                        <span style="color: lightgrey">({{author.count}})</span>
@@ -35,7 +35,7 @@
            </div>
            <div class="checkbox" ng-repeat="oneSeries in series | filter: {name:'!!'}">
              <label>
-               <input type="checkbox" ng-click="seriesFilterApply()" ng-model="filters.seriesChecked['value' + $index]" ng-true-value="'{{oneSeries.name}}'"
+               <input type="checkbox" ng-click="seriesFilterApply()" ng-model="filters.seriesChecked['value' + $index]" ng-true-value="'{{quoteString(oneSeries.name)}}'"
                       ng-false-value=""> {{oneSeries.name}}&nbsp;&nbsp;<span style="color: lightgrey">({{oneSeries.count}})</span>
              </label>
            </div>
@@ -46,7 +46,7 @@
            </div>
            <div class="checkbox" ng-repeat="cover in covers | filter: {name:'!!'}">
              <label>
-               <input type="checkbox" ng-click="coversFilterApply()" ng-model="filters.coversChecked['value' + $index]" ng-true-value="'{{cover.name}}'"
+               <input type="checkbox" ng-click="coversFilterApply()" ng-model="filters.coversChecked['value' + $index]" ng-true-value="'{{quoteString(cover.name)}}'"
                       ng-false-value=""> {{cover.name}}&nbsp;&nbsp;<span style="color: lightgrey">({{cover.count}})</span>
              </label>
            </div>
@@ -57,7 +57,7 @@
            </div>
            <div class="checkbox" ng-repeat="language in languages | filter: {name:'!!'}">
              <label>
-               <input type="checkbox" ng-click="languagesFilterApply()" ng-model="filters.languagesChecked['value' + $index]" ng-true-value="'{{language.name}}'"
+               <input type="checkbox" ng-click="languagesFilterApply()" ng-model="filters.languagesChecked['value' + $index]" ng-true-value="'{{quoteString(language.name)}}'"
                       ng-false-value=""> {{language.name}}&nbsp;&nbsp;<span style="color: lightgrey">({{language.count}})</span>
              </label>
            </div>

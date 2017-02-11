@@ -52,11 +52,71 @@ angular.module('angularApp')
           $scope.authors = response.authors;
           $scope.series = response.series;
           $scope.covers = response.covers;
+          /*angular.forEach(response.covers, function (cover, key) {
+            if (cover.name !== null){
+              if (cover.name.search("'") !== -1) {
+                cover.name = cover.name.replace(/[\\"']/g, '\\$&');//.replace(/\u0000/g, '\\0');
+              }
+            }
+          })*/
+
           $scope.languages = response.languages;
           if ($location.search().priceFrom == undefined && $location.search().priceTo == undefined) {
             $scope.priceSliderValue = [response.priceFrom, response.priceTo];
           }
+
           $scope.filters = {};
+          var authorsFromUrl = $location.search().authors;
+          if (authorsFromUrl !== undefined){
+            $scope.filters.authorChecked = {};
+            var authors = authorsFromUrl.split(',');
+            angular.forEach(authors, function (authorFromUrl, key) {
+              angular.forEach($scope.authors, function (value, key) {
+                if (value.name === authorFromUrl) {
+                  $scope.filters.authorChecked['value' + (key - 1)] = value.name;
+                }
+              })
+            })
+          }
+
+          var seriesFromUrl = $location.search().series;
+          if (seriesFromUrl !== undefined){
+            $scope.filters.seriesChecked = {};
+            var series = seriesFromUrl.split(',');
+            angular.forEach(series, function (seriesFromUrl, key) {
+              angular.forEach($scope.series, function (value, key) {
+                if (value.name === seriesFromUrl) {
+                  $scope.filters.seriesChecked['value' + (key - 1)] = value.name;
+                }
+              })
+            })
+          }
+
+          var coversFromUrl = $location.search().covers;
+          if (coversFromUrl !== undefined){
+            $scope.filters.coversChecked = {};
+            var covers = coversFromUrl.split(',');
+            angular.forEach(covers, function (coverFromUrl, key) {
+              angular.forEach($scope.covers, function (value, key) {
+                if (value.name === coverFromUrl) {
+                  $scope.filters.coversChecked['value' + (key - 1)] = value.name;
+                }
+              })
+            })
+          }
+
+          var languagesFromUrl = $location.search().languages;
+          if (languagesFromUrl !== undefined){
+            $scope.filters.languagesChecked = {};
+            var languages = languagesFromUrl.split(',');
+            angular.forEach(languages, function (languageFromUrl, key) {
+              angular.forEach($scope.languages, function (value, key) {
+                if (value.name === languageFromUrl) {
+                  $scope.filters.languagesChecked['value' + (key - 1)] = value.name;
+                }
+              })
+            })
+          }
           $scope.catalog();
         })
     }
@@ -107,6 +167,10 @@ angular.module('angularApp')
       $el.addClass('not-visible');
       $el.removeClass('animated pulse'); // this example leverages animate.css classes
     };
+
+    $scope.quoteString = function (strToQuote) {
+      return strToQuote.replace(/[\\"']/g, '\\$&');
+    }
 
     $scope.isCatalog = function() {
       if ($location.path().search('catalog') != -1) {
