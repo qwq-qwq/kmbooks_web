@@ -62,6 +62,10 @@ angular.module('angularApp')
     $http.get(config.url() + '/api/books/images?code=' + code)
       .success(function (response) {
         angular.forEach(response, function (image, key) {
+            if (image.isFlat === true) {
+              $scope.flatImageIndex = key;
+              $scope.flatImage = img.src.replace('.jpg', '_big.jpg');
+            }
             $scope.gallery.images[key] = {
               srcThumbNail: image.src.replace('.jpg', '_big.jpg'),
               src: image.src.replace('.jpg', '_original.jpg'),
@@ -69,11 +73,21 @@ angular.module('angularApp')
               h: image.height
             };
         })
+        if ($scope.flatImage === undefined){
+          $scope.flatImage = '/img/pics/' + code + '_big.jpg';
+        }
+        var bannerHeight = angular.element('#bookBanner').height();
+        var offset = 10;
+        //if (bannerHeight > 250) {
+        //  offset = 10;
+        //}
+        var flatImageHeight = bannerHeight - 60 - offset + bannerHeight/8;
+        $scope.flatImageHeight={height: flatImageHeight};
       })
 
     $http.get(config.url() + '/api/books/flat_image?code=' + code)
       .success(function (response) {
-        if (response !== ''){
+        /*if (response !== ''){
           if (response.src !== '') {
             $scope.flatImage = response.src.replace('.jpg', '_big.jpg');
           }else{
@@ -88,7 +102,7 @@ angular.module('angularApp')
         //  offset = 10;
         //}
         var flatImageHeight = bannerHeight - 60 - offset + bannerHeight/8;
-        $scope.flatImageHeight={height: flatImageHeight};
+        $scope.flatImageHeight={height: flatImageHeight};*/
       })
 
     $http.get(config.url() + '/api/books/banner_book?code=' + code)
