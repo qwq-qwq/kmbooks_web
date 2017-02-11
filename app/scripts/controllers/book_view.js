@@ -63,7 +63,7 @@ angular.module('angularApp')
       .success(function (response) {
         angular.forEach(response, function (image, key) {
             if (image.flat === true) {
-              $scope.flatImageIndex = key + 1;
+              $scope.flatImageIndex = key;
               $scope.flatImage = image.src.replace('.jpg', '_big.jpg');
             }
             $scope.gallery.images[key] = {
