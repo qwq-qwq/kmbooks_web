@@ -21,7 +21,7 @@
     </p>
     <p>
       <b> Код: </b> {{book.code}}
-      <p ng-if="book.author"> <b>Автор:&nbsp;</b><a href="#/catalog?authors={{book.author}}">{{book.author}}</a></p>
+      <div ng-if="book.author"> <b>Автор:&nbsp;</b><a href="#/catalog?authors={{book.author}}" ng-click="catalogAuthor()">{{book.author}}</a></div>
     </p>
     <p class="hidden-xs">
       <span ng-if="book.description">{{book.description.substring(0, 212) + "..."}}</span>
