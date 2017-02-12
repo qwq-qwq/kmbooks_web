@@ -131,12 +131,12 @@ angular.module('angularApp')
 
       $scope.animateElementIn = function($el) {
         $el.removeClass('not-visible');
-        $el.addClass('animated flipInX'); // this example leverages animate.css classes
+        $el.addClass('animated puls'); // this example leverages animate.css classes
       };
 
       $scope.animateElementOut = function($el) {
         $el.addClass('not-visible');
-        $el.removeClass('animated flipInX'); // this example leverages animate.css classes
+        $el.removeClass('animated puls'); // this example leverages animate.css classes
       };
 
       $scope.toggleText = function(){
