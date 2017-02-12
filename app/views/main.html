@@ -13,6 +13,20 @@
   </div>
 
   <div class="row">
+   <div class="col-md-12">
+     <h1 style="font-family: Calibri" class="brand-color">
+       Скоро у продажу
+     </h1>
+   </div>
+   <span ng-repeat="soonOnSale in soonOnSales">
+          <div class="col-xs-6 col-sm-6 col-md-3" style="min-height: 400px">
+            <bk-book-tail book="soonOnSale"></bk-book-tail>
+          </div>
+          <div class="clearfix visible-sm-block visible-xs-block" ng-if="$odd"></div>
+      </span>
+  </div>
+
+  <div class="row">
     <div class="col-md-12">
     <a href="/#/catalog?sortBy=bestsellersFirst" class="brand-color">
       <h1 style="font-family: Calibri">

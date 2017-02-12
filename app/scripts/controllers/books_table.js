@@ -324,6 +324,10 @@ angular.module('angularApp')
       if(current.params.group !== current.scope.group){
         $route.reload();
       }
+      if(current.params.reload){
+        $route.reload();
+        $location.search('reload', false);
+      }
     });
 
     $scope.goToPage = function (page) {

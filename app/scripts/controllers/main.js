@@ -96,7 +96,14 @@ angular.module('angularApp')
         })
     }
 
-    $q.all([loadingRecomended(), loadingBest(), loadingNovelty(), loadingEvents()]).then(function () {
+    function loadingSoonOnSale() {
+      $http.get(config.url() + "/api/books/soon_on_sale")
+        .success(function(response) {
+          $scope.soonOnSales = response;
+        })
+    }
+
+    $q.all([loadingRecomended(), loadingBest(), loadingNovelty(), loadingEvents(), loadingSoonOnSale()]).then(function () {
       $timeout(function(){
         $rootScope.$broadcast("layout", function(){
           // The layout animations have completed

@@ -32,6 +32,16 @@
         </button>
       </th>
     </tr>
+    <tr>
+      <th>
+        <h4 class="text-left" ng-hide="settings.editing" ng-dblclick="editItem(settings)">Скоро у продажу: {{settings.soonOnSale}}</h4>
+        <div ng-show="settings.editing" class="form-group">
+          <label for="name1" class="col-md-12" ng-show="settings.editing">Незабаром у продажу:</label>
+          <textarea id="name1" class="form-control" rows="2" ng-show="settings.editing" ng-model="settings.soonOnSale"
+                    autofocus></textarea>
+        </div>
+      </th>
+    </tr>
     </tbody>
   </table>
 </div>
