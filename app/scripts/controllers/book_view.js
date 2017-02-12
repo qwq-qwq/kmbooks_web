@@ -69,7 +69,6 @@ angular.module('angularApp')
             $scope.gallery.images[key] = {
               srcThumbNail: image.src.replace('.jpg', '_big.jpg'),
               flat: image.flat,
-              index: key,
               src: image.src.replace('.jpg', '_original.jpg'),
               w: image.width,
               h: image.height
