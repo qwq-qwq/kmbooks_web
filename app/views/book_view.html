@@ -4,9 +4,8 @@
   </div>
   <div class="col-md-4 hidden-xs hidden-sm" ng-if="gallery.images.length > 0">
     <div class="slide-list">
-      <a ng-repeat="image in gallery.images | filter: {flat:false} track by image.index" ng-click="showGallery(image.index)">
-        {{$index}}
-        <img src="{{image.srcThumbNail}}" class="point_img img-responsive center-block" style="max-height: 250px; margin-bottom: 6px">
+      <a ng-repeat="image in gallery.images track by $index" ng-click="showGallery($index)">
+        <img ng-show="image.flat === false" src="{{image.srcThumbNail}}" class="point_img img-responsive center-block" style="max-height: 250px; margin-bottom: 6px">
       </a>
     </div>
   </div>
