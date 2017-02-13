@@ -28,6 +28,7 @@
             bookList[key].opened = false;
           }
         	$scope.books = bookList;
+          $scope.goodsCount = response.countInList;
           $scope.proceedSearch = false;
 
           $scope.pages = [];

@@ -28,32 +28,7 @@
     </div>
   </div>
   <div ng-if="kindOfView==='list'" ng-repeat="book in books" class="row" style="margin-top: 25px">
-    <div class="col-md-4 text-center">
-      <a href="#/book_view?code={{book.code}}">
-        <img src="{{book.image}}">
-      </a>
-      <p style="margin-top: 30px; text-align: center">
-        <span style="font-size: medium; color: black;">Ціна: {{book.price}} грн</span>
-        <bk-buy-button book = "book"></bk-buy-button>
-      </p>
-    </div>
-    <div class="col-md-8">
-      <a href="#/book_view?code={{book.code}}">
-        <h4 style="margin-top: 0px">{{book.name}}</h4>
-      </a>
-      <div><b>Код: </b><span style="color: #428bca">{{book.code}}</span></div>
-      <div ng-if="book.author"><b>Автор: </b>{{book.author}}</div>
-      <div ng-if="book.series"><b>Серія: </b>{{book.series}}</div>
-      <div>
-        <span ng-if="book.sk"><b>Штрихкод: </b>{{book.sk}}</span>,&nbsp;
-        <span ng-if="book.isbn"><b>ISBN: </b>{{book.isbn}}</span>
-      </div>
-      <div ng-if="book.cover"><b>Обкладинка: </b> {{book.cover}}</div>
-      <div ng-if="book.str"><b>Сторінок: </b> {{book.str}}</div>
-      <div ng-if="book.year"><b>Рік видання: </b> {{book.year}}</div>
-      <div ng-if="book.language"><b>Мова: </b> {{book.language}}</div>
-      <div ng-if="book.description"><b>Описання: </b>{{book.description}}...</div>
-    </div>
+    <bk-book-list book="book"></bk-book-list>
   </div>
   <span ng-if="kindOfView==='tiles'" ng-repeat="book in books">
      <div class="col-xs-6 col-sm-6 col-md-4" style="min-height: 400px">
