@@ -1,4 +1,8 @@
 <div class="col-md-4 text-center">
+  <md-button ng-disabled="alreadyInWishList" class="md-icon-button" ng-click="AddToWishList(book)"
+             style="position: absolute; top: 12px; right: 6px" aria-label="Favorite">
+    <i ng-class="wishHeart" ng-mouseleave="onMouseLeave()" ng-mouseenter="onMouseEnter()" style="font-size: medium;"></i>
+  </md-button>
   <a href="#/book_view?code={{book.code}}">
     <img src="{{book.image}}">
   </a>
