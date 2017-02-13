@@ -4,6 +4,11 @@ angular.module('angularApp')
   .controller('ContactsViewCtrl', function ($scope, $http, $location, $anchorScroll, config) {
     var code_shop = $location.search().code_shop;
 
+    $http.get(config.url() + '/api/html_page?name=contacts')
+      .success(function (response) {
+        $scope.htmlPage = response;
+      })
+
     $scope.goToMarker = function goToMarker(gmap) {
       $scope.map.setCenter(new google.maps.LatLng(gmap.lat, gmap.longit));
       $scope.map.setZoom(17);
