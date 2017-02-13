@@ -8,6 +8,7 @@ angular.module('angularApp')
     var code = $location.search().code;
     $scope.gallery = {images: [], opts: "", show: false};
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
+    $scope.absUrl = $location.absUrl();
 
     $scope.uploader = new FileUploader({
       url: config.url() + '/api/edit/books/banner_upload',

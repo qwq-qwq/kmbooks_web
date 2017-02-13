@@ -47,19 +47,20 @@
           <bk-buy-button book = "book"></bk-buy-button>
         </p>
         <p style="text-align: center">
-          <md-button href="#" class="" ng-click="AddToCart(book)">
+          <!--<md-button href="#" class="" ng-click="AddToCart(book)">
             <span style="font-size: large" class="fa fa-cloud-download brand-color"></span>&nbsp;&nbsp;Завантажити
-          </md-button>
+          </md-button>-->
         </p>
         <!--<md-button class="md-fab md-mini brand-color-background" ng-click="AddToCart(book)">
           <md-tooltip md-direction="right">Купити та завантажити</md-tooltip>
           <span style="font-size: medium" class="fa fa-cloud-download"></span>
         </md-button>-->
+        <!--<?=current_url()?>&title=<?=urlencode($title)?>&srcTitle=<?=SITE_PRESENTATION_NAME?>&srcURL=<?=base_url()?>-->
         <div style="margin-top: 30px; text-align: center">
-           <a href="#" style="color: black"><i class="fa fa-facebook" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="#" style="color: black"><i class="fa fa-vk" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="#" style="color: black"><i class="fa fa-google-plus" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="#" style="color: black"><i class="fa fa-twitter" style="font-size: large"></i></a>
+           <a href="http://www.facebook.com/share.php?u={{absUrl}}" style="color: black"><i class="fa fa-facebook" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="http://vkontakte.ru/share.php?url={{absUrl}}" style="color: black"><i class="fa fa-vk" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="http://www.google.com/reader/link?url={{absUrl}}" style="color: black"><i class="fa fa-google-plus" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="http://twitter.com/home?status={{book.title}}%20={{absUrl}}" style="color: black"><i class="fa fa-twitter" style="font-size: large"></i></a>
         </div>
       </div>
     </div>
