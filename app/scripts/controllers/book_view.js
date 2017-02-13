@@ -75,7 +75,12 @@ angular.module('angularApp')
             };
         })
         if ($scope.flatImage === undefined){
-          $scope.flatImage = '/img/pics/' + code + '_big.jpg';
+          angular.forEach(response, function (image, key) {
+            if (image.main === true) {
+              $scope.flatImageIndex = key;
+              $scope.flatImage = image.src.replace('.jpg', '_big.jpg');
+            }
+          })
         }
         var bannerHeight = angular.element('#bookBanner').height();
         var offset = 10;
