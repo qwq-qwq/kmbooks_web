@@ -141,12 +141,14 @@ angular.module('angularApp')
     };
 
     $scope.searchReset = function() {
-        $scope.showSearch = false;
+      $scope.showSearch = false;
+      $scope.search_string = "";
     };
 
     $scope.searchGo = function() {
       $scope.showSearch = false;
       $location.search().search_string = $scope.search_string;
+      $scope.search_string = "";
       $location.path('/search');
     };
 
