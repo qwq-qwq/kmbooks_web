@@ -47,14 +47,20 @@
                    src="/images/logo_km2.png" width="152" height="42">
             </a>
 
-            <div class="pull-right visible-xs">
-              <div style="margin-top: 12px; margin-right: 10px">
+            <div class="pull-right visible-xs" style="margin-top: 12px; margin-right: 10px">
+              <span>
                 <a href="#/cart" style="font-size: large; color: lightgrey; text-decoration: none">
                   <span class="glyphicon glyphicon-shopping-cart"></span>
-                  <span ng-if="itemsCount > 0" class="brand-color">&nbsp;{{itemsCount}}</span>
+                  <span ng-if="itemsCount > 0" class="brand-color">&nbsp;{{itemsCount}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                 </a>
-              </div>
-
+              </span>
+              <span>
+                <a style="font-size: large; color: lightgrey; text-decoration: none">
+                  <span ng-click="toggleSearch()">
+                    <span style="font-size: large;" class="glyphicon glyphicon-search"></span>
+                  </span>
+                </a>
+              </span>
             </div>
 
           </div>
@@ -113,23 +119,23 @@
               <li ng-show="authenticated" ng-class="{active: '\login' == menuActive}" ng-controller="LoginCtrl">
                 <a href="#" ng-click="logout()">Вийти</a>
               </li>
-              <li style="font-size: large">
+              <li class="hidden-xs" style="font-size: large">
                 <a ng-click="toggleSearch()"><span style="font-size: large;" class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;</a>
               <li>
             </ul>
 
             <form ng-show="showSearch" class="nav navbar-form" role="search">
-              <div class="input-group" style="width: 80%">
+              <div class="input-group" style="width: 85%">
                 <span class="input-group-btn" style="width: 20px">
-                <button ng-click="searchGo()" class="btn btn-default" style="margin-top: -7px">
-                  <span class="glyphicon glyphicon-search" style="font-size: large; background-color: inherit"></span>
-                </button>
+                  <button ng-click="searchGo()" class="btn btn-default" style="margin-top: -7px">
+                    <span class="glyphicon glyphicon-search" style="font-size: large; background-color: inherit"></span>
+                  </button>
                 </span>
                 <input type="text" ng-model="search_string" class="form-control animated fadeInRight" placeholder="Пошук" autofocus>
-                <span class="input-group-btn">
-                <button ng-click="searchReset()" class="btn btn-default" style="margin-top: -9px">
-                  <span class="fa fa-times-circle" style="font-size: large; background-color: inherit"></span>
-                </button>
+                <span class="input-group-btn" style="width: 20px">
+                  <button ng-click="searchReset()" class="btn btn-default" style="margin-top: -8px;">
+                    <span class="fa fa-times-circle" style="font-size: large; background-color: inherit;"></span>
+                  </button>
                 </span>
               </div>
             </form>
