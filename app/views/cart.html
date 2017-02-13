@@ -28,30 +28,32 @@
       </thead>
       <tbody>
         <tr ng-repeat="cartItems in cart.goodsTable">
+          <td style="text-align: center">
+            <span><i class="fa fa-times-circle-o" aria-hidden="true"
+                     style="cursor: pointer;" ng-click="removeFromCart(cartItems.code)"></i></span>
+          </td>
+          <td>
             <a href="#/book_view?code={{cartItems.code}}">
-              <td style="text-align: center">
-                <span><i class="fa fa-times-circle-o" aria-hidden="true"
-                         style="cursor: pointer;" ng-click="removeFromCart(cartItems.code)"></i></span>
-              </td>
-              <td>
-                <img class="img-responsive" style=" min-width: 70px" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
-              </td>
-              <td style="text-align: center">
-                <p>{{cartItems.name}}</p>
-              </td>
-              <td>
-                <input class="form-control" ng-change="ChangeQuantity()" ng-model="cartItems.quantity">
-              </td>
-              <td style="text-align: center">
-                <p>{{cartItems.discount}}%</p>
-              </td>
-              <td style="text-align: center">
-                <p>{{cartItems.price}}</p>
-              </td>
-              <td style="text-align: center">
-                <p>{{cartItems.amount}} грн</p>
-              </td>
+              <img class="img-responsive" style=" min-width: 70px" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
             </a>
+          </td>
+          <td style="text-align: center">
+            <a href="#/book_view?code={{cartItems.code}}">
+              <p>{{cartItems.name}}</p>
+            </a>
+          </td>
+          <td>
+            <input class="form-control" ng-change="ChangeQuantity()" ng-model="cartItems.quantity">
+          </td>
+          <td style="text-align: center">
+            <p>{{cartItems.discount}}%</p>
+          </td>
+          <td style="text-align: center">
+            <p>{{cartItems.price}}</p>
+          </td>
+          <td style="text-align: center">
+            <p>{{cartItems.amount}} грн</p>
+          </td>
         </tr>
         <tr>
           <th>
