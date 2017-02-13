@@ -1,0 +1,51 @@
+<h1 class="brand-color">Редагування html сторінок</h1>
+<br>
+<button type="button" class="btn btn-primary" ng-click="AddItem()">
+  Додати нову html сторінку
+</button>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th class="col-md-11">Сторінка:</th>
+    <th class="col-md-1">Дії</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="html_page in html_pages">
+    <td>
+      <h3 class="text-left" ng-hide="html_page.editing" ng-dblclick="editItem(html_page)">{{html_page.title}}</h3>
+      <div ng-show="html_page.editing" class="form-group">
+        <label for="title" class="col-md-12" ng-show="html_page.editing">Заголовок:</label>
+        <textarea id="title" class="form-control" rows="2" ng-show="html_page.editing" ng-model="html_page.title"
+                  autofocus></textarea>
+      </div>
+
+      <p class="text-left" ng-hide="html_page.editing" ng-dblclick="editItem(html_page)">{{html_page.name}}</p>
+      <div ng-show="html_page.editing" class="form-group">
+        <label for="name" class="col-md-12" ng-show="html_page.editing">ID сторінки:</label>
+        <textarea id="name" class="form-control" rows="2" ng-show="html_page.editing" ng-model="html_page.name"
+                  autofocus></textarea>
+      </div>
+
+      <p class="text-left" ng-hide="html_page.editing" ng-bind-html="html_page.text" ng-dblclick="editItem(html_page)"></p>
+      <div ng-show="html_page.editing" class="form-group">
+        <label for="name" class="col-md-12" ng-show="html_page.editing">Текст:</label>
+        <text-angular ng-show="html_page.editing" ng-model="html_page.text" autofocus></text-angular>
+      </div>
+      <br>
+    </td>
+    <td>
+      <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(html_page)" ng-disabled="html_page.editing">
+        <span class="glyphicon glyphicon-edit"></span> Редагувати
+      </button>
+      <button type="button" class="btn btn-success btn-xs" ng-click="doneEditing(html_page)" ng-disabled="!html_page.editing">
+        <span class="glyphicon glyphicon-save"></span> Зберігти
+      </button>
+      <button type="button" class="btn btn-danger btn-xs" ng-click="deleteItem(html_page)" ng-disabled="html_page.editing">
+        <span class="glyphicon glyphicon-remove"></span> Видалити
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+

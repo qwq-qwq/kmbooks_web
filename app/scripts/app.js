@@ -143,6 +143,14 @@ angular
         templateUrl: 'views/user_registration.html',
         controller: 'UserRegistrationCtrl'
       })
+      .when('/ntml_pages_edit_table', {
+        templateUrl: 'views/html_pages_edit_table.html',
+        controller: 'HtmlPagesEditCtrl'
+      })
+      .when('/ntml_page', {
+        templateUrl: 'views/html_page_view.html',
+        controller: 'HtmlPageCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })

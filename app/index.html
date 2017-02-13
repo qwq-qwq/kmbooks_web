@@ -66,7 +66,7 @@
                  <ul class="dropdown-menu">
                    <li><a href="#/">ГОЛОВНА</a></li>
                    <li><a href="#/events">ПОДІЇ</a></li>
-                   <li><a href="#/for_authors">АВТОРАМ</a></li>
+                   <li><a href="#/ntml_page?name=for_authors">АВТОРАМ</a></li>
                    <li><a href="http://catalog2017.kmbooks.com.ua">КАТАЛОГ</a></li>
                  </ul>
               </li>
@@ -81,7 +81,7 @@
                 <a href="#/map" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">КНИГАРНЯ<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="#/map">ПУНКТИ САМОВИВОЗУ</a></li>
-                  <li><a href="#/">УМОВИ ПРИДБАННЯ</a></li>
+                  <li><a href="#/ntml_page?name=conditions_of_purchase">УМОВИ ПРИДБАННЯ</a></li>
                 </ul>
               </li>
               <li ng-repeat="item in menu" class="animated fadeInLeft" ng-class="{active: item.route == menuActive}"><a href="#{{item.route}}">{{item.label}}</a></li>
@@ -323,6 +323,8 @@
     <script src="scripts/controllers/news_edit_table.js"></script>
     <script src="scripts/controllers/news.js"></script>
     <script src="scripts/controllers/user_registration.js"></script>
+    <script src="scripts/controllers/html_pages.js"></script>
+    <script src="scripts/controllers/html_page_view.js"></script>
     <!-- endbuild -->
 
 </body>
