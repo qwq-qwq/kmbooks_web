@@ -126,12 +126,18 @@ angular.module('angularApp')
         return false}
     };
 
+    $scope.ToggleCurtain = function() {
+      $scope.showSearch = false;
+      $scope.isCollapsed = !$scope.isCollapsed;
+    };
+
+    $scope.toggleSearchMobile = function() {
+      $scope.showSearch = true;
+      $scope.isCollapsed = !$scope.isCollapsed;
+    };
+
     $scope.toggleSearch = function() {
-      if ($scope.showSearch === true) {
-        $scope.showSearch = false;
-      }else{
-        $scope.showSearch = true;
-      }
+      $scope.showSearch = !$scope.showSearch;
     };
 
     $scope.searchReset = function() {
@@ -143,6 +149,10 @@ angular.module('angularApp')
       $location.search().search_string = $scope.search_string;
       $location.path('/search');
     };
+
+    $scope.$on('$locationChangeStart', function(event) {
+      $scope.isCollapsed = true;
+    });
 
     $rootScope.$on('cart_was_added', function () {
       $scope.itemsCount = cart.ItemsCount();

@@ -65,7 +65,7 @@ angular.module('angularApp').directive('bkBookList', ['wishList', '$mdPanel', '$
             controller: PanelDialogCtrl,
             controllerAs: 'ctrl',
             disableParentScroll: this.disableParentScroll,
-            templateUrl: 'views/confirm_dialog.html',
+            templateUrl: 'views/regisration_confirm_dialog.html',
             hasBackdrop: true,
             panelClass: 'demo-dialog-example',
             position: position,
