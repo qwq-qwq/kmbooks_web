@@ -27,6 +27,6 @@ angular.module('angularApp')
 
     $http.get(config.url() + "/api/news")
       .success(function(response) {
-        $scope.allNews = response.sort(compare_desc).splice(0, 12);
+        $scope.allNews = response.sort(compare_desc).splice(0, 18);
       })
   });
