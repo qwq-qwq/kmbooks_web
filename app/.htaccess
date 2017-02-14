@@ -545,7 +545,7 @@ FileETag None
 RewriteEngine On
 RewriteBase /
 
-RewriteRule ^catalog/(.*)$  /book?code=${map_bitrix:%1} [R=301,L]
+RewriteRule ^catalog/(.*)$  /book?code=${map_bitrix:$1} [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
