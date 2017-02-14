@@ -545,11 +545,7 @@ FileETag None
 RewriteEngine On
 RewriteBase /
 
-RewriteRule ^catalog/426/1839/$           /book?code=710989 [R=301,L]
-RewriteRule ^catalog/426/1841/$           /book?code=710895 [R=301,L]
-RewriteRule ^catalog/431/1769/$           /book?code=710288 [R=301,L]
-RewriteRule ^catalog/429/1772/$           /book?code=710287 [R=301,L]
-
+RewriteRule ^catalog/(.*)/$           /book?code=710989 [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
