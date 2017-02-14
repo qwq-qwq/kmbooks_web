@@ -547,3 +547,5 @@ RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.html
+
+RewriteRule /catalog/431/1579/ /book?code=700976 [R=301,L]
