@@ -544,9 +544,9 @@ FileETag None
 
 RewriteEngine On
 RewriteBase /
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . index.html
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . index.html
 
 RewriteRule ^catalog/426/1839/$ /book?code=710989 [R=301,L]
 RewriteRule ^catalog/426/1841/$ /book?code=710895 [R=301,L]
