@@ -93,7 +93,7 @@ angular.module('angularApp')
                 strMenu += '</ul>';
               };
             };
-            strMenu += '<li><a href = "#/catalog?group=' + response[key].group_id + '">' + response[key].name + caret_text + '</a>';
+            strMenu += '<li><a href = "/catalog?group=' + response[key].group_id + '">' + response[key].name + caret_text + '</a>';
             previous_level = current_level;
           };
           $scope.strMenu = strMenu;
