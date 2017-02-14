@@ -74,6 +74,7 @@ angular.module('angularApp')
           $scope.email = '';
           $scope.address = '';
           $scope.orderComment = '';
+          $scope.status = '';
           $scope.deliveryCost = 0;
           $scope.totalAmount = 0;
       }else{
@@ -92,10 +93,16 @@ angular.module('angularApp')
         orderAmount = 0;
         goodsTable = [];
       }
+      if (complete){
+        $scope.status = 'Зроблений';
+      }else{
+        $scope.status = 'Робиться';
+      }
       var orderUpdate = {id:            $cookies.get('orderId'),
                          username:      authorization.username(),
                          cityId:        $scope.selectedCity.originalId,
                          delivery:      $scope.selectedDelivery,
+                         status:        $scope.status,
                          payment:       $scope.selectedPayment,
                          newPostWHS:    $scope.selectedNewPostWHS,
                          shop:          $scope.selectedShop,
