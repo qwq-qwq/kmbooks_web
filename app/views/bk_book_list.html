@@ -3,7 +3,7 @@
              style="position: absolute; top: -20px; right: 4px" aria-label="Favorite">
     <i ng-class="wishHeart" ng-mouseleave="onMouseLeave()" ng-mouseenter="onMouseEnter()" style="font-size: medium;"></i>
   </md-button>
-  <a href="#/book_view?code={{book.code}}">
+  <a href="/book?code={{book.code}}">
     <img src="{{book.image}}">
   </a>
   <p style="margin-top: 30px; text-align: center">
@@ -12,17 +12,17 @@
   </p>
 </div>
 <div class="col-md-8">
-  <a href="#/book_view?code={{book.code}}">
+  <a href="/book?code={{book.code}}">
     <h4 style="margin-top: 0px">{{book.name}}</h4>
   </a>
   <div><b>Код: </b><span style="color: #428bca">{{book.code}}</span></div>
-  <div ng-if="book.author"><b>Автор: </b><a href="#/catalog?authors={{book.author}}">{{book.author}}</a></div>
-  <div ng-if="book.series"><b>Серія: </b><a href="#/catalog?series={{book.series}}">{{book.series}}</a></div>
+  <div ng-if="book.author"><b>Автор: </b><a href="/catalog?authors={{book.author}}">{{book.author}}</a></div>
+  <div ng-if="book.series"><b>Серія: </b><a href="/catalog?series={{book.series}}">{{book.series}}</a></div>
   <div ng-if="book.isbn"><b>ISBN: </b>{{book.isbn}}</div>
-  <div ng-if="book.cover"><b>Обкладинка: </b><a href="#/catalog?covers={{book.cover}}">{{book.cover}}</a></div>
+  <div ng-if="book.cover"><b>Обкладинка: </b><a href="/catalog?covers={{book.cover}}">{{book.cover}}</a></div>
   <div ng-if="book.str"><b>Сторінок: </b> {{book.str}}</div>
   <div ng-if="book.year"><b>Рік видання: </b> {{book.year}}</div>
-  <div ng-if="book.language"><b>Мова: </b><a href="#/catalog?languages={{book.language}}">{{book.language}}</a></div>
+  <div ng-if="book.language"><b>Мова: </b><a href="/catalog?languages={{book.language}}">{{book.language}}</a></div>
   <div ng-if="book.format"><b>Формат: </b> {{book.format}}</div>
   <div ng-if="book.painter"><b>Художник: </b> {{book.painter}}</div>
   <div ng-if="book.primeName"><b>Оригиниальна назва: </b> {{book.primeName}}</div>

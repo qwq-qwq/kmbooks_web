@@ -72,7 +72,7 @@
         </div>
 
         <p class="text-left" ng-hide="event.editing" ng-dblclick="editItem(event)">
-          <a ng-show="event.codeShop !== 0" href="#/map?code_shop={{event.codeShop}}">
+          <a ng-show="event.codeShop !== 0" href="/map?code_shop={{event.codeShop}}">
             <i class="glyphicon glyphicon-map-marker"></i><em style="margin-left: 5px">{{event.where}}</em>
           </a>
           <span ng-hide="event.codeShop !== 0">

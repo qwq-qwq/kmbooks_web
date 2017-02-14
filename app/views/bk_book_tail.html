@@ -1,15 +1,15 @@
 <div class="bukva-item">
-  <a href="/book_view?code={{book.code}}">
+  <a href="/book?code={{book.code}}">
     <img class="img-responsive center-block" src="{{book.image}}"> </img>
   </a>
   <div style="text-align:center; font-size: 15px; margin-top: 10px; margin-bottom: 5px">
-    <a href="/book_view?code={{book.code}}" style="color: black">
+    <a href="/book?code={{book.code}}" style="color: black">
       {{book.name}}
     </a>
   </div>
   <div class="price_value" style="font-size: 25px; color: black;">{{book.price}} <span style="font-size: 15px">грн</span></div>
   <div class="bukva-hidden">
-    <!--<a href="#" ng-click="AddToWishList(book); $event.preventDefault();" style="position: absolute; top: 15px; right: 15px">
+    <!--<a href="" ng-click="AddToWishList(book); $event.preventDefault();" style="position: absolute; top: 15px; right: 15px">
       <i ng-class="wishHeart" ng-mouseleave="onMouseLeave()" ng-mouseenter="onMouseEnter()" style="font-size: medium" aria-hidden="true"></i>
     </a>-->
     <md-button ng-disabled="alreadyInWishList" class="md-icon-button" ng-click="AddToWishList(book)"
@@ -21,7 +21,7 @@
     </p>
     <p>
       <b> Код: </b> {{book.code}}
-      <div ng-if="book.author"> <b>Автор:&nbsp;</b><a href="#/catalog?reload=true&authors={{book.author}}" ng-click="catalogAuthor()">{{book.author}}</a></div>
+      <div ng-if="book.author"> <b>Автор:&nbsp;</b><a href="/catalog?reload=true&authors={{book.author}}" ng-click="catalogAuthor()">{{book.author}}</a></div>
     </p>
     <p class="hidden-xs">
       <span ng-if="book.description">{{book.description.substring(0, 212) + "..."}}</span>

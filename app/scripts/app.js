@@ -66,7 +66,7 @@ angular
         templateUrl: 'views/books_table.html',
         controller: 'BooksTableCtrl'
       })
-      .when('/book_view', {
+      .when('/book', {
         templateUrl: 'views/book_view.html',
         controller: 'BookViewCtrl',
       })

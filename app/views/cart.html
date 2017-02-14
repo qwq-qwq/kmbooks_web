@@ -33,12 +33,12 @@
                      style="cursor: pointer;" ng-click="removeFromCart(cartItems.code)"></i></span>
           </td>
           <td>
-            <a href="#/book_view?code={{cartItems.code}}">
+            <a href="/book?code={{cartItems.code}}">
               <img class="img-responsive" style=" min-width: 70px" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
             </a>
           </td>
           <td style="text-align: center">
-            <a href="#/book_view?code={{cartItems.code}}">
+            <a href="/book?code={{cartItems.code}}">
               <p>{{cartItems.name}}</p>
             </a>
           </td>
@@ -170,7 +170,7 @@
       <select class="form-control" ng-model="selectedShop" ng-options="shop as shop.name for shop in selectedCity.shops">
       </select>
       <div style="margin: 10px 0 0 6px">
-        <a href="#/map?code_shop={{selectedShop.sprut_code}}">
+        <a href="/map?code_shop={{selectedShop.sprut_code}}">
           {{selectedShop.name}}
         </a>
       </div>

@@ -7,7 +7,7 @@
         <div style="font-size: 14px; margin-bottom: 6px;">
           <i class="glyphicon glyphicon-time"></i><span style="margin-left: 5px">{{event.when | date: 'dd.MM.yyyy'}} o {{event.when | date: 'HH-mm'}}</span>
         </div>
-        <a style="font-size: 14px;" ng-show="event.codeShop !== 0" href="#/map?code_shop={{event.codeShop}}">
+        <a style="font-size: 14px;" ng-show="event.codeShop !== 0" href="/map?code_shop={{event.codeShop}}">
            <div><span class="glyphicon glyphicon-map-marker"></span>&nbsp;{{event.where}}</div>
         </a>
         <span style="font-size: 14px;" ng-hide="event.codeShop !== 0">

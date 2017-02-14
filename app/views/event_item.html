@@ -10,7 +10,7 @@
         <img class="img-responsive" ng-src="{{it.data.image}}" when-visible="animateElementIn" when-not-visible="animateElementOut">
       </a>
       <div class="list-group-item">
-        <a ng-show="it.data.codeShop !== 0" href="#/map?code_shop={{it.data.codeShop}}">
+        <a ng-show="it.data.codeShop !== 0" href="/map?code_shop={{it.data.codeShop}}">
           <i class="glyphicon glyphicon-map-marker"></i><em style="margin-left: 5px">{{it.data.where}}</em>
         </a>
         <span ng-hide="it.data.codeShop !== 0">
