@@ -130,4 +130,5 @@ angular.module('angularApp')
       return authorization.isEditor();
     }
 
+
   });

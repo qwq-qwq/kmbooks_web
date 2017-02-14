@@ -18,8 +18,8 @@
   </div>
   <div class="col-md-6 book-data">
     <div><b>Код: </b><span class="brand-color">{{book.code}}</span></div>
-    <div ng-if="book.author"><b>Автор: </b><a href="#/catalog?authors={{book.author}}">{{book.author}}</a></div>
-    <div ng-if="book.series"><b>Серія: </b><a href="#/catalog?series={{book.series}}">{{book.series}}</a></div>
+    <div ng-if="book.author"><b>Автор: </b><a href="/catalog?authors={{book.author}}">{{book.author}}</a></div>
+    <div ng-if="book.series"><b>Серія: </b><a href="/catalog?series={{book.series}}">{{book.series}}</a></div>
     <div ng-if="book.isbn"><b>ISBN: </b>{{book.isbn}}</div>
     <div ng-if="book.cover"><b>Обкладинка: </b><a href="#/catalog?covers={{book.cover}}">{{book.cover}}</a></div>
     <div ng-if="book.str"><b>Сторінок: </b> {{book.str}}</div>
@@ -57,10 +57,10 @@
         </md-button>-->
         <!--<?=current_url()?>&title=<?=urlencode($title)?>&srcTitle=<?=SITE_PRESENTATION_NAME?>&srcURL=<?=base_url()?>-->
         <div style="margin-top: 30px; text-align: center">
-           <a href="http://www.facebook.com/share.php?u={{absUrl}}" style="color: black"><i class="fa fa-facebook" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="http://www.facebook.com/share.php?u={{encodeURI(absUrl)}}" style="color: black"><i class="fa fa-facebook" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
            <a href="http://vkontakte.ru/share.php?url={{absUrl}}" style="color: black"><i class="fa fa-vk" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="https://plus.google.com/share?url={{absUrl}}" style="color: black"><i class="fa fa-google-plus" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="http://twitter.com/home?status={{book.title}}%20={{absUrl}}" style="color: black"><i class="fa fa-twitter" style="font-size: large"></i></a>
+           <a href="https://plus.google.com/share?url={{encodeURI(absUrl)}}" style="color: black"><i class="fa fa-google-plus" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a href="http://twitter.com/share?text={{encodeURI(book.name)}}&url={{encodeURI(absUrl)}}" style="color: black"><i class="fa fa-twitter" style="font-size: large"></i></a>
         </div>
       </div>
     </div>

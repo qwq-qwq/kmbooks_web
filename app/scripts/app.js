@@ -31,7 +31,7 @@ angular
     'ngMaterial',
     'ui.mask'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
 
     $routeProvider
       .when('/', {
@@ -68,7 +68,7 @@ angular
       })
       .when('/book_view', {
         templateUrl: 'views/book_view.html',
-        controller: 'BookViewCtrl'
+        controller: 'BookViewCtrl',
       })
       .when('/events_edit_table', {
         templateUrl: 'views/events_edit_table.html',
@@ -154,6 +154,8 @@ angular
       .otherwise({
         redirectTo: '/'
       })
+
+      $locationProvider.html5Mode(true);
 
   })
   .run(function (api) {
