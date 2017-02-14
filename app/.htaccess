@@ -544,18 +544,11 @@ FileETag None
 
 RewriteEngine On
 RewriteBase /
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . index.html
 
 RewriteRule ^catalog/426/1839/$           /book?code=710989 [R=301,L]
-
 RewriteRule ^catalog/426/1841/$           /book?code=710895 [R=301,L]
-
 RewriteRule ^catalog/431/1769/$           /book?code=710288 [R=301,L]
-
 RewriteRule ^catalog/429/1772/$           /book?code=710287 [R=301,L]
-
 RewriteRule ^catalog/431/1776/$           /book?code=710286 [R=301,L]
 RewriteRule ^catalog/431/1775/$           /book?code=710285 [R=301,L]
 RewriteRule ^catalog/431/1774/$           /book?code=710277 [R=301,L]
@@ -704,3 +697,7 @@ RewriteRule ^catalog/416/1437/$           /book?code=690600 [R=301,L]
 RewriteRule ^catalog/427/1240/$           /book?code=690599 [R=301,L]
 RewriteRule ^catalog/407/1275/$           /book?code=690598 [R=301,L]
 RewriteRule ^catalog/416/1435/$           /book?code=690597 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.html
