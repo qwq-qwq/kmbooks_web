@@ -67,7 +67,7 @@
 
             <div class="pull-right visible-xs" style="margin-top: 12px; margin-right: 10px">
               <span>
-                <a href="#/cart" style="font-size: large; color: lightgrey; text-decoration: none">
+                <a href="/cart" style="font-size: large; color: lightgrey; text-decoration: none">
                   <span class="glyphicon glyphicon-shopping-cart"></span>
                   <span ng-if="itemsCount > 0" class="brand-color">&nbsp;{{itemsCount}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                 </a>
@@ -86,41 +86,41 @@
           <div class="collapse navbar-collapse" uib-collapse="isCollapsed">
             <ul ng-show="!showSearch" class="nav navbar-nav" data-sm-skip="true">
               <li class="dropdown animated fadeInLeft">
-                 <a href="#/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ВИДАВНИЦТВО<span class="caret"></span></a>
+                 <a href="/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ВИДАВНИЦТВО<span class="caret"></span></a>
                  <ul class="dropdown-menu">
-                   <li><a href="#/">ГОЛОВНА</a></li>
-                   <li><a href="#/events">ПОДІЇ</a></li>
-                   <li><a href="#/ntml_page?name=for_authors">АВТОРАМ</a></li>
+                   <li><a href="/">ГОЛОВНА</a></li>
+                   <li><a href="/events">ПОДІЇ</a></li>
+                   <li><a href="/ntml_page?name=for_authors">АВТОРАМ</a></li>
                    <li><a href="http://catalog2017.kmbooks.com.ua">КАТАЛОГ</a></li>
                  </ul>
               </li>
               <li class="dropdown animated fadeInLeft" bk-after-catalog-tree>
-                <a href="#/catalog" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <a href="/catalog" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   КАТАЛОГ<span class="caret"></span>
                   <!--<span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;-->
                 </a>
                 <ul class="dropdown-menu" ng-bind-html="strMenu"></ul>
               </li>
               <li class="dropdown animated fadeInLeft">
-                <a href="#/map" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">КНИГАРНЯ<span class="caret"></span></a>
+                <a href="/map" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">КНИГАРНЯ<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#/map">ПУНКТИ САМОВИВОЗУ</a></li>
-                  <li><a href="#/ntml_page?name=conditions_of_purchase">УМОВИ ПРИДБАННЯ</a></li>
-                  <li><a href="#/ntml_page?name=delivery_and_payment">ДОСТАВКА ТА ОПЛАТА</a></li>
+                  <li><a href="/map">ПУНКТИ САМОВИВОЗУ</a></li>
+                  <li><a href="/ntml_page?name=conditions_of_purchase">УМОВИ ПРИДБАННЯ</a></li>
+                  <li><a href="/ntml_page?name=delivery_and_payment">ДОСТАВКА ТА ОПЛАТА</a></li>
                 </ul>
               </li>
-              <li ng-repeat="item in menu" class="animated fadeInLeft" ng-class="{active: item.route == menuActive}"><a href="#{{item.route}}">{{item.label}}</a></li>
+              <li ng-repeat="item in menu" class="animated fadeInLeft" ng-class="{active: item.route == menuActive}"><a href="{{item.route}}">{{item.label}}</a></li>
             </ul>
 
             <ul ng-show="!showSearch" class="nav navbar-nav navbar-right">
               <li>
-                <a href="#/wish_list" style="display: inline-block; margin-top: 2px">
+                <a href="/wish_list" style="display: inline-block; margin-top: 2px">
                   <span style="font-size: large" class="fa fa-heart"></span>
                   <span ng-if="wishListItemsCount > 0" style="font-size: large" class="brand-color">&nbsp;{{wishListItemsCount}}</span>
                 </a>
               <li>
               <li class="hidden-xs">
-                <a href="#/cart" uib-popover-template="templateUrl" popover-append-to-body="true" popover-placement="bottom"
+                <a href="/cart" uib-popover-template="templateUrl" popover-append-to-body="true" popover-placement="bottom"
                    popover-trigger="{'mouseenter':'outsideClick', 'outsideClick':'outsideClick'}" tooltip-is-open="cartTooltipIsOpen" popover-title="Кошик"
                    style="font-size: large;">
                   <span class="glyphicon glyphicon-shopping-cart"></span>
@@ -128,12 +128,12 @@
                 </a>
               <li>
               <li ng-show="!authenticated">
-                <a href="#/login" style="display: inline-block;">
+                <a href="/login" style="display: inline-block;">
                   <span style="font-size: large" class="glyphicon glyphicon-user"></span>&nbsp;Вхід
                 </a>
               <li>
               <li ng-show="authenticated">
-                <a href="#/edit">Мій кабінет</a>
+                <a href="/edit">Мій кабінет</a>
               </li>
               <li ng-show="authenticated" ng-class="{active: '\login' == menuActive}" ng-controller="LoginCtrl">
                 <a href="#" ng-click="logout()">Вийти</a>
