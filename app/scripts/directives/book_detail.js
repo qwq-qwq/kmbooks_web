@@ -21,7 +21,7 @@ angular.module('angularApp').directive('bkBookDetail', ['$http', 'config', 'auth
         return authorization.isUser();
       }
       scope.isBookPage = function() {
-        if ($location.path().search('book_view') != -1) {
+        if ($location.path().search('book') != -1) {
           return true
         }else{
           return false}
