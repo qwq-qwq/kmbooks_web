@@ -74,7 +74,7 @@ angular.module('angularApp')
           $scope.email = '';
           $scope.address = '';
           $scope.orderComment = '';
-          $scope.status = '';
+          $scope.orderState = '';
           $scope.deliveryCost = 0;
           $scope.totalAmount = 0;
       }else{
@@ -94,15 +94,14 @@ angular.module('angularApp')
         goodsTable = [];
       }
       if (complete){
-        $scope.status = 'Зроблений';
+        $scope.orderState = 'Зроблений';
       }else{
-        $scope.status = 'Робиться';
+        $scope.orderState = 'Робиться';
       }
       var orderUpdate = {id:            $cookies.get('orderId'),
                          username:      authorization.username(),
                          cityId:        $scope.selectedCity.originalId,
                          delivery:      $scope.selectedDelivery,
-                         status:        $scope.status,
                          payment:       $scope.selectedPayment,
                          newPostWHS:    $scope.selectedNewPostWHS,
                          shop:          $scope.selectedShop,
@@ -110,6 +109,7 @@ angular.module('angularApp')
                          phone:         $scope.phone,
                          email:         $scope.email,
                          address:       $scope.address,
+                         orderState:    $scope.orderState,
                          orderComment:  $scope.orderComment,
                          orderAmount:   orderAmount,
                          deliveryCost:  $scope.deliveryCost,
