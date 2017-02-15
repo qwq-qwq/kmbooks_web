@@ -56,7 +56,7 @@
     <p>Email: {{currentOrder.email}}</p>
     <p>Телефон: {{currentOrder.phone}}</p>
     <p>Статус: {{currentOrder.orderState}}</p>
-    <p ng-if="currentOrder.orderComment !== ''">Коментар: {{currentOrder.orderComment}}</p>
+    <p ng-if="currentOrder.orderComment !== null">Коментар: {{currentOrder.orderComment}}</p>
     <p>Доставка: {{currentOrder.delivery.name}}</p>
     <p ng-show = "currentOrder.delivery.id === '5'">
       Відділення: {{currentOrder.newPostWHS.name}}
