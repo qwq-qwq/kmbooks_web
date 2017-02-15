@@ -70,6 +70,13 @@
         </a>
       </th>
     </tr>
+    <tr ng-if="isEditor()">
+      <th>
+        <a href="/orders">
+          <h4 class="text-left">Замовлення</h4>
+        </a>
+      </th>
+    </tr>
     <tr ng-if="isUser()">
       <th>
         <a href="/user_registration">
