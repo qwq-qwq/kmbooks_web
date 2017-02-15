@@ -58,11 +58,11 @@
     <p>Статус: {{currentOrder.orderState}}</p>
     <p>Коментар: {{currentOrder.orderComment}}</p>
     <p>Доставка: {{currentOrder.delivery.name}}</p>
-    <p ng-show = "selectedDelivery.id === '5'">
+    <p ng-show = "currentOrder.delivery.id === '5'">
       Відділення Нової Пошти: {{currentOrder.newPostWHS.name}}
     </p>
-    <p ng-show = "selectedDelivery.id === '3'">
-      Магазин: {{currentOrder.shop}}
+    <p ng-show = "currentOrder.delivery.id === '3'">
+      Магазин: {{currentOrder.shop.name_ru}}
     </p>
     <p>Оплата: {{currentOrder.payment.name}}</p>
     <p>Сума: {{currentOrder.orderAmount}} грн</p>
