@@ -57,12 +57,14 @@
     <p>Телефон: {{currentOrder.phone}}</p>
     <p>Статус: {{currentOrder.orderState}}</p>
     <p ng-if="currentOrder.orderComment !== null">Коментар: {{currentOrder.orderComment}}</p>
+    <p>Місто: {{selectedCity.name}}</p>
     <p>Доставка: {{currentOrder.delivery.name}}</p>
     <p ng-show = "currentOrder.delivery.id === '5'">
       Відділення: {{currentOrder.newPostWHS.name}}
     </p>
     <p ng-show = "currentOrder.delivery.id === '3'">
       Магазин: {{currentOrder.shop.name}}
+      <div style="font-size: x-small; color: grey; margin-left: 7px" ng-bind-html="currentOrder.shop.description"></div>
     </p>
     <p>Оплата: {{currentOrder.payment.name}}</p>
     <p>Сума: {{currentOrder.orderAmount}} грн</p>

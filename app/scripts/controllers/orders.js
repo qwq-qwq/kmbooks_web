@@ -20,5 +20,9 @@ angular.module('angularApp')
     $scope.setGoodsTable = function (order){
       $scope.goodsTable = order.goodsTable;
       $scope.currentOrder = order;
+      $http.get(config.url() + "/api/get_city?originalId=" + order.cityId)
+        .success(function(response) {
+          $scope.selectedCity = response;
+        })
     }
   });
