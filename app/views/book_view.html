@@ -31,6 +31,9 @@
     <div ng-if="book.translator"><b>Перекладач: </b> {{book.translator}}</div>
     <div ng-if="book.ageGroup"><b>Вікова група: </b> {{book.ageGroup}}</div>
     <div ng-if="book.editor"><b>Редактор: </b> {{book.editor}}</div>
+    <div ng-if="book.paper"><b>Папір: </b> {{book.paper}}</div>
+    <div ng-if="book.dateOfRelease"><b>Дата реліза: </b> {{book.dateOfRelease}}</div>
+    <div ng-if="book.illustrations"><b>Іллюстрації: </b> {{book.illustrations}}</div>
     <span ng-if="description"><h3 style="font-family: Calibri" class="brand-color">Анотація</h3></span>
     <span ng-if="description" ng-bind-html="description"></span>
     <h3 ng-if="news.length > 0" style="font-family: Calibri" class="brand-color">Новини</h3>
