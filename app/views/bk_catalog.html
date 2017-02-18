@@ -30,7 +30,7 @@
   <div ng-if="kindOfView==='list'" ng-repeat="book in books" class="row" style="margin-top: 25px">
     <bk-book-list book="book"></bk-book-list>
   </div>
-  <span ng-if="kindOfView==='tiles'" ng-repeat="book in books">
+  <span ng-if="kindOfView==='tiles'" ng-repeat="book in books" style="margin-top: 25px">
      <div class="col-xs-6 col-sm-6 col-md-4" style="min-height: 400px;">
        <bk-book-tail book="book"></bk-book-tail>
      </div>

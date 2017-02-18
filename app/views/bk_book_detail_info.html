@@ -1,8 +1,8 @@
 <div><b>Код: </b><span class="brand-color">{{book.code}}</span></div>
 <div ng-if="book.author"><b>Автор: </b><a href="/catalog?authors={{book.author}}">{{book.author}}</a></div>
-<div ng-if="book.editor"><b>Редактор: </b> {{book.editor}}</div>
-<div ng-if="book.translator"><b>Перекладач: </b> {{book.translator}}</div>
-<div ng-if="book.painter"><b>Художник: </b> {{book.painter}}</div>
+<div ng-if="book.editor"><b>Редактор: </b><a href="/catalog?editors={{book.editor}}">{{book.editor}}</a></div>
+<div ng-if="book.translator"><b>Перекладач: </b><a href="/catalog?translators={{book.translator}}">{{book.translator}}</a></div>
+<div ng-if="book.painter"><b>Художник: </b><a href="/catalog?painters={{book.painter}}">{{book.painter}}</a></div>
 <div ng-if="book.series"><b>Серія: </b><a href="/catalog?series={{book.series}}">{{book.series}}</a></div>
 <div ng-if="book.year"><b>Рік видання: </b> {{book.year}}</div>
 <div ng-if="book.str"><b>Сторінок: </b> {{book.str}}</div>
@@ -10,8 +10,8 @@
 <div ng-if="book.language"><b>Мова: </b><a href="/catalog?languages={{book.language}}">{{book.language}}</a></div>
 <div ng-if="book.format"><b>Формат: </b> {{book.format}}</div>
 <div ng-if="book.primeName"><b>Оригінальна назва: </b> {{book.primeName}}</div>
-<div ng-if="book.ageGroup"><b>Вікова група: </b> {{book.ageGroup}}</div>
+<div ng-if="book.ageGroup"><b>Вікова група: </b><a href="/catalog?ageGroups={{book.ageGroup}}">{{book.ageGroup}}</a></div>
 <div ng-if="book.paper"><b>Папір: </b> {{book.paper}}</div>
-<div ng-if="book.illustrations"><b>Іллюстрації: </b> {{book.illustrations}}</div>
+<div ng-if="book.illustrations"><b>Іллюстрації: </b><a href="/catalog?illustrations={{book.illustrations}}">{{book.illustrations}}</a></div>
 <div ng-if="book.isbn"><b>ISBN: </b>{{book.isbn}}</div>
 <div ng-if="book.dateOfRelease"><b>Дата реліза: </b> <i style="font-size: small">{{book.dateOfRelease}}</i></div>

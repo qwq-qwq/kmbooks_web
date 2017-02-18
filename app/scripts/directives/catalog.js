@@ -26,6 +26,21 @@ angular.module('angularApp').directive('bkCatalog', ['$http', 'config', 'authori
         if (scope.filterLanguages !== undefined) {
           filter += "&language=" + scope.filterLanguages;
         }
+        if (scope.filterTranslators !== undefined) {
+          filter += "&translator=" + scope.filterTranslators;
+        }
+        if (scope.filterEditors !== undefined) {
+          filter += "&editor=" + scope.filterEditors;
+        }
+        if (scope.filterPainters !== undefined) {
+          filter += "&painter=" + scope.filterPainters;
+        }
+        if (scope.filterIllustrations !== undefined) {
+          filter += "&illustrations=" + scope.filterIllustrations;
+        }
+        if (scope.filterAgeGroups !== undefined) {
+          filter += "&ageGroup=" + scope.filterAgeGroups;
+        }
         if (scope.filterSortBy !== undefined) {
           filter += "&sortBy=" + scope.filterSortBy;
         }

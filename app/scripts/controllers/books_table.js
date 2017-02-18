@@ -6,6 +6,20 @@
 
 angular.module('angularApp')
   .controller('BooksTableCtrl', function($scope, $http, $location, config, $route) {
+    function showFilters(filterFromUrl, filterCheckedName, filterValuesInScope) {
+      if (filterFromUrl !== undefined){
+        $scope.filters[filterCheckedName] = {};
+        var filters = filterFromUrl.split(',');
+        angular.forEach(filters, function (filterFromUrl, key) {
+          angular.forEach(filterValuesInScope, function (value, key) {
+            if (value.name === filterFromUrl) {
+              $scope.filters[filterCheckedName]['value' + (key - 1)] = value.name;
+            }
+          })
+        })
+      }
+    }
+
     $scope.kindOfView = "tiles";
     if ($location.search().sortBy === ''){
       $location.search('sortBy', 'noveltiesFirst');
@@ -19,6 +33,11 @@ angular.module('angularApp')
       $scope.filterSeries = $location.search().series;
       $scope.filterCovers = $location.search().covers;
       $scope.filterLanguages = $location.search().languages;
+      $scope.filterTranslators = $location.search().translators;
+      $scope.filterEditors = $location.search().editors;
+      $scope.filterPainters = $location.search().painters;
+      $scope.filterIllustrations = $location.search().illustrations;
+      $scope.filterAgeGroups = $location.search().ageGroups;
       $scope.filterSortBy = $location.search().sortBy;
       $scope.group = $location.search().group;
       if (page === undefined){
@@ -52,6 +71,12 @@ angular.module('angularApp')
           $scope.authors = response.authors;
           $scope.series = response.series;
           $scope.covers = response.covers;
+          $scope.languages = response.languages;
+          $scope.translators = response.translators;
+          $scope.editors = response.editors;
+          $scope.painters = response.painters;
+          $scope.illustrations = response.illustrations;
+          $scope.ageGroups = response.ageGroups;
           /*angular.forEach(response.covers, function (cover, key) {
             if (cover.name !== null){
               if (cover.name.search("'") !== -1) {
@@ -60,63 +85,21 @@ angular.module('angularApp')
             }
           })*/
 
-          $scope.languages = response.languages;
           if ($location.search().priceFrom == undefined && $location.search().priceTo == undefined) {
             $scope.priceSliderValue = [response.priceFrom, response.priceTo];
           }
 
           $scope.filters = {};
-          var authorsFromUrl = $location.search().authors;
-          if (authorsFromUrl !== undefined){
-            $scope.filters.authorChecked = {};
-            var authors = authorsFromUrl.split(',');
-            angular.forEach(authors, function (authorFromUrl, key) {
-              angular.forEach($scope.authors, function (value, key) {
-                if (value.name === authorFromUrl) {
-                  $scope.filters.authorChecked['value' + (key - 1)] = value.name;
-                }
-              })
-            })
-          }
+          showFilters($location.search().authors, 'authorChecked', $scope.authors);
+          showFilters($location.search().series, 'seriesChecked', $scope.series);
+          showFilters($location.search().covers, 'coversChecked', $scope.covers);
+          showFilters($location.search().languages, 'languagesChecked', $scope.languages);
+          showFilters($location.search().translators, 'translatorsChecked', $scope.translators);
+          showFilters($location.search().editors, 'editorsChecked', $scope.editors);
+          showFilters($location.search().painters, 'paintersChecked', $scope.painters);
+          showFilters($location.search().illustrations, 'illustrationsChecked', $scope.illustrations);
+          showFilters($location.search().ageGroups, 'ageGroupsChecked', $scope.ageGroups);
 
-          var seriesFromUrl = $location.search().series;
-          if (seriesFromUrl !== undefined){
-            $scope.filters.seriesChecked = {};
-            var series = seriesFromUrl.split(',');
-            angular.forEach(series, function (seriesFromUrl, key) {
-              angular.forEach($scope.series, function (value, key) {
-                if (value.name === seriesFromUrl) {
-                  $scope.filters.seriesChecked['value' + (key - 1)] = value.name;
-                }
-              })
-            })
-          }
-
-          var coversFromUrl = $location.search().covers;
-          if (coversFromUrl !== undefined){
-            $scope.filters.coversChecked = {};
-            var covers = coversFromUrl.split(',');
-            angular.forEach(covers, function (coverFromUrl, key) {
-              angular.forEach($scope.covers, function (value, key) {
-                if (value.name === coverFromUrl) {
-                  $scope.filters.coversChecked['value' + (key - 1)] = value.name;
-                }
-              })
-            })
-          }
-
-          var languagesFromUrl = $location.search().languages;
-          if (languagesFromUrl !== undefined){
-            $scope.filters.languagesChecked = {};
-            var languages = languagesFromUrl.split(',');
-            angular.forEach(languages, function (languageFromUrl, key) {
-              angular.forEach($scope.languages, function (value, key) {
-                if (value.name === languageFromUrl) {
-                  $scope.filters.languagesChecked['value' + (key - 1)] = value.name;
-                }
-              })
-            })
-          }
           $scope.catalog();
         })
     }
@@ -124,38 +107,11 @@ angular.module('angularApp')
     if ($location.path() == '/bestsellers') {
       $scope.myTitle = 'Бестселери';
       $scope.myHeader = 'Бестселери';
-      var filter = '';
-      if ($location.search().group !== undefined) {
-        filter = "?group=" + $location.search().group;
-      }
-      $http.get(config.url() + "/api/books/criteria" + filter)
-        .success(function (response) {
-          $scope.priceFrom = response.priceFrom;
-          $scope.priceTo = response.priceTo;
-          $scope.authors = response.authors;
-          $scope.series = response.series;
-          $scope.covers = response.covers;
-          $scope.languages = response.languages;
-          if ($location.search().priceFrom == undefined && $location.search().priceTo == undefined) {
-            $scope.priceSliderValue = [response.priceFrom, response.priceTo];
-          }
-          $scope.filters = {};
-          $scope.catalog();
-        })
     }
 
     if ($location.path() == '/novelties') {
       $scope.myTitle = 'Новинки';
       $scope.myHeader = 'Новинки';
-      $http.get(config.url() + "/api/books/novelties_all")
-        .success(function(response) {
-          for (var key in response) {
-            if (response[key].image == '') {
-              response[key].image = '/img/no_picture_ru_165.jpg';
-            }
-          }
-          $scope.books = response;
-        })
     }
 
     $scope.animateElementIn = function($el) {
@@ -188,116 +144,32 @@ angular.module('angularApp')
        $scope.catalog();
     }
 
-    $scope.authorFilterApply = function () {
+    $scope.FilterApply = function (filterChecked, nameInUrl) {
       $location.search('page', 1);
-      var authorSearch = '';
-      angular.forEach($scope.filters.authorChecked, function (author, key) {
-        if(authorSearch !== ''){
-          authorSearch += ',';
+      var filter = '';
+      angular.forEach(filterChecked, function (filterItem, key) {
+        if(filter !== ''){
+          filter += ',';
         }
-        if (author !== undefined) {
-          authorSearch += author;
+        if (filterItem !== undefined) {
+          filter += filterItem;
         }
       })
-      if (authorSearch === ''){
-        $location.search('authors', undefined);
+      if (filter === ''){
+        $location.search(nameInUrl, undefined);
       }else{
-        $location.search('authors', authorSearch);
+        $location.search(nameInUrl, filter);
       }
       $scope.catalog();
     }
 
-    $scope.seriesFilterApply = function () {
-      $location.search('page', 1);
-      var seriesSearch = '';
-      angular.forEach($scope.filters.seriesChecked, function (series, key) {
-        if(seriesSearch !== ''){
-          seriesSearch += ',';
-        }
-        if (series !== undefined) {
-          seriesSearch += series;
-        }
-      })
-      if (seriesSearch === ''){
-        $location.search('series', undefined);
-      }else{
-        $location.search('series', seriesSearch);
-      }
-      $scope.catalog();
-    }
-
-    $scope.coversFilterApply = function () {
-      $location.search('page', 1);
-      var coversSearch = '';
-      angular.forEach($scope.filters.coversChecked, function (covers, key) {
-        if(coversSearch !== ''){
-          coversSearch += ',';
-        }
-        if (covers !== undefined) {
-          coversSearch += covers;
-        }
-      })
-      if (coversSearch === ''){
-        $location.search('covers', undefined);
-      }else{
-        $location.search('covers', coversSearch);
-      }
-      $scope.catalog();
-    }
-
-    $scope.languagesFilterApply = function () {
-      $location.search('page', 1);
-      var languagesSearch = '';
-      angular.forEach($scope.filters.languagesChecked, function (language, key) {
-        if(languagesSearch !== ''){
-          languagesSearch += ',';
-        }
-        if (language !== undefined) {
-          languagesSearch += language;
-        }
-      })
-      if (languagesSearch === ''){
-        $location.search('languages', undefined);
-      }else{
-        $location.search('languages', languagesSearch);
-      }
-      $scope.catalog();
-    }
-
-    $scope.removeFromAuthorFilter = function (nameInModel) {
-      angular.forEach($scope.filters.authorChecked, function (author, key) {
+    $scope.removeFromFilter = function (filterChecked, nameInModel, nameInUrl) {
+      angular.forEach(filterChecked, function (author, key) {
         if(key === nameInModel){
-          $scope.filters.authorChecked[key] = undefined;
+          filterChecked[key] = undefined;
         }
       })
-      $scope.authorFilterApply();
-    }
-
-    $scope.removeFromSeriesFilter = function (nameInModel) {
-      angular.forEach($scope.filters.seriesChecked, function (author, key) {
-        if(key === nameInModel){
-          $scope.filters.seriesChecked[key] = undefined;
-        }
-      })
-      $scope.seriesFilterApply();
-    }
-
-    $scope.removeFromCoversFilter = function (nameInModel) {
-      angular.forEach($scope.filters.coversChecked, function (cover, key) {
-        if(key === nameInModel){
-          $scope.filters.coversChecked[key] = undefined;
-        }
-      })
-      $scope.coversFilterApply();
-    }
-
-    $scope.removeFromLanguagesFilter = function (nameInModel) {
-      angular.forEach($scope.filters.languagesChecked, function (language, key) {
-        if(key === nameInModel){
-          $scope.filters.languagesChecked[key] = undefined;
-        }
-      })
-      $scope.languagesFilterApply();
+      $scope.FilterApply(filterChecked, nameInUrl);
     }
 
     $scope.filterEmpty = function(items) {
