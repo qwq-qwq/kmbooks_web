@@ -10,6 +10,8 @@ angular.module('angularApp')
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
     $scope.absUrl = $location.absUrl();
 
+    $window.scrollTo(0, 0);
+
     $scope.uploader = new FileUploader({
       url: config.url() + '/api/edit/books/banner_upload',
       removeAfterUpload: true,
