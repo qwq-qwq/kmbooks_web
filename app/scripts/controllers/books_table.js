@@ -76,14 +76,26 @@ angular.module('angularApp')
           $scope.editors = response.editors;
           $scope.painters = response.painters;
           $scope.illustrations = response.illustrations;
-          $scope.ageGroups = response.ageGroups;
-          /*angular.forEach(response.covers, function (cover, key) {
-            if (cover.name !== null){
-              if (cover.name.search("'") !== -1) {
-                cover.name = cover.name.replace(/[\\"']/g, '\\$&');//.replace(/\u0000/g, '\\0');
+          $scope.ageGroups = [];
+          angular.forEach(response.ageGroups, function (element, key) {
+            if (element.name !== null){
+              if (element.name === 'Малюкам') {
+                $scope.ageGroups[0] = element;
+              }else if(element.name === 'Дошкільнятам'){
+                $scope.ageGroups[1] = element;
+              }else if(element.name === 'Молодшим школярам'){
+                $scope.ageGroups[2] = element;
+              }else if(element.name === 'Підліткам'){
+                $scope.ageGroups[3] = element;
+              }else if(element.name === 'Юнакам'){
+                $scope.ageGroups[4] = element;
+              }else if(element.name === 'Дорослим'){
+                $scope.ageGroups[5] = element;
+              }else if(element.name === 'Для всіх'){
+                $scope.ageGroups[6] = element;
               }
             }
-          })*/
+          })
 
           if ($location.search().priceFrom == undefined && $location.search().priceTo == undefined) {
             $scope.priceSliderValue = [response.priceFrom, response.priceTo];
