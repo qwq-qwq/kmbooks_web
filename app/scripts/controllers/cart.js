@@ -176,7 +176,11 @@ angular.module('angularApp')
           $scope.deliveryCost = 35;
         }
       }else if ($scope.selectedDelivery.id === '5'){
-        $scope.deliveryCost = 35;
+        if (orderAmount > 450) {
+          $scope.deliveryCost = 0;
+        } else {
+          $scope.deliveryCost = 35;
+        }
       }else if($scope.selectedDelivery.id === '4'){
         $scope.deliveryCost = 0;
       }else{
