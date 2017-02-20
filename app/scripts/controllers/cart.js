@@ -186,7 +186,7 @@ angular.module('angularApp')
         if (orderAmount > 450) {
           $scope.deliveryCost = 0;
         } else {
-          var W = Math.round(Math.ceil(0.5 * itemsCount / 10) / 100, 2);
+          var W = Math.round(Math.ceil(500 * itemsCount / 10) / 100, 2);
           var Price = orderAmount;
           W = (W * 5 + 5.6) * 1.2;
           var Q = Price * 0.015;
