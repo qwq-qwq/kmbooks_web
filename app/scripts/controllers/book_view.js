@@ -161,7 +161,7 @@ angular.module('angularApp')
     };
 
     uploaderFile.onSuccessItem = function(fileItem, response, status, headers) {
-      //$scope.bannerImage = response.image;
+      $scope.bookFragment = response;
       $scope.book.upl_itemFile = null;
     };
 
