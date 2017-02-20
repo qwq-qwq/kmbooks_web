@@ -163,9 +163,10 @@ angular.module('angularApp')
     }
 
     $scope.RecalculateDeliveryCost = function () {
-      var orderAmount;
+      var orderAmount, itemsCount;
       if (cart.Exist()){
         orderAmount = cart.GetCart().orderAmount;
+        itemsCount = cart.ItemsCount();
       }else{
         orderAmount = 0;
       }
@@ -181,10 +182,18 @@ angular.module('angularApp')
         } else {
           $scope.deliveryCost = 35;
         }
-      }else if($scope.selectedDelivery.id === '4'){
-        $scope.deliveryCost = 0;
-      }else{
-        $scope.deliveryCost = 0;
+      }else if($scope.selectedDelivery.id === '4') {
+        if (orderAmount > 450) {
+          $scope.deliveryCost = 0;
+        } else {
+          var W = Math.round(Math.ceil(0.5 * itemsCount / 10) / 100, 2);
+          var Price = orderAmount;
+          W = (W * 5 + 5.6) * 1.2;
+          var Q = Price * 0.015;
+          Q = (Q < 2.5) ? 2.5 * 1.2 : Q * 1.2;
+          var Sum = Math.round(W + Q, 2);
+          $scope.deliveryCost = Math.ceil(Sum);
+        }
       }
       $scope.totalAmount = orderAmount + $scope.deliveryCost;
     }
