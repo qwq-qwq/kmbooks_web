@@ -14,9 +14,11 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
             if (scope.book.kvo > 0) {
               scope.boughtText = "Купити";
               scope.boughtDisable = false;
+              scope.boughtHint = "";
             } else {
               scope.boughtText = "Замовити";
               scope.boughtDisable = false;
+              scope.boughtHint = "Книга очикується з друку"
             }
           } else {
             scope.boughtText = "Купити";
