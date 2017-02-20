@@ -174,5 +174,9 @@ angular.module('angularApp')
       alert("При загрузке файла на сервер возникла ошибка");
     };
 
+    $scope.OpenFragment = function (url) {
+      $window.open('http://kmbooks.com.ua' + url);
+    }
+
 
   });

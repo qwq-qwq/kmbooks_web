@@ -34,7 +34,7 @@
           <bk-buy-button book = "book"></bk-buy-button>
         </p>
         <p ng-if="bookFragment !== ''" style="text-align: center">
-          <md-button href="{{'http://kmbooks.com.ua' + bookFragment.file}}" class="">
+          <md-button ng-click="OpenFragment(bookFragment.file)" class="">
             <span style="font-size: large" class="fa fa-cloud-download brand-color"></span>&nbsp;&nbsp;читати фрагмент
           </md-button>
         </p>
