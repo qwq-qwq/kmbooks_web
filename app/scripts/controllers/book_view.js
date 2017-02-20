@@ -113,6 +113,11 @@ angular.module('angularApp')
         $scope.news = response;
       })
 
+    $http.get(config.url() + '/api/files_for_book/get_by_code?code=' + code)
+      .success(function (response) {
+        $scope.bookFragment = response;
+      })
+
     $scope.gallery.opts = {
       index: 0,
       history: false,
@@ -131,6 +136,43 @@ angular.module('angularApp')
     $scope.isEditor = function() {
       return authorization.isEditor();
     }
+
+    $scope.uploaderFile = new FileUploader({
+      url: config.url() + '/api/edit/files_for_book/upload',
+      removeAfterUpload: true,
+      withCredentials: true
+    });
+    var uploaderFile = $scope.uploaderFile;
+    uploaderFile.filters.push({
+      name: 'fileFilter',
+      fn: function(item /*{File|FileLikeObject}*/, options) {
+        var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+        return '|pdf|'.indexOf(type) !== -1;
+      }
+    });
+
+    $scope.saveFileItem = function (item) {
+      item.editing = false;
+      item.upl_itemFile.upload();
+    }
+
+    uploaderFile.onAfterAddingFile = function(fileItem) {
+      $scope.book.upl_itemFile = fileItem;
+    };
+
+    uploaderFile.onSuccessItem = function(fileItem, response, status, headers) {
+      //$scope.bannerImage = response.image;
+      $scope.book.upl_itemFile = null;
+    };
+
+    uploaderFile.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+      alert("Ошибка добавления файла, разрешены только pdf");
+    };
+
+    uploaderFile.onErrorItem = function(fileItem, response, status, headers) {
+      $scope.book.upl_itemFile = null;
+      alert("При загрузке файла на сервер возникла ошибка");
+    };
 
 
   });

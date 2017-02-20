@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('BooksTableCtrl', function($scope, $http, $location, config, $route) {
+  .controller('BooksTableCtrl', function(authorization, $scope, $http, $location, config, $route) {
     function showFilters(filterFromUrl, filterCheckedName, filterValuesInScope) {
       if (filterFromUrl !== undefined){
         $scope.filters[filterCheckedName] = {};
@@ -13,7 +13,7 @@ angular.module('angularApp')
         angular.forEach(filters, function (filterFromUrl, key) {
           angular.forEach(filterValuesInScope, function (value, key) {
             if (value.name === filterFromUrl) {
-              $scope.filters[filterCheckedName]['value' + (key - 1)] = value.name;
+              $scope.filters[filterCheckedName]['value' + key] = value.name;
             }
           })
         })
@@ -205,6 +205,10 @@ angular.module('angularApp')
     $scope.goToPage = function (page) {
       $location.search('page', page);
       $scope.catalog();
+    }
+
+    $scope.isEditor = function() {
+      return authorization.isEditor();
     }
 
   });

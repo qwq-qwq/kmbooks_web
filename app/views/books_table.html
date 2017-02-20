@@ -47,7 +47,7 @@
              </label>
            </div>
          </div>
-         <div uib-accordion-group class="panel-default" is-open="status.open2" style="display: none">
+         <div uib-accordion-group class="panel-default" is-open="status.open2" ng-show="isEditor()">
            <div uib-accordion-heading>
              Перекладачі
              <span class="pull-right glyphicon ng-scope glyphicon-chevron-down"
@@ -63,7 +63,7 @@
              </label>
            </div>
          </div>
-         <div uib-accordion-group class="panel-default" is-open="status.open3" style="display: none">
+         <div uib-accordion-group class="panel-default" is-open="status.open3" ng-show="isEditor()">
            <div uib-accordion-heading>
              Редактори
              <span class="pull-right glyphicon ng-scope glyphicon-chevron-down"
@@ -79,7 +79,7 @@
              </label>
            </div>
          </div>
-         <div uib-accordion-group class="panel-default" is-open="status.open4" style="display: none">
+         <div uib-accordion-group class="panel-default" is-open="status.open4" ng-show="isEditor()">
            <div uib-accordion-heading>
              Художники
              <span class="pull-right glyphicon ng-scope glyphicon-chevron-down"

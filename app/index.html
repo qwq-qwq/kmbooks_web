@@ -217,6 +217,18 @@
                   </div>
                 </div>
               </div>
+
+              <div class="panel-heading">Завантажити фрагмент.</div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-12">
+                    <input type="file" nv-file-select="" uploader="uploaderFile" options="{formData: [{code: book.code}]}" style="padding-bottom: 10px">
+                    <button class="btn btn-default btn-sm" ng-click="book.editing = false" style="min-width: 100px">Отмена</button>
+                    <button class="btn btn-primary btn-sm" ng-click="saveFileItem(book)" style="min-width: 100px">Сохранить</button>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </span>
