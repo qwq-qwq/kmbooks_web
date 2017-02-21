@@ -150,7 +150,7 @@
                     <span class="glyphicon glyphicon-search" style="font-size: large; background-color: inherit"></span>
                   </button>
                 </span>
-                <input type="text" ng-model="search_string" class="form-control animated fadeInRight" placeholder="Пошук" autofocus>
+                <input type="text" style="color: white;" bk-auto-focus ng-model="search_string" class="form-control animated fadeInRight" placeholder="Пошук" autofocus>
                 <span class="input-group-btn" style="width: 15px">
                   <button ng-click="searchReset()" class="btn btn-default" style="margin-top: -14px">
                     <span class="fa fa-times-circle" style="position: absolute; left:23px; top: -1px; font-size: large; background-color: inherit;"></span>
@@ -335,6 +335,7 @@
     <script src="scripts/directives/check_email.js"></script>
     <script src="scripts/directives/book_list.js"></script>
     <script src="scripts/directives/book_detail_info.js"></script>
+    <script src="scripts/directives/autofocus.js"></script>
     <script src="scripts/controllers/log.js"></script>
     <script src="scripts/controllers/books_table.js"></script>
     <script src="scripts/controllers/book_view.js"></script>
