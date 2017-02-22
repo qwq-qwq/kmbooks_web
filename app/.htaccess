@@ -545,6 +545,12 @@ FileETag None
 RewriteEngine On
 RewriteBase /
 
+RewriteCond %{QUERY_STRING} ^id=(.*)$
+RewriteRule ^/?book.php$ /catalog/${map:%1}? [R=301,L]
+
+RewriteCond %{QUERY_STRING} ^id=(.*)$
+RewriteRule ^/?book_kmp.php$ /catalog/${map_kmp:%1}? [R=301,L]
+
 RewriteRule ^catalog/(.*)$  /book?code=${map_bitrix:$1} [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
