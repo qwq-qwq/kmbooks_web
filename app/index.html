@@ -112,7 +112,10 @@
               <li ng-repeat="item in menu" class="animated fadeInLeft" ng-class="{active: item.route == menuActive}"><a href="{{item.route}}">{{item.label}}</a></li>
             </ul>
 
-            <ul ng-show="!showSearch" class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
+              <li ng-show="!showSearch" class="hidden-xs" style="font-size: large">
+                <a ng-click="toggleSearch()"><span style="font-size: large;" class="glyphicon glyphicon-search"></span></a>
+              <li>
               <li>
                 <a href="/wish_list" style="display: inline-block; margin-top: 2px">
                   <span style="font-size: large" class="fa fa-heart"></span>
@@ -138,22 +141,19 @@
               <li ng-show="authenticated" ng-class="{active: '\login' == menuActive}" ng-controller="LoginCtrl">
                 <a href="#" ng-click="logout()">ВИЙТИ</a>
               </li>
-              <li class="hidden-xs" style="font-size: large">
-                <a ng-click="toggleSearch()"><span style="font-size: large;" class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;</a>
-              <li>
             </ul>
 
             <form ng-show="showSearch" class="nav navbar-form" role="search">
-              <div class="input-group pull-right" style="width: 85%">
+              <div class="input-group pull-right" style="width: 70%">
                 <span class="input-group-btn" style="width: 20px">
                   <button ng-click="searchGo()" class="btn btn-default" style="margin-top: -7px">
                     <span class="glyphicon glyphicon-search" style="font-size: large; background-color: inherit"></span>
                   </button>
-                </span>
-                <input type="text" style="color: white;" bk-auto-focus ng-model="search_string" class="form-control animated fadeInRight" placeholder="Пошук" autofocus>
-                <span class="input-group-btn" style="width: 15px">
-                  <button ng-click="searchReset()" class="btn btn-default" style="margin-top: -14px">
-                    <span class="fa fa-times-circle" style="position: absolute; left:23px; top: -1px; font-size: large; background-color: inherit;"></span>
+                </span><!--background: rgba(63, 67, 71, 0.9);-->
+                <input type="text" style="color: white;" bk-auto-focus ng-model="search_string" class="form-control" placeholder="Пошук на сайті" autofocus>
+                <span class="input-group-btn">
+                  <button ng-click="searchReset()" class="btn btn-default" style="margin-top: 0px">
+                     <span class="close"></span>
                   </button>
                 </span>
               </div>

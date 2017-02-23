@@ -5,6 +5,39 @@
   padding: 0.2em 0;
 }
 
+.close {
+  position: absolute;
+  left: 10px;
+  top: -9px;
+  width: 25px;
+  height: 25px;
+  opacity: 0.6;
+}
+.close:hover {
+  opacity: 1;
+}
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 25px;
+  width: 2px;
+  background-color: #A7A7A7;
+}
+.close:before {
+  transform: rotate(45deg);
+}
+.close:after {
+  transform: rotate(-45deg);
+}
+
+.close:active {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transition: all 0.3s;
+}
+
 /*@font-face {font-family: "Calibri";
   src: url("../fonts/calibri.ttf");
 }*/
