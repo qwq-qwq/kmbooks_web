@@ -67,16 +67,16 @@
 
             <div class="pull-right visible-xs" style="margin-top: 12px; margin-right: 10px">
               <span>
-                <a href="/cart" style="font-size: large; color: lightgrey; text-decoration: none">
-                  <span class="glyphicon glyphicon-shopping-cart"></span>
-                  <span ng-if="itemsCount > 0" class="brand-color">&nbsp;{{itemsCount}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a style="font-size: large; color: lightgrey; text-decoration: none; outline: none;">
+                  <span ng-click="toggleSearchMobile();">
+                    <span style="font-size: large;" class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </span>
                 </a>
               </span>
               <span>
-                <a style="font-size: large; color: lightgrey; text-decoration: none">
-                  <span ng-click="toggleSearchMobile();">
-                    <span style="font-size: large;" class="glyphicon glyphicon-search"></span>
-                  </span>
+                <a href="/cart" style="font-size: large; color: lightgrey; text-decoration: none">
+                  <span class="glyphicon glyphicon-shopping-cart"></span>
+                  <span ng-if="itemsCount > 0" class="brand-color">&nbsp;{{itemsCount}}</span>&nbsp;&nbsp;&nbsp;
                 </a>
               </span>
             </div>
@@ -123,8 +123,8 @@
                 </a>
               <li>
               <li class="hidden-xs">
-                <a href="/cart" uib-popover-template="templateUrl" popover-append-to-body="true" popover-placement="bottom"
-                   popover-trigger="{'mouseenter':'outsideClick', 'outsideClick':'outsideClick'}" tooltip-is-open="cartTooltipIsOpen" popover-title="Кошик"
+                <a uib-popover-template="templateUrl" popover-append-to-body="true" popover-placement="bottom"
+                   popover-trigger="{'click':'outsideClick', 'outsideClick':'outsideClick'}" tooltip-is-open="cartTooltipIsOpen" popover-title="Кошик"
                    style="font-size: large;">
                   <span class="glyphicon glyphicon-shopping-cart"></span>
                   <span ng-if="itemsCount > 0" class="brand-color">&nbsp;{{itemsCount}}</span>
@@ -142,23 +142,32 @@
                 <a href="#" ng-click="logout()">ВИЙТИ</a>
               </li>
             </ul>
-
-            <form ng-show="showSearch" class="nav navbar-form" role="search">
-              <div class="input-group pull-right" style="width: 70%">
+            <form ng-show="showSearch" style="max-height: 30px" class="nav navbar-form hidden-xs" role="search">
+              <div class="input-group pull-right" style="width: 60%; margin-right: 50px">
                 <span class="input-group-btn" style="width: 20px">
-                  <button ng-click="searchGo()" class="btn btn-default" style="margin-top: -7px">
+                  <button ng-click="searchGo()" class="btn btn-default" style="margin-top: -7px; outline: none">
                     <span class="glyphicon glyphicon-search" style="font-size: large; background-color: inherit"></span>
                   </button>
                 </span><!--background: rgba(63, 67, 71, 0.9);-->
-                <input type="text" style="color: white;" bk-auto-focus ng-model="search_string" class="form-control" placeholder="Пошук на сайті" autofocus>
+                <input type="text" style="color: white;" bk-auto-focus ng-model="search_string" class="form-control animated fadeInRight" placeholder="Пошук на сайті">
                 <span class="input-group-btn">
-                  <button ng-click="searchReset()" class="btn btn-default" style="margin-top: 0px">
-                     <span class="close"></span>
-                  </button>
+                   <span ng-click="searchReset()" class="close" style="top: 5px; outline: none"></span>
                 </span>
               </div>
             </form>
-
+            <form ng-show="showSearch" style="max-height: 30px" class="nav navbar-form visible-xs" role="search">
+              <div class="input-group pull-right" style="width: 100%; margin-right: 20px">
+                <span class="input-group-btn" style="width: 20px">
+                  <button ng-click="searchGo()" class="btn btn-default" style="margin-top: -7px; outline: none">
+                    <span class="glyphicon glyphicon-search" style="font-size: large; background-color: inherit"></span>
+                  </button>
+                </span><!--background: rgba(63, 67, 71, 0.9);-->
+                <input type="text" style="color: white;" bk-auto-focus ng-model="search_string" class="form-control animated fadeInRight" placeholder="Пошук на сайті">
+                <span class="input-group-btn">
+                   <span ng-click="searchReset()" class="close" style="top: 5px; outline: none"></span>
+                </span>
+              </div>
+            </form>
           </div>
           </div>
       </div>
@@ -217,7 +226,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="panel-heading">Завантажити фрагмент.</div>
               <div class="panel-body">
                 <div class="row">
@@ -228,7 +236,6 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </span>

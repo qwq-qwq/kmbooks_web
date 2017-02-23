@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('BooksTableCtrl', function(authorization, $scope, $http, $location, config, $route) {
+  .controller('BooksTableCtrl', function(authorization, $scope, $http, $location, config, $route, $window) {
     function showFilters(filterFromUrl, filterCheckedName, filterValuesInScope) {
       if (filterFromUrl !== undefined){
         $scope.filters[filterCheckedName] = {};
@@ -56,6 +56,7 @@ angular.module('angularApp')
       if (priceFrom !== undefined && priceTo !== undefined) {
         $scope.priceSliderValue = [parseInt(priceFrom), parseInt(priceTo)];
       }
+      $window.scrollTo(0, 0);
       $scope.searching = true;
     }
 
