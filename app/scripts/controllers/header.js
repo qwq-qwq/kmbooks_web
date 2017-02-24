@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('HeaderCtrl', function(wishList, $scope, $rootScope, $location, $anchorScroll, $http, config, cart) {
+  .controller('HeaderCtrl', function(wishList, $scope, $rootScope, $location, $anchorScroll, $http, config, cart, cartPopover) {
 
     $scope.menu = [
       {label:'КОНТАКТИ', route:'/contacts'}
@@ -177,8 +177,8 @@ angular.module('angularApp')
       $scope.searchInputStyle={width: searchInputLength};
     }
 
-    $scope.closeCartTooltip = function () {
-       $scope.cartTooltipEnable = false;
+    $scope.openCartPopover = function () {
+       cartPopover.ShowCart();
     }
 
     $scope.mouseEnter = function () {
