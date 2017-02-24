@@ -1,8 +1,12 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('EditCtrl', function($scope, authorization) {
+  .controller('EditCtrl', function($scope, authorization, $rootScope) {
     $scope.username = authorization.username();
+
+    $rootScope.$on('successful_authorization', function () {
+      $scope.username = authorization.username();
+    })
 
     $scope.isAdmin = function() {
        return authorization.isAdmin();

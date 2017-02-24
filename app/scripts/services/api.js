@@ -10,6 +10,7 @@ angular.module('angularApp').factory('api', function (wishList, cart, order, $ht
           $rootScope.username = data.name;
           $rootScope.user = data.principal.user;
           $rootScope.role = data.principal.role;
+          $rootScope.$broadcast('successful_authorization');
           wishList.GetStoredWishList();
         } else {
           $rootScope.authenticated = false;

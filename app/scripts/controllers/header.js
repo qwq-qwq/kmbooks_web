@@ -11,7 +11,7 @@ angular.module('angularApp')
 
     $scope.menuActive = '/';
 
-    $scope.cartTooltipIsOpen = true;
+    $scope.cartTooltipEnable = true;
 
     $rootScope.$on('$viewContentLoaded', function(e, curr, prev) {
       $scope.menuActive = $location.path();
@@ -133,10 +133,10 @@ angular.module('angularApp')
 
     $scope.toggleSearchMobile = function() {
       $scope.showSearch = true;
-      $scope.isCollapsed = !$scope.isCollapsed;
     };
 
     $scope.toggleSearch = function() {
+      $scope.inputLengthRecalculation();
       $scope.showSearch = !$scope.showSearch;
     };
 
@@ -167,6 +167,18 @@ angular.module('angularApp')
 
     $scope.OnBannerClick = function (slide) {
       $location.url(slide.link);
+      $scope.cartTooltipEnabled = false;
+    }
+
+    $scope.inputLengthRecalculation = function () {
+      var headerLength = angular.element('#header').width();
+      var rightMenuLength = angular.element('#right-menu').width();
+      var searchInputLength = headerLength - 167 - 30 - rightMenuLength;
+      $scope.searchInputStyle={width: searchInputLength};
+    }
+
+    $scope.closeCartTooltip = function () {
+       $scope.cartTooltipEnable = false;
     }
 
     $scope.mouseEnter = function () {

@@ -16,6 +16,7 @@ angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope,
         $rootScope.role = data.principal.role;
         $rootScope.user = data.principal.user;
         wishList.GetStoredWishList();
+        $rootScope.$broadcast('successful_authorization');
         if (authorization.onlyIsUser()) {
           $location.path("/");
         }else{
