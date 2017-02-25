@@ -9,7 +9,6 @@ angular.module('angularApp').factory('cartPopover', function ($http, $rootScope,
     ShowCart: function () {
         var position = $mdPanel.newPanelPosition().relativeTo('#cart').addPanelPosition("align-start", "below").withOffsetX("-90px").withOffsetY("5px");
         var animation = $mdPanel.newPanelAnimation().openFrom('#cart').closeTo('#cart').withAnimation($mdPanel.animation.FADE);
-
         var config = {
           attachTo: angular.element(document.body),
           controller: PanelDialogCtrl,

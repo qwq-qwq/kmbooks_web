@@ -83,12 +83,12 @@
               </span>
             </div>
 
-            <form ng-show="showSearch" class="visible-xs" role="search">
-              <div class="input-group pull-right" style="width: 95%; margin-right: 40px; padding: 8px;">
-                <span class="input-group-btn" style="width: 20px">
-                  <button  ng-click="searchGo()" class="btn btn-default" style="display: none"></button>
-                </span>
-                <input type="text" style="background-color: inherit; color: white" bk-auto-focus ng-model="search_string" class="form-control" placeholder="Пошук на сайті">
+            <form ng-show="showSearch" ng-submit="searchGo()" class="visible-xs" role="search">
+              <div class="input-group pull-right" style="width: 90%; margin-right: 40px; padding: 8px;">
+                <!--<span class="input-group-btn" style="width: 20px">
+                  <button ng-click="searchGo()" class="btn btn-default" style="display: none"></button>
+                </span>-->
+                <input ng-su type="text" style="background-color: inherit; color: white" bk-auto-focus ng-model="search_string" class="form-control" placeholder="Пошук на сайті">
                 <span class="input-group-btn">
                    <span ng-click="searchReset()" class="close" style="top: 5px; outline: none"></span>
                 </span>
