@@ -155,6 +155,10 @@ angular
         templateUrl: 'views/orders_view.html',
         controller: 'OrdersCtrl'
       })
+      .when('/news_list', {
+        templateUrl: 'views/news_list.html',
+        controller: 'NewsListCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })
