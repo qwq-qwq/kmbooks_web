@@ -1,4 +1,4 @@
-<div style="background-color: white; box-shadow: 1px 1px 10px #d8d8d8; max-width: 250px; border-radius: 4px">
+<div style="background-color: white; box-shadow: 1px 1px 10px #d8d8d8; max-width: 280px; border-radius: 4px">
   <md-toolbar class="md-medium-tall" style="max-height: 44px; min-height: 44px;">
     <div class="md-toolbar-tools  brand-color-background" style="font-family: Calibri;">
       <h1>КОШИК</h1>
@@ -8,16 +8,23 @@
       </md-button>
     </div>
   </md-toolbar>
-  <div style="margin: 12px 0"></div>
-  <span ng-repeat="cartItems in ctrl.cart.goodsTable">
+  <div style="margin: 16px 0"></div>
+  <span ng-repeat="cartItems in ctrl.cartRef.GetCart().goodsTable">
     <div class="row" style="margin: 0">
-      <a href="/book?code={{cartItems.code}}">
-        <div class="col-md-3">
-          <img class="img-responsive" style="min-height: 55px; min-width: 35px" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
-        </div>
-        <div class="col-md-9">
-          <p>{{cartItems.name}}</p>
-        </div>
+      <md-button class="md-icon-button brand-color col-md-1" style="padding: 0" ng-click="ctrl.removeFromCart(cartItems.code)">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </md-button>
+      <a href="/book?code={{cartItems.code}}" class="col-md-3" style="padding: 0">
+        <img class="img-responsive" style="min-height: 55px; min-width: 30px;" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
+      </a>
+      <a href="/book?code={{cartItems.code}}" class="col-md-6" style="padding: 5px; line-height: 50px">
+        <p class="brand-color" style="
+          display: inline-block;
+          vertical-align: middle;
+          line-height: normal;
+           ">
+          {{cartItems.name}}
+        </p>
       </a>
     </div>
     <hr ng-if="!$last" style="margin: 8px 0">

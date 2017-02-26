@@ -38,7 +38,14 @@ angular.module('angularApp').factory('cart', function ($http, $rootScope, config
       }
       cart.orderAmount = orderAmount;
       $rootScope.cart = cart;
-      $rootScope.$emit('cart_was_added');
+      $rootScope.$broadcast('cart_was_added');
+    },
+    RemoveFromCart: function (code) {
+      angular.forEach($rootScope.cart.goodsTable, function(value, key) {
+        if (value.code === code) {
+          $rootScope.cart.goodsTable.splice(key, 1);
+        }
+      });
     },
     AddToGoodsTable: function (Item) {
       $rootScope.cart.goodsTable.push(Item);

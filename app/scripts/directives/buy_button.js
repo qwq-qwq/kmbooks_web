@@ -8,7 +8,8 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
     },
     templateUrl: 'views/bk_buy_button.html',
     link: function(scope, element, attributes) {
-      scope.$watch('book', function () {
+
+      function updateStatus() {
         if (scope.book !== undefined) {
           if ([1227, 2008].indexOf(scope.book.state) === -1) {
             if (scope.book.kvo > 0) {
@@ -29,6 +30,14 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
             scope.boughtDisable = true;
           }
         }
+      }
+
+      scope.$watch('book', function () {
+        updateStatus();
+      })
+
+      scope.$on('cart_was_added', function () {
+        updateStatus();
       })
 
       scope.AddToCart = function(book) {

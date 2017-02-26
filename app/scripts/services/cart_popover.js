@@ -28,11 +28,14 @@ angular.module('angularApp').factory('cartPopover', function ($http, $rootScope,
 
         $mdPanel.open(config);
 
-        PanelDialogCtrl.$inject = ['mdPanelRef', 'cart'];
+        PanelDialogCtrl.$inject = ['mdPanelRef', 'cart', '$http', 'config', 'authorization'];
 
-        function PanelDialogCtrl(a, b) {
+        function PanelDialogCtrl(a, b, c, d, e) {
           this.mdMyPanelRef = a;
-          this.cart = b.GetCart();
+          this.cartRef = b;
+          this.httpRef = c;
+          this.configRef = d;
+          this.authorizationRef = e;
         }
 
         PanelDialogCtrl.prototype.closeDialog = function() {
@@ -40,6 +43,22 @@ angular.module('angularApp').factory('cartPopover', function ($http, $rootScope,
           panelRef && panelRef.close().then(function() {
             panelRef.destroy();
           });
+        }
+
+        PanelDialogCtrl.prototype.removeFromCart = function(code) {
+          var cartRef = this.cartRef;
+          cartRef.RemoveFromCart(code);
+          if (this.authorizationRef.isAuthorized()) {
+            this.httpRef.post(this.configRef.url() + "/api/user/carts/update", cartRef.GetCart(), {withCredentials: true})
+              .success(function(response) {
+                cartRef.SetCart(response);
+              })
+          }else{
+            this.httpRef.post(this.configRef.url() + "/api/carts/update", cartRef.GetCart())
+              .success(function(response) {
+                cartRef.SetCart(response);
+              })
+          }
         }
 
     }}
