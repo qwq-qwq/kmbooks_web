@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('CartCtrl', function(cart, order, $scope, $http, $location, config, $rootScope, $cookies, authorization) {
+  .controller('CartCtrl', function(cart, order, $scope, $http, $location, config, $rootScope, $cookies, $window, authorization) {
+    $window.scrollTo(0, 0);
+
     $scope.SaveOrder = function () {
       $scope.UpdateOrder(true);
     }
@@ -171,6 +173,12 @@ angular.module('angularApp')
         orderAmount = 0;
       }
       if ($scope.selectedDelivery.id === '1') {
+        if (orderAmount > 450) {
+          $scope.deliveryCost = 0;
+        } else {
+          $scope.deliveryCost = 35;
+        }
+      }else if ($scope.selectedDelivery.id === '3'){
         if (orderAmount > 450) {
           $scope.deliveryCost = 0;
         } else {
