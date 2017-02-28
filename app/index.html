@@ -1,9 +1,9 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" ng-app="angularApp" ng-controller="PageTitleCtrl">
   <head>
     <meta charset="utf-8">
-    <title>Книжковий інтернет - магазин, купити книги в онлайн магазині Україна, Київ</title>
-    <meta name="description" content="Великий вибір книг всіх жанрів в інтернет-магазині kmbooks.com.ua. Замовте книги з доставкою кур'єром, або поштою по Києву та Україні">
+    <title ng-bind="title"></title>
+    <meta name="description" content="{{description}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--<meta property="og:url" content="{{ngMeta['og:type']}}" />
@@ -44,7 +44,7 @@
     <!-- endbuild -->
     <base href="/">
   </head>
-  <body ng-cloak ng-app="angularApp">
+  <body ng-cloak>
     <!--[if lt IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -329,6 +329,7 @@
     <script src="scripts/services/utils.js"></script>
     <script src="scripts/services/wish_list.js"></script>
     <script src="scripts/services/cart_popover.js"></script>
+    <script src="scripts/services/page_title.js"></script>
     <script src="scripts/directives/thumb.js"></script>
     <script src="scripts/directives/book_detail.js"></script>
     <script src="scripts/directives/compare_to.js"></script>
@@ -376,6 +377,7 @@
     <script src="scripts/controllers/html_page_view.js"></script>
     <script src="scripts/controllers/orders.js"></script>
     <script src="scripts/controllers/news_list.js"></script>
+    <script src="scripts/controllers/page_title.js"></script>
     <!-- endbuild -->
 
 </body>

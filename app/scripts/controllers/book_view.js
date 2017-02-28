@@ -4,7 +4,8 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization, FileUploader, config) {
+  .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization,
+                                        FileUploader, config, pageTitle) {
     var code = $location.search().code;
     $scope.gallery = {images: [], opts: "", show: false};
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
@@ -60,6 +61,9 @@ angular.module('angularApp')
     $http.get(config.url() + '/api/books/search?code=' + code)
       .success(function (response) {
         $scope.book = response.bookList[0];
+        pageTitle.SetTitle($scope.book.name + ' купити книгу в Києві і Україні.');
+        pageTitle.SetDescription('Інтернет-магазин kmbooks.com.ua: ' + $scope.book.name + '. Автор: ' + $scope.book.author
+                         + '. Доставка: Киев, Украина. ' + $scope.book.description);
       })
 
     $http.get(config.url() + '/api/books/images?code=' + code)

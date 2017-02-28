@@ -2,7 +2,7 @@
  * Created by sergey on 06.02.17.
  */
 angular.module('angularApp')
-  .controller('NewsCtrl', function ($scope, $http, $location, Lightbox, config, $sce) {
+  .controller('NewsCtrl', function ($scope, $http, $location, config, $sce, pageTitle) {
     var id = $location.search().id;
 
     function compare_desc(a,b) {
@@ -23,10 +23,12 @@ angular.module('angularApp')
         if ($scope.news.secondImage !== null) {
           $scope.news.image = $scope.news.secondImage;
         }
+        pageTitle.SetTitle($scope.news.title);
+        pageTitle.SetDescription('Інтернет-магазин kmbooks.com.ua: ' + $scope.news.text.substring(0, 300));
       })
 
-    $http.get(config.url() + "/api/news")
+    $http.get(config.url() + "/api/news/get_last_twelve")
       .success(function(response) {
-        $scope.allNews = response.sort(compare_desc).splice(0, 18);
+        $scope.allNews = response.sort(compare_desc);
       })
   });
