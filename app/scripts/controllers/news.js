@@ -14,7 +14,7 @@ angular.module('angularApp')
         return 0;
     }
 
-    $http.get(config.url() + '/api/news/get_news_by_id?id=' + id)
+    $http.get(config.url() + '/api/news/get_news_by_id?id=' + id)//
       .success(function (response) {
         $scope.news = response;
         if ($scope.news.videoLink !== '') {
