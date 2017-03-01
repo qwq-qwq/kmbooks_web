@@ -15,6 +15,13 @@ angular.module('angularApp')
        $scope.description = pageTitle.GetDescription();
      })
 
+     $scope.isBookPage = function() {
+       if ($location.path().search('book') != -1) {
+         return true
+       }else{
+        return false}
+     }
+
      $rootScope.$on("$routeChangeSuccess", function (event, next, current) {
          if ((next.$$route.originalPath !== '/book') &&
              (next.$$route.originalPath !== '/news')){

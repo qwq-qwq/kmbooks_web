@@ -6,13 +6,13 @@
     <meta name="description" content="{{description}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--<meta property="og:url"                content="{{encodeURI(absUrl)}}" />
-    <meta property="og:type"               content="books.book" />
-    <meta property="og:title"              content="{{book.name}}" />
-    <meta property="og:description"        content="{{book.description}}" />
-    <meta property="og:image"              content="{{book.image}}" />
-    <meta property="books:isbn"            content="{{ISBN}}" />
-    <meta property="books:author"          content="http://kmbooks.com.ua/#/catalog?authors={{book.author}}" />-->
+    <meta ng-if="isBookPage()" property="og:url"                content="{{encodeURI(absUrl)}}" />
+    <meta ng-if="isBookPage()" property="og:type"               content="books.book" />
+    <meta ng-if="isBookPage()" property="og:title"              content="{{title}}" />
+    <meta ng-if="isBookPage()" property="og:description"        content="{{description}}" />
+    <meta ng-if="isBookPage()" property="og:image"              content="{{image}}" />
+    <meta ng-if="isBookPage()" property="books:isbn"            content="{{ISBN}}" />
+    <meta ng-if="isBookPage()" property="books:author"          content="http://kmbooks.com.ua/#/catalog?authors={{book.author}}" />
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
