@@ -3,10 +3,10 @@
  */
 'use strict';
 
-angular.module('angularApp').factory('pageTitle', function ($http, $rootScope, config) {
-  //var title = 'Книжковий інтернет - магазин, купити книги в онлайн магазині Україна, Київ';
+angular.module('angularApp').factory('pageTitle', function ($http, $rootScope) {
   var title = '';
   var description = '';
+  var bookMetaTags = {};
   function removeHtmlTags(html) {
     var div = document.createElement("div");
     div.innerHTML = html;
@@ -27,6 +27,13 @@ angular.module('angularApp').factory('pageTitle', function ($http, $rootScope, c
     SetDescription: function (newDescription) {
       description = removeHtmlTags(newDescription);
       $rootScope.$broadcast('description_has_updated');
+    },
+    GetBookMetaTags: function () {
+      return bookMetaTags;
+    },
+    SetBookMetaTags: function (newBookMetaTags) {
+      bookMetaTags = newBookMetaTags;
+      $rootScope.$broadcast('meta_tags_has_updated');
     }
   }
 })

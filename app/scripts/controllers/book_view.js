@@ -64,6 +64,9 @@ angular.module('angularApp')
         pageTitle.SetTitle($scope.book.name + ' купити книгу в Києві і Україні.');
         pageTitle.SetDescription('Інтернет-магазин kmbooks.com.ua: ' + $scope.book.name + '. Автор: ' + $scope.book.author
                          + '. Доставка: Киев, Украина. ' + $scope.book.description);
+        var metaTags = {absUrl: $scope.absUrl, title: $scope.book.name, description: $scope.book.description,
+                        image: 'http://kmbooks.com.ua' + $scope.book.image, ISBN: $scope.book.isbn, author: $scope.book.author};
+        pageTitle.SetBookMetaTags(metaTags);
       })
 
     $http.get(config.url() + '/api/books/images?code=' + code)

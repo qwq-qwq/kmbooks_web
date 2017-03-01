@@ -8,11 +8,11 @@
 
     <meta ng-if="isBookPage()" property="og:url"                content="{{encodeURI(absUrl)}}" />
     <meta ng-if="isBookPage()" property="og:type"               content="books.book" />
-    <meta ng-if="isBookPage()" property="og:title"              content="{{title}}" />
-    <meta ng-if="isBookPage()" property="og:description"        content="{{description}}" />
+    <meta ng-if="isBookPage()" property="og:title"              content="{{bookTitle}}" />
+    <meta ng-if="isBookPage()" property="og:description"        content="{{bookDescription}}" />
     <meta ng-if="isBookPage()" property="og:image"              content="{{image}}" />
     <meta ng-if="isBookPage()" property="books:isbn"            content="{{ISBN}}" />
-    <meta ng-if="isBookPage()" property="books:author"          content="http://kmbooks.com.ua/#/catalog?authors={{book.author}}" />
+    <meta ng-if="isBookPage()" property="books:author"          content="http://kmbooks.com.ua/catalog?reload=true&authors={{author}}" />
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
