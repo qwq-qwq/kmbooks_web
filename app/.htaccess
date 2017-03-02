@@ -545,6 +545,12 @@ FileETag None
 RewriteEngine On
 RewriteBase /
 
+###########redirect for social networks crawlers######
+
+RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|Google.*snippet)
+RewriteCond %{QUERY_STRING} ^code=(.*)$
+RewriteRule ^/?book$ http://api.kmbooks.com.ua/api/books/open_graph?code=%1 [P]
+
 ##################legacy redirects ###################
 
 #!!!!!!!most important !!!!!!! books redirects
