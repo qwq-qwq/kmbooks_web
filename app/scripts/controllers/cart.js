@@ -2,7 +2,6 @@
 
 angular.module('angularApp')
   .controller('CartCtrl', function(cart, order, $scope, $http, $location, config, $rootScope, $cookies, $window, authorization) {
-    $window.scrollTo(0, 0);
 
     $scope.SaveOrder = function () {
       $scope.UpdateOrder(true);

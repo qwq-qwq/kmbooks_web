@@ -2,8 +2,6 @@
 
 angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope, $location, $rootScope, $cookieStore, authorization, $window) {
 
-  $window.scrollTo(0, 0);
-
   $scope.login = function () {
     var credentials = {
       username: this.email,
