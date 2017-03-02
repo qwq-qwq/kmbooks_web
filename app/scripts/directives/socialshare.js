@@ -73,7 +73,8 @@ angular.module('angularApp').factory('socialFB', function($window) {
         element.bind('click', function(e) {
           FB.ui({
             method: 'share',
-            href: attr.url
+            href: attr.url,
+            caption: 'kmbooks.com.ua'
           }, function(response){
             if (scope.callback !== undefined && typeof scope.callback === "function") {
               scope.callback(response);
