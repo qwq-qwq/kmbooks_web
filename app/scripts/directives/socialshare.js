@@ -44,24 +44,7 @@ angular.module('angularApp').factory('socialFB', function($window) {
       shares: '='
     },
     transclude: true,
-    template: '<div class="facebookButton">' +
-    '<div class="pluginButton">' +
-    '<div class="pluginButtonContainer">' +
-    '<div class="pluginButtonImage">' +
-    '<button type="button">' +
-    '<i class="pluginButtonIcon img sp_plugin-button-2x sx_plugin-button-2x_favblue"></i>' +
-    '</button>' +
-    '</div>' +
-    '<span class="pluginButtonLabel">Share</span>' +
-    '</div>' +
-    '</div>' +
-    '</div>' +
-    '<div class="facebookCount">' +
-    '<div class="pluginCountButton pluginCountNum">' +
-    '<span ng-transclude></span>' +
-    '</div>' +
-    '<div class="pluginCountButtonNub"><s></s><i></i></div>' +
-    '</div>',
+    template: '<i class="fa fa-facebook" style="font-size: large">&nbsp;&nbsp;<span class="brand-color">{{shares}}</span></i>',
     link: function(scope, element, attr) {
       attr.$observe('url', function() {
         if (attr.shares && attr.url) {
@@ -276,69 +259,6 @@ angular.module('angularApp').factory('socialFB', function($window) {
       attr.$observe('href', googleShare);
     }
   };
-}]).directive('bkTumblrText', [function() {
-  return {
-    link: function(scope, element, attr) {
-      var tumblr_button = document.createElement("a");
-      var renderTumblrText = debounce(function() {
-        tumblr_button.setAttribute("href", "https://www.tumblr.com/share/link?url=" + encodeURIComponent(attr.url) + "&name=" + encodeURIComponent(attr.name) + "&description=" + encodeURIComponent(attr.description));
-        tumblr_button.setAttribute("title", attr.title || "Share on Tumblr");
-        tumblr_button.setAttribute("style", attr.styling || "display:inline-block; text-indent:-9999px; overflow:hidden; width:81px; height:20px; background:url('https://platform.tumblr.com/v1/share_1.png') top left no-repeat transparent;");
-        element[0].innerHTML = '';
-        element.append(tumblr_button);
-      }, 100);
-      attr.$observe('url', renderTumblrText);
-      attr.$observe('name', renderTumblrText);
-      attr.$observe('description', renderTumblrText);
-    }
-
-  }
-}]).directive('bkTumblrQoute', [function() {
-  return {
-    link: function(scope, element, attr) {
-      var tumblr_button = document.createElement("a");
-      var renderTumblrQoute = debounce(function() {
-        tumblr_button.setAttribute("href", "https://www.tumblr.com/share/quote?quote=" + encodeURIComponent(attr.qoute) + "&source=" + encodeURIComponent(attr.source));
-        tumblr_button.setAttribute("title", attr.title || "Share on Tumblr");
-        tumblr_button.setAttribute("style", attr.styling || "display:inline-block; text-indent:-9999px; overflow:hidden; width:81px; height:20px; background:url('https://platform.tumblr.com/v1/share_1.png') top left no-repeat transparent;");
-        element[0].innerHTML = '';
-        element.append(tumblr_button);
-      }, 100);
-      attr.$observe('qoute', renderTumblrQoute);
-      attr.$observe('source', renderTumblrQoute);
-    }
-  }
-}]).directive('bkTumblrImage', [function() {
-  return {
-    link: function(scope, element, attr) {
-      var tumblr_button = document.createElement("a");
-      var renderTumblrImage = debounce(function() {
-        tumblr_button.setAttribute("href", "https://www.tumblr.com/share/photo?source=" + encodeURIComponent(attr.source) + "&caption=" + encodeURIComponent(attr.caption) + "&clickthru=" + encodeURIComponent(attr.clickthru));
-        tumblr_button.setAttribute("title", attr.title || "Share on Tumblr");
-        tumblr_button.setAttribute("style", attr.styling || "display:inline-block; text-indent:-9999px; overflow:hidden; width:81px; height:20px; background:url('https://platform.tumblr.com/v1/share_1.png') top left no-repeat transparent;");
-        element[0].innerHTML = '';
-        element.append(tumblr_button);
-      }, 100);
-      attr.$observe('source', renderTumblrImage);
-      attr.$observe('caption', renderTumblrImage);
-      attr.$observe('clickthru', renderTumblrImage);
-    }
-  }
-}]).directive('bkTumblrVideo', [function() {
-  return {
-    link: function(scope, element, attr) {
-      var tumblr_button = document.createElement("a");
-      var renderTumblrVideo = debounce(function() {
-        tumblr_button.setAttribute("href", "https://www.tumblr.com/share/video?embed=" + encodeURIComponent(attr.embedcode) + "&caption=" + encodeURIComponent(attr.caption));
-        tumblr_button.setAttribute("title", attr.title || "Share on Tumblr");
-        tumblr_button.setAttribute("style", attr.styling || "display:inline-block; text-indent:-9999px; overflow:hidden; width:81px; height:20px; background:url('https://platform.tumblr.com/v1/share_1.png') top left no-repeat transparent;");
-        element[0].innerHTML = '';
-        element.append(tumblr_button);
-      }, 100);
-      attr.$observe('embedcode', renderTumblrVideo);
-      attr.$observe('caption', renderTumblrVideo);
-    }
-  }
 }]).directive('bkPintrest', ['$window', '$timeout', function($window, $timeout) {
   return {
     template: '<a href="{{href}}" data-pin-do="{{pinDo}}" data-pin-config="{{pinConfig}}"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>',
