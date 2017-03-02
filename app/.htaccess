@@ -547,7 +547,7 @@ RewriteBase /
 
 ###########redirect for social networks crawlers######
 
-RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest)
+RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|vkShare)
 RewriteCond %{QUERY_STRING} ^code=(.*)$
 RewriteRule book$ http://api.kmbooks.com.ua/api/books/open_graph?code=%1 [R=301,L]
 
