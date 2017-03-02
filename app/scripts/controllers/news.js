@@ -2,7 +2,7 @@
  * Created by sergey on 06.02.17.
  */
 angular.module('angularApp')
-  .controller('NewsCtrl', function ($scope, $http, $location, config, $sce, pageTitle) {
+  .controller('NewsCtrl', function ($scope, $http, $location, config, $sce, pageTitle, $window) {
     var id = $location.search().id;
 
     $window.scrollTo(0, 0);
