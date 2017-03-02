@@ -551,7 +551,7 @@ RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest)
 RewriteCond %{QUERY_STRING} ^code=(.*)$
 RewriteRule book$ http://api.kmbooks.com.ua/api/books/open_graph?code=%1 [R=301,L]
 
-##################legacy redirects ###################
+##################legacy redirects ####################
 
 #!!!!!!!most important !!!!!!! books redirects
 RewriteCond %{QUERY_STRING} ^id=(.*)$
