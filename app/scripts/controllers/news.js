@@ -5,6 +5,8 @@ angular.module('angularApp')
   .controller('NewsCtrl', function ($scope, $http, $location, config, $sce, pageTitle) {
     var id = $location.search().id;
 
+    $window.scrollTo(0, 0);
+
     function compare_desc(a,b) {
       if (a.date > b.date)
         return -1;

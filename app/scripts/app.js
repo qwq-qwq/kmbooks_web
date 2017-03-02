@@ -29,7 +29,8 @@ angular
     'ui.bootstrap-slider',
     'ngJcrop',
     'ngMaterial',
-    'ui.mask'
+    'ui.mask',
+    'angular-loading-bar'
   ])
   .config(function ($routeProvider, $locationProvider) {
 
@@ -166,8 +167,9 @@ angular
       $locationProvider.html5Mode(true);
 
   })
-  .run(function (api) {
+  .run(function (api, socialFB) {
      api.init();
+     socialFB.init('199264067223695');
   })
   .factory('httpInterceptor', function($q, $location, $cookies){
       return {
@@ -189,6 +191,7 @@ angular
         }
       }
    })
+
   .config(['$httpProvider',function($httpProvider) {
       $httpProvider.interceptors.push('httpInterceptor');
    }])
@@ -212,6 +215,9 @@ angular
   })
    .config(['$mdThemingProvider', function($mdThemingProvider) {
      $mdThemingProvider.disableTheming();
+  }])
+   .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false;
   }]);
 
 

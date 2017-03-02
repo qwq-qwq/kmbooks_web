@@ -6,13 +6,13 @@
     <meta name="description" content="{{description}}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta ng-if="isBookPage()" property="og:url"                content="{{encodeURI(absUrl)}}" />
+    <!--<meta ng-if="isBookPage()" property="og:url"                content="{{encodeURI(absUrl)}}" />
     <meta ng-if="isBookPage()" property="og:type"               content="books.book" />
     <meta ng-if="isBookPage()" property="og:title"              content="{{bookTitle}}" />
     <meta ng-if="isBookPage()" property="og:description"        content="{{bookDescription}}" />
     <meta ng-if="isBookPage()" property="og:image"              content="{{image}}" />
     <meta ng-if="isBookPage()" property="books:isbn"            content="{{ISBN}}" />
-    <meta ng-if="isBookPage()" property="books:author"          content="http://kmbooks.com.ua/catalog?reload=true&authors={{author}}" />
+    <meta ng-if="isBookPage()" property="books:author"          content="http://kmbooks.com.ua/catalog?reload=true&authors={{author}}" />-->
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="bower_components/photoswipe/dist/photoswipe.css" />
     <link rel="stylesheet" href="bower_components/photoswipe/dist/default-skin/default-skin.css" />
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -307,6 +308,7 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-ui-mask/dist/mask.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfNNbpR86HGa23PuqGYgjbAsgG73e7g6g"></script>
@@ -339,6 +341,7 @@
     <script src="scripts/directives/book_list.js"></script>
     <script src="scripts/directives/book_detail_info.js"></script>
     <script src="scripts/directives/autofocus.js"></script>
+    <script src="scripts/directives/socialshare.js"></script>
     <script src="scripts/controllers/log.js"></script>
     <script src="scripts/controllers/books_table.js"></script>
     <script src="scripts/controllers/book_view.js"></script>
