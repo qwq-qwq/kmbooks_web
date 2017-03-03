@@ -170,6 +170,7 @@ angular
   .run(function (api, socialFB) {
      api.init();
      socialFB.init('199264067223695');
+
   })
   .factory('httpInterceptor', function($q, $location, $cookies){
       return {
