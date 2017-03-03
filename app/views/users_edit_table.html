@@ -45,11 +45,11 @@
         <input ng-show="user.editing" type="password" class="form-control" placeholder="Пароль" ng-model="user.password" required>
       </div>
       <div ng-show="user.editing" class="form-group">
-        <input ng-show="user.editing" name="passwordRetype" type="password" class="form-control" placeholder="Повторити"  ng-model="user.passwordRetype"  required minlength="10"
+        <input ng-show="user.editing" name="passwordRetype" type="password" class="form-control" placeholder="Повторити"  ng-model="user.passwordRetype"  required minlength="6"
                bk-compare-to="user.password">
         <div style="color: red" ng-messages="userForm.passwordRetype.$error">
           <div ng-message="required">Обов'язкове для заповнення</div>
-          <div ng-message="minlength">Мінімальна довжина пароля повинна будти 10 символів</div>
+          <div ng-message="minlength">Мінімальна довжина пароля повинна будти 6 символів</div>
           <div ng-message="required">Обов'язкове для заповнення</div>
           <div ng-message="compareTo">Паролі повинні співпадати</div>
         </div>
