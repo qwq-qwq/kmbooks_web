@@ -37,37 +37,39 @@ angular.module('angularApp').factory('socialFB', function($window) {
         }
       }
     };
-  }).directive('bkFacebook', ['$http', function($http) {
+  }).directive('bkFacebook', [function() {
   return {
     scope: {
-      callback: '=',
-      shares: '='
+      code: '=',
     },
     transclude: true,
     template: '<i class="fa fa-facebook" style="font-size: large">&nbsp;&nbsp;<span class="brand-color">{{shares}}</span></i>',
     link: function(scope, element, attr) {
-      attr.$observe('url', function() {
-        if (attr.url) {
-          $http.get('https://api.facebook.com/method/links.getStats?urls=' + attr.url + '&format=json', {withCredentials: false}).success(function(res) {
-            var count = (res[0] && res[0].total_count) ? res[0].total_count.toString() : 0;
-            var decimal = '';
-            if (count.length > 6) {
-              if (count.slice(-6, -5) != "0") {
-                decimal = '.' + count.slice(-6, -5);
+      attr.$observe('code', function() {
+        if (attr.code) {
+          FB.api(
+            '/http://kmbooks.com.ua/book',
+            'GET',
+            {"code":"639459"},
+            function(res) {
+              var count = (res[0] && res[0].total_count) ? res[0].total_count.toString() : 0;
+              var decimal = '';
+              if (count.length > 6) {
+                if (count.slice(-6, -5) != "0") {
+                  decimal = '.' + count.slice(-6, -5);
+                }
+                count = count.slice(0, -6);
+                count = count + decimal + 'M';
+              } else if (count.length > 3) {
+                if (count.slice(-3, -2) != "0") {
+                  decimal = '.' + count.slice(-3, -2);
+                }
+                count = count.slice(0, -3);
+                count = count + decimal + 'k';
               }
-              count = count.slice(0, -6);
-              count = count + decimal + 'M';
-            } else if (count.length > 3) {
-              if (count.slice(-3, -2) != "0") {
-                decimal = '.' + count.slice(-3, -2);
-              }
-              count = count.slice(0, -3);
-              count = count + decimal + 'k';
+              scope.shares = count;
             }
-            scope.shares = count;
-          }).error(function() {
-            scope.shares = 0;
-          });
+          );
         }
         element.unbind();
         element.bind('click', function(e) {
