@@ -58,7 +58,7 @@
       </div>
       <div class="form-group">
         <label>Повторити:</label>
-        <input name="passwordRetype" type="password" class="form-control" placeholder="Повторити"  ng-model="user.passwordRetype"  required minlength="10"
+        <input name="passwordRetype" type="password" class="form-control" placeholder="Повторити"  ng-model="user.passwordRetype"  required minlength="6"
                bk-compare-to="user.password">
         <div style="color: red" ng-messages="userForm.passwordRetype.$error">
           <div ng-message="required">Обов'язкове для заповнення</div>
