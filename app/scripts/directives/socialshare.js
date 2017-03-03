@@ -47,7 +47,7 @@ angular.module('angularApp').factory('socialFB', function($window) {
     template: '<i class="fa fa-facebook" style="font-size: large">&nbsp;&nbsp;<span class="brand-color">{{shares}}</span></i>',
     link: function(scope, element, attr) {
       attr.$observe('url', function() {
-        if (attr.shares && attr.url) {
+        if (attr.url) {
           $http.get('https://api.facebook.com/method/links.getStats?urls=' + attr.url + '&format=json', {withCredentials: false}).success(function(res) {
             var count = (res[0] && res[0].total_count) ? res[0].total_count.toString() : 0;
             var decimal = '';
