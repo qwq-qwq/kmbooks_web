@@ -52,11 +52,24 @@
   <div ng-if="currentOrder !== undefined" class="col-md-6" style="margin-top: 10px">
     <p>Замовлення №{{currentOrder.number}}</p>
     <p>Дата: {{toDateTime(currentOrder.id)}}</p>
+    <p ng-hide="currentOrder.editing" ng-dblclick="editItem(currentOrder)">Статус: {{currentOrder.orderState}}</p>
+    <md-input-container ng-show="currentOrder.editing">
+      <label>Статус</label>
+      <md-select ng-model="selectors.orderState">
+        <md-option ng-repeat="state in orderStates" ng-value="state">
+          {{state}}
+        </md-option>
+      </md-select>
+      <md-button ng-click="doneEditing(currentOrder)" ng-disabled="currentOrder.saving">
+        <span>Зберігти</span>
+        <i ng-show="currentOrder.saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+      </md-button>
+    </md-input-container>
+
     <p>Ім'я: {{currentOrder.name}}</p>
     <p>Email: {{currentOrder.email}}</p>
     <p>Телефон: {{currentOrder.phone}}</p>
     <p>Адреса: {{currentOrder.address}}</p>
-    <p>Статус: {{currentOrder.orderState}}</p>
     <p ng-if="currentOrder.orderComment !== null">Коментар: {{currentOrder.orderComment}}</p>
     <p>Місто: {{selectedCity.name}}</p>
     <p>Доставка: {{currentOrder.delivery.name}}</p>

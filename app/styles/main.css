@@ -5,6 +5,10 @@
   padding: 0.2em 0;
 }
 
+.md-select-menu-container {
+  background-color: inherit;
+}
+
 .close {
   position: absolute;
   left: 10px;

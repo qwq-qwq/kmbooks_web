@@ -234,6 +234,7 @@
         <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-disabled="!userForm.$valid || !(cart.goodsTable.length > 0)" ng-click="SaveOrder()">
           <i class="fa fa-shopping-cart" aria-hidden="true"></i>
           Замовити
+          <i ng-show="currentOrder.saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
         </md-button>
     </form>
 

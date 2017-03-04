@@ -5,8 +5,30 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('OrdersCtrl', function($scope, $http, $location, $anchorScroll, $route, config, authorization, utils) {
+  .controller('OrdersCtrl', function($scope, $http, $location, $route, config, authorization, utils, $rootScope) {
     $scope.username = authorization.username();
+    $scope.orderStates = ['Робиться', 'Зроблений', 'Зібраний'];
+    $scope.selectors = {};
+
+    $rootScope.$on('successful_authorization', function () {
+      $scope.username = authorization.username();
+    })
+
+    $scope.editItem = function (item) {
+      item.editing = true;
+      $scope.selectors.orderState = item.orderState;
+    }
+
+    $scope.doneEditing = function (item) {
+      item.orderState = $scope.selectors.orderState;
+      item.saving = true;
+      $http.post(config.url() + "/api/edit/orders/update", item, {withCredentials: true})
+        .success(function(response) {
+           item.saving = false;
+           item.editing = false;
+           $scope.currentOrder = response;
+        });
+    }
 
     $http.get(config.url() + "/api/edit/orders", {withCredentials: true})
       .success(function(response) {

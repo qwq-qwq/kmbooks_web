@@ -5,8 +5,12 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('MyOrdersCtrl', function($scope, $http, $location, $anchorScroll, $route, config, authorization, utils) {
+  .controller('MyOrdersCtrl', function($scope, $http, $location, $anchorScroll, $route, config, authorization, utils, $rootScope) {
     $scope.username = authorization.username();
+
+    $rootScope.$on('successful_authorization', function () {
+      $scope.username = authorization.username();
+    })
 
     $http.get(config.url() + "/api/user/orders/get_by_username?username=" + authorization.username(), {withCredentials: true})
       .success(function(response) {
