@@ -48,10 +48,18 @@ angular.module('angularApp')
                 }
               })
             }
-            $scope.name = savedOrder.name;
-            $scope.phone = savedOrder.phone;
-            $scope.email = savedOrder.email;
-            $scope.address = savedOrder.address;
+            if (authorization.isAuthorized()){
+              var user = authorization.getUser();
+              $scope.name = user.name;
+              $scope.phone = user.phone;
+              $scope.email = user.email;
+              $scope.address = user.address;
+            }else{
+              $scope.name = savedOrder.name;
+              $scope.phone = savedOrder.phone;
+              $scope.email = savedOrder.email;
+              $scope.address = savedOrder.address;
+            }
             $scope.orderComment = savedOrder.orderComment;
             $scope.RecalculateDeliveryCost();
           })
@@ -82,11 +90,13 @@ angular.module('angularApp')
           order.SetOrder(response);
           $cookies.put('orderId', response.id);
         }
+        $scope.savingInProgress = false;
       }
       var orderAmount, goodsTable;
       if ($scope.selectedCity === undefined){
          return;
       }
+      $scope.savingInProgress = true;
       if (cart.Exist()){
          orderAmount = cart.GetCart().orderAmount;
          goodsTable = cart.GetCart().goodsTable;
