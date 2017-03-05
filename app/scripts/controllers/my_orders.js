@@ -9,6 +9,11 @@ angular.module('angularApp')
     $scope.username = authorization.username();
     var wayForPay = new Wayforpay();
 
+    $http.get(config.url() + "/api/user/orders/get_by_username?username=" + $scope.username, {withCredentials: true})
+      .success(function(response) {
+        $scope.orders = response;
+      })
+
     $rootScope.$on('successful_authorization', function () {
       $scope.username = authorization.username();
       $http.get(config.url() + "/api/user/orders/get_by_username?username=" + $scope.username, {withCredentials: true})
@@ -50,7 +55,7 @@ angular.module('angularApp')
       }
       wayForPay.run({
           merchantAccount : "kmbooks_com_ua1",
-          merchantDomainName : "www.kmbooks.com.ua",
+          merchantDomainName : "kmbooks.com.ua",
           authorizationType : "SimpleSignature",
           merchantSignature : order.signature,
           orderReference : order.number,
