@@ -56,6 +56,7 @@ angular.module('angularApp')
       wayForPay.run({
           merchantAccount : "kmbooks_com_ua1",
           merchantDomainName : "kmbooks.com.ua",
+          merchantTransactionSecureType: "AUTO",
           authorizationType : "SimpleSignature",
           merchantSignature : order.signature,
           orderReference : order.number,
@@ -69,7 +70,7 @@ angular.module('angularApp')
           clientFirstName : order.name,
           clientLastName : order.name,
           clientEmail : order.email,
-          clientPhone: order.phone
+          clientPhone: '38' + order.phone
         },
         function (response) {
           // on approved
