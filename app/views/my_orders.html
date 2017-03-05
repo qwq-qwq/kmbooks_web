@@ -60,5 +60,8 @@
     <p>Сума: {{currentOrder.orderAmount}} грн</p>
     <p>Сума доставки: {{currentOrder.deliveryCost}} грн</p>
     <p>Сума всього: {{currentOrder.totalAmount}} грн</p>
+    <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-if="currentOrder.orderState === 'Зібраний' && currentOrder.payment.id === '2'" ng-click="Pay(currentOrder)">
+       Сплатити
+    </md-button>
   </div>
 </div>
