@@ -42,7 +42,7 @@ angular.module('angularApp')
       function getGoodsPrices(goodsTable) {
         var goodsPrices = [];
         angular.forEach(goodsTable, function (goodsItem, key) {
-          goodsPrices.push(parseInt(goodsItem.price, 10));
+          goodsPrices.push(parseFloat(goodsItem.price));
         })
         return goodsPrices;
       }

@@ -7,7 +7,7 @@
 angular.module('angularApp')
   .controller('OrdersCtrl', function($scope, $http, $location, $route, config, authorization, utils, $rootScope) {
     $scope.username = authorization.username();
-    $scope.orderStates = ['Робиться', 'Зроблений', 'Зібраний'];
+    $scope.orderStates = ['Робиться', 'Зроблений', 'Подтвержден', 'Зібраний'];
     $scope.selectors = {};
 
     $rootScope.$on('successful_authorization', function () {
