@@ -2,7 +2,7 @@
   <div bk-photoswipe slides="gallery.images" show="gallery.show" slide-selector=".slide-list > a > img"
        on-close="closeGallery()" options="gallery.opts">
   </div>
-  <div class="col-md-4 hidden-xs hidden-sm" ng-if="gallery.images.length > 0">
+  <div class="col-md-4 hidden-xs hidden-sm" style="padding-left: 0; padding-right: 0" ng-if="gallery.images.length > 0">
     <div class="slide-list">
       <a ng-repeat="image in gallery.images track by $index" ng-click="showGallery($index)">
         <img ng-show="image.flat === false" src="{{image.srcThumbNail}}" class="point_img img-responsive center-block" style="max-height: 250px; margin-bottom: 6px">
@@ -16,7 +16,7 @@
         <bk-buy-button book = "book"></bk-buy-button>
       </p>
   </div>
-  <div class="col-md-6 book-data">
+  <div class="col-md-6 book-data" style="padding-left:0;">
     <bk-book-detail-info></bk-book-detail-info>
     <span ng-if="description"><h3 style="font-family: Calibri" class="brand-color">Анотація</h3></span>
     <span ng-if="description" ng-bind-html="description"></span>
