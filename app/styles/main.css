@@ -55,6 +55,10 @@
   url("//db.onlinewebfonts.com/t/a78cfad3beb089a6ce86d4e280fa270b.svg#Calibri") format("svg");
 }*/
 
+.news-item:hover .news-title{
+  display: none;
+}
+
 .news-item:hover .news-image{
   transform: scale(1.5, 1.5);
   transition: all 0.5s ;
@@ -67,7 +71,6 @@
 
 .news-plate{
   opacity: 0;
-  #background: #97cf8b;
 }
 
 .news-image{
