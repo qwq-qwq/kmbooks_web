@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('MyOrdersCtrl', function($scope, $http, $location, $anchorScroll, $route, config, authorization, utils, $rootScope) {
+  .controller('MyOrdersCtrl', function($scope, $http, $location, $anchorScroll, $route, config, authorization, utils, $rootScope, wfpListener) {
     $scope.username = authorization.username();
     var wayForPay = new Wayforpay();
 
@@ -59,7 +59,7 @@ angular.module('angularApp')
           merchantTransactionSecureType: "AUTO",
           authorizationType : "SimpleSignature",
           merchantSignature : order.signature,
-          orderReference : order.number,
+          orderReference : order.number + '-' + order.hash,
           orderDate : utils.toUnixTime(order.id),
           amount : order.totalAmount,
           currency : "UAH",
@@ -74,24 +74,35 @@ angular.module('angularApp')
         },
         function (response) {
           // on approved
-          alert(response);
+          $scope.currentOrder.orderState = 'Сплачений';
+          $http.post(config.url() + "/api/user/orders/update", $scope.currentOrder, {withCredentials: true})
+            .success(function(response) {
+              //$scope.currentOrder = response;
+            });
         },
         function (response) {
           // on declined
-          alert(response);
+          //alert(response);
         },
         function (response) {
           // on pending or in processing
-          alert(response);
+          //alert(response);
         })
     }
 
     $scope.Pay = function (order) {
+      order.hash = utils.GetRandomNumber();
       $http.post(config.url() + "/api/user/orders/get_order_signature", order, {withCredentials: true})
         .success(function (response) {
           order.signature = response;
           $scope.WayForPay(order)
         })
     }
+
+    $rootScope.$on('wfp_window_events', function(a, b) {
+       if (b.data === 'WfpWidgetEventApproved') {
+
+       }
+    });
 
   });

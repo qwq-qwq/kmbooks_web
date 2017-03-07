@@ -26,6 +26,9 @@ angular.module('angularApp').factory('utils', function ($http, $rootScope, confi
       if ($rootScope.newsColorSchemes !== undefined){
         return $rootScope.newsColorSchemes[Math.floor(Math.random()*$rootScope.newsColorSchemes.length)];
       };
+    },
+    GetRandomNumber: function () {
+       return Math.floor((Math.random()*10000)+1)+10;
     }
   }})
 
