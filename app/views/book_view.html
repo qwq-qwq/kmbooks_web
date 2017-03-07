@@ -12,7 +12,7 @@
   <div class="hidden-md hidden-lg" style="text-align: center">
       <img src="{{book.image}}" class="img-responsive point_img center-block" ng-click="showGallery(1)">
       <p style="margin-top: 30px; text-align: center">
-        <span style="font-size: large; color: black;">{{book.price}} грн</span>
+        <bk-price></bk-price>
         <bk-buy-button book = "book"></bk-buy-button>
       </p>
   </div>
@@ -30,7 +30,7 @@
       <div style="background: rgba(255, 255, 255, 0.4); padding: 8px;">
         <img class="img-responsive point_img" src="{{flatImage}}" ng-style="flatImageHeight" ng-click="showGallery(flatImageIndex)" style="box-shadow: 0px 0px 10px #d8d8d8;">
         <p style="margin-top: 30px; text-align: center">
-          <span style="font-size: 25px; color: black;">{{book.price}} <span style="font-size: 15px">грн</span></span>
+          <bk-price></bk-price>
           <bk-buy-button book = "book"></bk-buy-button>
         </p>
         <p ng-if="bookFragment !== ''" style="text-align: center">
