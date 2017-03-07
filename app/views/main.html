@@ -75,9 +75,11 @@
        <h4><a class="brand-color" style="text-decoration: underline" href="/news_list">Всi новини</a></h4>
      </div>
    </div>
-   <div class="col-md-4 col-xs-12 col-sm-6" style="margin: 0 0; padding: 1px 1px;" ng-repeat="oneNews in news">
-     <bk-news-tile news="oneNews"></bk-news-tile>
-   </div>
+   <span ng-repeat="oneNews in news">
+     <div class="col-md-4 col-xs-12 col-sm-6" style="margin: 0 0; padding: 1px 1px;">
+       <bk-news-tile news="oneNews"></bk-news-tile>
+     </div>
+   </span>
  </div>
 
  <div class="clearfix">

@@ -382,6 +382,10 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     background-size: auto;
   }*/
 
+  .bukva-item{
+    width: 100%;
+  }
+
   .bukva-item:hover{
     padding: 20px 15px 10px;
     background: #fff;
