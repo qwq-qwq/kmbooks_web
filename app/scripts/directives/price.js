@@ -6,6 +6,10 @@
 angular.module('angularApp').directive('bkPrice', [function() {
   return {
     restrict: 'E',
-    templateUrl: 'views/bk_price.html'
+    templateUrl: 'views/bk_price.html',
+    scope: {
+      div: '=',
+      book: '='
+    }
   };
 }])

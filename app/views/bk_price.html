@@ -1,2 +1,3 @@
-<div ng-if="book.price > 0" class="price_value" style="font-size: 25px; color: black;">{{book.price}} <span style="font-size: 15px">грн</span></div>
+<div ng-if="book.price > 0 && div === true" class="price_value" style="font-size: 25px; color: black;">{{book.price}} <span style="font-size: 15px">грн</span></div>
+<span ng-if="book.price > 0 && div === false" class="price_value" style="font-size: 25px; color: black;">{{book.price}} <span style="font-size: 15px">грн</span></span>
 <div ng-if="!book.price > 0" class="price_value" style="font-size: 18px; color: black;">Ціна формується</div>
