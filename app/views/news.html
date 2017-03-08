@@ -2,7 +2,8 @@
   <div class = "col-md-8">
     <h2 class="brand-color" style="font-family: Calibri">{{news.title}}</h2>
     <div style="font-size: 14px; margin-bottom: 6px;">
-      <i class="glyphicon glyphicon-time"></i><span style="margin-left: 5px">{{news.date | date: 'dd.MM.yyyy'}} o {{news.date | date: 'HH-mm'}}</span>
+      <i class="glyphicon glyphicon-time"></i><span style="margin-left: 5px">{{news.date | date: 'dd.MM.yyyy'}} o {{news.date | date: 'HH-mm'}}</span>&nbsp;&nbsp;&nbsp;
+      <i class="fa fa-eye" aria-hidden="true"></i><span style="margin-left: 5px">{{news.viewsCount}}</span>
     </div>
     <div ng-show="news.videoLink !== ''" class="embed-responsive embed-responsive-4by3">
       <iframe class="embed-responsive-item" src="{{news.sceLink}}"></iframe>
@@ -16,7 +17,7 @@
     <h3 style="font-family:Calibri; color: black; border-bottom: 1px solid grey; margin-bottom: 10px;">
       ІНШІ НОВНИ
     </h3>
-    <div ng-repeat="news in allNews">
+    <div ng-repeat="news in allNews | filter: {id: '!' + news.id}">
       <div class="col-md-12" style="margin: 5px 0; padding-left: 0px; padding-right: 0px">
         <bk-news-tile news = "news"></bk-news-tile>
       </div>
