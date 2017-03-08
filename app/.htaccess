@@ -542,6 +542,8 @@ FileETag None
 #    Header set Connection Keep-Alive
 # </IfModule>
 
+php_flag engine off
+
 RewriteEngine On
 RewriteBase /
 
