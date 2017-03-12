@@ -2,8 +2,7 @@
 <h1 ng-if="isNewUser" class="brand-color">Реєстрація</h1>
 <h1 ng-if="!isNewUser" class="brand-color">Редагування {{user.email}}</h1>
 
-<div class="row panel">
-
+<div ng-show="!savedSuccess" class="row panel">
   <form name="userForm" ng-submit="registration.submit(userForm.$valid)">
     <div class="col-md-12">
       <div ng-if="isNewUser" class="form-group">
@@ -17,61 +16,61 @@
           <div ng-message="checkEmailUnique">Користувач з таким email вже зарєєстрований на сайті</div>
         </div>
       </div>
-
-      <div class="form-group">
-        <label>
-          Прізвище, ім'я:
-        </label>
-        <input name="name" type="text" class="form-control" ng-model="user.name" minlength="3"
-               required>
-        <div style="color: red" ng-messages="userForm.name.$error">
-          <div ng-message="required">Обов'язкове для заповнення</div>
-          <div ng-message="minlength">Мінімальна довжина ім'я повинна будти 3 символи</div>
+      <span ng-if="updateInfo">
+        <div class="form-group">
+          <label>
+            Прізвище, ім'я:
+          </label>
+          <input name="name" type="text" class="form-control" ng-model="user.name" minlength="3"
+                 required>
+          <div style="color: red" ng-messages="userForm.name.$error">
+            <div ng-message="required">Обов'язкове для заповнення</div>
+            <div ng-message="minlength">Мінімальна довжина ім'я повинна будти 3 символи</div>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label>
-          Телефон:
-        </label>
-        <input name="phone" ui-mask="+38 (999) 9999999"  ui-mask-placeholder ui-mask-placeholder-char="space"
-               type="text" class="form-control" ng-model="user.phone" minlength="10" required>
-        <div style="color: red" ng-messages="userForm.phone.$error">
-          <div ng-message="required">Обов'язковий для заповнення</div>
-          <div ng-message="minlength">Мінімальна довжина телефона повинна будти  символи</div>
+        <div class="form-group">
+          <label>
+            Телефон:
+          </label>
+          <input name="phone" ui-mask="+38 (999) 9999999"  ui-mask-placeholder ui-mask-placeholder-char="space"
+                 type="text" class="form-control" ng-model="user.phone" minlength="10" required>
+          <div style="color: red" ng-messages="userForm.phone.$error">
+            <div ng-message="required">Обов'язковий для заповнення</div>
+            <div ng-message="minlength">Мінімальна довжина телефона повинна будти  символи</div>
+          </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label>
-          Адреса:
-        </label>
-        <input name="address" type="text" class="form-control" ng-model="user.address" required>
-        <div style="color: red" ng-messages="userForm.address.$error">
-          <div ng-message="required">Обов'язковий для заповнення</div>
+        <div class="form-group">
+          <label>
+            Адреса:
+          </label>
+          <input name="address" type="text" class="form-control" ng-model="user.address" required>
+          <div style="color: red" ng-messages="userForm.address.$error">
+            <div ng-message="required">Обов'язковий для заповнення</div>
+          </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label>Пароль:</label>
-        <input type="password" class="form-control" placeholder="Пароль" ng-model="user.password" required>
-      </div>
-      <div class="form-group">
-        <label>Повторити:</label>
-        <input name="passwordRetype" type="password" class="form-control" placeholder="Повторити"  ng-model="user.passwordRetype"  required minlength="6"
-               bk-compare-to="user.password">
-        <div style="color: red" ng-messages="userForm.passwordRetype.$error">
-          <div ng-message="required">Обов'язкове для заповнення</div>
-          <div ng-message="minlength">Мінімальна довжина пароля повинна будти 6 символів</div>
-          <div ng-message="required">Обов'язкове для заповнення</div>
-          <div ng-message="compareTo">Паролі повинні співпадати</div>
+      </span>
+      <span ng-if="updatePassword">
+        <div class="form-group">
+          <label>Пароль:</label>
+          <input type="password" class="form-control" placeholder="Пароль" ng-model="user.password" required>
         </div>
-      </div>
-
+        <div class="form-group">
+          <label>Повторити:</label>
+          <input name="passwordRetype" type="password" class="form-control" placeholder="Повторити"  ng-model="user.passwordRetype"  required minlength="6"
+                 bk-compare-to="user.password">
+          <div style="color: red" ng-messages="userForm.passwordRetype.$error">
+            <div ng-message="required">Обов'язкове для заповнення</div>
+            <div ng-message="minlength">Мінімальна довжина пароля повинна будти 6 символів</div>
+            <div ng-message="required">Обов'язкове для заповнення</div>
+            <div ng-message="compareTo">Паролі повинні співпадати</div>
+          </div>
+        </div>
+      </span>
       <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-click="doneEditing(user)" ng-disabled="!userForm.$valid">
         <span class="glyphicon glyphicon-save"></span> Зберегти
       </md-button>
-
     </div>
   </form>
 </div>

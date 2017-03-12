@@ -144,6 +144,10 @@ angular
         templateUrl: 'views/user_registration.html',
         controller: 'UserRegistrationCtrl'
       })
+      .when('/user_update_password', {
+        templateUrl: 'views/user_registration.html',
+        controller: 'UserRegistrationCtrl'
+      })
       .when('/ntml_pages_edit_table', {
         templateUrl: 'views/html_pages_edit_table.html',
         controller: 'HtmlPagesEditCtrl'

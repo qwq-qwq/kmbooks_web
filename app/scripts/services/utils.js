@@ -5,6 +5,7 @@
 'use strict';
 
 angular.module('angularApp').factory('utils', function ($http, $rootScope, config) {
+  var confirmDialogMessage;
   return {
     toDateTime: function (ObjId) {
       var ObjDate;
@@ -29,6 +30,12 @@ angular.module('angularApp').factory('utils', function ($http, $rootScope, confi
     },
     GetRandomNumber: function () {
        return Math.floor((Math.random()*10000)+1)+10;
+    },
+    GetConfirmDialogMessage: function () {
+      return confirmDialogMessage
+    },
+    SetConfirmDialogMessage: function (message) {
+      confirmDialogMessage = message;
     }
   }})
 

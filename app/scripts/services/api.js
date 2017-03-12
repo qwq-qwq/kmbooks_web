@@ -5,11 +5,11 @@ angular.module('angularApp').factory('api', function (utils, wishList, cart, ord
     init: function () {
       $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
       var success = function (data) {
-        if (data.name) {
+        if (data.email) {
           $rootScope.authenticated = true;
-          $rootScope.username = data.name;
-          $rootScope.user = data.principal.user;
-          $rootScope.role = data.principal.role;
+          $rootScope.user = data;
+          $rootScope.username = data.email;
+          $rootScope.role = data.role;
           $rootScope.$broadcast('successful_authorization');
           wishList.GetStoredWishList();
         } else {

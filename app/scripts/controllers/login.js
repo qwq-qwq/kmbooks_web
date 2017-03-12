@@ -9,12 +9,12 @@ angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope,
     };
 
     var success = function (data) {
-      if (data.name) {
+      if (data.email) {
         $scope.error = false;
         $rootScope.authenticated = true;
-        $rootScope.username = data.name;
-        $rootScope.role = data.principal.role;
-        $rootScope.user = data.principal.user;
+        $rootScope.user = data;
+        $rootScope.username = data.email;
+        $rootScope.role = data.role;
         wishList.GetStoredWishList();
         $rootScope.$broadcast('successful_authorization');
         if (authorization.onlyIsUser()) {

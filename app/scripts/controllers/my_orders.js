@@ -9,14 +9,14 @@ angular.module('angularApp')
     $scope.username = authorization.username();
     var wayForPay = new Wayforpay();
 
-    $http.get(config.url() + "/api/user/orders/get_by_username?username=" + $scope.username, {withCredentials: true})
+    $http.get(config.url() + "/api/user/orders/get_user_orders", {withCredentials: true})
       .success(function(response) {
         $scope.orders = response;
       })
 
     $rootScope.$on('successful_authorization', function () {
       $scope.username = authorization.username();
-      $http.get(config.url() + "/api/user/orders/get_by_username?username=" + $scope.username, {withCredentials: true})
+      $http.get(config.url() + "/api/user/orders/get_user_orders", {withCredentials: true})
         .success(function(response) {
           $scope.orders = response;
         })

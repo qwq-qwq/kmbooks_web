@@ -196,7 +196,7 @@
               </div>
           </div>
           <div class="container" ng-if="isEditor()">
-            <div class="panel panel-default" ng-show="book.editing" style="padding-bottom: 10px; margin-top: 15px">
+            <div class="panel panel-default" ng-if="book.editing" style="padding-bottom: 10px; margin-top: 15px">
               <div class="panel-heading">Редагування банеру.</div>
               <div class="panel-body">
                 <div class="row">
@@ -212,16 +212,36 @@
                   </div>
                 </div>
               </div>
-              <div class="panel-heading">Завантажити фрагмент.</div>
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-12">
-                    <input type="file" nv-file-select="" uploader="uploaderFile" options="{formData: [{code: book.code}]}" style="padding-bottom: 10px">
-                    <button class="btn btn-default btn-sm" ng-click="book.editing = false" style="min-width: 100px">Отмена</button>
-                    <button class="btn btn-primary btn-sm" ng-click="saveFileItem(book)" style="min-width: 100px">Сохранить</button>
+              <div class="panel-heading">Завантажити файл.</div>
+              <form name="userForm">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <md-input-container>
+                        <label>Тип</label>
+                        <md-select ng-model="selectors.bookType">
+                          <md-option ng-repeat="bookType in bookTypes" ng-value="bookType">
+                            {{bookType}}
+                          </md-option>
+                        </md-select>
+                      </md-input-container>
+                      <md-input-container>
+                        <label>Формат</label>
+                        <md-select ng-model="selectors.bookFormat">
+                          <md-option ng-repeat="bookFormat in bookFormats" ng-value="bookFormat">
+                            {{bookFormat}}
+                          </md-option>
+                        </md-select>
+                      </md-input-container>
+                    </div>
+                    <div class="col-md-10">
+                      <input type="file" nv-file-select="" uploader="uploaderFile" options="{formData: [{code: book.code}]}" style="padding-bottom: 10px">
+                      <button class="btn btn-default btn-sm" ng-click="book.editing = false" style="min-width: 100px">Отмена</button>
+                      <button class="btn btn-primary btn-sm" ng-click="saveFileItem(book)" ng-disabled="!userForm.$valid" style="min-width: 100px">Сохранить</button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </span>
@@ -317,6 +337,8 @@
     <script src="scripts/services/cart_popover.js"></script>
     <script src="scripts/services/page_title.js"></script>
     <script src="scripts/services/wfp_listener.js"></script>
+    <script src="scripts/services/confirm_dialog.js"></script>
+    <script src="scripts/services/el_books.js"></script>
     <script src="scripts/directives/thumb.js"></script>
     <script src="scripts/directives/book_detail.js"></script>
     <script src="scripts/directives/compare_to.js"></script>
