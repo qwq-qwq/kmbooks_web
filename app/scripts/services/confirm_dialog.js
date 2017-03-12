@@ -11,7 +11,7 @@ angular.module('angularApp').factory('confirmDialog', function ($mdPanel, utils)
       attachTo: angular.element(document.body),
       controller: PanelDialogCtrl,
       controllerAs: 'ctrl',
-      disableParentScroll: this.disableParentScroll,
+      disableParentScroll: false,
       templateUrl: 'views/regisration_confirm_dialog.html',
       hasBackdrop: true,
       panelClass: 'demo-dialog-example',
