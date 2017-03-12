@@ -33,7 +33,7 @@ angular.module('angularApp').factory('confirmDialog', function ($mdPanel, utils)
   }
 
   PanelDialogCtrl.prototype.getMessage = function() {
-     return utils.GetConfirmDialogMessage();
+     return this.utils.GetConfirmDialogMessage();
   }
 
   PanelDialogCtrl.prototype.closeDialog = function() {
