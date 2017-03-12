@@ -110,6 +110,7 @@ angular.module('angularApp')
         $scope.orderState = 'Робиться';
       }
       var orderUpdate = {id:            $cookies.get('orderId'),
+                         type:          'Звичайна',
                          username:      authorization.username(),
                          cityId:        $scope.selectedCity.originalId,
                          delivery:      $scope.selectedDelivery,
