@@ -125,7 +125,7 @@ angular.module('angularApp')
           merchantDomainName : "kmbooks.com.ua",
           merchantTransactionSecureType: "AUTO",
           authorizationType : "SimpleSignature",
-          serviceUrl:     'api.kmbooks.com.ua/api/orders/pay_confirm',
+          serviceUrl:     'http://api.kmbooks.com.ua/api/orders/pay_confirm',
           merchantSignature : order.signature,
           orderReference : order.number + '-' + order.hash,
           orderDate : utils.toUnixTime(order.id),
