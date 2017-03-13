@@ -11,7 +11,7 @@
   <tr ng-repeat="log in logs">
     <th>{{toDateTime(log.id)}}</th>
     <th>{{log.title}}</th>
-    <th>{{log.text.substring(0, 70) + '...'}}</th>
+    <th>{{log.text.length > 70 ? log.text.substring(0, 70) + '...' : log.text}}</th>
   </tr>
   </tbody>
 </table>
