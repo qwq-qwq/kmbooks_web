@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope, $location, $rootScope, $cookieStore, authorization, $window) {
+angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope, $location, $rootScope, $cookieStore, authorization, elBooks) {
 
   $scope.login = function () {
     var credentials = {

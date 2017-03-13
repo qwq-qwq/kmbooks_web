@@ -280,13 +280,6 @@ angular.module('angularApp')
       withCredentials: true
     });
     var uploaderFile = $scope.uploaderFile;
-    uploaderFile.filters.push({
-      name: 'fileFilter',
-      fn: function(item /*{File|FileLikeObject}*/, options) {
-        var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
-        return '|pdf|epub|fb2|mobi|'.indexOf(type) !== -1;
-      }
-    });
 
     $scope.saveFileItem = function (item) {
       item.editing = false;
@@ -302,10 +295,6 @@ angular.module('angularApp')
     uploaderFile.onSuccessItem = function(fileItem, response, status, headers) {
       $scope.bookFragment = response;
       $scope.book.upl_itemFile = null;
-    };
-
-    uploaderFile.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
-      alert("Ошибка добавления файла, разрешены только pdf, epub, fb2, mobi");
     };
 
     uploaderFile.onErrorItem = function(fileItem, response, status, headers) {

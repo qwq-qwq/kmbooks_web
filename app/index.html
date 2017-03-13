@@ -225,7 +225,7 @@
                           </md-option>
                         </md-select>
                       </md-input-container>
-                      <md-input-container>
+                      <md-input-container ng-show="selectors.bookType === 'book'">
                         <label>Формат</label>
                         <md-select ng-model="selectors.bookFormat">
                           <md-option ng-repeat="bookFormat in bookFormats" ng-value="bookFormat">
