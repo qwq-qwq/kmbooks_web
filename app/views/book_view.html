@@ -40,7 +40,7 @@
             <span style="font-size: large" class="glyphicon glyphicon-book brand-color"></span>&nbsp;&nbsp;читати фрагмент
           </md-button>
         </p>
-        <p ng-if="book.priceElBook > 0 && elBookLink === undefined" style="text-align: center">
+        <p ng-if="book.priceElBook > 0 && elBookLink === ''" style="text-align: center">
           <span class="price_value" style="font-size: 25px; color: black;">{{book.priceElBook}} <span style="font-size: 15px">грн</span></span>
           <md-button class="md-fab md-mini brand-color-background" ng-click="BuyElBook(book)" ng-disabled="savingInProgress">
             <md-tooltip md-direction="right">Купити електронну</md-tooltip>
@@ -48,7 +48,7 @@
             <i ng-show="savingInProgress" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
           </md-button>
         </p>
-        <p ng-if="elBookLink !== undefined" style="text-align: center">
+        <p ng-if="elBookLink !== ''" style="text-align: center">
           <md-button class="md-fab md-mini green-color-background" ng-click="DownloadElBook(elBookLink, selectors.bookFormat)">
             <md-tooltip md-direction="left">Завантажити електронну</md-tooltip>
             <span style="font-size: medium" class="fa fa-cloud-download"></span>
