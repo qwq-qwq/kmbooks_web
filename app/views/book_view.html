@@ -40,13 +40,27 @@
             <span style="font-size: large" class="glyphicon glyphicon-book brand-color"></span>&nbsp;&nbsp;читати фрагмент
           </md-button>
         </p>
-        <p ng-if="book.priceElBook > 0" style="text-align: center">
+        <p ng-if="book.priceElBook > 0 && elBookLink === undefined" style="text-align: center">
           <span class="price_value" style="font-size: 25px; color: black;">{{book.priceElBook}} <span style="font-size: 15px">грн</span></span>
           <md-button class="md-fab md-mini brand-color-background" ng-click="BuyElBook(book)" ng-disabled="savingInProgress">
             <md-tooltip md-direction="right">Купити електронну</md-tooltip>
             <span ng-hide="savingInProgress" style="font-size: medium" class="fa fa-cloud-download"></span>
             <i ng-show="savingInProgress" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
           </md-button>
+        </p>
+        <p ng-if="elBookLink !== undefined" style="text-align: center">
+          <md-button class="md-fab md-mini green-color-background" ng-click="DownloadElBook(elBookLink, selectors.bookFormat)">
+            <md-tooltip md-direction="top">Завантажити електронну</md-tooltip>
+            <span style="font-size: medium" class="fa fa-cloud-download"></span>
+          </md-button>
+          <md-input-container>
+            <label>Формат</label>
+            <md-select ng-model="selectors.bookFormat">
+              <md-option ng-repeat="bookFormat in bookFormats" ng-value="bookFormat">
+                {{bookFormat}}
+              </md-option>
+            </md-select>
+          </md-input-container>
         </p>
         <div style="margin-top: 30px; text-align: center">
            <a ng-show="book.code === 709684" bk-facebook url=absUrl code="709684" style="color: black"></a>&nbsp;&nbsp;&nbsp;&nbsp;

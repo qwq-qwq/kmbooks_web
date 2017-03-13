@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularApp').factory('api', function (utils, wishList, cart, order, $http, $rootScope, $cookies, authorization) {
+angular.module('angularApp').factory('api', function (utils, wishList, cart, order, $http, $rootScope, $cookies, authorization, elBooks) {
   return {
     init: function () {
       $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
@@ -12,6 +12,7 @@ angular.module('angularApp').factory('api', function (utils, wishList, cart, ord
           $rootScope.role = data.role;
           $rootScope.$broadcast('successful_authorization');
           wishList.GetStoredWishList();
+          elBooks.SetElBooks(data.elBooks);
         } else {
           $rootScope.authenticated = false;
         }

@@ -5,7 +5,8 @@
 
 angular.module('angularApp')
   .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization,
-                                        FileUploader, config, pageTitle, utils, confirmDialog, $rootScope) {
+                                        FileUploader, config, pageTitle, utils, confirmDialog,
+                                        $rootScope, elBooks) {
     var code = $location.search().code;
     $scope.gallery = {images: [], opts: "", show: false};
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
@@ -35,6 +36,12 @@ angular.module('angularApp')
 
     $rootScope.$on('successful_authorization', function () {
       $scope.user = authorization.getUser();
+    })
+
+    $rootScope.$on('el_books_has_added', function () {
+      if ($scope.book !== undefined) {
+        $scope.elBookLink = elBooks.GetElBookLink($scope.book.code);
+      }
     })
 
     $scope.editItem = function (item) {
@@ -189,6 +196,7 @@ angular.module('angularApp')
         pageTitle.SetTitle($scope.book.name + ' купити книгу в Києві і Україні.');
         pageTitle.SetDescription('Інтернет-магазин kmbooks.com.ua: ' + $scope.book.name + '. Автор: ' + $scope.book.author
                          + '. Доставка: Киев, Украина. ' + $scope.book.description);
+        $scope.elBookLink = elBooks.GetElBookLink($scope.book.code);
       })
 
     $http.get(config.url() + '/api/books/images?code=' + code)
@@ -309,5 +317,8 @@ angular.module('angularApp')
       $window.open('http://kmbooks.com.ua' + url);
     }
 
+    $scope.DownloadElBook = function (elBookLink, bookFormat) {
+      $window.open('http://api.kmbooks.com.ua/api/user/files_for_book/get_el_book?link=' + elBookLink + '&format=' + bookFormat, {withCredentials: true});
+    }
 
   });

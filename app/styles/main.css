@@ -80,7 +80,28 @@
   background-repeat: no-repeat;
 }
 
-.brand-color-background:hover{
+green-color-background
+
+.green-color-background:hover{
+  background: #2E7D32;
+  color: white;
+}
+
+.green-color-background {
+  background: #4CAF50;
+  color: white;
+}
+
+.green-color-background:not([disabled]):hover {
+  background-color: rgba(46, 125, 50, 0.96);
+}
+
+.green-color-background[disabled] {
+  color: rgba(0,0,0,0.38);
+  background-color: rgba(0,0,0,0.12);
+}
+
+.green-color-background:hover{
   background: #01579B;
   color: white;
 }

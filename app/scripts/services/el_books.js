@@ -7,8 +7,34 @@
 angular.module('angularApp').factory('elBooks', function ($http, $rootScope, config, authorization) {
   var elBooks;
   return {
-    GetWishList: function () {
+    GetElBooks: function () {
       return elBooks;
+    },
+    GetElBookLink: function (code) {
+      if (elBooks !== undefined) {
+        var result = '';
+        angular.forEach(elBooks, function (value, key) {
+          if (value.code === code) {
+            result = value.link;
+          }
+        });
+        return result;
+      }else{
+        return '';
+      }
+    },
+    IsInElBooks: function (code) {
+      if (elBooks !== undefined) {
+        var result = false;
+        angular.forEach(elBooks, function (value, key) {
+          if (value.code === code) {
+            result = true;
+          }
+        });
+        return result;
+      }else{
+        return false;
+      }
     },
     Exist: function () {
       if (elBooks === undefined){
@@ -17,7 +43,7 @@ angular.module('angularApp').factory('elBooks', function ($http, $rootScope, con
         return true;
       }
     },
-    SetWishList: function (newElBooks) {
+    SetElBooks: function (newElBooks) {
       elBooks = newElBooks;
       $rootScope.$broadcast('el_books_has_added');
     },
@@ -37,11 +63,11 @@ angular.module('angularApp').factory('elBooks', function ($http, $rootScope, con
         return elBooks.length;
       }
     },
-    GetStoredWishList: function () {
+    GetStoredElBooks: function () {
       if (authorization.isAuthorized()){
-         $http.get(config.url() + "/api/user/", {withCredentials: true})
+         $http.get(config.url() + "/api/admin/user", {withCredentials: true})
            .success(function(response) {
-             elBooks = response;
+             elBooks = response.elBooks;
              $rootScope.$broadcast('el_books_has_added');
            })
       }
