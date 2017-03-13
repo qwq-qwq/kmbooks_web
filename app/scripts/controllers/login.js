@@ -50,6 +50,7 @@ angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope,
       $rootScope.username = '';
       $rootScope.role = '';
       wishList.SetWishList(undefined);
+      elBooks.SetElBooks(undefined);
       $location.path("/");
     };
     var error = function () {

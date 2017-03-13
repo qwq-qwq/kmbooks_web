@@ -151,7 +151,7 @@ angular.module('angularApp')
           // on approved
           $http.post(config.url() + "/api/orders/pay_confirm", response)
             .success(function(response) {
-               $scope.currentOrder = response;
+               elBooks.GetStoredElBooks();
             });//
         },
         function (response) {
