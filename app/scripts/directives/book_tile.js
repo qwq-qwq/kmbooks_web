@@ -36,6 +36,9 @@ angular.module('angularApp').directive('bkBookTail', ['wishList', '$mdPanel', '$
           if (wishList.AlreadyInWishList(scope.book.code)) {
             scope.alreadyInWishList = true;
             scope.wishHeart = 'fa fa-heart brand-color-hover';
+          }else{
+            scope.alreadyInWishList = false;
+            scope.wishHeart = 'fa fa-heart-o brand-color';
           }
         }
       })
