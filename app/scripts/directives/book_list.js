@@ -3,8 +3,9 @@
  */
 'use strict';
 
-angular.module('angularApp').directive('bkBookList', ['wishList', '$mdPanel', '$http', 'config', 'authorization', 'confirmDialog',
-  function(wishList, $mdPanel, $http, config, authorization, confirmDialog) {
+angular.module('angularApp').directive('bkBookList', ['wishList', '$mdPanel', '$http', 'config', 'authorization',
+  'confirmDialog', '$location',
+  function(wishList, $mdPanel, $http, config, authorization, confirmDialog, $location) {
     return {
       restrict: 'E',
       scope: {
@@ -45,11 +46,15 @@ angular.module('angularApp').directive('bkBookList', ['wishList', '$mdPanel', '$
 
         scope.AddToWishList = function (book) {
           if (authorization.isAuthorized()) {
+          if (!wishList.AlreadyInWishList(scope.book.code)){
             var wishListItem = {username: authorization.username(), code: book.code, name: book.name};
             $http.post(config.url() + "/api/user/wish_lists/update", wishListItem, {withCredentials: true})
               .success(function (response) {
                 wishList.SetWishList(response);
               })
+          }else{
+            $location.path("/wish_list");
+          }
           }else{
             confirmDialog.ShowRegistrationConfirm('Для того, щоб додавати товари в лист бажаннь вам необхідно зареєструватися');
           }

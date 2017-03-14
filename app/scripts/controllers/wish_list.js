@@ -5,13 +5,20 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('WishListCtrl', function($scope, $http, $location, $anchorScroll, $route, config, wishList, utils, authorization) {
-    $scope.username = authorization.username();
+  .controller('WishListCtrl', function($scope, $http, $location, $anchorScroll, $route, config,
+                                       wishList, utils, authorization, $rootScope) {
+    function updateWishList() {
+      $scope.username = authorization.username();
 
-    $http.get(config.url() + "/api/user/wish_lists/get_by_username?username=" + authorization.username(), {withCredentials: true})
-      .success(function(response) {
-        $scope.wishList = response;
-      })
+      $http.get(config.url() + "/api/user/wish_lists/get_by_username?username=" + authorization.username(), {withCredentials: true})
+        .success(function(response) {
+          $scope.wishList = response;
+        })
+    }
+    
+    $rootScope.$on('wish_list_has_added', function () {
+      updateWishList();
+    })
 
     $scope.removeFromList = function (item) {
       $http.post(config.url() + "/api/user/wish_lists/delete", item, {withCredentials: true})
