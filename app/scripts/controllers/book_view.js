@@ -32,16 +32,16 @@ angular.module('angularApp')
 
     var wayForPay = new Wayforpay();
 
-    $scope.user = authorization.getUser();
+    if(authorization.isAuthorized()){
+       $scope.user = authorization.getUser();
+    }
 
     $rootScope.$on('successful_authorization', function () {
-      $scope.user = authorization.getUser();
+       $scope.user = authorization.getUser();
     })
 
     $rootScope.$on('el_books_has_added', function () {
-      if ($scope.book !== undefined) {
-        $scope.elBookLink = elBooks.GetElBookLink($scope.book.code);
-      }
+      //
     })
 
     $scope.SaveOrder = function (book) {
@@ -161,6 +161,10 @@ angular.module('angularApp')
 
     $scope.editItem = function (item) {
       item.editing = true;
+      $http.get(config.url() + '/api/edit/files_for_book/get_file_names_by_code?code=' + $scope.book.code, {withCredentials: true})
+        .success(function (response) {
+          $scope.existedFiles = response;
+        })
     }
 
     $scope.saveItem = function (item) {
@@ -200,6 +204,12 @@ angular.module('angularApp')
         pageTitle.SetDescription('Інтернет-магазин kmbooks.com.ua: ' + $scope.book.name + '. Автор: ' + $scope.book.author
                          + '. Доставка: Киев, Украина. ' + $scope.book.description);
         $scope.elBookLink = elBooks.GetElBookLink($scope.book.code);
+        if (authorization.isAuthorized()){
+          $http.get(config.url() + '/api/user/files_for_book/get_file_formats_by_code?code=' + $scope.book.code, {withCredentials: true})
+            .success(function (response) {
+              $scope.existedFormats = response;
+            })
+        }
       })
 
     $http.get(config.url() + '/api/books/images?code=' + code)

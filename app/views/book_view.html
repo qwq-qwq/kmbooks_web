@@ -49,15 +49,15 @@
           </md-button>
         </p>
         <p ng-if="elBookLink !== ''" style="text-align: center">
-          <md-button class="md-fab md-mini green-color-background" ng-click="DownloadElBook(elBookLink, selectors.bookFormat)">
+          <md-button class="md-fab md-mini green-color-background" ng-click="DownloadElBook(elBookLink, selectors.existedFormat)">
             <md-tooltip md-direction="bottom">Завантажити електронну</md-tooltip>
             <span style="font-size: medium" class="fa fa-cloud-download"></span>
           </md-button>
           <md-input-container>
             <label>Формат</label>
             <md-select ng-model="selectors.bookFormat">
-              <md-option ng-repeat="bookFormat in bookFormats" ng-value="bookFormat">
-                {{bookFormat}}
+              <md-option ng-repeat="existedFormat in existedFormats" ng-value="existedFormat">
+                {{existedFormat}}
               </md-option>
             </md-select>
           </md-input-container>

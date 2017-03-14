@@ -218,7 +218,7 @@
               <form name="userForm">
                 <div class="panel-body">
                   <div class="row">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                       <md-input-container>
                         <label>Тип</label>
                         <md-select ng-model="selectors.bookType">
@@ -236,12 +236,17 @@
                         </md-select>
                       </md-input-container>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-9">
                       <input type="file" nv-file-select="" uploader="uploaderFile" options="{formData: [{code: book.code}]}" style="padding-bottom: 10px">
                       <md-button ng-click="saveFileItem(book)" ng-disabled="!userForm.$valid || fileSaving" style="min-width: 100px">
                         Зберігти
                         <i ng-show="fileSaving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
                       </md-button>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12" ng-repeat="existedFile in existedFiles">
+                      <p>{{existedFile}}</p>
                     </div>
                   </div>
                 </div>
