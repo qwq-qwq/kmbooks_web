@@ -44,19 +44,6 @@ angular.module('angularApp')
       }
     })
 
-    $scope.editItem = function (item) {
-      item.editing = true;
-    }
-
-    $scope.saveItem = function (item) {
-      item.editing = false;
-      item.upl_item.formData[0].rectangle = [$scope.cropSelection.selection[0],
-                                             $scope.cropSelection.selection[1],
-                                             $scope.cropSelection.selection[4],
-                                             $scope.cropSelection.selection[5]];
-      item.upl_item.upload();
-    }
-
     $scope.SaveOrder = function (book) {
       function successAdded(response) {
           $scope.completedOrder = response;
@@ -172,20 +159,36 @@ angular.module('angularApp')
       $scope.SaveOrder(book);
     }
 
+    $scope.editItem = function (item) {
+      item.editing = true;
+    }
+
+    $scope.saveItem = function (item) {
+      $scope.bannerSaving = true;
+      item.upl_item.formData[0].rectangle = [$scope.cropSelection.selection[0],
+        $scope.cropSelection.selection[1],
+        $scope.cropSelection.selection[4],
+        $scope.cropSelection.selection[5]];
+      item.upl_item.upload();
+    }
+
     uploader.onAfterAddingFile = function(fileItem) {
        $scope.book.upl_item = fileItem;
     };
 
     uploader.onSuccessItem = function(fileItem, response, status, headers) {
+      $scope.bannerSaving = false;
        $scope.bannerImage = response.image;
        $scope.book.upl_item = null;
     };
 
     uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+      $scope.bannerSaving = false;
       alert("Ошибка добавления файла, разрешены только изображения");
     };
 
     uploader.onErrorItem = function(fileItem, response, status, headers) {
+      $scope.bannerSaving = false;
       $scope.book.upl_item = null;
       alert("При загрузке файла на сервер возникла ошибка");
     };
@@ -282,7 +285,7 @@ angular.module('angularApp')
     var uploaderFile = $scope.uploaderFile;
 
     $scope.saveFileItem = function (item) {
-      item.editing = false;
+      $scope.fileSaving = true;
       item.upl_itemFile.formData[0].type = $scope.selectors.bookType;
       item.upl_itemFile.formData[0].format = $scope.selectors.bookFormat;
       item.upl_itemFile.upload();
@@ -293,11 +296,13 @@ angular.module('angularApp')
     };
 
     uploaderFile.onSuccessItem = function(fileItem, response, status, headers) {
+      $scope.fileSaving = false;
       $scope.bookFragment = response;
       $scope.book.upl_itemFile = null;
     };
 
     uploaderFile.onErrorItem = function(fileItem, response, status, headers) {
+      $scope.fileSaving = false;
       $scope.book.upl_itemFile = null;
       alert("При загрузке файла на сервер возникла ошибка");
     };
