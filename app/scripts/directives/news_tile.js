@@ -1,6 +1,7 @@
 /**
  * Created by sergey on 06.02.17.
  */
+'use strict';
 
 angular.module('angularApp').directive('bkNewsTile', ['utils', function(utils) {
   return {
