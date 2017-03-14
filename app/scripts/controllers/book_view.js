@@ -306,6 +306,10 @@ angular.module('angularApp')
     };
 
     uploaderFile.onSuccessItem = function(fileItem, response, status, headers) {
+      $http.get(config.url() + '/api/edit/files_for_book/get_file_names_by_code?code=' + $scope.book.code, {withCredentials: true})
+        .success(function (response) {
+          $scope.existedFiles = response;
+        })
       $scope.fileSaving = false;
       $scope.bookFragment = response;
       $scope.book.upl_itemFile = null;
