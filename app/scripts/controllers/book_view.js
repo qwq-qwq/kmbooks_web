@@ -41,7 +41,15 @@ angular.module('angularApp')
     })
 
     $rootScope.$on('el_books_has_added', function () {
-      //
+      if($scope.book !== undefined){
+        $scope.elBookLink = elBooks.GetElBookLink($scope.book.code);
+        if (authorization.isAuthorized()){
+          $http.get(config.url() + '/api/user/files_for_book/get_file_formats_by_code?code=' + $scope.book.code, {withCredentials: true})
+            .success(function (response) {
+              $scope.existedFormats = response;
+            })
+        }
+      }
     })
 
     $scope.SaveOrder = function (book) {
