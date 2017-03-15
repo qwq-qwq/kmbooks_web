@@ -253,7 +253,7 @@ angular.module('angularApp')
         //if (bannerHeight > 250) {
         //  offset = 10;
         //}
-        var flatImageAreaHeight = bannerHeight - 60 - offset + bannerHeight/9;
+        var flatImageAreaHeight = bannerHeight - 60 - offset + bannerHeight/10;
         var flatImageWidth = flatImageAreaHeight * $scope.flatImageRatio;
         var flatImageHeight = flatImageAreaHeight;
         $scope.flatImageHeight={height: flatImageHeight, width: flatImageWidth};
