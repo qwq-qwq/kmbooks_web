@@ -253,7 +253,7 @@ angular.module('angularApp')
         //}
         var flatImageHeight = bannerHeight - 60 - offset + bannerHeight/8;
         $scope.flatImageHeight={height: flatImageHeight};
-        $scope.bookInfo={position: 'absolute', left: 0,  top: bannerHeight - 20, "margin-left": 30, "margin-top": 20};
+        $scope.bookInfo={position: 'absolute', left: "7%",  top: bannerHeight - 20, "margin-left": 30, "margin-top": 20, "max-width": 1100};
       })
 
     $http.get(config.url() + '/api/books/banner_book?code=' + code)
