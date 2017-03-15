@@ -168,6 +168,9 @@ angular.module('angularApp')
     }
 
     $scope.editItem = function (item) {
+      if (!$scope.isEditor()){
+        return;
+      }
       item.editing = true;
       $http.get(config.url() + '/api/edit/files_for_book/get_file_names_by_code?code=' + $scope.book.code, {withCredentials: true})
         .success(function (response) {
@@ -250,6 +253,7 @@ angular.module('angularApp')
         //}
         var flatImageHeight = bannerHeight - 60 - offset + bannerHeight/8;
         $scope.flatImageHeight={height: flatImageHeight};
+        $scope.bookInfo={position: 'absolute', left: 0,  top: bannerHeight - 20, margin: 10};
       })
 
     $http.get(config.url() + '/api/books/banner_book?code=' + code)
