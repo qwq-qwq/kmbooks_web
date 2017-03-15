@@ -229,6 +229,7 @@ angular.module('angularApp')
             if (image.flat === true) {
               $scope.flatImageIndex = key;
               $scope.flatImage = image.src.replace('.jpg', '_big.jpg');
+              $scope.flatImageRatio = image.height !== 0 ? image.width/image.height : 0;
             }
             $scope.gallery.images[key] = {
               srcThumbNail: image.src.replace('.jpg', '_big.jpg'),
@@ -243,6 +244,7 @@ angular.module('angularApp')
             if (image.main === true) {
               $scope.flatImageIndex = key;
               $scope.flatImage = image.src.replace('.jpg', '_big.jpg');
+              $scope.flatImageRatio = image.height !== 0 ? image.width/image.height : 0;
             }
           })
         }
@@ -251,8 +253,10 @@ angular.module('angularApp')
         //if (bannerHeight > 250) {
         //  offset = 10;
         //}
-        var flatImageHeight = bannerHeight - 60 - offset + bannerHeight/9;
-        $scope.flatImageHeight={height: flatImageHeight};
+        var flatImageAreaHeight = bannerHeight - 60 - offset + bannerHeight/9;
+        var flatImageWidth = flatImageAreaHeight * $scope.flatImageRatio;
+        var flatImageHeight = flatImageAreaHeight;
+        $scope.flatImageHeight={height: flatImageHeight, width: flatImageWidth};
         $scope.bookInfo={position: 'absolute', left: "7%",  top: bannerHeight - 20, "margin-left": 30, "margin-top": 20, "max-width": 1100};
       })
 
