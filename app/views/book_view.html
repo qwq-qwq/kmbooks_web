@@ -84,7 +84,7 @@
   <div bk-photoswipe slides="gallery.images" show="gallery.show" slide-selector=".slide-list > a > img"
        on-close="closeGallery()" options="gallery.opts">
   </div>
-  <div class="col-md-4 hidden-xs hidden-sm" style="padding-left: 0; padding-right: 0" ng-if="gallery.images.length > 0">
+  <div class="col-md-3 hidden-xs hidden-sm" style="padding-left: 0; padding-right: 0" ng-if="gallery.images.length > 0">
     <div class="slide-list">
       <a ng-repeat="image in gallery.images track by $index" ng-click="showGallery($index)">
         <img ng-show="image.flat === false" src="{{image.srcThumbNail}}" class="point_img img-responsive center-block" style="max-height: 250px; margin-bottom: 6px">
@@ -117,7 +117,7 @@
       <bk-news-tile news="oneNews"></bk-news-tile>
     </div>
   </div>
-  <div class="col-md-2 hidden-xs hidden-sm">
+  <div class="col-md-3 hidden-xs hidden-sm">
     <div style="position: fixed; top: 60px; margin-left: -30px;">
       <div style="background: rgba(255, 255, 255, 0.4); padding: 8px;">
         <img class="img-responsive point_img" src="{{flatImage}}" ng-style="flatImageHeight" ng-click="showGallery(flatImageIndex)" style="box-shadow: 0px 0px 10px #d8d8d8;">
