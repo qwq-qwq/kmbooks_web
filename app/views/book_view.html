@@ -9,15 +9,24 @@
       </a>
     </div>
   </div>
-  <div class="hidden-md hidden-lg" style="text-align: center">
-      <img src="{{book.image}}" class="img-responsive point_img center-block" ng-click="showGallery(1)">
-      <p style="margin-top: 30px; text-align: center">
-        <bk-buy-button book="book">
-          <bk-price book="book" div="false"></bk-price>
-        </bk-buy-button>
+  <div class="hidden-md hidden-lg" style="text-align: center;">
+    <img src="{{book.image}}" class="img-responsive point_img center-block" ng-click="showGallery(1)">
+    <p style="margin-top: 30px; text-align: center">
+      <bk-buy-button book="book">
+        <bk-price book="book" div="false"></bk-price>
+      </bk-buy-button>
+      <p ng-if="bookFragment !== ''" style="text-align: center">
+        <md-button ng-click="OpenFragment(bookFragment.file)" class="">
+          <span style="font-size: large" class="glyphicon glyphicon-book brand-color"></span>&nbsp;&nbsp;читати фрагмент
+        </md-button>
       </p>
+      <bk-el-books-buttons></bk-el-books-buttons>
+      <div style="margin-top: 30px; text-align: center">
+        <bk-social-buttons></bk-social-buttons>
+      </div>
+    </p>
   </div>
-  <div class="col-md-6 book-data" style="padding-left:0;">
+  <div class="col-md-6 book-data" style="padding-left: 5px;">
     <bk-book-detail-info></bk-book-detail-info>
     <span ng-if="description"><h3 style="font-family: Calibri" class="brand-color">Анотація</h3></span>
     <span ng-if="description" ng-bind-html="description"></span>
@@ -40,35 +49,9 @@
             <span style="font-size: large" class="glyphicon glyphicon-book brand-color"></span>&nbsp;&nbsp;читати фрагмент
           </md-button>
         </p>
-        <p ng-if="book.priceElBook > 0 && elBookLink === ''" style="text-align: center">
-          <span class="price_value" style="font-size: 25px; color: black;">{{book.priceElBook}} <span style="font-size: 15px">грн</span></span>
-          <md-button class="md-fab md-mini brand-color-background" ng-click="BuyElBook(book)" ng-disabled="savingInProgress">
-            <md-tooltip md-direction="bottom">Купити електронну</md-tooltip>
-            <span ng-hide="savingInProgress" style="font-size: medium" class="fa fa-cloud-download"></span>
-            <i ng-show="savingInProgress" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-          </md-button>
-        </p>
-        <p ng-if="elBookLink !== ''" style="text-align: center">
-          <md-button class="md-fab md-mini green-color-background" ng-click="DownloadElBook(elBookLink, selectors.existedFormat)">
-            <md-tooltip md-direction="bottom">Завантажити електронну</md-tooltip>
-            <span style="font-size: medium" class="fa fa-cloud-download"></span>
-          </md-button>
-          <md-input-container>
-            <label>Формат</label>
-            <md-select ng-model="selectors.existedFormat">
-              <md-option ng-repeat="existedFormat in existedFormats" ng-value="existedFormat">
-                {{existedFormat}}
-              </md-option>
-            </md-select>
-          </md-input-container>
-        </p>
+        <bk-el-books-buttons></bk-el-books-buttons>
         <div style="margin-top: 30px; text-align: center">
-           <a ng-show="book.code === 709684" bk-facebook url=absUrl code="709684" style="color: black"></a>&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="https://www.facebook.com/share.php?u={{absUrl}}&caption=kmbooks.com.ua" style="color: black"><i class="fa fa-facebook" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="https://vkontakte.ru/share.php?url={{absUrl}}" style="color: black"><i class="fa fa-vk" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="https://plus.google.com/share?url={{absUrl}}" style="color: black"><i class="fa fa-google-plus" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="https://twitter.com/share?text={{book.name}}&url={{absUrl}}" style="color: black"><i class="fa fa-twitter" style="font-size: large"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-           <a href="https://pinterest.com/pin/create/button/?url={{absUrl}}&media={{'http://kmbooks.com.ua/' + book.image.replace('.jpg', '_big.jpg')}}&description={{book.description}}" style="color: black"><i class="fa fa-pinterest" style="font-size: large"></i></a>
+          <bk-social-buttons></bk-social-buttons>
         </div>
       </div>
     </div>

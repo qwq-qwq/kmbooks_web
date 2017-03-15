@@ -9,8 +9,8 @@ angular.module('angularApp').directive('bkElBooksList', ['$http', 'config', 'aut
     restrict: 'E',
     templateUrl: 'views/bk_el_books_list.html',
     link: function(scope, element, attributes) {
-      scope.$watch('existedFiles', function () {
-      })
+      //scope.$watch('existedFiles', function () {
+      //})
     }
   };
 }])
