@@ -30,6 +30,8 @@ angular.module('angularApp')
       }
     });
 
+    var wayForPay = new Wayforpay();
+
     if(authorization.isAuthorized()){
        $scope.user = authorization.getUser();
     }
@@ -120,7 +122,6 @@ angular.module('angularApp')
         })
         return goodsCounts;
       }
-      var wayForPay = new Wayforpay();
       wayForPay.run({
           merchantAccount : "kmbooks_com_ua1",
           merchantDomainName : "kmbooks.com.ua",
