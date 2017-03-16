@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope, $location, $rootScope, $cookieStore, authorization, elBooks) {
+angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope, $location, $rootScope,
+                                                               $cookieStore, authorization, elBooks,
+                                                               urlBeforeWrongAuth) {
 
   $scope.login = function () {
     var credentials = {
@@ -18,10 +20,15 @@ angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope,
         wishList.GetStoredWishList();
         elBooks.SetElBooks(data.elBooks);
         $rootScope.$broadcast('successful_authorization');
-        if (authorization.onlyIsUser()) {
-          $location.path("/");
+        if (urlBeforeWrongAuth.GetUrlBeforeWrongAuth() === ''){
+          if (authorization.onlyIsUser()) {
+            $location.path("/");
+          }else{
+            $location.path("/edit");
+          }
         }else{
-          $location.path("/edit");
+          $location.url(urlBeforeWrongAuth.GetUrlBeforeWrongAuth());
+          urlBeforeWrongAuth.SetUrlBeforeWrongAuth('');
         }
       } else {
         $rootScope.authenticated = false;

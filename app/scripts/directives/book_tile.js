@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('angularApp').directive('bkBookTail', ['wishList', '$mdPanel', '$http', 'config', 'authorization',
-  'confirmDialog', '$location',
-  function(wishList, $mdPanel, $http, config, authorization, confirmDialog, $location) {
+  'confirmDialog', '$location', 'urlBeforeWrongAuth',
+  function(wishList, $mdPanel, $http, config, authorization, confirmDialog, $location, urlBeforeWrongAuth) {
   return {
     restrict: 'E',
     scope: {
@@ -56,6 +56,7 @@ angular.module('angularApp').directive('bkBookTail', ['wishList', '$mdPanel', '$
             $location.path("/wish_list");
           }
         }else{
+          urlBeforeWrongAuth.SetUrlBeforeWrongAuth($location.url());
           confirmDialog.ShowRegistrationConfirm('Для того, щоб додавати товари в лист бажаннь вам необхідно зареєструватися');
         }
       }

@@ -176,7 +176,7 @@ angular
      socialFB.init('199264067223695');
 
   })
-  .factory('httpInterceptor', function($q, $location, $cookies){
+  .factory('httpInterceptor', function($q, $location, urlBeforeWrongAuth){
       return {
         /*request: function(config) {
           var allowedMethods = ['GET'];
@@ -190,6 +190,7 @@ angular
             return rejection;
           }
           if (rejection.status === 401){
+            urlBeforeWrongAuth.SetUrlBeforeWrongAuth(rejection.config.url);
             $location.url('/login');
           }
           return $q.reject(rejection);

@@ -6,7 +6,7 @@
 angular.module('angularApp')
   .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization,
                                         FileUploader, config, pageTitle, utils, confirmDialog,
-                                        $rootScope, elBooks) {
+                                        $rootScope, elBooks, urlBeforeWrongAuth) {
     var code = $location.search().code;
     $scope.gallery = {images: [], opts: "", show: false};
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
@@ -161,6 +161,7 @@ angular.module('angularApp')
 
     $scope.BuyElBook = function (book) {
       if (!authorization.isAuthorized()) {
+        urlBeforeWrongAuth.SetUrlBeforeWrongAuth($location.url());
         confirmDialog.ShowRegistrationConfirm('Для придбання електронних книг будь ласка зарееструйтесь');
         return;
       }
@@ -249,15 +250,17 @@ angular.module('angularApp')
           })
         }
         var bannerHeight = angular.element('#bookBanner').height();
+        var bannerWidth = angular.element('#bookBanner').width();
         var offset = 10;
-        //if (bannerHeight > 250) {
-        //  offset = 10;
-        //}
         var flatImageAreaHeight = bannerHeight - 60 - offset;
         var flatImageWidth = flatImageAreaHeight * $scope.flatImageRatio;
         var flatImageHeight = flatImageAreaHeight;
+        var leftBookInfoMargin = 0;
+        if (bannerWidth > 1100){
+          var leftBookInfoMargin = (bannerWidth - 1100) / 2;
+        }
         $scope.flatImageHeight={height: flatImageHeight, width: flatImageWidth};
-        $scope.bookInfo={position: 'absolute', left: "7%",  top: bannerHeight - 20, "margin-left": 30, "margin-top": 20, "max-width": 1100};
+        $scope.bookInfo={position: 'absolute', left: leftBookInfoMargin,  top: bannerHeight - 20, "margin-left": 30, "margin-top": 20, "max-width": 1100};
       })
 
     $http.get(config.url() + '/api/books/banner_book?code=' + code)
