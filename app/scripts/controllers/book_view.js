@@ -260,7 +260,8 @@ angular.module('angularApp')
           var leftBookInfoMargin = (bannerWidth - 1100) / 2;
         }
         $scope.flatImageHeight={height: flatImageHeight, width: flatImageWidth};
-        $scope.bookInfo={position: 'absolute', left: leftBookInfoMargin,  top: bannerHeight - 20, "margin-left": 30, "margin-top": 20, "max-width": 1100};
+        $scope.bookInfoStyle={position: 'absolute', left: leftBookInfoMargin,  top: bannerHeight - 20, "margin-left": 30, "margin-top": 20, "max-width": 1100};
+        $scope.bootTitleStyle = {left: leftBookInfoMargin};
       })
 
     $http.get(config.url() + '/api/books/banner_book?code=' + code)
