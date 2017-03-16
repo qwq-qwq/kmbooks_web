@@ -216,12 +216,12 @@ angular.module('angularApp')
         pageTitle.SetDescription('Інтернет-магазин kmbooks.com.ua: ' + $scope.book.name + '. Автор: ' + $scope.book.author
                          + '. Доставка: Киев, Украина. ' + $scope.book.description);
         $scope.elBookLink = elBooks.GetElBookLink($scope.book.code);
-        /*if (authorization.isAuthorized()){
+        if (authorization.isAuthorized()){
           $http.get(config.url() + '/api/user/files_for_book/get_file_formats_by_code?code=' + $scope.book.code, {withCredentials: true})
             .success(function (response) {
               $scope.existedFormats = response;
             })
-        }*/
+        }
       })
 
     $http.get(config.url() + '/api/books/images?code=' + code)

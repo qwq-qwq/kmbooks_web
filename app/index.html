@@ -69,9 +69,6 @@
 
             <form ng-show="showSearch" ng-submit="searchGo()" class="visible-xs" role="search">
               <div class="input-group pull-right" style="width: 90%; margin-right: 40px; padding: 8px;">
-                <!--<span class="input-group-btn" style="width: 20px">
-                  <button ng-click="searchGo()" class="btn btn-default" style="display: none"></button>
-                </span>-->
                 <input ng-su type="text" style="background-color: inherit; color: white" bk-auto-focus ng-model="search_string" class="form-control" placeholder="Пошук на сайті">
                 <span class="input-group-btn">
                    <span ng-click="searchReset()" class="close" style="top: 5px; outline: none"></span>
@@ -121,9 +118,6 @@
                 </a>
               <li>
               <li id="cart" class="hidden-xs">
-              <!--uib-popover-template="templateUrl" popover-append-to-body="true" popover-placement="bottom"
-                   popover-trigger="{'click':'outsideClick', 'outsideClick':'outsideClick'}" popover-title="Кошик"
-                   style="font-size: large;"-->
                 <a href="#" ng-click="openCartPopover()" style="font-size: large">
                   <span class="glyphicon glyphicon-shopping-cart"></span>
                   <span ng-if="itemsCount > 0" class="brand-color">&nbsp;{{itemsCount}}</span>
