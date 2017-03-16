@@ -29,8 +29,6 @@ angular.module('angularApp')
       }
     });
 
-    var wayForPay = new Wayforpay();
-
     $scope.saveItem = function (item) {
       $scope.bannerSaving = true;
       item.upl_item.formData[0].rectangle = [$scope.cropSelection.selection[0],
