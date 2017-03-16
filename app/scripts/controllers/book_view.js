@@ -5,7 +5,8 @@
 
 angular.module('angularApp')
   .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization,
-                                        FileUploader, config, pageTitle, utils) {
+                                        FileUploader, config, pageTitle, utils, confirmDialog,
+                                        $rootScope, elBooks, urlBeforeWrongAuth) {
     var code = $location.search().code;
     $scope.gallery = {images: [], opts: "", show: false};
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
@@ -30,6 +31,26 @@ angular.module('angularApp')
     });
 
     //var wayForPay = new Wayforpay();
+
+    if(authorization.isAuthorized()){
+       $scope.user = authorization.getUser();
+    }
+
+    $rootScope.$on('successful_authorization', function () {
+       $scope.user = authorization.getUser();
+    })
+
+    $rootScope.$on('el_books_has_added', function () {
+      if($scope.book !== undefined){
+        $scope.elBookLink = elBooks.GetElBookLink($scope.book.code);
+        if (authorization.isAuthorized()){
+          $http.get(config.url() + '/api/user/files_for_book/get_file_formats_by_code?code=' + $scope.book.code, {withCredentials: true})
+            .success(function (response) {
+              $scope.existedFormats = response;
+            })
+        }
+      }
+    })
 
     $scope.SaveOrder = function (book) {
       function successAdded(response) {
@@ -194,6 +215,13 @@ angular.module('angularApp')
         pageTitle.SetTitle($scope.book.name + ' купити книгу в Києві і Україні.');
         pageTitle.SetDescription('Інтернет-магазин kmbooks.com.ua: ' + $scope.book.name + '. Автор: ' + $scope.book.author
                          + '. Доставка: Киев, Украина. ' + $scope.book.description);
+        $scope.elBookLink = elBooks.GetElBookLink($scope.book.code);
+        if (authorization.isAuthorized()){
+          $http.get(config.url() + '/api/user/files_for_book/get_file_formats_by_code?code=' + $scope.book.code, {withCredentials: true})
+            .success(function (response) {
+              $scope.existedFormats = response;
+            })
+        }
       })
 
     $http.get(config.url() + '/api/books/images?code=' + code)
@@ -221,8 +249,44 @@ angular.module('angularApp')
             }
           })
         }
+        var bannerHeight = angular.element('#bookBanner').height();
+        var bannerWidth = angular.element('#bookBanner').width();
+        var offset = 10;
+        var flatImageAreaHeight = bannerHeight - 60 - offset;
+        var flatImageWidth = flatImageAreaHeight * $scope.flatImageRatio;
+        var flatImageHeight = flatImageAreaHeight;
+        var leftBookInfoMargin = 0;
+        if (bannerWidth > 1100){
+          var leftBookInfoMargin = (bannerWidth - 1100) / 2;
+        }
+        $scope.flatImageHeight={height: flatImageHeight, width: flatImageWidth};
+        $scope.bookInfoStyle={position: 'absolute', left: leftBookInfoMargin,  top: bannerHeight - 20, "margin-left": 30, "margin-top": 20, "max-width": 1100};
+        $scope.bootTitleStyle = {left: leftBookInfoMargin};
       })
 
+    $http.get(config.url() + '/api/books/banner_book?code=' + code)
+      .success(function (response) {
+        if (response.image === null) {
+          $scope.bannerImage = '/img/pics/' + code + '_banner.jpg';
+        }else{
+          $scope.bannerImage = response.image;
+        };
+      })
+
+    $http.get(config.url() + '/api/books/description?code=' + code)
+      .success(function (response) {
+        $scope.description = response.text.replace(/([^>])\n/g, '$1<br/>'); //nl2br
+      })
+
+    $http.get(config.url() + '/api/news/get_news_by_code_book?code=' + code)
+      .success(function (response) {
+        $scope.news = response;
+      })
+
+    $http.get(config.url() + '/api/files_for_book/get_by_code?code=' + code)
+      .success(function (response) {
+        $scope.bookFragment = response;
+      })
 
     $scope.gallery.opts = {
       index: 0,
@@ -281,5 +345,8 @@ angular.module('angularApp')
       $window.open('http://kmbooks.com.ua' + url);
     }
 
+    $scope.DownloadElBook = function (elBookLink, bookFormat) {
+      $window.open('http://api.kmbooks.com.ua/api/user/files_for_book/get_el_book?link=' + elBookLink + '&format=' + bookFormat, {withCredentials: true});
+    }
 
   });
