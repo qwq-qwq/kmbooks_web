@@ -31,15 +31,6 @@ angular.module('angularApp')
 
     var wayForPay = new Wayforpay();
 
-    $scope.BuyElBook = function (book) {
-      if (!authorization.isAuthorized()) {
-        urlBeforeWrongAuth.SetUrlBeforeWrongAuth($location.url());
-        confirmDialog.ShowRegistrationConfirm('Для придбання електронних книг будь ласка зарееструйтесь');
-        return;
-      }
-      $scope.SaveOrder(book);
-    }
-
     $scope.editItem = function (item) {
       if (!$scope.isEditor()){
         return;
