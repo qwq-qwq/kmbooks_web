@@ -31,65 +31,6 @@ angular.module('angularApp')
 
     var wayForPay = new Wayforpay();
 
-    $scope.WayForPay = function (order) {
-      function getGoodsNames(goodsTable) {
-        var goodsNames = [];
-        angular.forEach(goodsTable, function (goodsItem, key) {
-          goodsNames.push(goodsItem.name);
-        })
-        return goodsNames;
-      }
-      function getGoodsPrices(goodsTable) {
-        var goodsPrices = [];
-        angular.forEach(goodsTable, function (goodsItem, key) {
-          goodsPrices.push(parseFloat(goodsItem.price));
-        })
-        return goodsPrices;
-      }
-      function getGoodsCounts(goodsTable) {
-        var goodsCounts = [];
-        angular.forEach(goodsTable, function (goodsItem, key) {
-          goodsCounts.push(parseInt(goodsItem.quantity, 10));
-        })
-        return goodsCounts;
-      }
-      wayForPay.run({
-          merchantAccount : "kmbooks_com_ua1",
-          merchantDomainName : "kmbooks.com.ua",
-          merchantTransactionSecureType: "AUTO",
-          authorizationType : "SimpleSignature",
-          serviceUrl:     'https://api.kmbooks.com.ua/api/orders/pay_confirm',
-          merchantSignature : order.signature,
-          orderReference : order.number + '-' + order.hash,
-          orderDate : utils.toUnixTime(order.id),
-          amount : order.totalAmount,
-          currency : "UAH",
-          language: "UA",
-          productName: getGoodsNames(order.goodsTable),
-          productPrice: getGoodsPrices(order.goodsTable),
-          productCount: getGoodsCounts(order.goodsTable),
-          clientFirstName : $scope.user.name,
-          clientLastName : $scope.user.name,
-          clientEmail : $scope.user.email,
-          clientPhone: '38' + $scope.user.phone
-        },
-        function (response) {
-          // on approved
-          $http.post(config.url() + "/api/orders/pay_confirm", response)
-            .success(function(response) {
-               elBooks.GetStoredElBooks();
-            });//
-        },
-        function (response) {
-          // on declined
-          //alert(response);
-        },
-        function (response) {
-          // on pending or in processing
-          alert(response);
-        })
-    }
-
     $scope.BuyElBook = function (book) {
       if (!authorization.isAuthorized()) {
         urlBeforeWrongAuth.SetUrlBeforeWrongAuth($location.url());
