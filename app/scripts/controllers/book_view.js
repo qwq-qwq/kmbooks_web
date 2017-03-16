@@ -29,6 +29,8 @@ angular.module('angularApp')
       }
     });
 
+    var wayForPay = new Wayforpay();
+
     $scope.editItem = function (item) {
       if (!$scope.isEditor()){
         return;
