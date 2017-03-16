@@ -31,54 +31,6 @@ angular.module('angularApp')
 
     var wayForPay = new Wayforpay();
 
-    $scope.SaveOrder = function (book) {
-      function successAdded(response) {
-          $scope.completedOrder = response;
-          $scope.savingInProgress = false;
-          if ($scope.completedOrder === undefined) {
-            return;
-          }
-          $scope.completedOrder.hash = utils.GetRandomNumber();
-          $http.post(config.url() + "/api/user/orders/get_order_signature", $scope.completedOrder, {withCredentials: true})
-          .success(function (response) {
-            $scope.completedOrder.signature = response;
-            $scope.WayForPay($scope.completedOrder);
-          })
-      }
-      var orderAmount, goodsTable = [];
-      if (!book.priceElBook > 0){
-         return;
-      }
-      $scope.savingInProgress = true;
-      orderAmount = book.priceElBook;
-      var book = {code: book.code, quantity: 1, price: book.priceElBook, discount: 0, name: book.name, preorder: false};
-      goodsTable.push(book);
-      $scope.orderState = 'Зроблений';
-      var orderUpdate = {id: 0,
-        type:          'Електронна',
-        username:      authorization.username(),
-        name:          $scope.user.name,
-        phone:         $scope.user.phone,
-        email:         authorization.username(),
-        address:       $scope.user.address,
-        orderState:    $scope.orderState,
-        orderAmount:   orderAmount,
-        deliveryCost:  0,
-        totalAmount:   orderAmount,
-        goodsTable:    goodsTable};
-      //if (authorization.isAuthorized()) {
-        $http.post(config.url() + "/api/user/orders/update", orderUpdate, {withCredentials: true})
-          .success(function(response) {
-            successAdded(response);
-          })
-     // }else{
-     //   $http.post(config.url() + "/api/orders/update", orderUpdate)
-     //     .success(function(response) {
-     //       successAdded(response);
-     //     })
-     // }
-    }
-
     $scope.WayForPay = function (order) {
       function getGoodsNames(goodsTable) {
         var goodsNames = [];
