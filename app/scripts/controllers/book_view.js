@@ -31,17 +31,6 @@ angular.module('angularApp')
 
     var wayForPay = new Wayforpay();
 
-    $scope.editItem = function (item) {
-      if (!$scope.isEditor()){
-        return;
-      }
-      item.editing = true;
-      $http.get(config.url() + '/api/edit/files_for_book/get_file_names_by_code?code=' + $scope.book.code, {withCredentials: true})
-        .success(function (response) {
-          $scope.existedFiles = response;
-        })
-    }
-
     $scope.saveItem = function (item) {
       $scope.bannerSaving = true;
       item.upl_item.formData[0].rectangle = [$scope.cropSelection.selection[0],
