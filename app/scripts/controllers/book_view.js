@@ -31,26 +31,6 @@ angular.module('angularApp')
 
     var wayForPay = new Wayforpay();
 
-    if(authorization.isAuthorized()){
-       $scope.user = authorization.getUser();
-    }
-
-    $rootScope.$on('successful_authorization', function () {
-       $scope.user = authorization.getUser();
-    })
-
-    $rootScope.$on('el_books_has_added', function () {
-      if($scope.book !== undefined){
-        $scope.elBookLink = elBooks.GetElBookLink($scope.book.code);
-        if (authorization.isAuthorized()){
-          $http.get(config.url() + '/api/user/files_for_book/get_file_formats_by_code?code=' + $scope.book.code, {withCredentials: true})
-            .success(function (response) {
-              $scope.existedFormats = response;
-            })
-        }
-      }
-    })
-
     $scope.SaveOrder = function (book) {
       function successAdded(response) {
           $scope.completedOrder = response;
@@ -301,8 +281,5 @@ angular.module('angularApp')
       $window.open('http://kmbooks.com.ua' + url);
     }
 
-    $scope.DownloadElBook = function (elBookLink, bookFormat) {
-      $window.open('http://api.kmbooks.com.ua/api/user/files_for_book/get_el_book?link=' + elBookLink + '&format=' + bookFormat, {withCredentials: true});
-    }
 
   });
