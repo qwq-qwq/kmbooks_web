@@ -171,10 +171,9 @@ angular
       $locationProvider.html5Mode(true);
 
   })
-  .run(function (api, socialFB) {
+  .run(function (api) {
      api.init();
-     socialFB.init('199264067223695');
-
+    // socialFB.init('199264067223695');
   })
   .factory('httpInterceptor', function($q, $location, urlBeforeWrongAuth){
       return {
