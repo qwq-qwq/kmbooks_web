@@ -5,8 +5,7 @@
 
 angular.module('angularApp')
   .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization,
-                                        FileUploader, config, pageTitle, utils, confirmDialog,
-                                        $rootScope, elBooks, urlBeforeWrongAuth) {
+                                        FileUploader, config, pageTitle, utils) {
     var code = $location.search().code;
     $scope.gallery = {images: [], opts: "", show: false};
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
