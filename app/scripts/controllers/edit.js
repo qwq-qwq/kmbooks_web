@@ -9,11 +9,15 @@ angular.module('angularApp')
     })
 
     $scope.isAdmin = function() {
-       return authorization.isAdmin();
+      return authorization.isAdmin();
     }
 
     $scope.isEditor = function() {
-       return authorization.isEditor();
+      return authorization.isEditor();
+    }
+
+    $scope.isOrdersAdmin = function() {
+      return authorization.isOrdersAdmin();
     }
 
     $scope.isUser = function() {
