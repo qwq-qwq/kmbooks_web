@@ -33,7 +33,7 @@ angular.module('angularApp')
     $http.get(config.url() + "/api/orders_admin/orders", {withCredentials: true})//
       .success(function(response) {
         $scope.orders = response;
-      })//
+      })
 
     $scope.toDateTime = function(ObjId) {
       return utils.toDateTime(ObjId);

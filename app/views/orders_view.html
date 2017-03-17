@@ -86,5 +86,16 @@
     <p>Сума: {{currentOrder.orderAmount}} грн</p>
     <p>Сума доставки: {{currentOrder.deliveryCost}} грн</p>
     <p>Сума всього: {{currentOrder.totalAmount}} грн</p>
+
+    <p ng-hide="currentOrder.editing" ng-dblclick="editItem(currentOrder)">Коментар адміна: {{currentOrder.admComment}}</p>
+    <md-input-container ng-show="currentOrder.editing">
+      <label>Коментар адміна</label>
+      <input ng-model="currentOrder.admComment">
+      <md-button ng-click="doneEditing(currentOrder)" ng-disabled="currentOrder.saving">
+        <span>Зберігти</span>
+        <i ng-show="currentOrder.saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+      </md-button>
+    </md-input-container>
+
   </div>
 </div>
