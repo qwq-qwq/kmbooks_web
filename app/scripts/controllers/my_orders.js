@@ -7,7 +7,6 @@
 angular.module('angularApp')
   .controller('MyOrdersCtrl', function($scope, $http, $location, $anchorScroll, $route, config, authorization, utils, $rootScope) {
     $scope.username = authorization.username();
-    $scope.refreshOrders();
 
     $scope.refreshOrders = function () {
       $http.get(config.url() + "/api/user/orders/get_user_orders", {withCredentials: true})
@@ -15,6 +14,8 @@ angular.module('angularApp')
           $scope.orders = response;
         })
     }
+
+    $scope.refreshOrders();
 
     $rootScope.$on('successful_authorization', function () {
       $scope.username = authorization.username();
