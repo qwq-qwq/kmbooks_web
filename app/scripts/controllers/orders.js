@@ -21,6 +21,7 @@ angular.module('angularApp')
 
     $scope.doneEditing = function (item) {
       item.orderState = $scope.selectors.orderState;
+      item.admComment = $scope.selectors.admComment;
       item.saving = true;
       $http.post(config.url() + "/api/orders_admin/orders/update", item, {withCredentials: true})
         .success(function(response) {
