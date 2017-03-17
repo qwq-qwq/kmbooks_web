@@ -22,7 +22,7 @@ angular.module('angularApp')
     $scope.doneEditing = function (item) {
       item.orderState = $scope.selectors.orderState;
       item.saving = true;
-      $http.post(config.url() + "/api/edit/orders/update", item, {withCredentials: true})
+      $http.post(config.url() + "/api/orders_admin/orders/update", item, {withCredentials: true})
         .success(function(response) {
            item.saving = false;
            item.editing = false;
@@ -30,10 +30,10 @@ angular.module('angularApp')
         });
     }
 
-    $http.get(config.url() + "/api/edit/orders/orders", {withCredentials: true})//
+    $http.get(config.url() + "/api/orders_admin/orders", {withCredentials: true})//
       .success(function(response) {
         $scope.orders = response;
-      })
+      })//
 
     $scope.toDateTime = function(ObjId) {
       return utils.toDateTime(ObjId);
