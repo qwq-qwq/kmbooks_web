@@ -212,8 +212,12 @@ angular.module('angularApp')
       .success(function (response) {
         $scope.book = response.bookList[0];
         pageTitle.SetTitle($scope.book.name + ' купити книгу в Києві і Україні.');
-        pageTitle.SetDescription('Інтернет-магазин kmbooks.com.ua: ' + $scope.book.name + '. Автор: ' + $scope.book.author
-                         + '. Доставка: Киев, Украина. ' + $scope.book.description);
+
+        var description = 'Інтернет-магазин kmbooks.com.ua: ' + $scope.book.name;
+        ($scope.book.author !== null) ? description += '. Автор: ' + $scope.book.author : '';
+        description += '. Доставка: Киев, Украина. ' + $scope.book.description
+        pageTitle.SetDescription(description);
+
         $scope.elBookLink = elBooks.GetElBookLink($scope.book.code);
         if (authorization.isAuthorized()){
           $http.get(config.url() + '/api/user/files_for_book/get_file_formats_by_code?code=' + $scope.book.code, {withCredentials: true})
@@ -256,7 +260,7 @@ angular.module('angularApp')
         var flatImageHeight = flatImageAreaHeight;
         var leftBookInfoMargin = 0;
         if (bannerWidth > 1100){
-          var leftBookInfoMargin = (bannerWidth - 1100) / 2;
+          leftBookInfoMargin = (bannerWidth - 1100) / 2;
         }
         $scope.flatImageHeight={height: flatImageHeight, width: flatImageWidth};
         $scope.bookInfoStyle={position: 'absolute', left: leftBookInfoMargin,  top: bannerHeight - 20, "margin-left": 30, "margin-top": 20, "max-width": 1100};

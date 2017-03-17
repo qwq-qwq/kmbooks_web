@@ -5,9 +5,8 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('MyOrdersCtrl', function($scope, $http, $location, $anchorScroll, $route, config, authorization, utils, $rootScope, wfpListener) {
+  .controller('MyOrdersCtrl', function($scope, $http, $location, $anchorScroll, $route, config, authorization, utils, $rootScope) {
     $scope.username = authorization.username();
-    var wayForPay = new Wayforpay();
 
     $http.get(config.url() + "/api/user/orders/get_user_orders", {withCredentials: true})
       .success(function(response) {
@@ -53,6 +52,7 @@ angular.module('angularApp')
         })
         return goodsCounts;
       }
+      var wayForPay = new Wayforpay();
       wayForPay.run({
           merchantAccount : "kmbooks_com_ua1",
           merchantDomainName : "kmbooks.com.ua",
@@ -74,11 +74,10 @@ angular.module('angularApp')
         },
         function (response) {
           // on approved
-          $scope.currentOrder.orderState = 'Сплачений';
-          $http.post(config.url() + "/api/user/orders/update", $scope.currentOrder, {withCredentials: true})
+          $http.post(config.url() + "/api/orders/pay_confirm", response)
             .success(function(response) {
-              //$scope.currentOrder = response;
-            });
+
+            });//
         },
         function (response) {
           // on declined
