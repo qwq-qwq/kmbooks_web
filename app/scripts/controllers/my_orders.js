@@ -7,18 +7,18 @@
 angular.module('angularApp')
   .controller('MyOrdersCtrl', function($scope, $http, $location, $anchorScroll, $route, config, authorization, utils, $rootScope) {
     $scope.username = authorization.username();
+    $scope.refreshOrders();
 
-    $http.get(config.url() + "/api/user/orders/get_user_orders", {withCredentials: true})
-      .success(function(response) {
-        $scope.orders = response;
-      })
-
-    $rootScope.$on('successful_authorization', function () {
-      $scope.username = authorization.username();
+    $scope.refreshOrders = function () {
       $http.get(config.url() + "/api/user/orders/get_user_orders", {withCredentials: true})
         .success(function(response) {
           $scope.orders = response;
         })
+    }
+
+    $rootScope.$on('successful_authorization', function () {
+      $scope.username = authorization.username();
+      $scope.refreshOrders();
     })
 
     $scope.toDateTime = function(ObjId) {
@@ -76,10 +76,7 @@ angular.module('angularApp')
           // on approved
           $http.post(config.url() + "/api/orders/pay_confirm", response)
             .success(function(response) {
-              $http.get(config.url() + "/api/user/orders/get_user_orders", {withCredentials: true})
-                .success(function(response) {
-                  $scope.orders = response;
-                })
+              $scope.refreshOrders();
             });
         },
         function (response) {
@@ -88,7 +85,7 @@ angular.module('angularApp')
         },
         function (response) {
           // on pending or in processing
-          //alert(response);
+          $scope.refreshOrders();
         })
     }
 
