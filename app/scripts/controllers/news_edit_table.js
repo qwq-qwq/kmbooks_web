@@ -48,8 +48,15 @@ angular.module('angularApp')
 
     $scope.doneEditing = function (item) {
       item.editing = false;
-      var news = {id: item.id, title: item.title, date: item.date, text: item.text, videoLink: item.videoLink,
-                  colorSchema: item.colorSchema, bookCodes: item.bookCodes};
+      var news = {id: item.id,
+               title: item.title,
+                date: item.date,
+                text: item.text,
+           videoLink: item.videoLink,
+         colorSchema: item.colorSchema,
+           bookCodes: item.bookCodes,
+          viewsCount: item.viewsCount,
+          };
       $http.post(config.url() + "/api/edit/news/update", news, {withCredentials: true})
         .success(function(response) {
           item.id = response.id;

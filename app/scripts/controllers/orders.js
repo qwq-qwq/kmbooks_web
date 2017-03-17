@@ -17,6 +17,7 @@ angular.module('angularApp')
     $scope.editItem = function (item) {
       item.editing = true;
       $scope.selectors.orderState = item.orderState;
+      $scope.selectors.admComment = item.admComment;
     }
 
     $scope.doneEditing = function (item) {
