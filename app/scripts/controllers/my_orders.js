@@ -76,8 +76,11 @@ angular.module('angularApp')
           // on approved
           $http.post(config.url() + "/api/orders/pay_confirm", response)
             .success(function(response) {
-
-            });//
+              $http.get(config.url() + "/api/user/orders/get_user_orders", {withCredentials: true})
+                .success(function(response) {
+                  $scope.orders = response;
+                })
+            });
         },
         function (response) {
           // on declined
