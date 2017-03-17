@@ -30,7 +30,7 @@ angular.module('angularApp')
         });
     }
 
-    $http.get(config.url() + "/api/edit/orders/orders", {withCredentials: true})
+    $http.get(config.url() + "/api/edit/orders/orders", {withCredentials: true})//
       .success(function(response) {
         $scope.orders = response;
       })
