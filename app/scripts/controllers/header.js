@@ -132,7 +132,7 @@ angular.module('angularApp')
     };
 
     $scope.toggleSearchMobile = function() {
-      $scope.showSearch = true;
+      $scope.showSearch = !$scope.showSearch;
     };
 
     $scope.toggleSearch = function() {
