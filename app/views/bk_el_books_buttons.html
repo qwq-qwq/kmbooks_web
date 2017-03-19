@@ -1,8 +1,9 @@
 <p ng-if="book.priceElBook > 0 && elBookLink === ''" style="text-align: center">
   <span class="price_value" style="font-size: 25px; color: black;">{{book.priceElBook}} <span style="font-size: 15px">грн</span></span>
   <md-button class="brand-color-background" ng-click="BuyElBook(book)" ng-disabled="savingInProgress">
+    <span ng-hide="savingInProgress" style="font-size: medium" class="glyphicon glyphicon-shopping-cart"></span>
     <i ng-show="savingInProgress" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-    Купити електронну
+    електронну
   </md-button>
 </p>
 <p ng-if="elBookLink !== ''" style="text-align: center">
