@@ -3,6 +3,29 @@
 angular.module('angularApp')
   .controller('CartCtrl', function(cart, order, $scope, $http, $location, config, $rootScope, $cookies, $window, authorization) {
 
+    $scope.AddECommerce = function (order) {
+      ga('require', 'ecommerce');
+
+      ga('ecommerce:addTransaction', {
+        'id': order.number,
+        'affiliation': 'kmbooks.com.ua',
+        'revenue': order.totalAmount,
+        'shipping': order.deliveryCost
+      });
+
+      angular.forEach(order.goodsTable, function (value, key) {
+        ga('ecommerce:addItem', {
+          'id': order.number,
+          'name': value.name,
+          'sku': value.code,
+          'category': '',
+          'price': value.price,
+          'quantity': value.quantity
+        });
+      })
+      ga('ecommerce:send');
+    }
+
     $scope.SaveOrder = function () {
       $scope.UpdateOrder(true);
     }
@@ -70,6 +93,7 @@ angular.module('angularApp')
       function successAdded(response) {
         if (complete){
           $scope.completedOrder = response;
+          $scope.AddECommerce(response);
           order.SetOrder(undefined);
           cart.SetCart({goodsTable: []});
           $cookies.put('orderId', '');
