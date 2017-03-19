@@ -547,8 +547,6 @@ php_flag engine off
 RewriteEngine On
 RewriteBase /
 
-https://kmbooks.com.ua/book?code=
-
 ###########redirect for social networks crawlers######
 
 RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|vkShare|Google.*snippet)
