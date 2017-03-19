@@ -547,6 +547,8 @@ php_flag engine off
 RewriteEngine On
 RewriteBase /
 
+https://kmbooks.com.ua/book?code=
+
 ###########redirect for social networks crawlers######
 
 RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|vkShare|Google.*snippet)
@@ -560,29 +562,31 @@ RewriteCond %{QUERY_STRING} ^id=(.*)$
 RewriteRule ^/?book.php$ /catalog/${map:%1}? [R=301,L]
 
 RewriteCond %{QUERY_STRING} ^id=(.*)$
-RewriteRule ^/?book_kmp.php$ /catalog/${map_kmp:%1}? [R=301,L]
+RewriteRule ˆ /catalog/${map_kmp:%1}? [R=301,L]
 
 RewriteRule ^catalog/(.*)$  /book?code=${map_bitrix:$1} [R=301,L]
+#save from redirect to nothing in case book?code=
+Redirect 301 ^code=$ https://kmbooks.com.ua/catalog?sortBy=noveltiesFirst
 #!!!!!!!most important !!!!!!!! books redirects
 
-Redirect 301 /newbooks.php http://kmbooks.com.ua/catalog?sortBy=noveltiesFirst
-Redirect 301 /bestsellers.php http://kmbooks.com.ua/catalog?sortBy=bestsellersFirst
-Redirect 301 /forauthors.php http://kmbooks.com.ua/ntml_page?name=for_authors
-Redirect 301 /aboutus.php http://kmbooks.com.ua/ntml_page?name=about_company
-Redirect 301 /wheretobuy.php http://kmbooks.com.ua/map
-Redirect 301 /catalog.php http://kmbooks.com.ua/catalog
+Redirect 301 /newbooks.php https://kmbooks.com.ua/catalog?sortBy=noveltiesFirst
+Redirect 301 /bestsellers.php https://kmbooks.com.ua/catalog?sortBy=bestsellersFirst
+Redirect 301 /forauthors.php https://kmbooks.com.ua/ntml_page?name=for_authors
+Redirect 301 /aboutus.php https://kmbooks.com.ua/ntml_page?name=about_company
+Redirect 301 /wheretobuy.php https://kmbooks.com.ua/map
+Redirect 301 /catalog.php https://kmbooks.com.ua/catalog
 
-Redirect 301 /newbooks_kmp.php http://kmbooks.com.ua/catalog?sortBy=noveltiesFirst
-Redirect 301 /bestsellers_kmp.php http://kmbooks.com.ua/catalog?sortBy=bestsellersFirst
-Redirect 301 /forauthors_kmp.php http://kmbooks.com.ua/ntml_page?name=for_authors
-Redirect 301 /aboutus_kmp.php http://kmbooks.com.ua/ntml_page?name=about_company
-Redirect 301 /wheretobuy_kmp.php http://kmbooks.com.ua/map
-Redirect 301 /catalog_kmp.php http://kmbooks.com.ua/catalog
+Redirect 301 /newbooks_kmp.php https://kmbooks.com.ua/catalog?sortBy=noveltiesFirst
+Redirect 301 /bestsellers_kmp.php https://kmbooks.com.ua/catalog?sortBy=bestsellersFirst
+Redirect 301 /forauthors_kmp.php https://kmbooks.com.ua/ntml_page?name=for_authors
+Redirect 301 /aboutus_kmp.php https://kmbooks.com.ua/ntml_page?name=about_company
+Redirect 301 /wheretobuy_kmp.php https://kmbooks.com.ua/map
+Redirect 301 /catalog_kmp.php https://kmbooks.com.ua/catalog
 
-Redirect 301 ^catalog/new/  http://kmbooks.com.ua/catalog?sortBy=noveltiesFirst
-Redirect 301 ^about/forauthors.php http://kmbooks.com.ua/ntml_page?name=for_authors
-Redirect 301 ^about/company.php http://kmbooks.com.ua/ntml_page?name=about_company
-Redirect 301 ^catalog.php http://kmbooks.com.ua/catalog
+Redirect 301 ^catalog/new/  https://kmbooks.com.ua/catalog?sortBy=noveltiesFirst
+Redirect 301 ^about/forauthors.php https://kmbooks.com.ua/ntml_page?name=for_authors
+Redirect 301 ^about/company.php https://kmbooks.com.ua/ntml_page?name=about_company
+Redirect 301 ^catalog.php https://kmbooks.com.ua/catalog
 
 RewriteRule ^index.php$ / [L,R=301,QSA]
 RewriteRule ^index_kmp.php$ / [L,R=301,QSA]
