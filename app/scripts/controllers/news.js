@@ -25,10 +25,19 @@ angular.module('angularApp')
         }
         pageTitle.SetTitle($scope.news.title);
         pageTitle.SetDescription('Інтернет-магазин kmbooks.com.ua: ' + $scope.news.text.substring(0, 300));
+        if ($scope.news !== undefined &&
+          $scope.news.bookCodes !== null &&
+          $scope.news.bookCodes !== ''){
+          $http.get(config.url() + "/api/books/search?code=" + $scope.news.bookCodes)
+            .success(function(response) {
+              $scope.books = response.bookList;
+            })
+        }
       })
 
     $http.get(config.url() + "/api/news/get_last_twelve")
       .success(function(response) {
         $scope.allNews = response.sort(compare_desc);
       })
+
   });
