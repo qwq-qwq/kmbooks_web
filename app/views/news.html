@@ -12,6 +12,7 @@
     <img ng-show="news.videoLink === ''" class="img-responsive visible-xs visible-sm" src="{{news.image + '_big.jpg'}}" style="margin-top: 10px; margin-bottom: 25px;">
     <p ta-bind ng-model="news.text" style="margin-top: 10px; text-align: justify;"></p>
     <!--<div style="padding-bottom: 50px; text-align: center"></div>-->
+    <h2 class="brand-color" style="font-family: Calibri">В статті йшлося про:</h2>
     <span ng-repeat="book in books" style="margin-top: 25px">
      <div class="col-xs-6 col-sm-6 col-md-4" style="min-height: 400px;">
        <bk-book-tail book="book"></bk-book-tail>
