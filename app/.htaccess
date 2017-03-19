@@ -563,8 +563,6 @@ RewriteCond %{QUERY_STRING} ^id=(.*)$
 RewriteRule ^/?book_kmp.php$ /catalog/${map_kmp:%1}? [R=301,L]
 
 RewriteRule ^catalog/(.*)$  /book?code=${map_bitrix:$1} [R=301,L]
-#save from redirect to nothing in case book?code=
-Redirect 301 ^code=$ https://kmbooks.com.ua/catalog?sortBy=noveltiesFirst
 #!!!!!!!most important !!!!!!!! books redirects
 
 Redirect 301 /newbooks.php https://kmbooks.com.ua/catalog?sortBy=noveltiesFirst
