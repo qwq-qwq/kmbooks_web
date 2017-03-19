@@ -9,7 +9,7 @@ angular.module('angularApp')
                                         $rootScope, elBooks, urlBeforeWrongAuth) {
     var code = $location.search().code;
     if (code === ''){
-       $location.path('/catalog')
+       $location.url('/catalog')
     }
 
     $scope.gallery = {images: [], opts: "", show: false};
