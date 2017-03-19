@@ -93,9 +93,8 @@
   <div class="hidden-md hidden-lg" style="text-align: center;">
     <img src="{{book.image}}" class="point_img center-block" ng-click="showGallery(1)">
     <p style="margin-top: 30px; text-align: center">
-      <bk-buy-button book="book">
-        <bk-price book="book" div="false"></bk-price>
-      </bk-buy-button>
+      <bk-price book="book" div="false"></bk-price>
+      <bk-buy-button book="book"></bk-buy-button>
       <p ng-if="bookFragment !== ''" style="text-align: center">
         <md-button ng-click="OpenFragment(bookFragment.file)" class="">
           <span style="font-size: large" class="glyphicon glyphicon-book brand-color"></span>&nbsp;&nbsp;читати фрагмент
