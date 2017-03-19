@@ -8,6 +8,10 @@ angular.module('angularApp')
                                         FileUploader, config, pageTitle, utils, confirmDialog,
                                         $rootScope, elBooks, urlBeforeWrongAuth) {
     var code = $location.search().code;
+    if (code === ''){
+       $location.path('/catalog')
+    }
+
     $scope.gallery = {images: [], opts: "", show: false};
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
     $scope.absUrl = $location.absUrl();
