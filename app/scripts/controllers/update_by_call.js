@@ -45,6 +45,14 @@ angular.module('angularApp')
       }
     }
 
+    $scope.updateCitiesNewPostShop = function() {
+      if (confirm("Оновити ?")) {
+        $http.get(config.url() + "/api/edit/generate_site_map", {withCredentials: true})
+          .success(function (response) {
+          })
+      }
+    }
+
     $scope.isAdmin = function() {
        return authorization.isAdmin();
     }
