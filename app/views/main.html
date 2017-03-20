@@ -1,8 +1,10 @@
  <div class="row">
    <div class="col-md-12">
-   <h1 style="font-family: Calibri" class="brand-color">
-     Рекомендуємо
-   </h1>
+     <a href="/recommended" class="brand-color">
+       <h1 style="font-family: Calibri" class="brand-color">
+         Рекомендуємо
+       </h1>
+     </a>
    </div>
       <span ng-repeat="recommended in recommendeds">
           <div class="col-xs-6 col-sm-6 col-md-3" style="min-height: 370px">
@@ -23,7 +25,7 @@
             <bk-book-tail book="soonOnSale"></bk-book-tail>
           </div>
           <div class="clearfix visible-sm-block visible-xs-block" ng-if="$odd"></div>
-      </span>
+   </span>
   </div>
 
   <div class="row">

@@ -2,7 +2,7 @@
 <p>Знайдено <span style="color: #428bca">{{goodsCount}}</span> товарів</p>
 
     <div class="row">
-       <div class="col-md-3"> <!--ng-show="isCatalog()"-->
+       <div ng-show="isCatalog()" class="col-md-3">
          <div>
            <h4 style="margin-bottom: 7px; font-weight: normal">
              Ціна
@@ -234,5 +234,14 @@
          </div>
          <bk-catalog></bk-catalog>
        </div>
+
+           <span ng-show="!isCatalog()" ng-repeat="book in books">
+             <div class="col-xs-6 col-sm-6 col-md-3" style="min-height: 370px">
+               <bk-book-tail book="book"></bk-book-tail>
+             </div>
+             <div class="clearfix visible-sm-block visible-xs-block" ng-if="$odd"></div>
+           </span>
+
+
     </div>
 

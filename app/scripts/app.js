@@ -164,6 +164,14 @@ angular
         templateUrl: 'views/news_list.html',
         controller: 'NewsListCtrl'
       })
+      .when('/recommended', {
+        templateUrl: 'views/books_table.html',
+        controller: 'BooksTableCtrl'
+      })
+      .when('/soon_on_sale', {
+        templateUrl: 'views/books_table.html',
+        controller: 'BooksTableCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })

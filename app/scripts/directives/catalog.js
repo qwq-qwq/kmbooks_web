@@ -52,14 +52,6 @@ angular.module('angularApp').directive('bkCatalog', ['$http', 'config', 'authori
               if (bookList[key].image == '') {
                 bookList[key].image = '/img/no_picture_ru_165.jpg';
               }
-              if (bookList[key].sale > 0) {
-                bookList[key].table_caption = 'Залишки шт. (продаж шт.)';
-                bookList[key].type_rests = 'Продано: ';
-                bookList[key].rests = '(' + bookList[key].sale + ' шт.)';
-              }else{
-                bookList[key].table_caption = 'Залишки шт.';
-                bookList[key].rests = '';
-              }
             }
             scope.books = bookList;
             scope.goodsCount = response.countInList;

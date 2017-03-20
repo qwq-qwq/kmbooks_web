@@ -120,22 +120,22 @@ angular.module('angularApp')
     if ($location.path() == '/recommended') {
       $scope.myTitle = 'Рекомендуємо';
       $scope.myHeader = 'Рекомендуємо';
+      $http.get(config.url() + "/api/books/recommended")
+        .success(function (response) {
+           $scope.books = response.bookList;
+           $scope.goodsCount = response.countInList;
+        })
     }
 
-    if ($location.path() == '/novelties') {
-      $scope.myTitle = 'Новинки';
-      $scope.myHeader = 'Новинки';
+    if ($location.path() == '/soon_on_sale') {
+      $scope.myTitle = 'Скоро у продажу';
+      $scope.myHeader = 'Скоро у продажу';
+      $http.get(config.url() + "/api/books/soon_on_sale")
+        .success(function (response) {
+          $scope.books = response.bookList;
+          $scope.goodsCount = response.countInList;
+        })
     }
-
-    $scope.animateElementIn = function($el) {
-      $el.removeClass('not-visible');
-      $el.addClass('animated pulse'); // this example leverages animate.css classes
-    };
-
-    $scope.animateElementOut = function($el) {
-      $el.addClass('not-visible');
-      $el.removeClass('animated pulse'); // this example leverages animate.css classes
-    };
 
     $scope.quoteString = function (strToQuote) {
       return strToQuote.replace(/[\\"']/g, '\\$&');
