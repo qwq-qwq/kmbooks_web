@@ -117,9 +117,9 @@ angular.module('angularApp')
         })
     }
 
-    if ($location.path() == '/bestsellers') {
-      $scope.myTitle = 'Бестселери';
-      $scope.myHeader = 'Бестселери';
+    if ($location.path() == '/recommended') {
+      $scope.myTitle = 'Рекомендуємо';
+      $scope.myHeader = 'Рекомендуємо';
     }
 
     if ($location.path() == '/novelties') {

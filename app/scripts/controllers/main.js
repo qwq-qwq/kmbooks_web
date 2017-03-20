@@ -90,14 +90,14 @@ angular.module('angularApp')
     }
 
     function loadingRecomended() {
-      $http.get(config.url() + "/api/books/recommended")
+      $http.get(config.url() + "/api/books/recommended?limit=4")
         .success(function(response) {
           $scope.recommendeds = response;
         })
     }
 
     function loadingSoonOnSale() {
-      $http.get(config.url() + "/api/books/soon_on_sale")
+      $http.get(config.url() + "/api/books/soon_on_sale?limit=4")
         .success(function(response) {
           $scope.soonOnSales = response;
         })
