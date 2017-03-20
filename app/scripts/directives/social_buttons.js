@@ -7,6 +7,11 @@
 angular.module('angularApp').directive('bkSocialButtons', [function() {
   return {
     restrict: 'E',
+    scope: {
+      kind: '@',
+      item: '=',
+      absUrl: '='
+    },
     templateUrl: 'views/bk_social_buttons.html'
   };
 }])

@@ -4,6 +4,11 @@
 angular.module('angularApp')
   .controller('NewsCtrl', function ($scope, $http, $location, config, $sce, pageTitle, $window) {
     var id = $location.search().id;
+    if (id === ''){
+      $location.url('/news_list')
+    }
+
+    $scope.absUrl = $location.absUrl();
 
     function compare_desc(a,b) {
       if (a.date > b.date)

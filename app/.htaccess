@@ -553,6 +553,10 @@ RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|v
 RewriteCond %{QUERY_STRING} ^code=(.*)$
 RewriteRule book$ https://api.kmbooks.com.ua/api/books/open_graph?code=%1 [R=301,L]
 
+RewriteCond %{HTTP_USER_AGENT} (facebookexternalhit/[0-9]|Twitterbot|Pinterest|vkShare|Google.*snippet)
+RewriteCond %{QUERY_STRING} ^id=(.*)$
+RewriteRule news$ https://api.kmbooks.com.ua/api/news/open_graph?id=%1 [R=301,L]
+
 ##################legacy redirects ####################
 
 #!!!!!!!most important !!!!!!! books redirects
