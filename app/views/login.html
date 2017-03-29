@@ -1,6 +1,6 @@
  <div class="card card-container">
     <!--<img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />-->
-    <h2 style="margin-bottom: 20px" class="brand-color">Логін</h2>
+    <h2 style="margin-bottom: 23px" class="brand-color">Логін</h2>
     <div class="alert alert-danger" ng-show="error">
        Проблема входу в систему. Будь ласка, спробуйте ще.
     </div>
@@ -23,6 +23,18 @@
       </div>
       <div class="form-group">
         <md-button class="pull-left md-raised" href="/user_registration" style="width: 100%; margin: 0px">Зареєструватися</md-button>
+      </div>
+      <p>або зайти через:</p>
+      <div class="form-group">
+        <md-button class="col-md-4 pull-left" href="https:/api.kmbooks.com.ua/api/login/facebook" style="margin: 0px; color: black">
+          <i class="fa fa-facebook" style="font-size: large"></i>
+        </md-button>
+        <md-button class="col-md-4 pull-left" href="https:/api.kmbooks.com.ua/api/login/vk" style="margin: 0px; color: black">
+          <i class="fa fa-vk" style="font-size: large"></i>
+        </md-button>
+        <md-button class="col-md-4 pull-left" href="https:/api.kmbooks.com.ua/api/login/google" style="margin: 0px; color: black">
+          <i class="fa fa-google-plus" style="font-size: large"></i>
+        </md-button>
       </div>
       <!--<div class="form-group">
         <a href="#" class="forgot-password">

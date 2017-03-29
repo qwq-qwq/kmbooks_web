@@ -46,15 +46,6 @@
   src: url("../fonts/calibri.ttf");
 }
 
-/*@font-face {font-family: "Calibri";
-  src: url("//db.onlinewebfonts.com/t/a78cfad3beb089a6ce86d4e280fa270b.eot");
-  src: url("//db.onlinewebfonts.com/t/a78cfad3beb089a6ce86d4e280fa270b.eot?#iefix") format("embedded-opentype"),
-  url("//db.onlinewebfonts.com/t/a78cfad3beb089a6ce86d4e280fa270b.woff2") format("woff2"),
-  url("//db.onlinewebfonts.com/t/a78cfad3beb089a6ce86d4e280fa270b.woff") format("woff"),
-  url("//db.onlinewebfonts.com/t/a78cfad3beb089a6ce86d4e280fa270b.ttf") format("truetype"),
-  url("//db.onlinewebfonts.com/t/a78cfad3beb089a6ce86d4e280fa270b.svg#Calibri") format("svg");
-}*/
-
 .news-item:hover .news-title{
   opacity: 0;
   transition: all 0.5s
@@ -79,8 +70,6 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-green-color-background
 
 .green-color-background:hover{
   background: #2E7D32;
@@ -610,7 +599,7 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
 
 .card-container.card {
   width: 350px;
-  padding: 40px 40px;
+  padding: 20px 40px;
 }
 
 .card {
