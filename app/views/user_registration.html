@@ -4,7 +4,7 @@
 
 <div ng-show="!savedSuccess" class="row panel">
   <form name="userForm" ng-submit="registration.submit(userForm.$valid)">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div ng-if="isNewUser" class="form-group">
         <label>
           Email:
@@ -71,6 +71,11 @@
       <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-click="doneEditing(user)" ng-disabled="!userForm.$valid">
         <span class="glyphicon glyphicon-save"></span> Зберегти
       </md-button>
+    </div>
+    <div class="col-md-6" style="margin-top: -40px">
+      <img src="/img/shares.jpg" class="img-responsive" style="margin-bottom: 2px"/>
+      <img src="/img/delivery.jpg" class="img-responsive" style="margin-bottom: 2px"/>
+      <img src="/img/shops.jpg" class="img-responsive" style="margin-bottom: 2px"/>
     </div>
   </form>
 </div>
