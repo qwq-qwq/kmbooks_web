@@ -71,6 +71,37 @@
   background-repeat: no-repeat;
 }
 
+
+.facebook-color-background {
+  background: #8b9dc3;
+  color: white;
+}
+
+.facebook-color-background:not([disabled]):hover {
+  background-color: rgba(59,89,152, 0.96);
+  color: white;
+}
+
+.vk-color-background {
+  background: #8495A6;
+  color: white;
+}
+
+.vk-color-background:not([disabled]):hover {
+  background-color: rgba(69,102,142, 0.96);
+  color: white;
+}
+
+.google-color-background {
+  background: #EF5350;
+  color: white;
+}
+
+.google-color-background:not([disabled]):hover {
+  background-color: rgba(214,45,32, 0.96);
+  color: white;
+}
+
 .green-color-background:hover{
   background: #2E7D32;
   color: white;
@@ -88,11 +119,6 @@
 .green-color-background[disabled] {
   color: rgba(0,0,0,0.38);
   background-color: rgba(0,0,0,0.12);
-}
-
-.green-color-background:hover{
-  background: #01579B;
-  color: white;
 }
 
 .brand-color-background {
