@@ -1,0 +1,17 @@
+<h1 class="brand-color">Передзвоніть мені</h1>
+<table id="anchor1" class="table table-bordered">
+  <thead>
+  <tr>
+    <th class="col-md-2">Дата</th>
+    <th class="col-md-5">Ім'я</th>
+    <th class="col-md-5">Телефон</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="callback in callbacks">
+    <th>{{toDateTime(callback.id)}}</th>
+    <th>{{callback.name}}</th>
+    <th>{{callback.phone}}</th>
+  </tr>
+  </tbody>
+</table>

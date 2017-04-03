@@ -1,0 +1,19 @@
+<h1 class="brand-color">Підписки на новини</h1>
+<table id="anchor1" class="table table-bordered">
+  <thead>
+  <tr>
+    <th class="col-md-2">Дата</th>
+    <th class="col-md-3">Ім'я</th>
+    <th class="col-md-3">Email</th>
+    <th class="col-md-4">Вподобання</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="subscription in subscriptions">
+    <th>{{toDateTime(subscription.id)}}</th>
+    <th>{{subscription.name}}</th>
+    <th>{{subscription.email}}</th>
+    <th>{{subscription.preference}}</th>
+  </tr>
+  </tbody>
+</table>

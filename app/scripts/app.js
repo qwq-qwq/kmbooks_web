@@ -172,6 +172,14 @@ angular
         templateUrl: 'views/books_table.html',
         controller: 'BooksTableCtrl'
       })
+      .when('/callbacks', {
+        templateUrl: 'views/callbacks.html',
+        controller: 'CallbacksCtrl'
+      })
+      .when('/subscriptions', {
+        templateUrl: 'views/subscriptions.html',
+        controller: 'SubscriptionsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })
