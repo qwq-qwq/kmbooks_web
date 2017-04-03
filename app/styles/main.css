@@ -71,6 +71,10 @@
   background-repeat: no-repeat;
 }
 
+md-tooltip{
+  color:rgba(255,255,255,0.87);background-color:rgb(97,97,97)
+}
+
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {
   border-color: #0089cf
 }
