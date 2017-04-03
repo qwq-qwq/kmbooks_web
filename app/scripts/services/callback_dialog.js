@@ -19,7 +19,7 @@ angular.module('angularApp').factory('callbackDialog', function ($http, $rootSco
         position: position,
         animation: animation,
         trapFocus: true,
-        zIndex: 1,
+        zIndex: 1100,
         clickOutsideToClose: true,
         escapeToClose: true,
         focusOnOpen: true
