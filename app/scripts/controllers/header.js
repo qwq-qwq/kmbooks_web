@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('HeaderCtrl', function(wishList, $scope, $rootScope, $location, $anchorScroll, $http, config, cart, cartPopover) {
+  .controller('HeaderCtrl', function(wishList, $scope, $rootScope, $location, $anchorScroll, $http,
+                                     config, cart, cartPopover, subscribeDialog, callbackDialog) {
 
     $scope.menu = [
       {label:'КОНТАКТИ', route:'/contacts'}
@@ -10,8 +11,6 @@ angular.module('angularApp')
     $scope.templateUrl = 'views/cart_popover.html';
 
     $scope.menuActive = '/';
-
-    $scope.cartTooltipEnable = true;
 
     $rootScope.$on('$viewContentLoaded', function(e, curr, prev) {
       $scope.menuActive = $location.path();
@@ -189,6 +188,13 @@ angular.module('angularApp')
       $scope.cartTooltipOpened = false;
     }
 
+    $scope.ShowSubscribeDialog = function () {
+      subscribeDialog.Show();
+    }
+
+    $scope.ShowCallbackDialog = function () {
+      callbackDialog.Show();
+    }
   });
 
 

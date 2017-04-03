@@ -179,6 +179,38 @@
         </div>
       </div>
     </span>
+    <span class="hidden-xs" ng-controller="HeaderCtrl" style="position: fixed; bottom: 20px; right: 10px">
+      <md-fab-speed-dial md-open="false" class="md-fling"  md-direction="up">
+        <md-fab-trigger>
+          <md-button aria-label="menu" class="md-fab md-warn brand-color-background">
+            <i class="fa fa-bars" aria-hidden="true" style="font-size: large"></i>
+          </md-button>
+        </md-fab-trigger>
+
+        <md-fab-actions>
+          <md-button href="https://vk.com/kmbooks" aria-label="VK" style="color: white;" class="md-fab md-raised md-mini vk-color-background">
+            <md-tooltip md-direction="left">Ми Вконтакте</md-tooltip>
+            <i class="fa fa-vk"></i>
+          </md-button>
+          <md-button href="https://www.facebook.com/kmbooks.publishing" aria-label="Facebook" class="md-fab md-raised md-mini facebook-color-background">
+            <md-tooltip md-direction="left">Ми у Facebook</md-tooltip>
+            <i class="fa fa-facebook"></i>
+          </md-button>
+          <md-button href="https://www.instagram.com/km_books_ua" aria-label="Instagram" class="md-fab md-raised md-mini instagram-color-background">
+            <md-tooltip md-direction="left">Ми у Instagram</md-tooltip>
+            <i class="fa fa-instagram"></i>
+          </md-button>
+          <md-button ng-click="ShowSubscribeDialog()" aria-label="Subscribe" style="color: white;" class="md-fab md-raised md-mini brand-color-background">
+            <md-tooltip md-direction="left">Підписатися  на наші розсилки</md-tooltip>
+            <i class="fa fa-envelope" aria-hidden="true"></i>
+          </md-button>
+          <md-button ng-click="ShowCallbackDialog()" aria-label="Callback" style="color: white;" class="md-fab md-raised md-mini brand-color-background">
+            <md-tooltip md-direction="left">Передзвоніть мені</md-tooltip>
+            <i class="fa fa-phone" aria-hidden="true"></i>
+          </md-button>
+        </md-fab-actions>
+      </md-fab-speed-dial>
+    </span>
     <!--<div class="footer">
       <div class="container">
         <p><span class="glyphicon glyphicon-heart"></span> from the Bukva team</p>
@@ -259,6 +291,8 @@
     <script src="scripts/services/confirm_dialog.js"></script>
     <script src="scripts/services/el_books.js"></script>
     <script src="scripts/services/url_before_wrong_auth.js"></script>
+    <script src="scripts/services/subscribe_dialog.js"></script>
+    <script src="scripts/services/callback_dialog.js"></script>
     <script src="scripts/directives/el_books_list.js"></script>
     <script src="scripts/directives/thumb.js"></script>
     <script src="scripts/directives/book_detail.js"></script>

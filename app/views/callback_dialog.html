@@ -1,0 +1,42 @@
+<div style="background-color: white; box-shadow: 1px 1px 10px #d8d8d8; max-width: 600px; border-radius: 4px">
+  <md-toolbar class="md-medium-tall" style="max-height: 44px; min-height: 44px;">
+    <div class="md-toolbar-tools  brand-color-background" style="font-family: Calibri;">
+      <a href="/cart" ng-click="ctrl.closeDialog()">
+        <h1>ЗАТЕЛЕФОНУЙТЕ МЕНІ</h1>
+      </a>
+      <span flex></span>
+      <md-button class="md-icon-button" style="text-align: right" ng-click="ctrl.closeDialog()">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="max-height:500px;">
+    <form name="callbackForm">
+      <div layout="row" style="margin: 10px;">
+        <md-input-container>
+          <label>Ім'я</label>
+          <input name="name" ng-model="name" required minlength="3">
+          <div ng-messages="callbackForm.name.$error" ng-show="callbackForm.name.$dirty">
+            <div ng-message="required">Обов'язковий для заповнення!</div>
+            <div ng-message="minlength">Мінімальна довжина ім'я повинна будти 3 символи</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container>
+          <label>Телефон</label>
+          <input name="phone" ui-mask="+38 (999) 9999999"  ui-mask-placeholder ui-mask-placeholder-char="space"
+                 type="text" class="form-control" ng-model="phone" placeholder="+38 ()" minlength="10" required>
+          <div ng-messages="callbackForm.phone.$error" ng-show="callbackForm.phone.$dirty">
+            <div ng-message="required">Обов'язковий для заповнення!</div>
+          </div>
+        </md-input-container>
+      </div>
+    </form>
+  </md-dialog-content>
+  <div class="center-block" style="text-align: center; padding-bottom: 5px">
+    <md-button ng-click="ctrl.Save()" ng-disabled="!callbackForm.$valid || savingInProgress"  class="md-raised brand-color-background center-block">
+      <span>Зберегти</span>
+      <i ng-show="savingInProgress" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    </md-button>
+  </div>
+</div>

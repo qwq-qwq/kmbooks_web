@@ -71,6 +71,30 @@
   background-repeat: no-repeat;
 }
 
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+  border-color: #0089cf
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused label {
+  color: #0089cf
+}
+
+md-input-container.md-input-invalid.md-input-focused .md-input {
+  border-color: red
+}
+
+md-input-container.md-input-invalid.md-input-focused label {
+  color: red
+}
+
+md-input-container .md-input-message-animation:not(.ng-animate) {
+  color: red
+}
+
+.md-input, md-input-container .md-input {
+  color: rgba(0,0,0,0.87);
+  border-color: rgba(0,0,0,0.12);
+}
 
 .facebook-color-background {
   background: #8b9dc3;
@@ -102,6 +126,16 @@
   color: white;
 }
 
+.instagram-color-background {
+  background: #e1306c;
+  color: white;
+}
+
+.instagram-color-background:not([disabled]):hover {
+  background-color: rgba(193,53,132, 0.96);
+  color: white;
+}
+
 .green-color-background:hover{
   background: #2E7D32;
   color: white;
@@ -128,6 +162,7 @@
 
 .brand-color-background:not([disabled]):hover {
   background-color: rgba(1, 87, 155, 0.96);
+  color: white;
 }
 
 .brand-color-background[disabled] {
