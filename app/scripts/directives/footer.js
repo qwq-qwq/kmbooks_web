@@ -21,7 +21,7 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$document', '$r
           scope.footerStyle={display: 'none'};
           $timeout(function () {
             scope.footerTopCalculator();
-          }, 2000);
+          }, 1500);
         }else{
           scope.footerStyle={};
         }
