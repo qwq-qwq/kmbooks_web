@@ -15,6 +15,8 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$document', '$r
           (next.$$route.originalPath === '/search') ||
           (next.$$route.originalPath === '/events')){
           scope.footerStyle={display: 'none'};
+        }else if(next.$$route.originalPath === '/login'){
+          scope.footerTopCalculator();
         }else if(next.$$route.originalPath === '/book'){
           scope.footerStyle={display: 'none'};
           $timeout(function () {
