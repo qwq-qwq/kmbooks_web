@@ -19,7 +19,7 @@ angular.module('angularApp').factory('subscribeDialog', function ($http, $rootSc
         position: position,
         animation: animation,
         trapFocus: true,
-        zIndex: 1100,
+        zIndex: 50,
         clickOutsideToClose: true,
         escapeToClose: true,
         focusOnOpen: true

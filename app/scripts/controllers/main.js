@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('MainCtrl', function($scope, $http, config, $q, $timeout, $rootScope) {
+  .controller('MainCtrl', function($scope, $http, config, $q, $timeout, $rootScope, $document) {
     function compare_desc(a,b) {
       if (a.when > b.when)
         return -1;
@@ -109,7 +109,6 @@ angular.module('angularApp')
           // The layout animations have completed
         });
       }, 2000);
-
     });
 
     $scope.deleteCard = function(id){

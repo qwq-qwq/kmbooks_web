@@ -2,7 +2,8 @@
 
 angular.module('angularApp')
   .controller('HeaderCtrl', function(wishList, $scope, $rootScope, $location, $anchorScroll, $http,
-                                     config, cart, cartPopover, subscribeDialog, callbackDialog) {
+                                     config, cart, cartPopover, subscribeDialog, callbackDialog, $timeout,
+                                     $document) {
 
     $scope.menu = [
       {label:'КОНТАКТИ', route:'/contacts'}
@@ -195,6 +196,7 @@ angular.module('angularApp')
     $scope.ShowCallbackDialog = function () {
       callbackDialog.Show();
     }
+
   });
 
 

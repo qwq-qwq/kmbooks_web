@@ -172,13 +172,6 @@
     <div class="container">
       <div ng-view="" autoscroll="true"></div>
     </div>
-    <span ng-controller="HeaderCtrl">
-      <div class="container-fluid" style="height: 50%">
-        <div class="row" style="padding-left: 10px; padding-right: 10px; height: 100%" ng-controller="ContactsViewCtrl" ng-if="isContacts()">
-          <div class="col-md-12" id="map-canvas" ng-init="initialize()" style="height: 100%"></div>
-        </div>
-      </div>
-    </span>
     <span class="hidden-xs" ng-controller="HeaderCtrl" style="position: fixed; bottom: 20px; right: 10px">
       <md-fab-speed-dial md-open="true" class="md-fling"  md-direction="up">
         <md-fab-trigger>
@@ -201,31 +194,27 @@
             <i class="fa fa-instagram"></i>
           </md-button>
           <md-button ng-click="ShowSubscribeDialog()" aria-label="Subscribe" style="color: white;" class="md-fab md-raised md-mini brand-color-background">
-            <md-tooltip md-direction="left">Підписатися  на наші розсилки</md-tooltip>
+            <md-tooltip md-direction="left">Підписатися на наші розсилки</md-tooltip>
             <i class="fa fa-envelope" aria-hidden="true"></i>
           </md-button>
           <md-button ng-click="ShowCallbackDialog()" aria-label="Callback" style="color: white;" class="md-fab md-raised md-mini brand-color-background">
-            <md-tooltip md-direction="left">Передзвоніть мені</md-tooltip>
+            <md-tooltip md-direction="left">(044) 228-78-24&nbsp;&nbsp;(098) 050-85-13&nbsp;&nbsp;Передзвонити мені</md-tooltip>
             <i class="fa fa-phone" aria-hidden="true"></i>
           </md-button>
         </md-fab-actions>
       </md-fab-speed-dial>
     </span>
-    <!--<div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Bukva team</p>
-      </div>
-    </div>-->
+    <bk-footer></bk-footer>
 
-       <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+      !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+      (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+      r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+      }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-65514473-1');
-       ga('send', 'pageview');
+      ga('create', 'UA-65514473-1');
+      ga('send', 'pageview');
     </script>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -315,6 +304,7 @@
     <script src="scripts/directives/price.js"></script>
     <script src="scripts/directives/social_buttons.js"></script>
     <script src="scripts/directives/el_books_buttons.js"></script>
+    <script src="scripts/directives/footer.js"></script>
     <script src="scripts/controllers/log.js"></script>
     <script src="scripts/controllers/books_table.js"></script>
     <script src="scripts/controllers/book_view.js"></script>
@@ -349,6 +339,5 @@
     <script src="scripts/controllers/callbacks.js"></script>
     <script src="scripts/controllers/subscriptions.js"></script>
     <!-- endbuild -->
-
 </body>
 </html>
