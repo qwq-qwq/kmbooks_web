@@ -15,9 +15,13 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$document', '$r
           (next.$$route.originalPath === '/search') ||
           (next.$$route.originalPath === '/events')){
           scope.footerStyle={display: 'none'};
-        }else if(next.$$route.originalPath === '/login'){
+        }else if((next.$$route.originalPath === '/login') ||
+                 (next.$$route.originalPath === '/user_registration') ||
+                 (next.$$route.originalPath === '/user_update_password')){
           scope.footerTopCalculator();
-        }else if(next.$$route.originalPath === '/book'){
+        }else if((next.$$route.originalPath === '/book') ||
+                 (next.$$route.originalPath === '/wish_list') ||
+                 (next.$$route.originalPath === '/my_orders')){
           scope.footerStyle={display: 'none'};
           $timeout(function () {
             scope.footerTopCalculator();
