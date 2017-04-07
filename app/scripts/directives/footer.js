@@ -13,14 +13,14 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$document', '$r
       $rootScope.$on("$routeChangeSuccess", function (event, next, current) {
         if ((next.$$route.originalPath === '/') ||
           (next.$$route.originalPath === '/search') ||
-          (next.$$route.originalPath === '/events')){
+          (next.$$route.originalPath === '/events') ||
+          (next.$$route.originalPath === '/book')){
           scope.footerStyle={display: 'none'};
         }else if((next.$$route.originalPath === '/login') ||
                  (next.$$route.originalPath === '/user_registration') ||
                  (next.$$route.originalPath === '/user_update_password')){
           scope.footerTopCalculator();
-        }else if((next.$$route.originalPath === '/book') ||
-                 (next.$$route.originalPath === '/wish_list')){
+        }else if((next.$$route.originalPath === '/wish_list')){
           scope.footerStyle={display: 'none'};
           $timeout(function () {
             scope.footerTopCalculator();
