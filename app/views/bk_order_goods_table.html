@@ -24,10 +24,14 @@
   <tr ng-repeat="cartItems in goodsTable">
     <a href="/book?code={{cartItems.code}}">
       <td>
-        <img class="img-responsive" style="max-width: 70px;" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
+        <a href="/book?code={{cartItems.code}}">
+          <img class="img-responsive" style="max-width: 70px;" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
+        </a>
       </td>
       <td style="text-align: left">
-        <p>{{cartItems.name}}</p>
+        <a href="/book?code={{cartItems.code}}">
+          <p>{{cartItems.name}}</p>
+        </a>
       </td>
       <td style="text-align: center">
         <p>{{cartItems.quantity}}</p>
