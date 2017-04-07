@@ -243,7 +243,7 @@ angular
    .config(['$mdDateLocaleProvider', function($mdDateLocaleProvider) {
     $mdDateLocaleProvider.firstDayOfWeek = 1;
     $mdDateLocaleProvider.months = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
-    $mdDateLocaleProvider.shortMonths = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
+    $mdDateLocaleProvider.shortMonths = ["Січ", "Лют", "Бер", "Кві", "Тра", "Чер", "Лип", "Сер", "Вер", "Жов", "Лис", "Гру"];
     $mdDateLocaleProvider.days = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота"];
     $mdDateLocaleProvider.shortDays = ["НД", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
     $mdDateLocaleProvider.formatDate = function(date) {
