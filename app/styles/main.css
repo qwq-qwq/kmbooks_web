@@ -5,6 +5,18 @@
   padding: 0.2em 0;
 }
 
+.md-calendar-date-selection-indicator:hover{
+  background-color: #0089cf;
+}
+
+.md-calendar-selected-date .md-calendar-date-selection-indicator{
+  background-color: #01579B;
+}
+
+.md-datepicker-calendar-pane {
+  background-color: inherit;
+}
+
 .md-select-menu-container {
   background-color: inherit;
 }

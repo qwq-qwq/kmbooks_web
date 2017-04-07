@@ -9,6 +9,8 @@ angular.module('angularApp')
     $scope.username = authorization.username();
     $scope.orderStates = ['Робиться', 'Зроблений', 'Підтверджено', 'Зібраний', 'Сплачений'];
     $scope.selectors = {};
+    $scope.dateEnd = new Date();
+    $scope.dateStart = new Date($scope.dateEnd - 10 * 1000 * 60 * 60 * 24);
 
     $rootScope.$on('successful_authorization', function () {
       $scope.username = authorization.username();
@@ -32,16 +34,42 @@ angular.module('angularApp')
         });
     }
 
-    $http.get(config.url() + "/api/orders_admin/orders", {withCredentials: true})//
-      .success(function(response) {
-        $scope.orders = response;
-      })
+    $scope.updateOrdersTable = function () {
+      var link = '';
+      var dateStart, dateEnd;
+      dateStart = $scope.dateStart.getDate().toString() + "." + ("0" +($scope.dateStart.getMonth() + 1).toString()).slice(-2) + "." + $scope.dateStart.getFullYear().toString();
+      dateEnd = $scope.dateEnd.getDate().toString() + "." + ("0" +($scope.dateEnd.getMonth() + 1).toString()).slice(-2) + "." + $scope.dateEnd.getFullYear().toString();
+      if ($scope.dateStart && $scope.dateEnd) {
+        link = "dateStart=" + dateStart + "&dateEnd=" + dateEnd;
+      }
+      $http.get(config.url() + "/api/orders_admin/orders?" + link, {withCredentials: true})
+        .success(function (response) {
+          $scope.requests_author = response;
+          for(var k in response) {
+            var grandTotal = 0;
+            angular.forEach(response, function (value, key) {
+              grandTotal += value.totalAmount;
+            });
+            $scope.orders = response;
+            $scope.grandTotal = grandTotal;
+          };
+        })
+    }
+
+    $scope.updateOrdersTable();
 
     $scope.toDateTime = function(ObjId) {
       return utils.toDateTime(ObjId);
     }
 
     $scope.setGoodsTable = function (order){
+      angular.forEach($scope.orders, function (value, key) {
+        if(value.number === order.number){
+           value.active = (value.active === undefined)? true : !value.active;
+        }else{
+           value.active = false;
+        }
+      });
       $scope.goodsTable = order.goodsTable;
       $scope.currentOrder = order;
       $http.get(config.url() + "/api/get_city?originalId=" + order.cityId)

@@ -32,7 +32,7 @@ angular
     'ui.mask',
     'angular-loading-bar'
   ])
-  .config(function ($routeProvider, $locationProvider) {
+  .config(function ($routeProvider, $locationProvider, $mdDateLocaleProvider) {
 
     $routeProvider
       .when('/', {
@@ -239,6 +239,16 @@ angular
   }])
    .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
+  }])
+   .config(['$mdDateLocaleProvider', function($mdDateLocaleProvider) {
+    $mdDateLocaleProvider.firstDayOfWeek = 1;
+    $mdDateLocaleProvider.months = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
+    $mdDateLocaleProvider.shortMonths = ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"];
+    $mdDateLocaleProvider.days = ["Неділя", "Понеділок", "Вівторок", "Середа", "Четвер", "П'ятниця", "Субота"];
+    $mdDateLocaleProvider.shortDays = ["НД", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
+    $mdDateLocaleProvider.formatDate = function(date) {
+      return moment(date).format('DD.MM.YYYY');
+    };
   }]);
 
 

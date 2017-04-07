@@ -1,5 +1,16 @@
 <h1 class="brand-color">Замовлення</h1>
 <div class="row">
+  <md-input-container>
+    <label>Дата с</label>
+    <md-datepicker ng-model="dateStart"></md-datepicker>
+  </md-input-container>
+  <md-input-container>
+    <label>по</label>
+    <md-datepicker ng-model="dateEnd"></md-datepicker>
+  </md-input-container>
+  <md-button class="md-raised brand-color-background" ng-click="updateOrdersTable()">ЗАПОВНИТИ</md-button>
+</div>
+<div class="row">
   <table class="table-striped table-bordered table-hover" width="100%">
     <thead>
     <th style="text-align: center">
@@ -21,81 +32,101 @@
       <p>Всього</p>
     </th>
     </thead>
-    <tbody>
-    <tr ng-repeat="order in orders" ng-click="setGoodsTable(order)">
+    <tbody ng-repeat="order in orders">
+       <tr ng-click="setGoodsTable(order)">
+         <td style="text-align: center">
+           <p>{{order.number}}</p>
+         </td>
+         <td style="text-align: center">
+           <p>{{toDateTime(order.id)}}</p>
+         </td>
+         <td style="text-align: center">
+           <p>{{order.orderState}}</p>
+         </td>
+         <td style="text-align: center">
+           <p>{{order.delivery.name}}</p>
+         </td>
+         <td style="text-align: center">
+           <p>{{order.payment.name}}</p>
+         </td>
+         <td style="text-align: center">
+           <p>{{order.totalAmount}} грн</p>
+         </td>
+       </tr>
+     <tr ng-if="order.active === true">
+       <td style="text-align: center">
+         <p>{{order.number}}</p>
+       </td>
+       <td colspan="3">
+         <bk-order-goods-table goods-table="goodsTable"></bk-order-goods-table>
+       </td>
+       <td colspan="2" ng-if="currentOrder !== undefined" class="col-md-6" style="margin-top: 10px">
+         <p>Замовлення №{{currentOrder.number}}</p>
+         <p>Дата: {{toDateTime(currentOrder.id)}}</p>
+         <p ng-hide="currentOrder.editing" ng-dblclick="editItem(currentOrder)">Статус: {{currentOrder.orderState}}</p>
+         <md-input-container ng-show="currentOrder.editing">
+           <label>Статус</label>
+           <md-select ng-model="selectors.orderState">
+             <md-option ng-repeat="state in orderStates" ng-value="state">
+               {{state}}
+             </md-option>
+           </md-select>
+           <md-button ng-click="doneEditing(currentOrder)" ng-disabled="currentOrder.saving">
+             <span>Зберегти</span>
+             <i ng-show="currentOrder.saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+           </md-button>
+         </md-input-container>
+         <p>Користувач: {{currentOrder.username}}</p>
+         <p>Ім'я: {{currentOrder.name}}</p>
+         <p>Email: {{currentOrder.email}}</p>
+         <p>Телефон: {{currentOrder.phone}}</p>
+         <p>Адреса: {{currentOrder.address}}</p>
+         <p ng-if="currentOrder.orderComment !== null">Коментар: {{currentOrder.orderComment}}</p>
+         <p>Місто: {{selectedCity.name}}</p>
+         <p>Доставка: {{currentOrder.delivery.name}}</p>
+         <p ng-show = "currentOrder.delivery.id === '5'">
+           Відділення: {{currentOrder.newPostWHS.name}}
+         </p>
+         <span ng-show = "currentOrder.delivery.id === '3'">
+            <p>
+               Магазин: {{currentOrder.shop.name}}
+               <div style="font-size: x-small; color: grey; margin-left: 7px" ng-bind-html="currentOrder.shop.description"></div>
+           </p>
+         </span>
+         <p>Оплата: {{currentOrder.payment.name}}</p>
+         <p>Сума: {{currentOrder.orderAmount}} грн</p>
+         <p>Сума доставки: {{currentOrder.deliveryCost}} грн</p>
+         <p>Сума всього: {{currentOrder.totalAmount}} грн</p>
+
+         <p ng-hide="currentOrder.editing" ng-dblclick="editItem(currentOrder)">Коментар адміна: {{currentOrder.admComment}}</p>
+         <md-input-container ng-show="currentOrder.editing">
+           <label>Коментар адміна</label>
+           <input ng-model="selectors.admComment">
+           <md-button ng-click="doneEditing(currentOrder)" ng-disabled="currentOrder.saving">
+             <span>Зберегти</span>
+             <i ng-show="currentOrder.saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+           </md-button>
+         </md-input-container>
+
+       </td>
+      </tr>
+    </tbody>
+    <tr>
       <td style="text-align: center">
-        <p>{{order.number}}</p>
+        Всього:
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
       </td>
       <td style="text-align: center">
-        <p>{{toDateTime(order.id)}}</p>
-      </td>
-      <td style="text-align: center">
-        <p>{{order.orderState}}</p>
-      </td>
-      <td style="text-align: center">
-        <p>{{order.delivery.name}}</p>
-      </td>
-      <td style="text-align: center">
-        <p>{{order.payment.name}}</p>
-      </td>
-      <td style="text-align: center">
-        <p>{{order.totalAmount}} грн</p>
+        <p>{{grandTotal}} грн</p>
       </td>
     </tr>
     </tbody>
   </table>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <bk-order-goods-table goods-table="goodsTable"></bk-order-goods-table>
-  </div>
-  <div ng-if="currentOrder !== undefined" class="col-md-6" style="margin-top: 10px">
-    <p>Замовлення №{{currentOrder.number}}</p>
-    <p>Дата: {{toDateTime(currentOrder.id)}}</p>
-    <p ng-hide="currentOrder.editing" ng-dblclick="editItem(currentOrder)">Статус: {{currentOrder.orderState}}</p>
-    <md-input-container ng-show="currentOrder.editing">
-      <label>Статус</label>
-      <md-select ng-model="selectors.orderState">
-        <md-option ng-repeat="state in orderStates" ng-value="state">
-          {{state}}
-        </md-option>
-      </md-select>
-      <md-button ng-click="doneEditing(currentOrder)" ng-disabled="currentOrder.saving">
-        <span>Зберегти</span>
-        <i ng-show="currentOrder.saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-      </md-button>
-    </md-input-container>
-
-    <p>Ім'я: {{currentOrder.name}}</p>
-    <p>Email: {{currentOrder.email}}</p>
-    <p>Телефон: {{currentOrder.phone}}</p>
-    <p>Адреса: {{currentOrder.address}}</p>
-    <p ng-if="currentOrder.orderComment !== null">Коментар: {{currentOrder.orderComment}}</p>
-    <p>Місто: {{selectedCity.name}}</p>
-    <p>Доставка: {{currentOrder.delivery.name}}</p>
-    <p ng-show = "currentOrder.delivery.id === '5'">
-      Відділення: {{currentOrder.newPostWHS.name}}
-    </p>
-    <span ng-show = "currentOrder.delivery.id === '3'">
-      <p>
-        Магазин: {{currentOrder.shop.name}}
-        <div style="font-size: x-small; color: grey; margin-left: 7px" ng-bind-html="currentOrder.shop.description"></div>
-      </p>
-    </span>
-    <p>Оплата: {{currentOrder.payment.name}}</p>
-    <p>Сума: {{currentOrder.orderAmount}} грн</p>
-    <p>Сума доставки: {{currentOrder.deliveryCost}} грн</p>
-    <p>Сума всього: {{currentOrder.totalAmount}} грн</p>
-
-    <p ng-hide="currentOrder.editing" ng-dblclick="editItem(currentOrder)">Коментар адміна: {{currentOrder.admComment}}</p>
-    <md-input-container ng-show="currentOrder.editing">
-      <label>Коментар адміна</label>
-      <input ng-model="selectors.admComment">
-      <md-button ng-click="doneEditing(currentOrder)" ng-disabled="currentOrder.saving">
-        <span>Зберегти</span>
-        <i ng-show="currentOrder.saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-      </md-button>
-    </md-input-container>
-
-  </div>
 </div>

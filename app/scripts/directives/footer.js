@@ -20,8 +20,7 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$document', '$r
                  (next.$$route.originalPath === '/user_update_password')){
           scope.footerTopCalculator();
         }else if((next.$$route.originalPath === '/book') ||
-                 (next.$$route.originalPath === '/wish_list') ||
-                 (next.$$route.originalPath === '/my_orders')){
+                 (next.$$route.originalPath === '/wish_list')){
           scope.footerStyle={display: 'none'};
           $timeout(function () {
             scope.footerTopCalculator();
