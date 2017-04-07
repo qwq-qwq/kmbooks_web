@@ -2,15 +2,15 @@
 
 	angular.module('angularApp')
   .controller('SearchCtrl', function($scope, $http, $location, config) {
-    $scope.searchString = "";
 
     $scope.my_search = function() {
-      $scope.books = "";
+      $scope.search_string = $location.search().search_string;
+      $scope.books = [];
       $scope.proceedSearch = true;
       if ($scope.search_string == ''){
-        $scope.books = "";
+        $scope.books = [];
         $scope.proceedSearch = false;
-        return
+        return;
       }
       var page = $location.search().page;
       if (page === undefined){
@@ -59,20 +59,17 @@
             if (page == i) {
               active = true;
             }
-            $scope.pages.push({page: i, url: "#/search?search_string=" + $scope.search_string + "&page=" + i, active: active})
+            $scope.pages.push({page: i, url: "/search?search_string=" + $scope.search_string + "&page=" + i, active: active})
           }
           var pagePrevious = page > 2 ? page - 1: 1;
           var pageNext = page < pagesCount ? page + 1: pagesCount;
-          $scope.pagePrevious = "#/search?search_string=" + $scope.search_string + "&page=" + pagePrevious;
-          $scope.pageNext = "#/search?search_string=" + $scope.search_string + "&page=" + pageNext;
+          $scope.pagePrevious = "/search?search_string=" + $scope.search_string + "&page=" + pagePrevious;
+          $scope.pageNext = "/search?search_string=" + $scope.search_string + "&page=" + pageNext;
 
         })
     };
 
-    var search_string = $location.search().search_string;
-    if (search_string !== ''){
-      $scope.search_string = search_string;
-      $location.search().page = 1;
-      $scope.my_search();
-    };
+    //$location.search('page', 1);
+    $scope.my_search();
+
   });

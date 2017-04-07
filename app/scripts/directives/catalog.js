@@ -82,7 +82,7 @@ angular.module('angularApp').directive('bkCatalog', ['$http', 'config', 'authori
               if (page == i) {
                 active = true;
               }
-              scope.pages.push({page: i, url: "#/catalog?page=" + i, active: active})
+              scope.pages.push({page: i, url: "/catalog?page=" + i, active: active})
             }
             var pagePrevious = page > 2 ? page - 1: 1;
             var pageNext = page < pagesCount ? page + 1: pagesCount;
