@@ -9,7 +9,7 @@ angular.module('angularApp')
     $scope.username = authorization.username();
     $scope.orderStates = ['Робиться', 'Зроблений', 'Підтверджено', 'Зібраний', 'Сплачений'];
     $scope.selectors = {};
-    $scope.dateEnd = new Date();
+    $scope.dateEnd = new Date(new Date().getTime() + 1 * 1000 * 60 * 60 * 24); //taking tomorrow date for covering current day
     $scope.dateStart = new Date($scope.dateEnd - 10 * 1000 * 60 * 60 * 24);
 
     $rootScope.$on('successful_authorization', function () {

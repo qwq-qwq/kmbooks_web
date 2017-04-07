@@ -78,6 +78,7 @@
          <p>Email: {{currentOrder.email}}</p>
          <p>Телефон: {{currentOrder.phone}}</p>
          <p>Адреса: {{currentOrder.address}}</p>
+         <p ng-if="currentOrder.zip !== null">Індекс: {{currentOrder.zip}}</p>
          <p ng-if="currentOrder.orderComment !== null">Коментар: {{currentOrder.orderComment}}</p>
          <p>Місто: {{selectedCity.name}}</p>
          <p>Доставка: {{currentOrder.delivery.name}}</p>

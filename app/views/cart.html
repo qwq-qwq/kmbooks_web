@@ -218,8 +218,23 @@
           <label>
             Адреса:
           </label>
-          <input name="address" type="text" class="form-control" ng-model="address" required>
+          <span ng-if="selectedDelivery.id === '1' || selectedDelivery.id === '4'">
+             <input name="address" type="text" class="form-control" ng-model="selector.address" required>
+          </span>
+          <span ng-if="selectedDelivery.id === '3' || selectedDelivery.id === '5'">
+             <input name="address" type="text" class="form-control" ng-model="selector.address">
+          </span>
           <div style="color: red" ng-messages="userForm.address.$error">
+            <div ng-message="required">Обов'язковий для заповнення</div>
+          </div>
+        </div>
+
+        <div class="form-group" ng-if="selectedDelivery.id === '4'">
+          <label>
+            Індекс:
+          </label>
+          <input name="zip" type="text" class="form-control" ng-model="selector.zip" required>
+          <div style="color: red" ng-messages="userForm.zip.$error">
             <div ng-message="required">Обов'язковий для заповнення</div>
           </div>
         </div>
@@ -237,22 +252,6 @@
           <i ng-show="savingInProgress" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
         </md-button>
     </form>
-
-    <!--<div class="form-group">
-      <input class="form-control" placeholder="ПІБ" ng-model="name">
-    </div>
-    <div class="form-group">
-      <input class="form-control" placeholder="Телефон" ng-model="phone">
-    </div>
-    <div class="form-group">
-      <input class="form-control" placeholder="Email" ng-model="email">
-    </div>
-    <div class="form-group">
-      <input class="form-control" placeholder="Адреса доставки" ng-model="address">
-    </div>
-    <div class="form-group">
-      <textarea class="form-control" placeholder="Додати коментар" ng-model="orderComment"></textarea>
-    </div>-->
 
   </div>
 </div>

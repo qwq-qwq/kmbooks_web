@@ -2,6 +2,8 @@
 
 angular.module('angularApp')
   .controller('CartCtrl', function(cart, order, $scope, $http, $location, config, $rootScope, $cookies, $window, authorization) {
+    $scope.selector = {};
+
 
     $scope.AddECommerce = function (order) {
       ga('require', 'ecommerce');
@@ -76,14 +78,15 @@ angular.module('angularApp')
               $scope.name = user.name;
               $scope.phone = user.phone;
               $scope.email = user.email;
-              $scope.address = user.address;
+              $scope.selector.address = user.address;
             }else{
               $scope.name = savedOrder.name;
               $scope.phone = savedOrder.phone;
               $scope.email = savedOrder.email;
-              $scope.address = savedOrder.address;
+              $scope.selector.address = savedOrder.address;
             }
             $scope.orderComment = savedOrder.orderComment;
+            $scope.selector.zip = savedOrder.zip;
             $scope.RecalculateDeliveryCost();
           })
       }
@@ -105,8 +108,9 @@ angular.module('angularApp')
           $scope.name = '';
           $scope.phone = '';
           $scope.email = '';
-          $scope.address = '';
+          $scope.selector.address = '';
           $scope.orderComment = '';
+          $scope.selector.zip = '';
           $scope.orderState = '';
           $scope.deliveryCost = 0;
           $scope.totalAmount = 0;
@@ -144,9 +148,10 @@ angular.module('angularApp')
                          name:          $scope.name,
                          phone:         $scope.phone,
                          email:         $scope.email,
-                         address:       $scope.address,
+                         address:       $scope.selector.address,
                          orderState:    $scope.orderState,
                          orderComment:  $scope.orderComment,
+                         zip:           $scope.selector.zip,
                          orderAmount:   orderAmount,
                          deliveryCost:  $scope.deliveryCost,
                          totalAmount:   $scope.totalAmount,
@@ -180,7 +185,7 @@ angular.module('angularApp')
            $scope.name = user.name;
            $scope.phone = user.phone;
            $scope.email = user.email;
-           $scope.address = user.address;
+           $scope.selector.address = user.address;
          }
        }else{
          $scope.LoadOrder();
