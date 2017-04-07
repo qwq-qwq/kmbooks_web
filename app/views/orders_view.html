@@ -54,10 +54,7 @@
          </td>
        </tr>
      <tr ng-if="order.active === true">
-       <td style="text-align: center">
-         <p>{{order.number}}</p>
-       </td>
-       <td colspan="3">
+       <td colspan="4">
          <bk-order-goods-table goods-table="goodsTable"></bk-order-goods-table>
        </td>
        <td colspan="2" ng-if="currentOrder !== undefined" class="col-md-6" style="margin-top: 10px">
