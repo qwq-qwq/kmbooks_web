@@ -442,6 +442,9 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
 }
 
 @media (min-width: 1100px) {
+  .footer{
+    height: 90px;
+  }
   [dynamic-layout]{
     width: 1100px;
     margin-top: 20px;
@@ -516,6 +519,9 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
 
 }
 @media (min-width: 700px) and (max-width: 1100px){
+  .footer{
+    height: 90px;
+  }
   [dynamic-layout]{
     width: 700px;
   }

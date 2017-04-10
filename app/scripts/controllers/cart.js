@@ -4,7 +4,6 @@ angular.module('angularApp')
   .controller('CartCtrl', function(cart, order, $scope, $http, $location, config, $rootScope, $cookies, $window, authorization) {
     $scope.selector = {};
 
-
     $scope.AddECommerce = function (order) {
       ga('require', 'ecommerce');
 
