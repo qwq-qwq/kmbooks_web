@@ -85,17 +85,22 @@
                    <li><a href="/news_list">НОВИНИ</a></li>
                    <li><a href="/events">ПОДІЇ</a></li>
                    <li><a href="/ntml_page?name=for_authors">АВТОРАМ</a></li>
-                   <li><a href="http://catalog2017.kmbooks.com.ua">КАТАЛОГ</a></li>
+                   <li><a href="http://catalog2017.kmbooks.com.ua">КАТАЛОГ НОВИНОК</a></li>
+                   <li class="visible-sm"><a href="/map">ПУНКТИ САМОВИВОЗУ</a></li>
+                   <li class="visible-sm"><a href="/ntml_page?name=conditions_of_purchase">УМОВИ ПРИДБАННЯ</a></li>
+                   <li class="visible-sm"><a href="/ntml_page?name=delivery_and_payment">ДОСТАВКА ТА ОПЛАТА</a></li>
+                   <li class="visible-sm"><a href="/contacts">КОНТАКТИ</a></li>
+                   <li class="visible-md"><a href="/contacts">КОНТАКТИ</a></li>
                  </ul>
               </li>
-              <li class="dropdown animated fadeInLeft" bk-after-catalog-tree>
+              <li class="dropdown animated fadeInLeft hidden-sm" bk-after-catalog-tree>
                 <a href="/catalog" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   КАТАЛОГ<span class="caret"></span>
                   <!--<span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;-->
                 </a>
                 <ul class="dropdown-menu" ng-bind-html="strMenu"></ul>
               </li>
-              <li class="dropdown animated fadeInLeft">
+              <li class="dropdown animated fadeInLeft hidden-sm">
                 <a href="/map" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">КНИГАРНЯ<span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="/map">ПУНКТИ САМОВИВОЗУ</a></li>
@@ -103,7 +108,7 @@
                   <li><a href="/ntml_page?name=delivery_and_payment">ДОСТАВКА ТА ОПЛАТА</a></li>
                 </ul>
               </li>
-              <li ng-repeat="item in menu" class="animated fadeInLeft" ng-class="{active: item.route == menuActive}"><a href="{{item.route}}">{{item.label}}</a></li>
+              <li ng-repeat="item in menu" class="animated fadeInLeft hidden-sm hidden-md" ng-class="{active: item.route == menuActive}"><a href="{{item.route}}">{{item.label}}</a></li>
             </ul>
             <ul id="right-menu" class="nav navbar-nav navbar-right">
               <li ng-show="!showSearch" class="hidden-xs" style="font-size: large">

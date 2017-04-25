@@ -20,11 +20,17 @@ angular.module('angularApp')
       item.editing = true;
       $scope.selectors.orderState = item.orderState;
       $scope.selectors.admComment = item.admComment;
+      angular.forEach($scope.orderPayments, function (payment, key) {
+         if (payment.id === item.payment.id){
+           $scope.selectors.payment = payment;
+         }
+      })
     }
 
     $scope.doneEditing = function (item) {
       item.orderState = $scope.selectors.orderState;
       item.admComment = $scope.selectors.admComment;
+      item.payment = $scope.selectors.payment;
       item.saving = true;
       $http.post(config.url() + "/api/orders_admin/orders/update", item, {withCredentials: true})
         .success(function(response) {
@@ -53,6 +59,10 @@ angular.module('angularApp')
             $scope.orders = response;
             $scope.grandTotal = grandTotal;
           };
+        })
+      $http.get(config.url() + "/api/get_payment_types")
+        .success(function (response) {
+           $scope.orderPayments = response;
         })
     }
 

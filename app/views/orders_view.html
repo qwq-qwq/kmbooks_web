@@ -91,7 +91,21 @@
                <div style="font-size: x-small; color: grey; margin-left: 7px" ng-bind-html="currentOrder.shop.description"></div>
            </p>
          </span>
-         <p>Оплата: {{currentOrder.payment.name}}</p>
+
+         <p ng-hide="currentOrder.editing" ng-dblclick="editItem(currentOrder)">Оплата: {{currentOrder.payment.name}}</p>
+         <md-input-container ng-show="currentOrder.editing">
+           <label>Оплата:</label>
+           <md-select ng-model="selectors.payment">
+             <md-option ng-repeat="orderPayment in orderPayments" ng-value="orderPayment">
+               {{orderPayment.name}}
+             </md-option>
+           </md-select>
+           <md-button ng-click="doneEditing(currentOrder)" ng-disabled="currentOrder.saving">
+             <span>Зберегти</span>
+             <i ng-show="currentOrder.saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+           </md-button>
+         </md-input-container>
+
          <p>Сума: {{currentOrder.orderAmount}} грн</p>
          <p>Сума доставки: {{currentOrder.deliveryCost}} грн</p>
          <p>Сума всього: {{currentOrder.totalAmount}} грн</p>
