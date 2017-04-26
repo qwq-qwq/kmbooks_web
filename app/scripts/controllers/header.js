@@ -2,8 +2,7 @@
 
 angular.module('angularApp')
   .controller('HeaderCtrl', function(wishList, $scope, $rootScope, $location, $anchorScroll, $http,
-                                     config, cart, cartPopover, subscribeDialog, callbackDialog, $timeout,
-                                     $document) {
+                                     config, cart, cartPopover, subscribeDialog, callbackDialog, authorization) {
 
     $scope.menu = [
       {label:'КОНТАКТИ', route:'/contacts'}
@@ -12,6 +11,24 @@ angular.module('angularApp')
     $scope.templateUrl = 'views/cart_popover.html';
 
     $scope.menuActive = '/';
+
+    $scope.updateSmCatalogVisible = function () {
+      if (authorization.isAuthorized()) {
+        $scope.catalogClass = "hidden-sm";
+      }else{
+        $scope.catalogClass = "";
+      }
+    }
+
+    $scope.updateSmCatalogVisible();
+
+    $rootScope.$on('successful_authorization', function () {
+      $scope.updateSmCatalogVisible();
+    })
+
+    $rootScope.$on('successful_logout', function () {
+      $scope.updateSmCatalogVisible();
+    })
 
     $rootScope.$on('$viewContentLoaded', function(e, curr, prev) {
       $scope.menuActive = $location.path();

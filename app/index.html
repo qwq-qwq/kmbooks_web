@@ -93,7 +93,7 @@
                    <li class="visible-md"><a href="/contacts">КОНТАКТИ</a></li>
                  </ul>
               </li>
-              <li class="dropdown animated fadeInLeft hidden-sm" bk-after-catalog-tree>
+              <li class="dropdown animated fadeInLeft" ng-class="catalogClass" bk-after-catalog-tree>
                 <a href="/catalog" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                   КАТАЛОГ<span class="caret"></span>
                   <!--<span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;-->
@@ -156,7 +156,7 @@
       </div>
     </div>
     <span ng-controller="HeaderCtrl">
-      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" ng-if="isMain()">
+      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" ng-if="isMain()" style="margin-top: 53px">
         <div class="point_img" ng-click="OnBannerClick(slide)" uib-slide ng-repeat="slide in slides track by slide.id" active="slide.active" index="slide.id">
           <div class="item" style="background-image:url('{{slide.image}}');"></div>
           <div style="font-family: Calibri" class="carousel-caption">

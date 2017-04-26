@@ -59,6 +59,7 @@ angular.module('angularApp').controller('LoginCtrl', function (wishList, $scope,
       wishList.SetWishList(undefined);
       elBooks.SetElBooks(undefined);
       $location.path("/");
+      $rootScope.$broadcast('successful_logout');
     };
     var error = function () {
     };
