@@ -459,7 +459,7 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     width : 695px;
   }
   .carousel {
-    height: 450px;
+    height: 400px;
   }
 
   .show_image {
@@ -538,7 +538,7 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     width : 700px;
   }
   .carousel {
-    height: 350px;
+    height: 300px;
   }
 
   .show_image,
@@ -573,7 +573,6 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   }
   .carousel {
     height: 20%;
-    top: 50px;
   }
 
   .show_image,
@@ -626,7 +625,6 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   }
   .carousel {
     height: 20%;
-    top: 50px;
   }
 
   .show_image,
