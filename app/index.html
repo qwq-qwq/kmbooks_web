@@ -156,7 +156,8 @@
       </div>
     </div>
     <span ng-controller="HeaderCtrl">
-      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" ng-if="isMain()" style="margin-top: 53px">
+      <div class="visible-sm" style="margin-top: 53px; background-color: black"></div>
+      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" ng-if="isMain()">
         <div class="point_img" ng-click="OnBannerClick(slide)" uib-slide ng-repeat="slide in slides track by slide.id" active="slide.active" index="slide.id">
           <div class="item" style="background-image:url('{{slide.image}}');"></div>
           <div style="font-family: Calibri" class="carousel-caption">
