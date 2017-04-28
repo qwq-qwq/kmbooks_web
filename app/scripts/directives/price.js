@@ -17,7 +17,7 @@ angular.module('angularApp').directive('bkPrice', ['authorization', '$rootScope'
       }
       scope.updateAuthorization = function () {
         var discount = authorization.isAuthorized() ? 3 : 0;
-        if(scope.book !== undefined){
+        if (scope.book !== undefined){
           if (scope.book.priceWithoutDiscount === undefined){
             scope.book.priceWithoutDiscount = scope.book.price;
           }

@@ -80,7 +80,7 @@ angular.module('angularApp')
            value.active = false;
         }
       });
-      $scope.goodsTable = order.goodsTable;
+      //$scope.goodsTable = order.goodsTable;
       $scope.currentOrder = order;
       $http.get(config.url() + "/api/get_city?originalId=" + order.cityId)
         .success(function(response) {

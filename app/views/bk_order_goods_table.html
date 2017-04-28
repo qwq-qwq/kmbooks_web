@@ -1,4 +1,4 @@
-<table ng-if="goodsTable.length > 0" class="table-striped" width="100%">
+<table ng-if="order.goodsTable.length > 0" class="table-striped" width="100%">
   <caption>Склад заказу</caption>
   <thead>
   <th class="col-md-2">
@@ -21,7 +21,7 @@
   </th>
   </thead>
   <tbody>
-  <tr ng-repeat="cartItems in goodsTable">
+  <tr ng-repeat="cartItems in order.goodsTable">
     <a href="/book?code={{cartItems.code}}">
       <td>
         <a href="/book?code={{cartItems.code}}">
@@ -34,10 +34,12 @@
         </a>
       </td>
       <td style="text-align: center">
-        <p>{{cartItems.quantity}}</p>
+        <p ng-hide="order.editing" ng-dblclick="order.editing = true">{{cartItems.quantity}}</p>
+        <input ng-show="order.editing" class="form-control" ng-change="RecalculationOrder()" ng-model="cartItems.quantity">
       </td>
       <td style="text-align: center">
-        <p>{{cartItems.discount}}%</p>
+        <p ng-hide="order.editing" ng-dblclick="order.editing = true">{{cartItems.discount}}%</p>
+        <input ng-show="order.editing" class="form-control" ng-change="RecalculationOrder()" ng-model="cartItems.discount">
       </td>
       <td style="text-align: center">
         <p>{{cartItems.price}}</p>

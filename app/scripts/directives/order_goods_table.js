@@ -7,13 +7,31 @@ angular.module('angularApp').directive('bkOrderGoodsTable', ['$http', 'config', 
   return {
     restrict: 'E',
     scope: {
-      goodsTable: '='
+      order: '='
     },
     templateUrl: 'views/bk_order_goods_table.html',
     link: function(scope, element, attributes) {
-      scope.$watch('goodsTable', function () {
-        scope.proceedSearch = true;
-      })
+      //scope.$watch('order', function () {
+      //  scope.proceedSearch = true;
+      //})
+      scope.RecalculationOrder = function () {
+        var order = scope.order;
+        if (order.goodsTable !== undefined){
+          order.orderAmount = 0;
+          angular.forEach(order.goodsTable, function(value, key) {
+            if (value !== undefined) {
+              if (value.priceWithoutDiscount === undefined){
+                value.priceWithoutDiscount = value.price;
+              }
+              value.price = Math.round(value.priceWithoutDiscount * (1 - value.discount / 100) * 100) / 100;
+              value.amount = Math.round(value.quantity * value.price * 100) / 100;
+              order.orderAmount += value.amount;
+            }
+          });
+          order.totalAmount = order.orderAmount + order.deliveryCost;
+        }
+      }
+
     }
   };
 }])
