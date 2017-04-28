@@ -31,12 +31,12 @@ angular.module('angularApp').factory('cart', function ($http, $rootScope, config
       if (cart.goodsTable !== undefined){
         angular.forEach(cart.goodsTable, function(value, key) {
           if (value !== undefined) {
-            value.amount = value.quantity * value.price * (1 - value.discount/100);
+            value.amount = Math.round(value.quantity * value.price * 100) / 100;
             orderAmount += value.amount;
           }
         });
       }
-      cart.orderAmount = orderAmount;
+      cart.orderAmount = Math.round(orderAmount * 100) / 100;
       $rootScope.cart = cart;
       $rootScope.$broadcast('cart_was_added');
     },

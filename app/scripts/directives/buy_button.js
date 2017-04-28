@@ -50,7 +50,7 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
           cart.SetCart({email: authorization.username(), goodsTable: []});
         }
         var preorder = scope.book.kvo > 0 ? false: true;
-        cart.AddToGoodsTable({code: book.code, quantity: 1, price: book.price, discount: 0, name: book.name, preorder: preorder});
+        cart.AddToGoodsTable({code: book.code, quantity: 1, price: book.price, discount: book.discount, name: book.name, preorder: preorder});
 
         if (authorization.isAuthorized()) {
           $http.post(config.url() + "/api/user/carts/update", cart.GetCart(), {withCredentials: true})
