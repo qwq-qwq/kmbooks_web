@@ -449,7 +449,7 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
 
 .line_through{
   position: relative;
-  max-width: 100px;
+  max-width: 80px;
 }
 
 .line_through:before{
