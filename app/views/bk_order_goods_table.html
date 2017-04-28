@@ -34,11 +34,11 @@
         </a>
       </td>
       <td style="text-align: center">
-        <p ng-hide="order.editing" ng-dblclick="order.editing = true">{{cartItems.quantity}}</p>
+        <p ng-hide="order.editing">{{cartItems.quantity}}</p>
         <input ng-show="order.editing" class="form-control" ng-change="RecalculationOrder()" ng-model="cartItems.quantity">
       </td>
       <td style="text-align: center">
-        <p ng-hide="order.editing" ng-dblclick="order.editing = true">{{cartItems.discount}}%</p>
+        <p ng-hide="order.editing">{{cartItems.discount}}%</p>
         <input ng-show="order.editing" class="form-control" ng-change="RecalculationOrder()" ng-model="cartItems.discount">
       </td>
       <td style="text-align: center">
