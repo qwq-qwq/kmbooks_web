@@ -10,33 +10,33 @@
   </md-toolbar>
   <md-dialog-content style="max-height:500px;">
   <form name="subscriptionForm">
-    <div layout="row" style="margin: 10px;">
-      <md-input-container>
+    <div class="row" style="margin: 10px;">
+      <div class="input-group col-xs-12">
         <label>Ім'я</label>
-        <input name="name" ng-model="name" required minlength="3">
+        <input name="name" class="form-control" ng-model="name" required minlength="3">
         <div ng-messages="subscriptionForm.name.$error" ng-show="subscriptionForm.name.$dirty">
           <div ng-message="required">Обов'язковий для заповнення!</div>
           <div ng-message="minlength">Мінімальна довжина ім'я повинна будти 3 символи</div>
         </div>
-      </md-input-container>
+      </div>
 
-      <md-input-container>
+      <div class="input-group col-xs-12">
         <label>Email</label>
-        <input name="email" type="email" ng-model="email" required>
+        <input name="email" class="form-control" type="email" ng-model="email" required>
         <div ng-messages="subscriptionForm.email.$error" ng-show="subscriptionForm.email.$dirty">
           <div ng-message="required">Обов'язковий для заповнення!</div>
           <div ng-message="email">Введіть корректний email</div>
         </div>
-      </md-input-container>
+      </div>
 
-      <md-input-container>
+      <div class="input-group col-xs-12">
         <label>Вподобання</label>
-        <md-select ng-model="selectors.preference">
-          <md-option ng-repeat="preference in preferences" ng-value="preference">
+        <select class="form-control" ng-model="selectors.preference">
+          <option ng-repeat="preference in preferences" ng-value="preference">
             {{preference}}
-          </md-option>
-        </md-select>
-      </md-input-container>
+          </option>
+        </select>
+      </div>
     </div>
   </form>
   </md-dialog-content>

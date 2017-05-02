@@ -10,24 +10,24 @@
   </md-toolbar>
   <md-dialog-content style="max-height:500px;">
     <form name="callbackForm">
-      <div layout="row" style="margin: 10px;">
-        <md-input-container>
+      <div class="row" style="margin: 10px;">
+        <div class="input-group col-xs-12">
           <label>Ім'я</label>
-          <input name="name" ng-model="name" required minlength="3">
+          <input name="name" class="form-control" ng-model="name" required minlength="3">
           <div ng-messages="callbackForm.name.$error" ng-show="callbackForm.name.$dirty">
             <div ng-message="required">Обов'язковий для заповнення!</div>
             <div ng-message="minlength">Мінімальна довжина ім'я повинна будти 3 символи</div>
           </div>
-        </md-input-container>
+        </div>
 
-        <md-input-container>
+        <div class="input-group col-xs-12">
           <label>Телефон</label>
-          <input name="phone" ui-mask="+38 (999) 9999999"  ui-mask-placeholder ui-mask-placeholder-char="space"
+          <input name="phone" class="form-control" ui-mask="+38 (999) 9999999"  ui-mask-placeholder ui-mask-placeholder-char="space"
                  type="text" class="form-control" ng-model="phone" placeholder="+38 ()" minlength="10" required>
           <div ng-messages="callbackForm.phone.$error" ng-show="callbackForm.phone.$dirty">
             <div ng-message="required">Обов'язковий для заповнення!</div>
           </div>
-        </md-input-container>
+        </div>
       </div>
     </form>
   </md-dialog-content>
