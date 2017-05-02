@@ -1,10 +1,21 @@
+<md-input-container ng-show="order.editing">
+  <label>Додати артикул</label>
+  <input ng-model="code">
+  <md-button ng-click="addToCart(code)" ng-disabled="order.addingItem">
+    <span>Додати</span>
+    <i ng-show="order.addingItem" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+  </md-button>
+</md-input-container>
 <table ng-if="order.goodsTable.length > 0" class="table-striped" width="100%">
   <caption>Склад заказу</caption>
   <thead>
+  <th ng-show="order.editing" class="col-md-1">
+
+  </th>
   <th class="col-md-2">
 
   </th>
-  <th class="col-md-5">
+  <th class="col-md-4">
     Товар
   </th>
   <th class="col-md-1">
@@ -23,6 +34,10 @@
   <tbody>
   <tr ng-repeat="cartItems in order.goodsTable">
     <a href="/book?code={{cartItems.code}}">
+      <td ng-show="order.editing" style="text-align: center">
+         <span><i class="fa fa-times-circle-o" aria-hidden="true"
+                  style="cursor: pointer;" ng-click="removeFromCart(cartItems.code)"></i></span>
+      </td>
       <td>
         <a href="/book?code={{cartItems.code}}">
           <img class="img-responsive" style="max-width: 70px;" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
@@ -51,8 +66,7 @@
   </tr>
   </tbody>
 </table>
-
-<div ng-if="goodsTable.length == 0" class="jumbotron" style="margin-top: 20px">
+<div ng-if="order.goodsTable.length == 0" class="jumbotron" style="margin-top: 20px">
   <p>Заказ пустий</p>
 </div>
 

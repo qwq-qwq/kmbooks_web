@@ -27,6 +27,7 @@ angular.module('angularApp')
       })
     }
 
+
     $scope.doneEditing = function (item) {
       item.orderState = $scope.selectors.orderState;
       item.admComment = $scope.selectors.admComment;
@@ -36,7 +37,14 @@ angular.module('angularApp')
         .success(function(response) {
            item.saving = false;
            item.editing = false;
+           item.savedSuccess = true;
+           item.savedError = false;
            $scope.currentOrder = response;
+        })
+        .error(function () {
+           item.saving = false;
+           item.savedSuccess = false;
+           item.savedError = true;
         });
     }
 
@@ -86,5 +94,16 @@ angular.module('angularApp')
         .success(function(response) {
           $scope.selectedCity = response;
         })
+      $http.get(config.url() + "/api/check_user_exist?email=" + order.email)
+        .then(function successCallback(response) {
+          if (response.data){
+            order.userNowExist = true;
+          }else{
+            order.userNowExist = false;
+          }
+        }, function errorCallback(response) {
+          order.userNowExist = false;
+        })
     }
+
   });

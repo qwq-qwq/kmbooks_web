@@ -68,14 +68,10 @@
                {{state}}
              </md-option>
            </md-select>
-           <md-button ng-click="doneEditing(currentOrder)" ng-disabled="currentOrder.saving">
-             <span>Зберегти</span>
-             <i ng-show="currentOrder.saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-           </md-button>
          </md-input-container>
          <p>Користувач: {{currentOrder.username}}</p>
          <p>Ім'я: {{currentOrder.name}}</p>
-         <p>Email: {{currentOrder.email}}</p>
+         <p>Email: {{currentOrder.email}}&nbsp;&nbsp;<span ng-hide="order.userNowExist" style="color: red">Не зареєстрований</span><span ng-show="order.userNowExist" style="color: green">Зареєстрований</span></p>
          <p>Телефон: {{currentOrder.phone}}</p>
          <p>Адреса: {{currentOrder.address}}</p>
          <p ng-if="currentOrder.zip !== null">Індекс: {{currentOrder.zip}}</p>
@@ -100,10 +96,6 @@
                {{orderPayment.name}}
              </md-option>
            </md-select>
-           <md-button ng-click="doneEditing(currentOrder)" ng-disabled="currentOrder.saving">
-             <span>Зберегти</span>
-             <i ng-show="currentOrder.saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-           </md-button>
          </md-input-container>
 
          <p>Сума: {{currentOrder.orderAmount}} грн</p>
@@ -114,12 +106,26 @@
          <md-input-container ng-show="currentOrder.editing">
            <label>Коментар адміна</label>
            <input ng-model="selectors.admComment">
-           <md-button ng-click="doneEditing(currentOrder)" ng-disabled="currentOrder.saving">
+         </md-input-container>
+         <div>
+           <md-button ng-click="editItem(currentOrder)" ng-disabled="currentOrder.editing">
+             <span>Редагувати</span>
+           </md-button>
+           <md-button ng-click="doneEditing(currentOrder)" ng-disabled="currentOrder.saving || !currentOrder.editing">
              <span>Зберегти</span>
              <i ng-show="currentOrder.saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
            </md-button>
-         </md-input-container>
-
+         </div>
+         <div ng-if="order.savedSuccess" class="col-md-12">
+           <div uib-alert class="alert-success">
+             Дані збережено
+           </div>
+         </div>
+         <div ng-if="order.savedError" class="col-md-12">
+           <div uib-alert class="alert-danger">
+             В процесі збереження виникла помилка
+           </div>
+         </div>
        </td>
       </tr>
     </tbody>

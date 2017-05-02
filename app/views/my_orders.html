@@ -48,7 +48,7 @@
 </div>
 <div class="row">
   <div class="col-md-6">
-    <bk-order-goods-table goods-table="goodsTable"></bk-order-goods-table>
+    <bk-order-goods-table order="currentOrder"></bk-order-goods-table>
   </div>
   <div ng-if="currentOrder !== undefined" class="col-md-6" style="margin-top: 10px">
     <p>Замовлення №{{currentOrder.number}}</p>
