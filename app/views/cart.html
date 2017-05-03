@@ -77,10 +77,6 @@
   <div class="col-md-6">
     <h4 class="brand-color">Доставка та оплата</h4>
     <p>Замовлення №{{order.number}}</p>
-    <p>Вартість товарів: {{cart.orderAmount}} грн</p>
-    <p>Вартість доставки: {{deliveryCost}} грн</p>
-    <p>До сплати: {{totalAmount}} грн</p>
-    <p style="font-size: small">*- остаточна вартість замовлення буде відома при надходженні товару на склад</p>
     <!--<md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="city in cities" md-item-text="city.name">
       <span md-highlight-text="searchText">{{city.name}}</span>
     </md-autocomplete>-->
@@ -245,6 +241,11 @@
           </label>
           <textarea class="form-control" placeholder="Додати коментар" ng-model="orderComment"></textarea>
         </div>
+
+        <p>Вартість товарів: {{cart.orderAmount}} грн</p>
+        <p>Вартість доставки: {{deliveryCost}} грн</p>
+        <p>До сплати: {{totalAmount}} грн</p>
+        <p style="font-size: small">*- остаточна вартість замовлення буде відома при надходженні товару на склад</p>
 
         <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-disabled="!userForm.$valid || !(cart.goodsTable.length > 0) || savingInProgress" ng-click="SaveOrder()">
           <i class="fa fa-shopping-cart" aria-hidden="true"></i>
