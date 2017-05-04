@@ -118,6 +118,69 @@
     <div class="col-md-6 col-xs-12" style="margin: 0 0; padding: 1px 1px;" ng-repeat="oneNews in news">
       <bk-news-tile news="oneNews"></bk-news-tile>
     </div>
+    <div class="clearfix"></div>
+    <h3 style="font-family: Calibri" class="brand-color">Рецензії</h3>
+    <div ng-repeat="comment in comments">
+      <h5>
+        <span class="brand-color">{{comment.name}}</span>&nbsp;&nbsp;<i class="glyphicon glyphicon-time"></i>&nbsp;<span>{{toDateTime(comment.id)}}</span>
+      </h5>
+      <p style="text-align: justify">
+         {{comment.text}};
+      </p>
+    </div>
+    <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-click="addComment(comment)" ng-if="!comment.savedSuccess" ng-disabled="comment.editing">
+      <span>Додати мою рецензію</span>
+    </md-button>
+    <form ng-if="!comment.savedSuccess && comment.editing" name="userForm" ng-submit="registration.submit(userForm.$valid)">
+      <div class="row">
+        <div ng-if="!isAuthorized()" class="col-md-6 form-group">
+          <label>
+            Email:
+          </label>
+          <input name="email" type="email" class="form-control" placeholder="email"  ng-model="comment.email" bk-check-email="user.email" required>
+          <div style="color: black" ng-messages="userForm.email.$error">
+            <div ng-message="required">Обов'язковий для заповнення</div>
+            <div ng-message="email">Введіть корректний email</div>
+            <div ng-message="checkEmailUnique">Користувач з таким email вже зарєєстрований на сайті. Увійдіть щоб залишити свою рецензію</div>
+          </div>
+        </div>
+        <div class="col-md-6 form-group">
+          <label>
+            Прізвище, ім'я:
+          </label>
+          <input name="name" type="text" class="form-control" ng-model="comment.name" minlength="3"
+                 required>
+          <div style="color: black" ng-messages="userForm.name.$error">
+            <div ng-message="required">Обов'язкове для заповнення</div>
+            <div ng-message="minlength">Мінімальна довжина ім'я повинна будти 3 символи</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>
+          Додати рецензію:
+        </label>
+        <textarea name="name" type="text" class="form-control" ng-model="comment.text" rows="4"
+                  required></textarea>
+        <div style="color: black" ng-messages="userForm.name.$error">
+          <div ng-message="required">Обов'язкове для заповнення</div>
+        </div>
+      </div>
+      <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-click="doneComment(comment)" ng-disabled="!userForm.$valid">
+        <span>Зберегти</span>
+        <i ng-show="comment.saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+      </md-button>
+    </form>
+    <div ng-if="comment.savedSuccess">
+      <div uib-alert class="alert-success">
+        Дані збережено
+      </div>
+    </div>
+    <div ng-if="comment.savedError">
+      <div uib-alert class="alert-danger">
+        В процесі збереження виникла помилка
+      </div>
+    </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm">
     <div style="position: fixed; top: 60px;">

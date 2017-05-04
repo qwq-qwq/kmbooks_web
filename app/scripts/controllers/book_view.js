@@ -19,6 +19,7 @@ angular.module('angularApp')
     $scope.bookFormats = ['.pdf', '.epub', '.fb2', '.mobi'];
     $scope.bookTypes = ['fragment', 'book'];
     $scope.selectors = {};
+    $scope.comment = {};
 
     $scope.uploader = new FileUploader({
       url: config.url() + '/api/edit/books/banner_upload',
@@ -304,10 +305,50 @@ angular.module('angularApp')
         $scope.bookFragment = response;
       })
 
+    $http.get(config.url() + '/api/comments/get_by_code_book?code=' + code)
+      .success(function (response) {
+        $scope.comments = response;
+        angular.forEach(response, function (key, value) {
+           value.date = value.id
+        })
+      })
+
+    $scope.toDateTime = function(ObjId) {
+      return utils.toDateTime(ObjId);
+    }
+
     $scope.gallery.opts = {
       index: 0,
       history: false,
       bgOpacity: 0.5
+    };
+
+    $scope.addComment = function (comment) {
+       comment.editing = true;
+       if (authorization.isAuthorized()){
+         var user = authorization.getUser();
+         if (user !== undefined){
+           comment.name = user.name;
+         }
+       }
+    };
+
+    $scope.doneComment = function (comment) {
+      comment.code = $scope.book.code;
+      comment.kind = 'book';
+      comment.saving = true;
+      $http.post(config.url() + "/api/comment/add", comment, {withCredentials: true})
+        .then(function successCallback(response) {
+          if (response.data){
+            comment.editing = false;
+            comment.saving = false;
+            comment.savedSuccess = true;
+          }else{
+            comment.savedError = true;
+          }
+        }, function errorCallback(response) {
+          comment.savedError = true;
+        })
     };
 
     $scope.showGallery = function (i) {
@@ -321,6 +362,10 @@ angular.module('angularApp')
 
     $scope.isEditor = function() {
       return authorization.isEditor();
+    }
+
+    $scope.isAuthorized = function() {
+      return authorization.isAuthorized();
     }
 
     $scope.uploaderFile = new FileUploader({
