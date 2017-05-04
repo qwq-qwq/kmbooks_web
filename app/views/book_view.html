@@ -125,7 +125,7 @@
         <span class="brand-color">{{comment.name}}</span>&nbsp;&nbsp;<i class="glyphicon glyphicon-time"></i>&nbsp;<span>{{toDateTime(comment.id)}}</span>
       </h5>
       <p style="text-align: justify">
-         {{comment.text}};
+         {{comment.text}}
       </p>
     </div>
     <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-click="addComment(comment)" ng-if="!comment.savedSuccess" ng-disabled="comment.editing">
