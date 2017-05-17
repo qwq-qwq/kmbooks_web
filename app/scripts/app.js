@@ -184,9 +184,6 @@ angular
         templateUrl: 'views/comments_edit_table.html',
         controller: 'CommentsEditCtrl'
       })
-      .when('/catalog_of_novelties', {
-        templateUrl: 'views/catalog_of_novelties.html'
-      })
       .otherwise({
         redirectTo: '/'
       })

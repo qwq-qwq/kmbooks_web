@@ -2,7 +2,8 @@
 
 angular.module('angularApp')
   .controller('HeaderCtrl', function(wishList, $scope, $rootScope, $location, $anchorScroll, $http,
-                                     config, cart, cartPopover, subscribeDialog, callbackDialog, authorization) {
+                                     config, cart, cartPopover, subscribeDialog, callbackDialog,
+                                     authorization, $window) {
 
     $scope.menu = [
       {label:'КОНТАКТИ', route:'/contacts'}
@@ -183,7 +184,11 @@ angular.module('angularApp')
     })
 
     $scope.OnBannerClick = function (slide) {
-      $location.url(slide.link);
+      if (slide.link.indexOf('http://') === -1) {
+        $location.url(slide.link);
+      }else{
+        $window.location.href = 'http://catalog2017II.kmbooks.com.ua';
+      }
       $scope.cartTooltipEnabled = false;
     }
 
