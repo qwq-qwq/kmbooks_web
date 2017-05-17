@@ -180,6 +180,10 @@ angular
         templateUrl: 'views/subscriptions.html',
         controller: 'SubscriptionsCtrl'
       })
+      .when('/comments_edit_table', {
+        templateUrl: 'views/comments_edit_table.html',
+        controller: 'CommentsEditCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })
