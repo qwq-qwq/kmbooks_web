@@ -185,7 +185,7 @@ angular
         controller: 'CommentsEditCtrl'
       })
       .when('/catalog2017II', {
-        redirectTo: 'http://catalog2017II.kmbooks.com.ua'
+        redirectTo: 'catalog2017II'
       })
       .otherwise({
         redirectTo: '/'
