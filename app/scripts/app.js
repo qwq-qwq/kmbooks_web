@@ -184,8 +184,8 @@ angular
         templateUrl: 'views/comments_edit_table.html',
         controller: 'CommentsEditCtrl'
       })
-      .when('/catalog2017II', {
-        redirectTo: "http://catalog2017II.kmbooks.com.ua"
+      .when('/catalog_of_novelties', {
+        templateUrl: 'views/catalog_of_novelties.html'
       })
       .otherwise({
         redirectTo: '/'
