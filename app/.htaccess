@@ -599,6 +599,8 @@ RewriteRule ^/?img/content/bookspreview/kmpub/book_preview_(.+)_(big|small)\.jpg
 
 ##################legacy redirects ###################
 
+Redirect 301 ^catalog2017II https://catalog2017II.kmbooks.com.ua
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . index.html
