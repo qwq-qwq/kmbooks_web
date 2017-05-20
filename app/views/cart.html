@@ -49,10 +49,10 @@
             <p>{{cartItems.discount}}%</p>
           </td>
           <td style="text-align: center">
-            <p>{{cartItems.price}}</p>
+            <p>{{cartItems.price | currency: ""}}</p>
           </td>
           <td style="text-align: center">
-            <p>{{cartItems.amount}} грн</p>
+            <p>{{cartItems.amount | currency: ""}} грн</p>
           </td>
         </tr>
         <tr>
@@ -65,7 +65,7 @@
           <th></th>
           <th></th>
           <th style="text-align: center">
-            {{cart.orderAmount}} грн
+            {{cart.orderAmount | currency: ""}} грн
           </th>
         </tr>
       </tbody>
@@ -242,9 +242,9 @@
           <textarea class="form-control" placeholder="Додати коментар" ng-model="orderComment"></textarea>
         </div>
 
-        <p>Вартість товарів: {{cart.orderAmount}} грн</p>
-        <p>Вартість доставки: {{deliveryCost}} грн</p>
-        <p>До сплати: {{totalAmount}} грн</p>
+        <p>Вартість товарів: {{cart.orderAmount | currency: ""}} грн</p>
+        <p>Вартість доставки: {{deliveryCost | currency: ""}} грн</p>
+        <p>До сплати: {{totalAmount | currency: ""}} грн</p>
         <p style="font-size: small">*- остаточна вартість замовлення буде відома при надходженні товару на склад</p>
 
         <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-disabled="!userForm.$valid || !(cart.goodsTable.length > 0) || savingInProgress" ng-click="SaveOrder()">
@@ -260,7 +260,7 @@
   <div class="jumbotron">
     <p>
       Ваше замовлення № <span class="brand-color">{{completedOrder.number}}</span>
-      на суму <span class="brand-color">{{completedOrder.totalAmount}}</span> грн. успішно оформлено
+      на суму <span class="brand-color">{{completedOrder.totalAmount | currency: ""}}</span> грн. успішно оформлено
     </p>
   </div>
 </div>

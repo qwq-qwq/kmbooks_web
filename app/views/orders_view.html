@@ -98,9 +98,9 @@
            </md-select>
          </md-input-container>
 
-         <p>Сума: {{currentOrder.orderAmount}} грн</p>
-         <p>Сума доставки: {{currentOrder.deliveryCost}} грн</p>
-         <p>Сума всього: {{currentOrder.totalAmount}} грн</p>
+         <p>Сума: {{currentOrder.orderAmount | currency: ""}} грн</p>
+         <p>Сума доставки: {{currentOrder.deliveryCost | currency: ""}} грн</p>
+         <p>Сума всього: {{currentOrder.totalAmount | currency: ""}} грн</p>
 
          <p ng-hide="currentOrder.editing" ng-dblclick="editItem(currentOrder)">Коментар адміна: {{currentOrder.admComment}}</p>
          <md-input-container ng-show="currentOrder.editing">
