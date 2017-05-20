@@ -57,10 +57,10 @@
         <input ng-show="order.editing" class="form-control" ng-change="RecalculationOrder()" ng-model="cartItems.discount">
       </td>
       <td style="text-align: center">
-        <p>{{cartItems.price | currency: ""}}</p>
+        <p>{{cartItems.price}}</p>
       </td>
       <td style="text-align: center">
-        <p>{{cartItems.amount | currency: ""}} грн</p>
+        <p>{{cartItems.amount}} грн</p>
       </td>
     </a>
   </tr>
