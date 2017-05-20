@@ -50,7 +50,7 @@
            <p>{{order.payment.name}}</p>
          </td>
          <td style="text-align: center">
-           <p>{{order.totalAmount}} грн</p>
+           <p>{{order.totalAmount | currency: ""}} грн</p>
          </td>
        </tr>
      <tr ng-if="order.active === true">
