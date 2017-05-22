@@ -1,0 +1,80 @@
+<h1 class="brand-color">Редагування рецензій</h1>
+<br>
+<button type="button" class="btn btn-primary" ng-click="AddItem()">
+  Додати нову Рецензію
+</button>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th class="col-md-1">Показати</th>
+    <th class="col-md-8">Рецензія</th>
+    <th class="col-md-1">Дії</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="comment in comments">
+    <td>
+      <span ng-hide="comment.editing" class="form-group">
+        <p ng-show="comment.approved" style="color: green">
+          Підтверджено
+        </p>
+        <p ng-hide="comment.approved" style="color: red">
+          Не підтверджено
+        </p>
+      </span>
+      <div ng-show="comment.editing" class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="comment.approved">
+          Підтвердити
+        </label>
+      </div>
+    </td>
+    <td>
+      <h3 class="text-left" ng-hide="comment.editing" ng-dblclick="editItem(comment)">{{comment.name}}</h3>
+      <div ng-show="comment.editing" class="form-group">
+        <label for="name" class="col-md-12" ng-show="comment.editing">Im'я:</label>
+        <textarea id="name" class="form-control" rows="2" ng-show="comment.editing" ng-model="comment.name"
+                  autofocus></textarea>
+      </div>
+
+      <h4 class="text-left" ng-hide="comment.editing" ng-dblclick="editItem(comment)">{{comment.email}}</h4>
+      <div ng-show="comment.editing" class="form-group">
+        <label for="email" class="col-md-12" ng-show="comment.editing">Email:</label>
+        <textarea id="email" class="form-control" rows="2" ng-show="comment.editing" ng-model="comment.email"
+                  autofocus></textarea>
+      </div>
+
+      <p class="text-left" ng-dblclick="editItem(comment)">
+        <i class="glyphicon glyphicon-time"></i><em style="margin-left: 5px">{{toDateTime(comment.id)}}</em>
+      </p>
+
+      <p class="text-left" ng-hide="comment.editing" ng-dblclick="editItem(comment)">Код книги: {{comment.code}}</p>
+      <div ng-show="comment.editing" class="form-group">
+        <label for="code" class="col-md-12" ng-show="comment.editing">Код книги:</label>
+        <textarea id="code" class="form-control" rows="2" ng-show="comment.editing" ng-model="comment.code"
+                  autofocus></textarea>
+      </div>
+
+
+      <p class="text-left" ng-hide="comment.editing" ng-bind-html="comment.text" ng-dblclick="editItem(comment)"></p>
+      <div ng-show="comment.editing" class="form-group">
+        <label for="name" class="col-md-12" ng-show="comment.editing">Текст:</label>
+        <text-angular ng-show="comment.editing" ng-model="comment.text" autofocus></text-angular>
+      </div>
+      <br>
+    </td>
+    <td>
+      <button type="button" class="btn btn-primary btn-xs" ng-click="editItem(comment)" ng-disabled="comment.editing">
+        <span class="glyphicon glyphicon-edit"></span> Редагувати
+      </button>
+      <button type="button" class="btn btn-success btn-xs" ng-click="doneEditing(comment)" ng-disabled="!comment.editing">
+        <span class="glyphicon glyphicon-save"></span> Зберігти
+      </button>
+      <button type="button" class="btn btn-danger btn-xs" ng-click="deleteItem(comment)" ng-disabled="comment.editing">
+        <span class="glyphicon glyphicon-remove"></span> Видалити
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+

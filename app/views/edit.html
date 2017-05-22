@@ -77,6 +77,13 @@
         </a>
       </th>
     </tr>
+    <tr ng-if="isEditor()">
+      <th>
+        <a href="/comments_edit_table">
+          <h4 class="text-left">Редагування рецензій</h4>
+        </a>
+      </th>
+    </tr>
     <tr ng-if="isOrdersAdmin()">
       <th>
         <a href="/callbacks">

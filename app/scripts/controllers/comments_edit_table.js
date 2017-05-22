@@ -4,13 +4,15 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('CommentsEditCtrl', function(order, $scope) {
+  .controller('CommentsEditCtrl', function(order, $scope, $http, config, utils) {
     $scope.selector = {};
 
-    $http.get(config.url() + "/api/gmaps")
+    $http.get(config.url() + "/api/edit/comments", {withCredentials: true})
       .success(function (response) {
-        $scope.gmap = response;
-        $scope.gmap.unshift({name: "Без метки", sprut_code: 0});
+        $scope.comments = response;
+        for(var k in response) {
+          response[k].row_id = k;
+        }
       })
 
     $scope.editItem = function (item) {
@@ -19,14 +21,10 @@ angular.module('angularApp')
 
     $scope.doneEditing = function (item) {
       item.editing = false;
-      var event = {id: item.id, title: item.title, where: item.where, when: item.when, end: item.end, text: item.text, codeShop: item.codeShop};
-      $http.post(config.url() + "/api/edit/event_update", event, {withCredentials: true})
+      var comment = {id: item.id, name: item.name, email: item.email, code: item.code, approved: item.approved, text: item.text};
+      $http.post(config.url() + "/api/edit/comment/update", comment, {withCredentials: true})
         .success(function(response) {
           item.id = response.id;
-          if (typeof item.upl_item != 'undefined'){
-            item.upl_item.formData[0].id = response.id;
-            item.upl_item.upload();
-          }
         });
     }
 
@@ -34,20 +32,24 @@ angular.module('angularApp')
       function getRandomId() {
         return Math.floor((Math.random()*10000)+1)+1000;
       }
-      var event = {id: '', row_id: getRandomId(), title: '', where: '', when: new Date(), end: new Date(), text: '', editing: true};
-      $scope.events.unshift(event);
+      var comment = {id: '', row_id: getRandomId(), name: '', email: '', code: 0, approved: false, text: '', editing: true};
+      $scope.comments.unshift(comment);
     }
 
     $scope.deleteItem = function (item) {
-      $http.post(config.url() + "/api/edit/event_delete", item, {withCredentials: true})
+      $http.post(config.url() + "/api/edit/comment/delete", item, {withCredentials: true})
         .success(function(response) {
-          for (var k in $scope.events) {
-            if ($scope.events[k].row_id == item.row_id) {
-              $scope.events.splice(k, 1);
+          for (var k in $scope.comments) {
+            if ($scope.comments[k].row_id == item.row_id) {
+              $scope.comments.splice(k, 1);
               break;
             }
           }
         })
+    }
+
+    $scope.toDateTime = function(ObjId) {
+      return utils.toDateTime(ObjId);
     }
 
   })
