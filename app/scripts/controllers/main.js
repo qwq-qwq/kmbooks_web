@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('MainCtrl', function($scope, $http, config, $q, $timeout, $rootScope, $document) {
+  .controller('MainCtrl', function($scope, $http, config, $q, $timeout, $rootScope, utils) {
     function compare_desc(a,b) {
       if (a.when > b.when)
         return -1;
@@ -103,13 +103,30 @@ angular.module('angularApp')
         })
     }
 
-    $q.all([loadingRecomended(), loadingBest(), loadingNovelty(), loadingEvents(), loadingSoonOnSale()]).then(function () {
+    function loadingLastComments() {
+      $http.get(config.url() + "/api/comments/last?limit=3")
+        .success(function(response) {
+          $scope.comments = response;
+        })
+    }
+
+    $q.all([loadingRecomended(), loadingBest(), loadingNovelty(), loadingEvents(), loadingSoonOnSale(), loadingLastComments()])
+      .then(function () {
       $timeout(function(){
         $rootScope.$broadcast("layout", function(){
           // The layout animations have completed
         });
       }, 2000);
     });
+
+    $scope.toDateTime = function(ObjId) {
+      return utils.toDateTime(ObjId);
+    }
+
+    $scope.getCommentText = function (text) {
+      var suffix = text.length > 300 ? '...' : '';
+      return "\"" + text.substring(0, 300) + suffix + "\"";
+    }
 
     $scope.deleteCard = function(id){
       var index = -1;
