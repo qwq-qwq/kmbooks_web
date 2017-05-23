@@ -42,6 +42,10 @@ angular.module('angularApp')
     });
 
     $scope.editItem = function (item) {
+      $http.get(config.url() + '/api/news/get_news_by_id?id=' + item.id)
+        .success(function (response) {
+          item.text = response.text;
+        })
       item.editing = true;
       item.is_second = false;
     }
