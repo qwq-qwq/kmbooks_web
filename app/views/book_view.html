@@ -121,10 +121,13 @@
     <div class="clearfix"></div>
     <h3 style="font-family: Calibri" class="brand-color">Рецензії</h3>
     <div ng-repeat="comment in comments">
-      <h5>
-        <span class="brand-color">{{comment.name}}</span>&nbsp;&nbsp;<i class="glyphicon glyphicon-time"></i>&nbsp;<span>{{toDateTime(comment.id)}}</span>
+      <h5 style="margin-top: 25px">
+        <span class="brand-color">{{comment.name}}</span>
+        <div style="font-size: smaller; margin-top: 12px">
+          <i class="glyphicon glyphicon-time"></i>&nbsp;<span>{{toDateTime(comment.id)}}</span>
+        </div>
       </h5>
-      <p style="text-align: justify"ng-bind-html="comment.text">
+      <p style="text-align: justify; margin-top: 14px"ng-bind-html="comment.text">
       </p>
     </div>
     <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-click="addComment(comment)" ng-if="!comment.savedSuccess" ng-disabled="comment.editing">
