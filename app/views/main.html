@@ -80,7 +80,7 @@
  <div class="row">
    <a href="/book?code={{comment.code}}" style="color: black;" ng-repeat="comment in comments">
      <div class="col-sm-4" style="text-align: center">
-       <h3 class="brand-color">{{comment.bookName}}</h3>
+       <h4 class="brand-color">{{comment.bookName}}</h4>
        <p class="brand-color">{{comment.bookAuthor}}</p>
        <p style="text-align: center; text-decoration: none" ng-bind-html="getCommentText(comment.text)"></p>
        <div class="brand-color" style="font-size: larger">
