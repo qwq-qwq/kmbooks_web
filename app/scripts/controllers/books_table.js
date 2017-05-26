@@ -56,7 +56,7 @@ angular.module('angularApp')
       if (priceFrom !== undefined && priceTo !== undefined) {
         $scope.priceSliderValue = [parseInt(priceFrom), parseInt(priceTo)];
       }
-      $window.scrollTo(0, 0);
+      //$window.scrollTo(0, 0);
       $scope.searching = true;
     }
 

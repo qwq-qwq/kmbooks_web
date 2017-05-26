@@ -6,7 +6,10 @@ angular.module('angularApp').directive('bkCatalog', ['$http', 'config', 'authori
     templateUrl: 'views/bk_catalog.html',
     link: function(scope, element, attributes){
       scope.$watch('searching', function () {
-        var filter = '';
+        var filter = ''
+        if (!scope.searching){
+          return;
+        }
         if (scope.group !== undefined) {
           filter += "&group=" + scope.group;
         }
