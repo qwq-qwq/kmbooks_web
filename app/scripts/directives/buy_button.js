@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'authorization', '$rootScope', 'cart', function($http, config, authorization, $rootScope, cart) {
+angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'authorization', '$rootScope',
+'cart', '$location', function($http, config, authorization, $rootScope, cart, $location) {
   return {
     restrict: 'E',
     scope: {
@@ -12,6 +13,13 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
       function updateStatus() {
         if (scope.book !== undefined) {
           if ([1227, 2008].indexOf(scope.book.state) === -1) {
+            if ($location.path().search('book') != -1 && !authorization.isAuthorized()) {
+              scope.discountHint = "РЕЄСТРУЙТЕСЬ та відразу отримайте";
+              scope.discountHint2Line = "ЗНИЖКУ 3%";
+            }else{
+              scope.discountHint = "";
+              scope.discountHint2Line = "";
+            };
             if (scope.book.kvo > 0) {
               scope.boughtText = "Купити";
               scope.boughtDisable = false;
