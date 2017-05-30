@@ -3,8 +3,7 @@
    <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;{{boughtText}}
 </md-button>
 <div style="font-size: small">
-  <div>{{discountHint}}</div>
-  <div class="brand-color">{{discountHint2Line}}</div>
+  <p ng-bind-html="discountHint"></p>
 </div>
 <div>
   <i style="font-size: small">{{boughtHint}}</i>
