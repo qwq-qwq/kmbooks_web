@@ -1,4 +1,4 @@
-<span ng-if="book.priceWithoutDiscount !== book.price" class="line_through center-block" ng-style="lineThroughStyle"><div class="price_without_discount_value" style="margin-top: 0px">{{book.priceWithoutDiscount}} <span style="font-size: 16px">грн</span></div></span>
+<span ng-if="book.priceWithoutDiscount !== book.price" class="line_through center-block" ng-style="lineThroughStyle"><div class="price_without_discount_value" style="margin-top: 0px">{{book.priceWithoutDiscount}} <span style="font-size: 15px">грн</span></div></span>
 <div ng-if="book.price > 0 && div === true" class="price_value">{{book.price | currency: ""}} <span style="font-size: 14px">грн</span></div>
 <span ng-if="book.price > 0 && div === false" class="price_value">{{book.price | currency: ""}} <span style="font-size: 14px">грн</span></span>
 <div ng-if="!book.price > 0" class="price_value" style="font-size: 18px; color: black;">Ціна формується</div>
