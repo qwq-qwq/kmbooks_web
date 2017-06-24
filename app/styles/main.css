@@ -443,8 +443,8 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
 
 .price_without_discount_value{
   text-align: center;
-  font-size: 22px;
-  color: gray;
+  font-size: 23px;
+  color: #626262;
 }
 
 .line_through{
