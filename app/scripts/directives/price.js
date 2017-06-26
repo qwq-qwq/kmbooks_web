@@ -13,7 +13,9 @@ angular.module('angularApp').directive('bkPrice', ['authorization', '$rootScope'
     },
     link: function(scope, element, attributes) {
       if (scope.div === false){
-         scope.lineThroughStyle = {'margin-left': 0};
+         scope.lineThroughStyle = {'width': '50%'};
+      }else{
+         scope.lineThroughStyle = {'margin-left': 'auto', 'margin-right': 'auto', 'max-width': '80px'};
       }
       scope.updateAuthorization = function () {
         var discount = authorization.isAuthorized() ? 3 : 0;
