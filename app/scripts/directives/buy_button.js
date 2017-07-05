@@ -14,7 +14,7 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
         if (scope.book !== undefined) {
           if ([1227, 2008].indexOf(scope.book.state) === -1) {
             if ($location.path().search('book') != -1 && !authorization.isAuthorized()) {
-              scope.discountHint = "<span class='brand-color'><a href='/user_registration'>РЕЄСТРУЙТЕСЬ</a></span> та відразу отримайте <br> <span class='brand-color'>ЗНИЖКУ 3%</span>";
+              scope.discountHint = "<span class='brand-color'><a href='/user_registration'>РЕЄСТРУЙТЕСЬ</a></span> та відразу отримайте <br> <span class='brand-color'><a href='/ntml_page?name=conditions_of_purchase'>ЗНИЖКУ 3%</a></span>";
             }else{
               scope.discountHint = "";
             };
