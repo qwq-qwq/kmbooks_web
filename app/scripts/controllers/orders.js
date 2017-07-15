@@ -47,9 +47,11 @@ angular.module('angularApp')
         });
     }
 
-    $scope.updateOrdersTable = function () {
+    $scope.updateOrdersTable = function () {''
       var link = '';
       var dateStart, dateEnd;
+      $scope.saving = true;
+      $scope.styleOrdersList = {opacity: 0.2};
       dateStart = $scope.dateStart.getDate().toString() + "." + ("0" +($scope.dateStart.getMonth() + 1).toString()).slice(-2) + "." + $scope.dateStart.getFullYear().toString();
       dateEnd = $scope.dateEnd.getDate().toString() + "." + ("0" +($scope.dateEnd.getMonth() + 1).toString()).slice(-2) + "." + $scope.dateEnd.getFullYear().toString();
       if ($scope.dateStart && $scope.dateEnd) {
@@ -66,6 +68,8 @@ angular.module('angularApp')
             $scope.orders = response;
             $scope.grandTotal = grandTotal;
           };
+          $scope.styleOrdersList = {opacity: 1};
+          $scope.saving = false;
         })
       $http.get(config.url() + "/api/get_payment_types")
         .success(function (response) {

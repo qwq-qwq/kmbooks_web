@@ -8,9 +8,12 @@
     <label>по</label>
     <md-datepicker ng-model="dateEnd"></md-datepicker>
   </md-input-container>
-  <md-button class="md-raised brand-color-background" ng-click="updateOrdersTable()">ЗАПОВНИТИ</md-button>
+  <md-button class="md-raised brand-color-background" ng-click="updateOrdersTable()">
+    <i ng-show="saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    ЗАПОВНИТИ
+  </md-button>
 </div>
-<div class="row">
+<div ng-style="styleOrdersList" class="row">
   <table class="table-striped table-bordered table-hover" width="100%">
     <thead>
     <th style="text-align: center">
