@@ -540,6 +540,11 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     display: none;
   }
 
+  .book-description{
+    display: block;
+    min-width: 550px;
+  }
+
 }
 @media (min-width: 700px) and (max-width: 1100px){
   .footer{
