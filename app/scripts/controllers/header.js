@@ -187,7 +187,7 @@ angular.module('angularApp')
       if (slide.link.indexOf('http://') === -1) {
         $location.url(slide.link);
       }else{
-        $window.location.href = 'http://catalog2017II.kmbooks.com.ua';
+        $window.location.href = slide.link;
       }
       $scope.cartTooltipEnabled = false;
     }
