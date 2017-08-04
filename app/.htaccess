@@ -600,6 +600,7 @@ RewriteRule ^/?img/content/bookspreview/kmpub/book_preview_(.+)_(big|small)\.jpg
 ##################legacy redirects ###################
 
 RewriteRule ^catalog2017II$  http://catalog2017II.kmbooks.com.ua [R=301,L]
+RewriteRule ^colingsbigcat$  http://colingsbigcat$.kmbooks.com.ua [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
