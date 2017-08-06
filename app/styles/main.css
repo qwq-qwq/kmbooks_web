@@ -581,6 +581,9 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     text-align: center;
   }
 
+  .book-caption{
+    padding-left: 28px;
+  }
   /*.bukva-wrap {
    padding: 0 0 0 0;
   }*/
@@ -637,7 +640,6 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   }
 
 }
-
 @media (max-width: 320px){
   ol.carousel-indicators{
     display: none;
