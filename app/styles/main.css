@@ -545,6 +545,9 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     min-width: 550px;
   }
 
+  .book-banner{
+    background-attachment: fixed;
+  }
 }
 @media (min-width: 700px) and (max-width: 1100px){
   .footer{
