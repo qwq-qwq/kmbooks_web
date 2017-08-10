@@ -20,6 +20,10 @@ angular.module('angularApp')
       return authorization.isOrdersAdmin();
     }
 
+    $scope.isCopyWriter = function() {
+      return authorization.isCopyWriter();
+    }
+
     $scope.isUser = function() {
       return authorization.isUser();
     }
