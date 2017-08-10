@@ -48,6 +48,12 @@ angular.module('angularApp').factory('authorization', function ($rootScope, $htt
       }else{
         return false}
     },
+    isCopyWriter: function() {
+      if ($rootScope.role === 'EDITOR'|| $rootScope.role === 'ADMIN' || $rootScope.role === 'COPYWRITER') {
+        return true
+      }else{
+        return false}
+    },
     isUser: function() {
     if ($rootScope.role === 'EDITOR'|| $rootScope.role === 'ADMIN' ||
         $rootScope.role === 'USER' || $rootScope.role === 'ORDERS_ADMIN') {
