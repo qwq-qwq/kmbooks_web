@@ -47,7 +47,7 @@ angular.module('angularApp')
         });
     }
 
-    $scope.updateOrdersTable = function () {''
+    $scope.updateOrdersTable = function () {
       var link = '';
       var dateStart, dateEnd;
       $scope.saving = true;
