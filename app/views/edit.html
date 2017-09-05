@@ -1,5 +1,5 @@
 <h1 style="color: #428bca">Мій кабінет</h1>
-<h4>{{username}}</h4>
+<h4 style="padding-left: 7px;">{{username}}</h4>
   <table class="table table-hover">
     <thead>
     <tr>
@@ -125,6 +125,29 @@
           <h4 class="text-left">Мої замовлення</h4>
         </a>
       </th>
+    </tr>
+    <tr>
+      <td>
+        <h4>
+          ВАША КМ-ЗНИЖКА
+        </h4>
+        <a href="#">що таке КМ-ЗНИЖКА</a>
+        <p style="margin-top: 10px">Сума Ваших замовлень {{valueOfPurchases}} грн</p>
+        <div ng-if="valueOfPurchases <= 1000">
+          Наразі Ваша знижка становить <span class="brand-color">3%</span>
+          <div class="progress" style="margin-top: 10px; margin-bottom: 10px">
+            <div class="progress-bar progress-bar-striped" role="progressbar"
+               ng-style="stylePercent">
+              {{progressBarPercent}}%
+            </div>
+          </div>
+          До максимальної знижки <span class="brand-color">5%</span> Вам залишилося {{1000 - valueOfPurchases}} грн.
+        </div>
+        <p ng-if="valueOfPurchases > 1000">
+          Наразі Ваша знижка становить <span class="brand-color">5%</span>
+          Ваша знижка - максимальна
+        </p>
+      </td>
     </tr>
     </tbody>
   </table>
