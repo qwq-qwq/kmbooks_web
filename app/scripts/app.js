@@ -184,6 +184,10 @@ angular
         templateUrl: 'views/comments_edit_table.html',
         controller: 'CommentsEditCtrl'
       })
+      .when('/wish_lists_report', {
+        templateUrl: 'views/wish_lists_report.html',
+        controller: 'WishListsReportCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })

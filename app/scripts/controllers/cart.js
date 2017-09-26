@@ -211,7 +211,7 @@ angular.module('angularApp')
         orderAmount = 0;
       }
       if ($scope.selectedDelivery.id === '1') {
-        if (orderAmount > 500) {
+        if (orderAmount >= 500) {
           $scope.deliveryCost = 0;
         } else {
           $scope.deliveryCost = 35;
@@ -219,13 +219,13 @@ angular.module('angularApp')
       }else if ($scope.selectedDelivery.id === '3'){
         $scope.deliveryCost = 0;
       }else if ($scope.selectedDelivery.id === '5'){
-        if (orderAmount > 500) {
+        if (orderAmount >= 500) {
           $scope.deliveryCost = 0;
         } else {
           $scope.deliveryCost = 40;
         }
       }else if($scope.selectedDelivery.id === '4') {
-        if (orderAmount > 500) {
+        if (orderAmount >= 500) {
           $scope.deliveryCost = 0;
         } else {
           var W = Math.round(Math.ceil(500 * itemsCount / 10) / 100 * 100) / 100;

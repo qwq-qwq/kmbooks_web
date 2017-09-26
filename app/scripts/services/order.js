@@ -79,7 +79,7 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
     RecalculateDeliveryCost: function (order) {
       var orderAmount = order.orderAmount;
       if (order.delivery.id === '1') {
-        if (order.orderAmount > 500) {
+        if (order.orderAmount >= 500) {
           order.deliveryCost = 0;
         } else {
           order.deliveryCost = 35;
@@ -87,13 +87,13 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
       }else if (order.delivery.id === '3'){
         order.deliveryCost = 0;
       }else if (order.delivery.id === '5'){
-        if (orderAmount > 500) {
+        if (orderAmount >= 500) {
           order.deliveryCost = 0;
         } else {
           order.deliveryCost = 40;
         }
       }else if(order.delivery.id === '4') {
-        if (orderAmount > 500) {
+        if (orderAmount >= 500) {
           order.deliveryCost = 0;
         } else {
           if (order.goodsTable !== undefined){
