@@ -6,6 +6,9 @@
 angular.module('angularApp').directive('bkBookDetailInfo', [function() {
   return {
     restrict: 'E',
+    scope: {
+      order: '='
+    },
     templateUrl: 'views/bk_book_detail_info.html'
   };
 }])

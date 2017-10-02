@@ -37,4 +37,14 @@ angular.module('angularApp')
         })
     }
 
+    $scope.setWishListUserList = function (bookInWishLists){
+      angular.forEach($scope.booksInWishLists, function (value, key) {
+        if(value.codeBook === bookInWishLists.codeBook){
+          value.active = (value.active === undefined)? true : !value.active;
+        }else{
+          value.active = false;
+        }
+      });
+    }
+
   });

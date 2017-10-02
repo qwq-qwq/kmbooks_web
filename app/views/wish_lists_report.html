@@ -22,7 +22,7 @@
           <p>Картинка</p>
         </th>
         <th style="text-align: center">
-          <p>Наименование</p>
+          <p>Ім'я</p>
         </th>
         <th style="text-align: center">
           <p>Кількість</p>
@@ -32,7 +32,7 @@
         </th>
       </thead>
       <tbody ng-repeat="bookInWishLists in booksInWishLists">
-        <tr ng-click="setUserList(bookInWishLists)">
+        <tr ng-click="setWishListUserList(bookInWishLists)">
           <td style="text-align: center">
             <a href="/book?code={{bookInWishLists.book.code}}">
               <p>{{bookInWishLists.book.code}}</p>
@@ -54,8 +54,8 @@
           </td>
         </tr>
         <tr ng-if="bookInWishLists.active === true">
-          <td>
-
+          <td colspan="5">
+            <bk-wish-list-user-list users-list="bookInWishLists.users"></bk-wish-list-user-list>
           </td>
         </tr>
       </tbody>
