@@ -5,6 +5,7 @@
     "angular": "1.5.8",
     "bootstrap": "3.3.4",
     "angular-animate": "1.5.8",
+    "angular-disabled": "1.5.8",
     "angular-cookies": "1.5.8",
     "angular-resource": "1.5.8",
     "angular-route": "1.5.8",

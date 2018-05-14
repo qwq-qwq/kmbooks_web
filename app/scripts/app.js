@@ -12,6 +12,7 @@
 angular
   .module('angularApp', [
     'ngAnimate',
+    'ngDisabled',
     'ngCookies',
     'ngResource',
     'ngRoute',
