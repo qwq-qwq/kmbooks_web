@@ -9,6 +9,10 @@
   background-color: rgba(16,108,200,0.5);
 }
 
+.md-bar {
+  background-color: rgb(158,158,158);
+}
+
 .md-checked .md-thumb {
   background-color: rgb(16,108,200);
 }
