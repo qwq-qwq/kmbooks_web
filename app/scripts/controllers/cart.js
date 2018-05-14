@@ -203,6 +203,12 @@ angular.module('angularApp')
             });
             $scope.SelectCity();
           })
+      }else{
+         $scope.selector.city = undefined;
+         $scope.selectedCity = undefined;
+         $scope.selectedDelivery = undefined;
+         $scope.selectedPayment = undefined;
+         $scope.SelectDelivery();
       }
     }
 
