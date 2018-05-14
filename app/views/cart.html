@@ -2,7 +2,7 @@
   <div class="col-md-6 table-responsive">
     <h4 class="brand-color">Кошик</h4>
     <table ng-if="cart.goodsTable.length > 0" class="table-striped">
-      <caption>При замовленні на 450.00 грн отримуєте	безкоштовну доставку по Україні</caption>
+      <caption>При замовленні на 800.00 грн отримуєте	безкоштовну доставку по Україні</caption>
       <thead>
         <th class="col-md-1">
 
@@ -80,6 +80,9 @@
     <!--<md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="city in cities" md-item-text="city.name">
       <span md-highlight-text="searchText">{{city.name}}</span>
     </md-autocomplete>-->
+    <md-switch ng-model="selector.interDelivery" ng-change="ChangeInterDelivery()">
+        Міжнародна доставка
+    </md-switch>
     <div class="form-group">
       <label>
         Місто

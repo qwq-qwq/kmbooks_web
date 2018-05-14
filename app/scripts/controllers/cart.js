@@ -191,6 +191,10 @@ angular.module('angularApp')
        }
      })
 
+    $scope.ChangeInterDelivery = function () {
+      
+    }
+
     $scope.SelectCity = function () {
       var originalId = $scope.selector.city.originalId;
       $http.get(config.url() + "/api/get_city?originalId=" + originalId)
@@ -211,30 +215,24 @@ angular.module('angularApp')
         orderAmount = 0;
       }
       if ($scope.selectedDelivery.id === '1') {
-        if (orderAmount >= 500) {
+        if (orderAmount >= 800) {
           $scope.deliveryCost = 0;
         } else {
-          $scope.deliveryCost = 35;
+          $scope.deliveryCost = 40;
         }
       }else if ($scope.selectedDelivery.id === '3'){
         $scope.deliveryCost = 0;
       }else if ($scope.selectedDelivery.id === '5'){
-        if (orderAmount >= 500) {
+        if (orderAmount >= 800) {
           $scope.deliveryCost = 0;
         } else {
           $scope.deliveryCost = 40;
         }
       }else if($scope.selectedDelivery.id === '4') {
-        if (orderAmount >= 500) {
+        if (orderAmount >= 800) {
           $scope.deliveryCost = 0;
         } else {
-          var W = Math.round(Math.ceil(500 * itemsCount / 10) / 100 * 100) / 100;
-          var Price = orderAmount;
-          W = (W * 6 + 5.6) * 1.2;
-          var Q = Price * 0.015;
-          Q = (Q < 2.5) ? 2.5 * 1.2 : Q * 1.2;
-          var Sum = Math.round((W + Q) * 100) / 100;
-          $scope.deliveryCost = Math.ceil(Sum);
+          $scope.deliveryCost = 30;
         }
       }
       $scope.totalAmount = orderAmount + $scope.deliveryCost;

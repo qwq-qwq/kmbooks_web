@@ -79,35 +79,24 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
     RecalculateDeliveryCost: function (order) {
       var orderAmount = order.orderAmount;
       if (order.delivery.id === '1') {
-        if (order.orderAmount >= 500) {
+        if (order.orderAmount >= 800) {
           order.deliveryCost = 0;
         } else {
-          order.deliveryCost = 35;
+          order.deliveryCost = 40;
         }
       }else if (order.delivery.id === '3'){
         order.deliveryCost = 0;
       }else if (order.delivery.id === '5'){
-        if (orderAmount >= 500) {
+        if (orderAmount >= 800) {
           order.deliveryCost = 0;
         } else {
           order.deliveryCost = 40;
         }
       }else if(order.delivery.id === '4') {
-        if (orderAmount >= 500) {
+        if (orderAmount >= 800) {
           order.deliveryCost = 0;
         } else {
-          if (order.goodsTable !== undefined){
-            var itemsCount = order.goodsTable.length;
-          }else{
-            var itemsCount = 0;
-          }
-          var W = Math.round(Math.ceil(500 * itemsCount / 10) / 100 * 100) / 100;
-          var Price = orderAmount;
-          W = (W * 6 + 5.6) * 1.2;
-          var Q = Price * 0.015;
-          Q = (Q < 2.5) ? 2.5 * 1.2 : Q * 1.2;
-          var Sum = Math.round((W + Q) * 100) / 100;
-          order.deliveryCost = Math.ceil(Sum);
+          order.deliveryCost = 30;
         }
       }
       order.totalAmount = orderAmount + order.deliveryCost;
