@@ -192,7 +192,7 @@ angular.module('angularApp')
      })
 
     $scope.ChangeInterDelivery = function () {
-      
+
     }
 
     $scope.SelectCity = function () {

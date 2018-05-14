@@ -5,6 +5,10 @@
   padding: 0.2em 0;
 }
 
+.md-switch.md-checked.md-primary .md-bar {
+  background-color: rgba(16,108,200,0.5);
+}
+
 .md-calendar-date-selection-indicator:hover{
   background-color: #0089cf;
 }
