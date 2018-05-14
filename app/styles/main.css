@@ -9,6 +9,10 @@
   background-color: rgba(16,108,200,0.5);
 }
 
+.md-checked .md-thumb {
+  background-color: rgb(16,108,200);
+}
+
 .md-calendar-date-selection-indicator:hover{
   background-color: #0089cf;
 }
