@@ -5,7 +5,7 @@
   padding: 0.2em 0;
 }
 
-.md-switch.md-checked.md-primary .md-bar {
+.md-switch.md-checked .md-bar {
   background-color: rgba(16,108,200,0.5);
 }
 
