@@ -83,7 +83,7 @@
     <md-switch ng-model="selector.interDelivery" ng-change="ChangeInterDelivery()">
         Міжнародна доставка
     </md-switch>
-    <div ng-hide="selector.interDelivery" class="form-group">
+    <div ng-disabled="selector.interDelivery" class="form-group">
       <label>
         Місто
       </label>

@@ -192,7 +192,14 @@ angular.module('angularApp')
      })
 
     $scope.ChangeInterDelivery = function () {
-
+      var originalId = "8d5a980d-391c-11dd-90d9-0000000001"; //International delivery ID
+      $http.get(config.url() + "/api/get_city?originalId=" + originalId)
+        .success(function(response) {
+          $scope.selectedCity = response;
+          $scope.selectedDelivery = $scope.selectedCity.delivery[0];
+          $scope.selectedPayment = $scope.selectedDelivery.payments[0];
+          $scope.SelectDelivery();
+        })
     }
 
     $scope.SelectCity = function () {
