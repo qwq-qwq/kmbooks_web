@@ -87,7 +87,7 @@
       <label>
         Місто
       </label>
-      <select class="form-control" ng-model="selector.city" ng-change="SelectCity()" ng-options="city as city.name for city in cities">
+      <select ng-disabled="selector.interDelivery" class="form-control" ng-model="selector.city" ng-change="SelectCity()" ng-options="city as city.name for city in cities">
       </select>
     </div>
     <div class="form-group">
