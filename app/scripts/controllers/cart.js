@@ -193,7 +193,7 @@ angular.module('angularApp')
 
     $scope.ChangeInterDelivery = function () {
       if ($scope.selector.interDelivery) {
-        var originalId = "8d5a980d-391c-11dd-90d9-0000000001"; //International delivery ID
+        var originalId = config.interDeliveryID();
         $http.get(config.url() + "/api/get_city?originalId=" + originalId)
           .success(function(response) {
             angular.forEach($scope.cities, function(city, key) {
@@ -219,6 +219,11 @@ angular.module('angularApp')
           $scope.selectedCity = response;
           $scope.selectedDelivery = $scope.selectedCity.delivery[0];
           $scope.selectedPayment = $scope.selectedDelivery.payments[0];
+          if ($scope.selectedCity.originalId === config.interDeliveryID()) {
+            $scope.selector.interDelivery = true;
+          }else{
+            $scope.selector.interDelivery = false;
+          };
           $scope.SelectDelivery();
         })
     }
@@ -246,7 +251,7 @@ angular.module('angularApp')
           $scope.deliveryCost = 40;
         }
       }else if($scope.selectedDelivery.id === '4') {
-        if (orderAmount >= 800) {
+        if ((orderAmount >= 800) || ($scope.selectedCity.originalId === config.interDeliveryID())) {
           $scope.deliveryCost = 0;
         } else {
           $scope.deliveryCost = 30;

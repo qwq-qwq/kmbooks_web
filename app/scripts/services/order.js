@@ -93,7 +93,7 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
           order.deliveryCost = 40;
         }
       }else if(order.delivery.id === '4') {
-        if (orderAmount >= 800) {
+        if ((orderAmount >= 800) || (order.selectedCity.originalId === config.interDeliveryID())) {
           order.deliveryCost = 0;
         } else {
           order.deliveryCost = 30;
