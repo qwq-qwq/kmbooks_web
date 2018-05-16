@@ -249,9 +249,8 @@
         <p ng-hide="selector.interDelivery">Вартість доставки: {{deliveryCost | currency: ""}} грн</p>
         <p ng-show="selector.interDelivery">Вартість доставки: розраховується менеджером</p>
         <p>До сплати: {{totalAmount | currency: ""}} грн</p>
-      <p style="font-size: small"><span style="color: red">*</span>- остаточна вартість замовлення буде відома при надходженні товару на склад</p>
-        <p ng-show="selector.interDelivery" style="font-size: small"><span style="color: red">**</span>- вартість доставки розраховується кожен раз індивідуально і залежить від курсу гривні, країни в яку здійснюється доставка а також способу доставки товару.</p>
-
+        <p style="font-size: small"><span style="color: red">*</span>- остаточна вартість замовлення буде відома при надходженні товару на склад</p>
+        <p ng-show="selector.interDelivery" style="font-size: small"><span style="color: red">**</span>- вартість доставки розраховується кожен раз індивідуально та залежить від курсу гривні країни, в яку здійснюється доставка, а також способу доставки товару.</p>
         <md-button style="margin-left: 0" class="md-raised brand-color-background" ng-disabled="!userForm.$valid || !(cart.goodsTable.length > 0) || savingInProgress" ng-click="SaveOrder()">
           <i class="fa fa-shopping-cart" aria-hidden="true"></i>
           Замовити
