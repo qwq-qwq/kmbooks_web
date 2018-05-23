@@ -4,6 +4,7 @@
 
 angular.module('angularApp')
   .controller('UserRegistrationCtrl', function(authorization, $scope, $http, api, config, $rootScope, $location) {
+    $scope.selector = {};
 
     $scope.updateVisible = function () {
       if (!authorization.isAuthorized()){
