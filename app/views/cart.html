@@ -205,7 +205,9 @@
           <label>
             Телефон:
           </label>
-          <input name="phone" ui-mask="+38 (999) 9999999"  ui-mask-placeholder ui-mask-placeholder-char="space"
+          <input ng-hide="selector.interDelivery" name="phone" ui-mask="+38 (999) 9999999"  ui-mask-placeholder ui-mask-placeholder-char="space"
+                 type="text" class="form-control" ng-model="phone" minlength="10" required>
+          <input ng-show="selector.interDelivery" name="phone" 
                  type="text" class="form-control" ng-model="phone" minlength="10" required>
           <div style="color: red" ng-messages="userForm.phone.$error">
             <div ng-message="required">Обов'язковий для заповнення</div>
