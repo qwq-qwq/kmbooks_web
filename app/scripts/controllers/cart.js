@@ -254,7 +254,7 @@ angular.module('angularApp')
         if ((orderAmount >= 800) || ($scope.selectedCity.originalId === config.interDeliveryID())) {
           $scope.deliveryCost = 0;
         } else {
-          $scope.deliveryCost = 30;
+          $scope.deliveryCost = 35;
         }
       }
       $scope.totalAmount = orderAmount + $scope.deliveryCost;

@@ -96,7 +96,7 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
         if ((orderAmount >= 800) || (order.selectedCity.originalId === config.interDeliveryID())) {
           order.deliveryCost = 0;
         } else {
-          order.deliveryCost = 30;
+          order.deliveryCost = 35;
         }
       }
       order.totalAmount = orderAmount + order.deliveryCost;
