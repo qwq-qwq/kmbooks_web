@@ -32,7 +32,7 @@ angular.module('angularApp').directive('bkPrice', ['authorization', '$rootScope'
           }
           if (discount > 0 && !scope.book.discountForbidden){
             scope.book.discount = discount;
-            scope.book.price = Math.round(scope.book.priceWithoutDiscount * (1 - discount/100) * 100) / 100;
+            scope.book.price = Math.round(scope.book.priceWithoutDiscount * (1 - discount/100) * 10) / 10;
           }else{
             scope.book.discount = 0;
             scope.book.price = scope.book.priceWithoutDiscount;
