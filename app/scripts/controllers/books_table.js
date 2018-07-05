@@ -67,7 +67,7 @@ angular.module('angularApp')
       }
       $http.get(config.url() + "/api/books/criteria" + filter)
         .success(function (response) {
-          $scope.priceFrom = response.priceFrom;
+          $scope.priceFrom = response.priceFrom < 1 ? 1 : response.priceFrom; //for remove very cheap stuff
           $scope.priceTo = response.priceTo;
           $scope.authors = response.authors;
           $scope.series = response.series;
