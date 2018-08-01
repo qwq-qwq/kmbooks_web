@@ -188,6 +188,9 @@ angular
         templateUrl: 'views/wish_lists_report.html',
         controller: 'WishListsReportCtrl'
       })
+      .when('/stipend', {
+        redirectTo: 'https://kmbooks.com.ua/stipend/'
+      })
       .otherwise({
         redirectTo: '/'
       })
