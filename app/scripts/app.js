@@ -32,7 +32,7 @@ angular
     'ui.mask',
     'angular-loading-bar'
   ])
-  .config(function ($routeProvider, $locationProvider, $mdDateLocaleProvider) {
+  .config(function ($routeProvider, $locationProvider, $mdDateLocaleProvider, $window) {
 
     $routeProvider
       .when('/', {
@@ -189,7 +189,9 @@ angular
         controller: 'WishListsReportCtrl'
       })
       .when('/stipend', {
-        redirectTo: 'https://kmbooks.com.ua/stipend/'
+        redirectTo: function() {
+          window.location = "https://kmbooks.com.ua/stipend/";
+        }
       })
       .otherwise({
         redirectTo: '/'
