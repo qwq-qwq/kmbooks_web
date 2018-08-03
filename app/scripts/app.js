@@ -32,7 +32,7 @@ angular
     'ui.mask',
     'angular-loading-bar'
   ])
-  .config(function ($routeProvider, $locationProvider, $mdDateLocaleProvider, $window) {
+  .config(function ($routeProvider, $locationProvider, $mdDateLocaleProvider) {
 
     $routeProvider
       .when('/', {
