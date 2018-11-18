@@ -79,7 +79,7 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
     RecalculateDeliveryCost: function (order) {
       var orderAmount = order.orderAmount;
       if (order.delivery.id === '1') {
-        if (order.orderAmount >= 800) {
+        if (order.orderAmount >= 1000) {
           order.deliveryCost = 0;
         } else {
           order.deliveryCost = 40;
@@ -87,17 +87,18 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
       }else if (order.delivery.id === '3'){
         order.deliveryCost = 0;
       }else if (order.delivery.id === '5'){
-        if (orderAmount >= 800) {
+        if (orderAmount >= 1000) {
           order.deliveryCost = 0;
         } else {
           order.deliveryCost = 45;
         }
       }else if(order.delivery.id === '4') {
-        if ((orderAmount >= 800) || (order.selectedCity.originalId === config.interDeliveryID())) {
-          order.deliveryCost = 0;
-        } else {
-          order.deliveryCost = 35;
-        }
+        order.deliveryCost = 0;
+        //if ((orderAmount >= 800) || (order.selectedCity.originalId === config.interDeliveryID())) {
+        //  order.deliveryCost = 0;
+        //} else {
+        //  order.deliveryCost = 35;
+        //}
       }
       order.totalAmount = orderAmount + order.deliveryCost;
     }

@@ -237,7 +237,7 @@ angular.module('angularApp')
         orderAmount = 0;
       }
       if ($scope.selectedDelivery.id === '1') {
-        if (orderAmount >= 800) {
+        if (orderAmount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
           $scope.deliveryCost = 40;
@@ -245,17 +245,18 @@ angular.module('angularApp')
       }else if ($scope.selectedDelivery.id === '3'){
         $scope.deliveryCost = 0;
       }else if ($scope.selectedDelivery.id === '5'){
-        if (orderAmount >= 800) {
+        if (orderAmount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
           $scope.deliveryCost = 45;
         }
       }else if($scope.selectedDelivery.id === '4') {
-        if ((orderAmount >= 800) || ($scope.selectedCity.originalId === config.interDeliveryID())) {
-          $scope.deliveryCost = 0;
-        } else {
-          $scope.deliveryCost = 35;
-        }
+        $scope.deliveryCost = 0;
+        //if ((orderAmount >= 1000) || ($scope.selectedCity.originalId === config.interDeliveryID())) {
+        //  $scope.deliveryCost = 0;
+        //} else {
+        //  $scope.deliveryCost = 35;
+        //}
       }
       $scope.totalAmount = orderAmount + $scope.deliveryCost;
     }
