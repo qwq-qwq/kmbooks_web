@@ -465,7 +465,6 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
 
 .line_through{
   position: relative;
-  width: 40%;
   margin: auto;
 }
 
