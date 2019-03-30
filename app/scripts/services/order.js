@@ -41,7 +41,7 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
         return $rootScope.order.goodsTable.length;
       }
     },
-    GetStoredOrderData: function () {
+    GetStoredData: function () {
       var orderId = $cookies.get('orderId');
       if (orderId !== undefined){
         if (orderId.length > 0){
@@ -51,11 +51,20 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
               if (response === ''){
                 $rootScope.order = undefined;
               }
-              if ($rootScope.order !== undefined) {
+              /*if ($rootScope.order !== undefined) {
                 if (!cart.Exist()){
                   cart.SetCart({email: authorization.username(), goodsTable: $rootScope.order.goodsTable});
                 }
-              }
+              }*/
+            })
+        }
+      };
+      var cartId = $cookies.get('cartId');
+      if(cartId !== undefined){
+        if (!cart.Exist() && cartId.length > 0){
+          $http.get(config.url() + "/api/cart?id=" + cartId)
+            .success(function(response) {
+               cart.SetCart(response);
             })
         }
       }

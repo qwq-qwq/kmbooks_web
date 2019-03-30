@@ -1,7 +1,7 @@
 
 'use strict';
 
-angular.module('angularApp').factory('cart', function ($http, $rootScope, config, authorization) {
+angular.module('angularApp').factory('cart', function ($http, $rootScope, config, authorization, $cookies) {
   return {
     GetCart: function () {
       return $rootScope.cart;

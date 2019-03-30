@@ -18,7 +18,7 @@ angular.module('angularApp').factory('api', function (utils, wishList, cart, ord
         }
       };
       authorization.login().success(success);
-      order.GetStoredOrderData();
+      order.GetStoredData();
       utils.GetRandomColorSchemes();
     }
   };

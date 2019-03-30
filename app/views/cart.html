@@ -1,5 +1,5 @@
 <div ng-show="completedOrder === undefined" class="row" style="margin-top: 10px">
-  <div class="col-md-6 table-responsive">
+  <div class="col-md-6 table-responsive" style="padding-left: 5px; padding-right: 5px;">
     <h4 class="brand-color">Кошик</h4>
     <table ng-if="cart.goodsTable.length > 0" class="table-striped">
       <caption>При замовленні на 800.00 грн отримуєте	безкоштовну доставку по Україні</caption>
@@ -37,8 +37,8 @@
               <img class="img-responsive" style=" min-width: 70px" ng-src="/img/pics/{{cartItems.code}}.jpg"/>
             </a>
           </td>
-          <td style="text-align: center">
-            <a href="/book?code={{cartItems.code}}">
+          <td style="text-align: center; ">
+            <a class="item-in-cart-name" href="/book?code={{cartItems.code}}">
               <p>{{cartItems.name}}</p>
             </a>
           </td>

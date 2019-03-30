@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'authorization', '$rootScope',
-'cart', '$location', function($http, config, authorization, $rootScope, cart, $location) {
+'cart', '$location', '$cookies', function($http, config, authorization, $rootScope, cart, $location, $cookies) {
   return {
     restrict: 'E',
     scope: {
@@ -51,6 +51,7 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
           scope.boughtText = "У кошику";
           scope.boughtDisable = true;
           cart.SetCart(response);
+          $cookies.put('cartId', response.id);
         }
         if (!cart.Exist()){
           cart.SetCart({email: authorization.username(), goodsTable: []});
