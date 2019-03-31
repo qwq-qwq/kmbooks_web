@@ -51,7 +51,9 @@ angular.module('angularApp').directive('bkBuyButton', ['$http', 'config', 'autho
           scope.boughtText = "У кошику";
           scope.boughtDisable = true;
           cart.SetCart(response);
-          $cookies.put('cartId', response.id);
+          var expireDate = new Date();
+          expireDate.setMonth(expireDate.getMonth() + 3);
+          $cookies.put('cartId', response.id, {expires: expireDate});
         }
         if (!cart.Exist()){
           cart.SetCart({email: authorization.username(), goodsTable: []});

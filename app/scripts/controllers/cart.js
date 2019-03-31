@@ -115,7 +115,9 @@ angular.module('angularApp')
           $scope.totalAmount = 0;
       }else{
           order.SetOrder(response);
-          $cookies.put('orderId', response.id);
+          var expireDate = new Date();
+          expireDate.setMonth(expireDate.getMonth() + 3);
+          $cookies.put('orderId', response.id, {expires: expireDate});
         }
         $scope.savingInProgress = false;
       }
