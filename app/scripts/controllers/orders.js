@@ -8,8 +8,9 @@ angular.module('angularApp')
   .controller('OrdersCtrl', function($scope, $http, $location, $route, config, authorization, utils, $rootScope) {
     $scope.username = authorization.username();
     $scope.orderStates = ['Робиться', 'Зроблений', 'Підтверджено', 'Зібраний', 'Сплачений'];
-    $scope.orderStatesFilter = ['Робиться', 'Зроблений', 'Підтверджено', 'Зібраний', 'Сплачений'];
+    $scope.orderStatesFilter = ['Всі', 'Робиться', 'Зроблений', 'Підтверджено', 'Зібраний', 'Сплачений'];
     $scope.selectors = {};
+    $scope.selectors.orderStateFilter = 'Всі';
     $scope.dateEnd = new Date(new Date().getTime() + 1 * 1000 * 60 * 60 * 24); //taking tomorrow date for covering current day
     $scope.dateStart = new Date($scope.dateEnd - 10 * 1000 * 60 * 60 * 24);
     $scope.orderNumber = undefined;
@@ -56,14 +57,16 @@ angular.module('angularApp')
       $scope.styleOrdersList = {opacity: 0.2};
       dateStart = $scope.dateStart.getDate().toString() + "." + ("0" +($scope.dateStart.getMonth() + 1).toString()).slice(-2) + "." + $scope.dateStart.getFullYear().toString();
       dateEnd = $scope.dateEnd.getDate().toString() + "." + ("0" +($scope.dateEnd.getMonth() + 1).toString()).slice(-2) + "." + $scope.dateEnd.getFullYear().toString();
-      if ($scope.dateStart && $scope.dateEnd) {
-        link = "dateStart=" + dateStart + "&dateEnd=" + dateEnd;
-      }
+
       if ($scope.orderNumber) {
         link += "&OrderNumber=" + $scope.orderNumber;
-      }
-      if ($scope.selectors.orderStatesFilter) {
-        link += "&OrderState=" + $scope.selectors.orderStatesFilter;
+      }else{
+        if ($scope.dateStart && $scope.dateEnd) {
+          link = "dateStart=" + dateStart + "&dateEnd=" + dateEnd;
+        }
+        if ($scope.selectors.orderStateFilter && $scope.selectors.orderStateFilter != 'Всі') {
+          link += "&OrderState=" + $scope.selectors.orderStateFilter;
+        }
       }
 
       $http.get(config.url() + "/api/orders_admin/orders?" + link, {withCredentials: true})

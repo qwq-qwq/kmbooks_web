@@ -4,17 +4,17 @@
     <label>Номер</label>
     <input ng-model="orderNumber">
   </md-input-container>
-  <md-input-container>
+  <md-input-container ng-hide="orderNumber">
     <label>Дата с</label>
     <md-datepicker ng-model="dateStart"></md-datepicker>
   </md-input-container>
-  <md-input-container>
+  <md-input-container ng-hide="orderNumber">
     <label>по</label>
     <md-datepicker ng-model="dateEnd"></md-datepicker>
   </md-input-container>
-  <md-input-container style="margin-top: -10px">
+  <md-input-container style="margin-top: -10px" ng-hide="orderNumber">
     <label>Статус</label>
-    <md-select ng-model="selectors.orderStatesFilter">
+    <md-select ng-model="selectors.orderStateFilter">
       <md-option ng-repeat="state in orderStatesFilter" ng-value="state">
         {{state}}
       </md-option>
