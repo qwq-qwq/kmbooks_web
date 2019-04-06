@@ -1,12 +1,24 @@
 <h1 class="brand-color">Замовлення</h1>
 <div class="row">
   <md-input-container>
+    <label>Номер</label>
+    <input ng-model="orderNumber">
+  </md-input-container>
+  <md-input-container>
     <label>Дата с</label>
     <md-datepicker ng-model="dateStart"></md-datepicker>
   </md-input-container>
   <md-input-container>
     <label>по</label>
     <md-datepicker ng-model="dateEnd"></md-datepicker>
+  </md-input-container>
+  <md-input-container style="margin-top: -10px">
+    <label>Статус</label>
+    <md-select ng-model="selectors.orderStatesFilter">
+      <md-option ng-repeat="state in orderStatesFilter" ng-value="state">
+        {{state}}
+      </md-option>
+    </md-select>
   </md-input-container>
   <md-button class="md-raised brand-color-background" ng-click="updateOrdersTable()">
     <i ng-show="saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>

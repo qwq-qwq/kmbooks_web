@@ -8,9 +8,11 @@ angular.module('angularApp')
   .controller('OrdersCtrl', function($scope, $http, $location, $route, config, authorization, utils, $rootScope) {
     $scope.username = authorization.username();
     $scope.orderStates = ['Робиться', 'Зроблений', 'Підтверджено', 'Зібраний', 'Сплачений'];
+    $scope.orderStatesFilter = ['Робиться', 'Зроблений', 'Підтверджено', 'Зібраний', 'Сплачений'];
     $scope.selectors = {};
     $scope.dateEnd = new Date(new Date().getTime() + 1 * 1000 * 60 * 60 * 24); //taking tomorrow date for covering current day
     $scope.dateStart = new Date($scope.dateEnd - 10 * 1000 * 60 * 60 * 24);
+    $scope.orderNumber = undefined;
 
     $rootScope.$on('successful_authorization', function () {
       $scope.username = authorization.username();
@@ -57,6 +59,13 @@ angular.module('angularApp')
       if ($scope.dateStart && $scope.dateEnd) {
         link = "dateStart=" + dateStart + "&dateEnd=" + dateEnd;
       }
+      if ($scope.orderNumber) {
+        link += "&OrderNumber=" + $scope.orderNumber;
+      }
+      if ($scope.selectors.orderStatesFilter) {
+        link += "&OrderState=" + $scope.selectors.orderStatesFilter;
+      }
+
       $http.get(config.url() + "/api/orders_admin/orders?" + link, {withCredentials: true})
         .success(function (response) {
           $scope.requests_author = response;
@@ -77,7 +86,7 @@ angular.module('angularApp')
         })
     }
 
-    $scope.updateOrdersTable();
+   // $scope.updateOrdersTable();
 
     $scope.toDateTime = function(ObjId) {
       return utils.toDateTime(ObjId);
