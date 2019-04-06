@@ -86,7 +86,7 @@ angular.module('angularApp')
         })
     }
 
-   // $scope.updateOrdersTable();
+    $scope.updateOrdersTable();
 
     $scope.toDateTime = function(ObjId) {
       return utils.toDateTime(ObjId);
