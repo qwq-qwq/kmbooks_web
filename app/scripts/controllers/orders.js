@@ -71,7 +71,8 @@ angular.module('angularApp')
 
       $http.get(config.url() + "/api/orders_admin/orders?" + link, {withCredentials: true})
         .success(function (response) {
-          $scope.requests_author = response;
+          $scope.orders = undefined;
+          $scope.grandTotal = 0;
           for(var k in response) {
             var grandTotal = 0;
             angular.forEach(response, function (value, key) {
