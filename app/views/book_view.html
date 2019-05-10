@@ -91,8 +91,8 @@
     </div>
   </div>
   <div class="hidden-md hidden-lg" style="text-align: center;">
-    <div ng-show="book.actionKM == '20'" style="font-size: 20px">
-      -20%
+    <div ng-if="book.actionKM == '20'" style="position: absolute; top: 0; left: 22%">
+      <img width="60" height="60" src="img/minus_20_baloon.png">
     </div>
     <img src="{{book.image}}" class="point_img center-block" ng-click="showGallery(1)">
     <p style="margin-top: 30px; text-align: center">
