@@ -242,7 +242,7 @@ angular.module('angularApp')
         if (orderAmount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
-          $scope.deliveryCost = 40;
+          $scope.deliveryCost = 45;
         }
       }else if ($scope.selectedDelivery.id === '3'){
         $scope.deliveryCost = 0;
