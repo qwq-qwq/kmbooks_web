@@ -1,6 +1,6 @@
 <div class="col-md-4 text-center">
-  <div ng-show="book.actionKM == '20'" style="font-size: 20px">
-    -20%
+  <div ng-if="book.actionKM == '20'" style="position: absolute; top: -6px; left: 20%">
+    <img width="30" height="30" src="img/minus_20_baloon.png">
   </div>
   <md-button class="md-icon-button" ng-click="AddToWishList(book)"
              style="position: absolute; top: -20px; right: 4px" aria-label="Favorite">
