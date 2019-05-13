@@ -98,6 +98,13 @@
     <p style="margin-top: 30px; text-align: center">
       <bk-price book="book" div="false"></bk-price>
       <bk-buy-button book="book"></bk-buy-button>
+      <p style="font-size: 12px" ng-if="book.actionKM == '20'">
+      <span style="color: red">Акційна знижка 20%!</span><br>
+        Ціна на сайті вказана без урахування знижки.<br>
+        Знижку зробить менеджер працюючи з замовленням.<br>
+        Акція діє з 13.05 до 01.06.2019 року <br>
+      <a href="https://kmbooks.com.ua/news?id=5cd689f76085a5420e1fefa8">Детальніше про акцію</a>
+      </p>
       <p ng-if="bookFragment !== ''" style="text-align: center">
         <md-button ng-click="OpenFragment(bookFragment.file)" class="">
           <span style="font-size: large" class="glyphicon glyphicon-book brand-color"></span>&nbsp;&nbsp;читати фрагмент
@@ -203,7 +210,7 @@
         <span style="color: red">Акційна знижка 20%!</span><br>
         Ціна на сайті вказана без урахування знижки.<br>
         Знижку зробить менеджер працюючи з замовленням.<br>
-        Акція діє з 13.05 до 1.06.2019 року <br>
+        Акція діє з 13.05 до 01.06.2019 року <br>
         <a href="https://kmbooks.com.ua/news?id=5cd689f76085a5420e1fefa8">Детальніше про акцію</a>
         </p>
         <p ng-if="bookFragment !== ''" style="text-align: center">
