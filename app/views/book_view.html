@@ -90,11 +90,16 @@
       </a>
     </div>
   </div>
-  <div class="hidden-md hidden-lg" style="text-align: center;">
-    <div ng-if="book.actionKM == '20'" style="position: absolute; top: 0; left: 22%">
-      <img width="60" height="60" src="img/minus_20_baloon.png">
+  <div class="hidden-md hidden-lg text-center">
+    <div style="display: inline-block; position: relative;">
+      <span ng-if="book.actionKM == '20'" style="position: absolute; top: 0%; left: -3%">
+        <img width="60" height="60" src="img/minus_20_baloon.png">
+      </span>
+      <span>
+        <img src="{{book.image}}" class="point_img" ng-click="showGallery(1)">
+      </span>
     </div>
-    <img src="{{book.image}}" class="point_img center-block" ng-click="showGallery(1)">
+
     <p style="margin-top: 30px; text-align: center">
       <bk-price book="book" div="false"></bk-price>
       <bk-buy-button book="book"></bk-buy-button>

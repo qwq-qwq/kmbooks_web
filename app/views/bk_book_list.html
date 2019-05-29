@@ -1,14 +1,16 @@
 <div class="col-md-4 text-center">
-  <div ng-if="book.actionKM == '20'" style="position: absolute; top: -6px; left: 20%">
-    <img width="30" height="30" src="img/minus_20_baloon.png">
-  </div>
   <md-button class="md-icon-button" ng-click="AddToWishList(book)"
              style="position: absolute; top: -20px; right: 4px" aria-label="Favorite">
     <i ng-class="wishHeart" ng-mouseleave="onMouseLeave()" ng-mouseenter="onMouseEnter()" style="font-size: medium;"></i>
   </md-button>
-  <a href="/book?code={{book.code}}">
-    <img src="{{book.image}}">
-  </a>
+  <div style="display: inline-block; position: relative;">
+    <div ng-if="book.actionKM == '20'" style="position: absolute; top: -3px; left: -3px">
+      <img width="60" height="60" src="img/minus_20_baloon.png">
+    </div>
+    <a href="/book?code={{book.code}}">
+      <img src="{{book.image}}">
+    </a>
+  </div>
   <p style="margin-top: 30px; text-align: center">
     <bk-price book="book" div="false"></bk-price>
     <bk-buy-button book="book">
