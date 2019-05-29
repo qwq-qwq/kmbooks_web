@@ -215,19 +215,20 @@
         <div style="color: red; font-size: 15px; text-align: center">Акційна знижка 20%!</div>
         Ціна на сайті вказана без урахування знижки.<br>
         Знижку зробить менеджер працюючи з замовленням.
-        <div style="display: flex">
-          <div style="flex: 1">
-            До кінця акції <br>
-            <span style="font-size: 16px">{{discountCountdownDays}}<sub>д</sub>
-              {{discountCountdownHours}}<sub>ч</sub>
-              {{discountCountdownMinutes}}<sub>м</sub>
-              {{discountCountdownSeconds}}<sub>с</sub>
-            </span>
+          <div style="display: flex">
+            <div style="flex: 1">
+              До кінця акції <br>
+              <span style="font-size: 16px">{{discountCountdownDays}}<sub>д</sub>
+                {{discountCountdownHours}}<sub>ч</sub>
+                {{discountCountdownMinutes}}<sub>м</sub>
+                {{discountCountdownSeconds}}<sub>с</sub>
+              </span>
+            </div>
+            <div style="flex: 1">
+              Акція діє з 13.05 до 15.06.2019 року <br>
+              <a href="https://kmbooks.com.ua/news?id=5cd689f76085a5420e1fefa8">Детальніше про акцію</a>
+            </div>
           </div>
-        <div style="flex: 1">
-        Акція діє з 13.05 до 15.06.2019 року <br>
-          <a href="https://kmbooks.com.ua/news?id=5cd689f76085a5420e1fefa8">Детальніше про акцію</a>
-        </div>
         </div>
         <p ng-if="bookFragment !== ''" style="text-align: center">
           <md-button ng-click="OpenFragment(bookFragment.file)" class="">
