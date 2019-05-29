@@ -103,7 +103,7 @@
     <p style="margin-top: 30px; text-align: center">
       <bk-price book="book" div="false"></bk-price>
       <bk-buy-button book="book"></bk-buy-button>
-      <p style="font-size: 12px" ng-if="book.actionKM == '20'">
+      <p style="font-size: 12px;" ng-if="book.actionKM == '20'">
       <span style="color: red">Акційна знижка 20%!</span><br>
         Ціна на сайті вказана без урахування знижки.<br>
         Знижку зробить менеджер працюючи з замовленням.<br>
@@ -211,13 +211,24 @@
           <bk-buy-button book="book">
           </bk-buy-button>
         </p>
-        <p style="font-size: 12px" ng-if="book.actionKM == '20'">
-        <span style="color: red">Акційна знижка 20%!</span><br>
+        <div style="font-size: 12px; border: 1.5px solid darkgoldenrod; padding: 5px" ng-if="book.actionKM == '20'">
+        <div style="color: red; font-size: 15px; text-align: center">Акційна знижка 20%!</div>
         Ціна на сайті вказана без урахування знижки.<br>
-        Знижку зробить менеджер працюючи з замовленням.<br>
+        Знижку зробить менеджер працюючи з замовленням.
+        <div style="display: flex">
+          <div style="flex: 1">
+            До кінця акції <br>
+            <span style="font-size: 16px">{{discountCountdownDays}}<sub>д</sub>
+              {{discountCountdownHours}}<sub>ч</sub>
+              {{discountCountdownMinutes}}<sub>м</sub>
+              {{discountCountdownSeconds}}<sub>с</sub>
+            </span>
+          </div>
+        <div style="flex: 1">
         Акція діє з 13.05 до 15.06.2019 року <br>
-        <a href="https://kmbooks.com.ua/news?id=5cd689f76085a5420e1fefa8">Детальніше про акцію</a>
-        </p>
+          <a href="https://kmbooks.com.ua/news?id=5cd689f76085a5420e1fefa8">Детальніше про акцію</a>
+        </div>
+        </div>
         <p ng-if="bookFragment !== ''" style="text-align: center">
           <md-button ng-click="OpenFragment(bookFragment.file)" class="">
             <span style="font-size: large" class="glyphicon glyphicon-book brand-color"></span>&nbsp;&nbsp;читати фрагмент

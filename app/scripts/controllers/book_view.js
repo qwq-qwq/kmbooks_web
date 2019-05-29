@@ -4,7 +4,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('BookViewCtrl', function ($scope, $http, $window, $location, authorization,
+  .controller('BookViewCtrl', function ($scope, $http, $window, $location, $interval, authorization,
                                         FileUploader, config, pageTitle, utils, confirmDialog,
                                         $rootScope, elBooks, urlBeforeWrongAuth, wishList) {
     var code = $location.search().code;
@@ -54,6 +54,16 @@ angular.module('angularApp')
         }
       }
     })
+    $scope.actionExpiredAt = new Date(2019, 5, 16);
+    $interval(function(){
+      var now = new Date().getTime();
+      var timeLeft = $scope.actionExpiredAt - now;
+      $scope.discountCountdownDays = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      $scope.discountCountdownHours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      $scope.discountCountdownMinutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      $scope.discountCountdownSeconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    },1000,0);
+
 
     $scope.SaveOrder = function (book) {
       function successAdded(response) {
