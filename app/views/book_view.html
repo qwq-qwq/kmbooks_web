@@ -92,7 +92,7 @@
   </div>
   <div class="hidden-md hidden-lg text-center">
     <div style="display: inline-block; position: relative;">
-      <span ng-if="book.actionKM != ''" style="position: absolute; top: 0%; left: -3%">
+      <span ng-if="book.actionKM != null" style="position: absolute; top: 0%; left: -3%">
         <img width="60" height="60" src="img/minus_{{book.actionKM}}_baloon.png">
       </span>
       <span>
@@ -103,7 +103,7 @@
     <p style="margin-top: 30px; text-align: center">
       <bk-price book="book" div="false"></bk-price>
       <bk-buy-button book="book"></bk-buy-button>
-      <p style="font-size: 12px;" ng-if="book.actionKM != ''">
+      <p style="font-size: 12px;" ng-if="book.actionKM != null">
       <span style="color: red">﻿ДО -30% НА ВЕСЬ АСОРТИМЕНТ !</span><br>
         ﻿Ціну на сайті вже знижено.<br>
         Акційна знижка збільшується дисконтом постійного покупця.<br>
@@ -202,7 +202,7 @@
   <div class="col-md-3 hidden-xs hidden-sm">
     <div style="position: fixed; top: 60px;">
       <div style="background: rgba(255, 255, 255, 0.4); padding: 8px;">
-        <div ng-if="book.actionKM != ''" style="position: absolute; top: -1%; left: -10%">
+        <div ng-if="book.actionKM != null" style="position: absolute; top: -1%; left: -10%">
           <img width="80" height="80" src="img/minus_{{book.actionKM}}_baloon.png">
         </div>
         <img class="img-responsive point_img" src="{{flatImage}}" ng-style="flatImageHeight" ng-click="showGallery(flatImageIndex)" style="box-shadow: 0px 0px 10px #d8d8d8;">
@@ -211,7 +211,7 @@
           <bk-buy-button book="book">
           </bk-buy-button>
         </p>
-        <div style="font-size: 12px; border: 1.5px solid darkgoldenrod; padding: 5px" ng-if="book.actionKM != ''">
+        <div style="font-size: 12px; border: 1.5px solid darkgoldenrod; padding: 5px" ng-if="book.actionKM != null">
         <div style="color: red; font-size: 15px; text-align: center">﻿ДО -30% НА ВЕСЬ АСОРТИМЕНТ !</div>
           ﻿Ціну на сайті вже знижено.<br>
           Акційна знижка збільшується дисконтом постійного покупця.
