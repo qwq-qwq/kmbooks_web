@@ -77,7 +77,7 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
             if (value.priceWithoutDiscount === undefined){
               value.priceWithoutDiscount = value.price;
             }
-            value.price = Math.round(value.priceWithoutDiscount * (1 - value.discount / 100) * 10) / 10;
+            value.price = Math.round(value.priceWithoutDiscount * (1 - value.discount / 100) * 100) / 100;
             value.amount = Math.round(value.quantity * value.price * 100) / 100;
             order.orderAmount += value.amount;
           }
