@@ -64,7 +64,7 @@
           <th></th>
           <th></th>
           <th colspan="2" style="text-align: right">
-            {{cart.orderAmount}} грн
+            {{cart.orderAmount | currency: ""}} грн
           </th>
         </tr>
         <tr ng-if="promoCode">
