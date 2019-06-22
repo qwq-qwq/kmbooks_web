@@ -86,7 +86,7 @@
           <th></th>
           <th></th>
           <th colspan="2" style="text-align: right">
-            {{orderAmount | currency: ""}} грн
+            {{orderAmountWithDiscount | currency: ""}} грн
           </th>
         </tr>
       </tbody>
@@ -283,7 +283,7 @@
         </div>
 
         <p>Вартість товарів: {{cart.orderAmount | currency: ""}} грн</p>
-        <p ng-if="promoCode">Вартість товарів з урахуванням промо-коду: {{orderAmount | currency: ""}} грн</p>
+        <p ng-if="promoCode">Вартість товарів з урахуванням промо-коду: {{orderAmountWithDiscount | currency: ""}} грн</p>
         <p ng-hide="selector.interDelivery">Вартість доставки: {{deliveryCost | currency: ""}} грн</p>
         <p ng-show="selector.interDelivery">Вартість доставки: розраховується менеджером</p>
         <p>До сплати: {{totalAmount | currency: ""}} грн</p>

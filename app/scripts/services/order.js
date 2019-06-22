@@ -82,13 +82,17 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
             order.orderAmount += value.amount;
           }
         });
-        order.totalAmount = order.orderAmount + order.deliveryCost;
+        if (order.promoCode !== undefined){
+          order.orderAmountWithDiscount = Math.round(order.orderAmount * (1 - order.promoCode.percent / 100)* 10) / 10;
+        }else{
+          order.orderAmountWithDiscount = order.orderAmount;
+        }
+        order.totalAmount = order.orderAmountWithDiscount + order.deliveryCost;
       }
     },
     RecalculateDeliveryCost: function (order) {
-      var orderAmount = order.orderAmount;
       if (order.delivery.id === '1') {
-        if (order.orderAmount >= 1000) {
+        if (order.orderAmountWithDiscount >= 1000) {
           order.deliveryCost = 0;
         } else {
           order.deliveryCost = 45;
@@ -96,19 +100,14 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
       }else if (order.delivery.id === '3'){
         order.deliveryCost = 0;
       }else if (order.delivery.id === '5'){
-        if (orderAmount >= 1000) {
+        if (order.orderAmountWithDiscount >= 1000) {
           order.deliveryCost = 0;
         } else {
           order.deliveryCost = 45;
         }
       }else if(order.delivery.id === '4') {
         order.deliveryCost = 0;
-        //if ((orderAmount >= 800) || (order.selectedCity.originalId === config.interDeliveryID())) {
-        //  order.deliveryCost = 0;
-        //} else {
-        //  order.deliveryCost = 35;
-        //}
       }
-      order.totalAmount = orderAmount + order.deliveryCost;
+      order.totalAmount = order.orderAmountWithDiscount + order.deliveryCost;
     }
   }});

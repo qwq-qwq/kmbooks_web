@@ -114,6 +114,7 @@
          </md-input-container>
 
          <p>Сума: {{currentOrder.orderAmount | currency: ""}} грн</p>
+         <p ng-if="currentOrder.promoCode">Вартість товарів з урахуванням промо-коду: {{currentOrder.orderAmountWithDiscount | currency: ""}} грн</p>
          <p>Сума доставки: {{currentOrder.deliveryCost | currency: ""}} грн</p>
          <p>Сума всього: {{currentOrder.totalAmount | currency: ""}} грн</p>
 

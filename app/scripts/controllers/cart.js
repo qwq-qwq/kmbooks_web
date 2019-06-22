@@ -113,6 +113,7 @@ angular.module('angularApp')
           $scope.orderState = '';
           $scope.promoCode = '';
           $scope.promoCodeName = '';
+          $scope.orderAmountWithDiscount = 0;
           $scope.deliveryCost = 0;
           $scope.totalAmount = 0;
       }else{
@@ -157,6 +158,7 @@ angular.module('angularApp')
                          zip:           $scope.selector.zip,
                          promoCode:     $scope.promoCode,
                          orderAmount:   orderAmount,
+                         orderAmountWithDiscount: $scope.orderAmountWithDiscount,
                          deliveryCost:  $scope.deliveryCost,
                          totalAmount:   $scope.totalAmount,
                          goodsTable:    goodsTable};
@@ -237,16 +239,16 @@ angular.module('angularApp')
       var itemsCount;
       if (cart.Exist()){
         if ($scope.promoCode !== undefined){
-          $scope.orderAmount = cart.GetCart().orderAmount * (1 - $scope.promoCode.percent / 100);
+          $scope.orderAmountWithDiscount = Math.round(cart.GetCart().orderAmount * (1 - $scope.promoCode.percent / 100)* 10) / 10;
         }else{
-          $scope.orderAmount = cart.GetCart().orderAmount;
+          $scope.orderAmountWithDiscount = cart.GetCart().orderAmount;
         }
         itemsCount = cart.ItemsCount();
       }else{
-        $scope.orderAmount = 0;
+        $scope.orderAmountWithDiscount = 0;
       }
       if ($scope.selectedDelivery.id === '1') {
-        if ($scope.orderAmount >= 1000) {
+        if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
           $scope.deliveryCost = 45;
@@ -254,20 +256,15 @@ angular.module('angularApp')
       }else if ($scope.selectedDelivery.id === '3'){
         $scope.deliveryCost = 0;
       }else if ($scope.selectedDelivery.id === '5'){
-        if ($scope.orderAmount >= 1000) {
+        if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
           $scope.deliveryCost = 45;
         }
       }else if($scope.selectedDelivery.id === '4') {
         $scope.deliveryCost = 0;
-        //if ((orderAmount >= 1000) || ($scope.selectedCity.originalId === config.interDeliveryID())) {
-        //  $scope.deliveryCost = 0;
-        //} else {
-        //  $scope.deliveryCost = 35;
-        //}
       }
-      $scope.totalAmount = $scope.orderAmount + $scope.deliveryCost;
+      $scope.totalAmount = $scope.orderAmountWithDiscount + $scope.deliveryCost;
     }
 
     $scope.SelectDelivery = function () {

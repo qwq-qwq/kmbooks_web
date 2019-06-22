@@ -64,6 +64,37 @@
       </td>
     </a>
   </tr>
+  <tr>
+    <th>
+      Всього:
+    </th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th colspan="2" style="text-align: right">
+      {{order.orderAmount | currency: ""}} грн
+    </th>
+  </tr>
+  <tr ng-if="order.promoCode">
+    <th colspan="2">
+      Промо-код:
+    </th>
+    <th>{{order.promoCode.name}}</th>
+    <th></th>
+    <th colspan="2" style="text-align: right">
+      {{order.promoCode.percent}}%
+    </th>
+  </tr>
+  <tr ng-if="order.promoCode">
+    <th colspan="2">
+      З промо-кодом
+    </th>
+    <th></th>
+    <th></th>
+    <th colspan="2" style="text-align: right">
+      {{order.orderAmountWithDiscount | currency: ""}} грн
+    </th>
+  </tr>
   </tbody>
 </table>
 <div ng-if="order.goodsTable.length == 0" class="jumbotron" style="margin-top: 20px">
