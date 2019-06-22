@@ -1,0 +1,87 @@
+<style>
+  input {
+    max-width: 80%;
+    margin: auto;
+  }
+  .edit-btn {
+    width: 100%;
+  }
+  td {
+    padding: 10px;
+  }
+</style>
+<h1 class="brand-color">Промо коди</h1>
+<md-button type="button" class="btn btn-primary" ng-click="AddItem()">
+  Додати новий промо-код
+</md-button>
+<div style="margin-top: 20px">
+  <div>
+    <table class="table-striped table-bordered table-hover" width="100%">
+      <thead>
+      <th style="text-align: center">
+        <p>Ім'я</p>
+      </th>
+      <th style="text-align: center">
+        <p>Процент</p>
+      </th>
+      <th style="text-align: center">
+        <p>Активна</p>
+      </th>
+      <th style="text-align: center">
+        <p>Дата с</p>
+      </th>
+      <th style="text-align: center">
+        <p>Дата по</p>
+      </th>
+      <th class="col-md-1">
+        Дії
+      </th>
+      </thead>
+      <tbody ng-repeat="promoCode in promoCodes">
+      <tr>
+        <td>
+          <p class="text-left" ng-hide="promoCode.editing" ng-dblclick="editItem(promoCode)">{{promoCode.name}}</p>
+          <input id="name" class="form-control" ng-show="promoCode.editing" ng-model="promoCode.name" autofocus>
+        </td>
+        <td>
+          <p class="text-left" ng-hide="promoCode.editing" ng-dblclick="editItem(promoCode)">{{promoCode.percent}}</p>
+          <input id="percent" class="form-control" ng-show="promoCode.editing" ng-model="promoCode.percent">
+        </td>
+        <td>
+          <p ng-show="promoCode.active" style="color: green">
+            Активний
+          </p>
+          <p ng-hide="promoCode.active" style="color: red">
+            Не активний
+          </p>
+          <div ng-show="promoCode.editing" class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="promoCode.active">
+              Активувати
+            </label>
+          </div>
+        </td>
+        <td style="text-align: center">
+          <p ng-hide="promoCode.editing">{{promoCode.dateStart | date: 'dd.MM.yyyy'}}</p>
+          <md-datepicker ng-show="promoCode.editing" ng-model="promoCode.dateStart"></md-datepicker>
+        </td>
+        <td style="text-align: center">
+          <p ng-hide="promoCode.editing">{{promoCode.dateEnd | date: 'dd.MM.yyyy'}}</p>
+          <md-datepicker ng-show="promoCode.editing" ng-model="promoCode.dateEnd"></md-datepicker>
+        </td>
+        <th>
+          <button type="button" class="btn edit-btn btn-primary btn-xs" ng-click="editItem(promoCode)" ng-disabled="promoCode.editing">
+            <span class="glyphicon glyphicon-edit"></span> Редагувати
+          </button>
+          <button type="button" class="btn edit-btn btn-success btn-xs" ng-click="doneEditing(promoCode)" ng-disabled="!promoCode.editing">
+            <span class="glyphicon glyphicon-save"></span> Зберігти
+          </button>
+          <button type="button" class="btn edit-btn btn-danger btn-xs" ng-click="deleteItem(promoCode)" ng-disabled="promoCode.editing">
+            <span class="glyphicon glyphicon-remove"></span> Видалити
+          </button>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

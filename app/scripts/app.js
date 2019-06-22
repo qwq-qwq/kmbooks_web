@@ -188,6 +188,10 @@ angular
         templateUrl: 'views/wish_lists_report.html',
         controller: 'WishListsReportCtrl'
       })
+      .when('/promo_codes', {
+        templateUrl: 'views/promo_codes.html',
+        controller: 'PromoCodesCtrl'
+      })
       .when('/stipend', {
         redirectTo: function() {
           window.location = "https://kmbooks.com.ua/stipend/";

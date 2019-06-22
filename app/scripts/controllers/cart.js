@@ -111,6 +111,8 @@ angular.module('angularApp')
           $scope.orderComment = '';
           $scope.selector.zip = '';
           $scope.orderState = '';
+          $scope.promoCode = '';
+          $scope.promoCodeName = '';
           $scope.deliveryCost = 0;
           $scope.totalAmount = 0;
       }else{
@@ -153,6 +155,7 @@ angular.module('angularApp')
                          orderState:    $scope.orderState,
                          orderComment:  $scope.orderComment,
                          zip:           $scope.selector.zip,
+                         promoCode:     $scope.promoCode,
                          orderAmount:   orderAmount,
                          deliveryCost:  $scope.deliveryCost,
                          totalAmount:   $scope.totalAmount,
@@ -231,15 +234,19 @@ angular.module('angularApp')
     }
 
     $scope.RecalculateDeliveryCost = function () {
-      var orderAmount, itemsCount;
+      var itemsCount;
       if (cart.Exist()){
-        orderAmount = cart.GetCart().orderAmount;
+        if ($scope.promoCode !== undefined){
+          $scope.orderAmount = cart.GetCart().orderAmount * (1 - $scope.promoCode.percent / 100);
+        }else{
+          $scope.orderAmount = cart.GetCart().orderAmount;
+        }
         itemsCount = cart.ItemsCount();
       }else{
-        orderAmount = 0;
+        $scope.orderAmount = 0;
       }
       if ($scope.selectedDelivery.id === '1') {
-        if (orderAmount >= 1000) {
+        if ($scope.orderAmount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
           $scope.deliveryCost = 45;
@@ -247,7 +254,7 @@ angular.module('angularApp')
       }else if ($scope.selectedDelivery.id === '3'){
         $scope.deliveryCost = 0;
       }else if ($scope.selectedDelivery.id === '5'){
-        if (orderAmount >= 1000) {
+        if ($scope.orderAmount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
           $scope.deliveryCost = 45;
@@ -260,7 +267,7 @@ angular.module('angularApp')
         //  $scope.deliveryCost = 35;
         //}
       }
-      $scope.totalAmount = orderAmount + $scope.deliveryCost;
+      $scope.totalAmount = $scope.orderAmount + $scope.deliveryCost;
     }
 
     $scope.SelectDelivery = function () {
@@ -289,6 +296,22 @@ angular.module('angularApp')
             })
         }
       }
+    }
+
+    $scope.ApplyPromoCode = function () {
+      $scope.savingInProgress = true;
+      $http.get(config.url() + "/api/promo_codes/get_by_name?name=" + $scope.promoCodeName)
+        .success(function(response) {
+          $scope.promoCode = response;
+          $scope.RecalculateDeliveryCost();
+        })
+      $scope.savingInProgress = false;
+    }
+
+    $scope.RemovePromoCode = function () {
+      $scope.promoCode = undefined;
+      $scope.promoCodeName = '';
+      $scope.RecalculateDeliveryCost();
     }
 
     $rootScope.$on('cart_was_added', function () {
