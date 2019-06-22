@@ -3,7 +3,7 @@
 angular.module('angularApp')
   .controller('PromoCodesCtrl', function($scope, $http, $location, $route, config, authorization, utils, $rootScope) {
 
-    $http.get(config.url() + "/api/promo_codes/all", {withCredentials: true})
+    $http.get(config.url() + "/api/edit/promo_codes/all", {withCredentials: true})
       .success(function (response) {
         for(var k in response) {
           response[k].dateStart = new Date(response[k].dateStart);
@@ -25,14 +25,14 @@ angular.module('angularApp')
     $scope.doneEditing = function (item) {
       item.editing = false;
       var promoCode = {id: item.id, name: item.name, percent: item.percent, active: item.active, dateStart: item.dateStart, dateEnd: item.dateEnd};
-      $http.post(config.url() + "/api/promo_codes/update", promoCode, {withCredentials: true})
+      $http.post(config.url() + "/api/edit/promo_codes/update", promoCode, {withCredentials: true})
         .success(function(response) {
           item.id = response.id;
         });
     }
 
     $scope.deleteItem = function (item) {
-      $http.post(config.url() + "/api/promo_codes/delete", item, {withCredentials: true})
+      $http.post(config.url() + "/api/edit/promo_codes/delete", item, {withCredentials: true})
         .success(function(response) {
           for (var k in $scope.promoCodes) {
             if ($scope.promoCodes[k].row_id == item.row_id) {
