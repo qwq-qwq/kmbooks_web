@@ -82,7 +82,7 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
             order.orderAmount += value.amount;
           }
         });
-        if (order.promoCode !== undefined){
+        if (order.promoCode !== undefined && order.orderAmount >= order.promoCode.minOrderAmount){
           order.orderAmountWithDiscount = Math.round(order.orderAmount * (1 - order.promoCode.percent / 100)* 10) / 10;
         }else{
           order.orderAmountWithDiscount = order.orderAmount;

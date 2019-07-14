@@ -18,13 +18,13 @@ angular.module('angularApp')
       function getRandomId() {
         return Math.floor((Math.random()*10000)+1)+1000;
       }
-      var promoCode = {id: '', row_id: getRandomId(), name: '', percent: 0, active: true, dateStart: new Date(), dateEnd: new Date(),  editing: true};
+      var promoCode = {id: '', row_id: getRandomId(), name: '', percent: 0, active: true, dateStart: new Date(), dateEnd: new Date(), minOrderAmount: 0, editing: true};
       $scope.promoCodes.unshift(promoCode);
     }
 
     $scope.doneEditing = function (item) {
       item.editing = false;
-      var promoCode = {id: item.id, name: item.name, percent: item.percent, active: item.active, dateStart: item.dateStart, dateEnd: item.dateEnd};
+      var promoCode = {id: item.id, name: item.name, percent: item.percent, active: item.active, minOrderAmount: item.minOrderAmount, dateStart: item.dateStart, dateEnd: item.dateEnd};
       $http.post(config.url() + "/api/edit/promo_codes/update", promoCode, {withCredentials: true})
         .success(function(response) {
           item.id = response.id;

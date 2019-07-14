@@ -238,7 +238,7 @@ angular.module('angularApp')
     $scope.RecalculateDeliveryCost = function () {
       var itemsCount;
       if (cart.Exist()){
-        if ($scope.promoCode !== undefined){
+        if ($scope.promoCode !== undefined && cart.GetCart().orderAmount >= $scope.promoCode.minOrderAmount){
           $scope.orderAmountWithDiscount = Math.round(cart.GetCart().orderAmount * (1 - $scope.promoCode.percent / 100)* 10) / 10;
         }else{
           $scope.orderAmountWithDiscount = cart.GetCart().orderAmount;

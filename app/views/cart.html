@@ -100,6 +100,9 @@
       </md-button>
     </div>
     <div class="pull-right" style="width: 50%; text-align: right; margin-top: 20px" ng-show="promoCode">
+      <div ng-if="cart.orderAmount < promoCode.minOrderAmount">
+        <p class="alert alert-warning">﻿Обери собі ще книг! Знижка {{promoCode.percent}}% діє на замовлення сумою від {{promoCode.minOrderAmount}} гривень.</p>
+      </div>
       <p style="font-weight: bold">Видалити промокод: {{promoCode.name}}</p>
       <md-button style="margin-right: 0" class="md-raised brand-color-background" ng-click="RemovePromoCode()">
         Видалити

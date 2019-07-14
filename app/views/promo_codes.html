@@ -25,6 +25,9 @@
         <p>Процент</p>
       </th>
       <th style="text-align: center">
+        <p>Мін сума</p>
+      </th>
+      <th style="text-align: center">
         <p>Активна</p>
       </th>
       <th style="text-align: center">
@@ -33,8 +36,8 @@
       <th style="text-align: center">
         <p>Дата по</p>
       </th>
-      <th class="col-md-1">
-        Дії
+      <th class="col-md-1" style="text-align: center">
+        <p>Дії</p>
       </th>
       </thead>
       <tbody ng-repeat="promoCode in promoCodes">
@@ -46,6 +49,10 @@
         <td>
           <p class="text-left" ng-hide="promoCode.editing" ng-dblclick="editItem(promoCode)">{{promoCode.percent}}</p>
           <input id="percent" class="form-control" ng-show="promoCode.editing" ng-model="promoCode.percent">
+        </td>
+        <td>
+          <p class="text-left" ng-hide="promoCode.editing" ng-dblclick="editItem(promoCode)">{{promoCode.minOrderAmount}}</p>
+          <input id="minOrderAmount" class="form-control" ng-show="promoCode.editing" ng-model="promoCode.minOrderAmount">
         </td>
         <td>
           <p ng-show="promoCode.active" style="color: green">
