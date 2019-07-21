@@ -18,12 +18,12 @@ angular.module('angularApp').directive('bkPrice', ['authorization', '$rootScope'
          scope.lineThroughStyle = {'margin-left': 'auto', 'margin-right': 'auto', 'max-width': '110px'};
       }
       scope.updateAuthorization = function () {
-        var discount = 20;
+        var discount = 0;
         if (authorization.isAuthorized()) {
           if (authorization.getUser().valueOfPurchases <= 1000){
-            discount = 20;
+            discount = 3;
           }else{
-            discount = 20;
+            discount = 5;
           }
         }
         if (scope.book !== undefined){
