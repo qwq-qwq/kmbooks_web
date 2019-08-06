@@ -172,6 +172,10 @@ angular
         templateUrl: 'views/books_table.html',
         controller: 'BooksTableCtrl'
       })
+      .when('/custom_top', {
+        templateUrl: 'views/books_table.html',
+        controller: 'BooksTableCtrl'
+      })
       .when('/callbacks', {
         templateUrl: 'views/callbacks.html',
         controller: 'CallbacksCtrl'
