@@ -82,10 +82,17 @@ angular.module('angularApp')
         })
     }
 
+    //function loadingBest() {
+    //  $http.get(config.url() + "/api/books/best_of_week")
+    //    .success(function (response) {
+    //      $scope.bestsellers = response;
+    //    })
+    //}
+
     function loadingBest() {
-      $http.get(config.url() + "/api/books/best_of_week")
-        .success(function (response) {
-          $scope.bestsellers = response;
+      $http.get(config.url() + "/api/books/custom_top?limit=4")
+        .success(function(response) {
+          $scope.bestsellers = response.bookList;
         })
     }
 

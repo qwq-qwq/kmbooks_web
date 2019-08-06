@@ -42,6 +42,16 @@
         </div>
       </th>
     </tr>
+    <tr>
+      <th>
+        <h4 class="text-left" ng-hide="settings.editing" ng-dblclick="editItem(settings)">Мій ТОП: {{settings.customTop}}</h4>
+        <div ng-show="settings.editing" class="form-group">
+          <label for="name2" class="col-md-12" ng-show="settings.editing">Мій ТОП:</label>
+          <textarea id="name2" class="form-control" rows="2" ng-show="settings.editing" ng-model="settings.customTop"
+                    autofocus></textarea>
+        </div>
+      </th>
+    </tr>
     </tbody>
   </table>
 </div>

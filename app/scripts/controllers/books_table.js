@@ -137,6 +137,16 @@ angular.module('angularApp')
         })
     }
 
+    if ($location.path() == '/custom_top') {
+      $scope.myTitle = 'Бестселери';
+      $scope.myHeader = 'Бестселери';
+      $http.get(config.url() + "/api/books/custom_top")
+        .success(function (response) {
+          $scope.books = response.bookList;
+          $scope.goodsCount = response.countInList;
+        })
+    }
+
     $scope.quoteString = function (strToQuote) {
       return strToQuote.replace(/[\\"']/g, '\\$&');
     }

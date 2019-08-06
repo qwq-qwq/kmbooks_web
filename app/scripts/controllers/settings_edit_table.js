@@ -16,7 +16,7 @@ angular.module('angularApp')
     }
     $scope.doneEditing = function (item) {
       item.editing = false;
-      var event = {id: item.id, recommended: item.recommended, soonOnSale: item.soonOnSale};
+      var event = {id: item.id, recommended: item.recommended, soonOnSale: item.soonOnSale, customTop: item.customTop};
       $http.post(config.url() + "/api/edit/settings_update", event, {withCredentials: true})
         .success(function(response) {
             if (event.id == 0) {
