@@ -10,7 +10,7 @@ angular.module('angularApp')
 
         $http.get(config.url() + '/api/books/search?code=' + goodToAddCode)
           .success(function (response) {
-            var book = response.bookList[0];
+              var book = response.bookList[0];
 
               function successAdded(response) {
                 cart.SetCart(response);
@@ -19,9 +19,18 @@ angular.module('angularApp')
                 $cookies.put('cartId', response.id, {expires: expireDate});
               }
 
+              if (book === undefined){
+                return;
+              }
+
               if (!cart.Exist()){
                 cart.SetCart({email: authorization.username(), goodsTable: []});
               }
+
+              if (cart.AlreadyInCart(book.code)){
+                return;
+              }
+
               var preorder = book.kvo > 0 ? false: true;
               cart.AddToGoodsTable({code: book.code, quantity: 1, price: book.price, discount: book.discount, name: book.name, preorder: preorder});
 
