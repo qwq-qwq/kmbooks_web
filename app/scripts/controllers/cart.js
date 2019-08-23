@@ -4,6 +4,43 @@ angular.module('angularApp')
   .controller('CartCtrl', function(cart, order, $scope, $http, $location, config, $rootScope, $cookies, $window, authorization) {
     $scope.selector = {};
 
+    var goodToAddCode = $location.search().goodCodeToAdd;
+
+    if (goodToAddCode !== undefined && goodToAddCode !== ''){
+
+        $http.get(config.url() + '/api/books/search?code=' + goodToAddCode)
+          .success(function (response) {
+            var book = response.bookList[0];
+
+              function successAdded(response) {
+                cart.SetCart(response);
+                var expireDate = new Date();
+                expireDate.setMonth(expireDate.getMonth() + 3);
+                $cookies.put('cartId', response.id, {expires: expireDate});
+              }
+
+              if (!cart.Exist()){
+                cart.SetCart({email: authorization.username(), goodsTable: []});
+              }
+              var preorder = book.kvo > 0 ? false: true;
+              cart.AddToGoodsTable({code: book.code, quantity: 1, price: book.price, discount: book.discount, name: book.name, preorder: preorder});
+
+              if (authorization.isAuthorized()) {
+                $http.post(config.url() + "/api/user/carts/update", cart.GetCart(), {withCredentials: true})
+                  .success(function(response) {
+                    successAdded(response);
+                  })
+              }else{
+                $http.post(config.url() + "/api/carts/update", cart.GetCart())
+                  .success(function(response) {
+                    successAdded(response);
+                  })
+              }
+
+          })
+    }
+
+
     $scope.AddECommerce = function (order) {
       ga('require', 'ecommerce');
 
