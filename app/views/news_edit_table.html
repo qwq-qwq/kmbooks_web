@@ -37,6 +37,19 @@
                   autofocus></textarea>
       </div>
 
+      <p ng-show="oneNews.hidden" style="color: red">
+        Не показувати
+      </p>
+      <p ng-hide="oneNews.hidden" style="color: green">
+        Показувати
+      </p>
+      <div ng-show="oneNews.editing" class="checkbox">
+        <label>
+          <input type="checkbox" ng-model="oneNews.hidden">
+          Зховати
+        </label>
+      </div>
+
       <p class="text-left" ng-hide="oneNews.editing" ng-dblclick="editItem(oneNews)"><i class="glyphicon glyphicon-time"></i><em style="margin-left: 5px">{{oneNews.date | date:
         'dd.MM.yyyy'}} o {{oneNews.date | date: 'HH-mm'}}</em></p>
       <div ng-show="oneNews.editing" class="form-group">
@@ -95,4 +108,4 @@
   </tr>
   </tbody>
 </table>
-
+<bk-pagination></bk-pagination>

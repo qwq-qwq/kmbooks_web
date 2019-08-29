@@ -22,16 +22,60 @@ angular.module('angularApp')
       withCredentials: true
     });
     var uploader = $scope.uploader;
+    $scope.getNews = function () {
+      var page = $location.search().page;
+      if (page === undefined){
+        page = 1;
+      }else{
+        page = parseInt(page);
+      };
+      $http.get(config.url() + "/api/news?page=" + (page - 1))
+        .success(function(response) {
+          var newsList = response.newsList;
+          for(var k in newsList) {
+            newsList[k].editing = false;
+            newsList[k].row_id = k;
+          }
+          //response.sort(compare_desc);
+          $scope.news = newsList;
+          $scope.newsCount = response.countInList;
 
-    $http.get(config.url() + "/api/news")
-      .success(function(response) {
-        for(var k in response) {
-          response[k].editing = false;
-          response[k].row_id = k;
-        }
-        //response.sort(compare_desc);
-        $scope.news = response;
-      })
+          $scope.pages = [];
+          var pagesCount = Math.ceil($scope.newsCount / 42);
+          var startPage = 1;
+          if (page <= 4) {
+            startPage = 1;
+          }else{
+            startPage = page - 4;
+          }
+          var endPage = 10;
+          if (pagesCount > 10) {
+            if (page > 5){
+              if ((page + 4) > pagesCount) {
+                endPage = pagesCount;
+              }else{
+                endPage = page + 4;
+              }
+            }else{
+              endPage = 10;
+            }
+          }else{
+            endPage = pagesCount;
+          }
+          for(var i = startPage; i <= endPage; i++){
+            var active = false;
+            if (page == i) {
+              active = true;
+            }
+            $scope.pages.push({page: i, url: "/news_edit_table?page=" + i, active: active})
+          }
+          var pagePrevious = page > 2 ? page - 1: 1;
+          var pageNext = page < pagesCount ? page + 1: pagesCount;
+          $scope.pagePrevious = "/news_edit_table?page=" + pagePrevious;
+          $scope.pageNext = "/news_edit_table?page=" + pageNext;
+        })
+    }
+    $scope.getNews();
 
     uploader.filters.push({
       name: 'imageFilter',
@@ -55,6 +99,7 @@ angular.module('angularApp')
       var news = {id: item.id,
                title: item.title,
                 date: item.date,
+              hidden: item.hidden,
                 text: item.text,
            videoLink: item.videoLink,
          colorSchema: item.colorSchema,
@@ -81,7 +126,8 @@ angular.module('angularApp')
       function getRandomId() {
         return Math.floor((Math.random()*10000)+1)+1000;
       }
-      var news = {id: '', row_id: getRandomId(), title: '', date: new Date(), text: '', videoLink: '',
+      var news = {id: '', row_id: getRandomId(), title: '', date: new Date(), hidden: true,
+                  text: '', videoLink: '',
                   colorSchema: {}, bookCodes: '', editing: true, is_second: false};
       $scope.news.unshift(news);
     }
@@ -141,5 +187,10 @@ angular.module('angularApp')
       }
       alert("При загрузке файла на сервер возникла ошибка");
     };
+
+    $scope.goToPage = function (page) {
+      $location.search('page', page);
+      $scope.getNews();
+    }
 
   });
