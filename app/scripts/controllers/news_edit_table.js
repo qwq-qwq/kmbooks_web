@@ -7,15 +7,6 @@ angular.module('angularApp')
     $scope.cropSelection = {src:"", selection: [], thumbnail: false};
     $scope.cropSelectionSecond = {src:"", selection: [], thumbnail: false};
 
-    function compare_desc(a,b) {
-      if (a.when > b.when)
-        return -1;
-      else if (a.when < b.when)
-        return 1;
-      else
-        return 0;
-    }
-
     $scope.uploader = new FileUploader({
       url: config.url() + '/api/edit/news/upload_files',
       removeAfterUpload: true,

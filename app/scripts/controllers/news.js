@@ -10,15 +10,6 @@ angular.module('angularApp')
 
     $scope.absUrl = $location.absUrl();
 
-    function compare_desc(a,b) {
-      if (a.date > b.date)
-        return -1;
-      else if (a.date < b.date)
-        return 1;
-      else
-        return 0;
-    }
-
     $http.get(config.url() + '/api/news/get_news_by_id?id=' + id)
       .success(function (response) {
         $scope.news = response;
@@ -42,7 +33,7 @@ angular.module('angularApp')
 
     $http.get(config.url() + "/api/news/get_last_twelve")
       .success(function(response) {
-        $scope.allNews = response.sort(compare_desc);
+        $scope.allNews = response;
       })
 
   });
