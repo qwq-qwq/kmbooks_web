@@ -29,7 +29,7 @@ angular.module('angularApp')
       }else{
         page = parseInt(page);
       };
-      $http.get(config.url() + "/api/news?page=" + (page - 1))
+      $http.get(config.url() + "/api/edit/news?page=" + (page - 1))
         .success(function(response) {
           var newsList = response.newsList;
           for(var k in newsList) {
