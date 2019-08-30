@@ -11,7 +11,7 @@
     </div>
     <img ng-show="news.videoLink === ''" class="img-responsive center-block visible-md visible-lg" src="{{news.image + '_original.jpg'}}" style="margin-top: 10px; margin-bottom: 25px;">
     <img ng-show="news.videoLink === ''" class="img-responsive center-block visible-xs visible-sm" src="{{news.image + '_big.jpg'}}" style="margin-top: 10px; margin-bottom: 25px;">
-    <p ta-bind ng-model="news.text" class="news-container" style="margin-top: 10px; text-align: justify;"></p>
+    <p ng-cloak ta-bind ng-model="news.text" class="news-container" style="margin-top: 10px; text-align: justify;"></p>
     <!--<div style="padding-bottom: 50px; text-align: center"></div>-->
     <span ng-if="books.length > 0">
       <h2 class="brand-color" style="font-family: Calibri">В статті йшлося про:</h2>
