@@ -657,6 +657,11 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     margin-top: 28px;
   }
 
+  .news-container img{
+    width: 100% !important;
+    height: auto !important;
+  }
+
 }
 @media (max-width: 320px){
   ol.carousel-indicators{
@@ -706,6 +711,11 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
 
   .book-info {
     margin-top: 28px;
+  }
+
+  .news-container img{
+    width: 100% !important;
+    height: auto !important;
   }
 
 }

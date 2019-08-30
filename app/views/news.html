@@ -11,7 +11,7 @@
     </div>
     <img ng-show="news.videoLink === ''" class="img-responsive center-block visible-md visible-lg" src="{{news.image + '_original.jpg'}}" style="margin-top: 10px; margin-bottom: 25px;">
     <img ng-show="news.videoLink === ''" class="img-responsive center-block visible-xs visible-sm" src="{{news.image + '_big.jpg'}}" style="margin-top: 10px; margin-bottom: 25px;">
-    <p ta-bind ng-model="news.text" style="margin-top: 10px; text-align: justify;"></p>
+    <p ta-bind ng-model="news.text" class="news-container" style="margin-top: 10px; text-align: justify;"></p>
     <!--<div style="padding-bottom: 50px; text-align: center"></div>-->
     <span ng-if="books.length > 0">
       <h2 class="brand-color" style="font-family: Calibri">В статті йшлося про:</h2>
@@ -19,6 +19,7 @@
        <div class="col-xs-6 col-sm-6 col-md-4" style="min-height: 400px;">
          <bk-book-tail book="book"></bk-book-tail>
        </div>
+       <div class="clearfix" ng-if="books.length === 1"></div>
        <div class="clearfix visible-md-block" ng-if="($index+1)%3 === 0"></div>
        <div class="clearfix visible-xs-block" ng-if="($index+1)%2 === 0"></div>
       </span>
