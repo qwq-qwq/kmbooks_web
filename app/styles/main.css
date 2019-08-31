@@ -783,7 +783,11 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
 }
 
 .item-in-cart-name:hover{
-    text-decoration: none;
+  text-decoration: none;
+}
+
+.news-container > p:last-child {
+   display: none;
 }
 
 /*.event-item{
