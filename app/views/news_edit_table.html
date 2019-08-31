@@ -90,7 +90,8 @@
       <!--<p class="text-left" ng-hide="oneNews.editing" ng-bind-html="oneNews.text" ng-dblclick="editItem(oneNews)"></p>-->
       <div ng-show="oneNews.editing" class="form-group">
         <label for="name" class="col-md-12" ng-show="oneNews.editing">Текст:</label>
-        <text-angular ta-resize-force-aspect-ratio="true" ng-show="oneNews.editing" ng-model="oneNews.text" autofocus></text-angular>
+        <!--<text-angular ta-resize-force-aspect-ratio="true" ng-show="oneNews.editing" ng-model="oneNews.text" autofocus></text-angular>-->
+        <textarea froala ng-show="oneNews.editing" ng-model="oneNews.text" autofocus></textarea>
       </div>
       <br>
     </td>

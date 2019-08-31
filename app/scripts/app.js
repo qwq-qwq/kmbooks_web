@@ -30,7 +30,8 @@ angular
     'ngJcrop',
     'ngMaterial',
     'ui.mask',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'froala'
   ])
   .config(function ($routeProvider, $locationProvider, $mdDateLocaleProvider) {
 
@@ -269,7 +270,7 @@ angular
     $mdDateLocaleProvider.formatDate = function(date) {
       return moment(date).format('DD.MM.YYYY');
     };
-  }]);
-
+  }])
+;
 
 

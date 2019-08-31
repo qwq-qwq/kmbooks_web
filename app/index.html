@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="bower_components/photoswipe/dist/default-skin/default-skin.css" />
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+    <link rel="stylesheet" href="bower_components/froala-wysiwyg-editor/css/froala_style.css" />
+    <link rel="stylesheet" href="bower_components/froala-wysiwyg-editor/css/froala_editor.pkgd.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -90,8 +92,8 @@
 <!--                   <li><a href="http://collinsbigcat.kmbooks.com.ua/">Collins BIG CAT</a></li> -->
 <!--                   <li><a href="http://litkonkurs.kmbooks.com.ua/">Літконкурс</a></li>      -->
                    <li><a href="https://kmbooks.com.ua/stipend/">Стипендія від КМ-Букс</a></li>
-                   <li class="visible-sm"><a href="/ntml_page?name=price_list"></a></li>                   
-                   <li><a href="/ntml_page?name=price_list">Умови для гуртових клієнтів</a></li>                   
+                   <li class="visible-sm"><a href="/ntml_page?name=price_list"></a></li>
+                   <li><a href="/ntml_page?name=price_list">Умови для гуртових клієнтів</a></li>
                    <li class="visible-sm"><a href="/map">Пункти самовивозу</a></li>
                    <li class="visible-sm"><a href="/ntml_page?name=conditions_of_purchase">Умови придбання</a></li>
                    <li class="visible-sm"><a href="/ntml_page?name=delivery_and_payment">Доставка та оплата</a></li>
@@ -229,6 +231,7 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -270,6 +273,34 @@
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-ui-mask/dist/mask.js"></script>
     <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="scripts/controllers/angular_froala.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/froala_editor.pkgd.min.js"></script>
+    <!-- Include Froala Editor Plugins -->
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/align.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/char_counter.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/code_beautifier.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/code_view.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/colors.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/emoticons.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/entities.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/file.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/font_family.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/font_size.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/third_party/font_awesome.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/fullscreen.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/image.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/image_manager.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/inline_style.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/line_breaker.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/link.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/lists.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/paragraph_format.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/paragraph_style.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/quote.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/save.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/table.min.js"></script>
+    <script src="bower_components/froala-wysiwyg-editor/js/plugins/video.min.js"></script>-->
+    <!-- End Froala -->
     <!-- endbower -->
     <!-- endbuild -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfNNbpR86HGa23PuqGYgjbAsgG73e7g6g"></script>
