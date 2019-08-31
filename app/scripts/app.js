@@ -30,8 +30,7 @@ angular
     'ngJcrop',
     'ngMaterial',
     'ui.mask',
-    'angular-loading-bar',
-    'froala'
+    'angular-loading-bar'
   ])
   .config(function ($routeProvider, $locationProvider, $mdDateLocaleProvider) {
 
