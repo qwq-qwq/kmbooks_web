@@ -272,7 +272,7 @@ angular
     };
   }])
   .value('froalaConfig', {
-     imageUploadURL: 'https:/api.kmbooks.com.ua/api/news/upload_editor_images'
+     imageUploadURL: 'https://api.kmbooks.com.ua/api/news/upload_editor_images'
   });
 ;
 
