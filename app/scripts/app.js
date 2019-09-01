@@ -271,6 +271,9 @@ angular
       return moment(date).format('DD.MM.YYYY');
     };
   }])
+  .value('froalaConfig', {
+     imageUploadURL: 'https:/api.kmbooks.com.ua/api/news/upload_editor_images'
+  });
 ;
 
 
