@@ -25,13 +25,13 @@
         <div ng-jcrop="cropSelection.src" ng-jcrop-config-name="uploadNewsPictures" selection="cropSelection.selection" thumbnail="cropSelection.thumbnail"></div>
         <p> Имя файла: {{oneNews.upl_item.file.name}}</p>
       </div>
-      <span ng-show="oneNews.editing">
+      <span ng-if="oneNews.editing">
         <input type="file" ng-jcrop-input="uploadNewsPictures" nv-file-select="" uploader="uploader" multiple="" options="{formData: [{id: oneNews.id, row_id: oneNews.row_id, is_second: false, is_video: false, rectangle: []}]}">
       </span>
     </td>
     <td>
       <h3 class="text-left" ng-hide="oneNews.editing" ng-dblclick="editItem(oneNews)">{{oneNews.title}}</h3>
-      <div ng-show="oneNews.editing" class="form-group">
+      <div ng-if="oneNews.editing" class="form-group">
         <label for="name" class="col-md-12" ng-show="oneNews.editing">Найменування:</label>
         <textarea id="name" class="form-control" rows="2" ng-show="oneNews.editing" ng-model="oneNews.title"
                   autofocus></textarea>
@@ -52,7 +52,7 @@
 
       <p class="text-left" ng-hide="oneNews.editing" ng-dblclick="editItem(oneNews)"><i class="glyphicon glyphicon-time"></i><em style="margin-left: 5px">{{oneNews.date | date:
         'dd.MM.yyyy'}} o {{oneNews.date | date: 'HH-mm'}}</em></p>
-      <div ng-show="oneNews.editing" class="form-group">
+      <div ng-if="oneNews.editing" class="form-group">
         <label class="col-md-12" for="name" ng-show="oneNews.editing">Коли:</label>
         <div class="input-group col-md-6">
           <input type="text" class="form-control col-md-6" uib-datepicker-popup="dd.MM.yyyy" ng-model="oneNews.date"
@@ -67,7 +67,7 @@
       <div class="row">
         <div class="col-md-6">
           <label class="col-md-12" for="name" ng-show="oneNews.editing">Час:</label>
-          <div ng-show="oneNews.editing" class="form-group">
+          <div ng-if="oneNews.editing" class="form-group">
             <div uib-timepicker class="col-md-2" ng-show="oneNews.editing" ng-model="oneNews.date"
                  show-meridian="false"></div>
           </div>
@@ -75,7 +75,7 @@
       </div>
 
       <p class="text-left" ng-hide="oneNews.editing" ng-dblclick="editItem(oneNews)">{{oneNews.bookCodes}}</p>
-      <div ng-show="oneNews.editing" class="form-group">
+      <div ng-if="oneNews.editing" class="form-group">
         <label for="bookCodes" class="col-md-12" ng-show="oneNews.editing">Коди книжок:</label>
         <input id="bookCodes" class="form-control" rows="2" ng-show="oneNews.editing" ng-model="oneNews.bookCodes"
                   autofocus></input>
@@ -87,7 +87,6 @@
         <textarea class="form-control" ng-show="oneNews.editing" ng-model="oneNews.videoLink" autofocus></textarea>
       </div>
 
-      <!--<p class="text-left" ng-hide="oneNews.editing" ng-bind-html="oneNews.text" ng-dblclick="editItem(oneNews)"></p>-->
       <div ng-if="oneNews.editing" class="form-group">
         <label for="name" class="col-md-12" ng-show="oneNews.editing">Текст:</label>
         <!--<text-angular ta-resize-force-aspect-ratio="true" ng-show="oneNews.editing" ng-model="oneNews.text" autofocus></text-angular>-->
