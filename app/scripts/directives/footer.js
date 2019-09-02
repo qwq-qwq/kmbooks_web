@@ -4,8 +4,8 @@
 
 'use strict';
 
-angular.module('angularApp').directive('bkFooter', ['$timeout', '$document', '$rootScope', 'subscribeDialog', 'callbackDialog',
-                                                    function($timeout, $document, $rootScope, subscribeDialog, callbackDialog) {
+angular.module('angularApp').directive('bkFooter', ['$timeout', '$interval', '$document', '$rootScope', '$window', 'subscribeDialog', 'callbackDialog',
+                                                    function($timeout, $interval, $document, $rootScope, $window, subscribeDialog, callbackDialog) {
   return {
     restrict: 'E',
     templateUrl: 'views/bk_footer.html',
@@ -15,6 +15,7 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$document', '$r
           (next.$$route.originalPath === '/search') ||
           (next.$$route.originalPath === '/events') ||
           (next.$$route.originalPath === '/book')){
+          //$interval(scope.footerTopCalculator, 1000);
           scope.footerStyle={display: 'none'};
         }else if((next.$$route.originalPath === '/login') ||
                  (next.$$route.originalPath === '/user_registration') ||
@@ -30,6 +31,13 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$document', '$r
         }
       })
 
+      /*angular.element($window).bind('resize', function(){
+        var pageHeight = $document.height();
+        var footerTop = pageHeight + 10;
+        scope.footerStyle={top: footerTop, position: 'absolute', width: '100%'};
+        scope.$digest();
+      });*/
+
       scope.ShowSubscribeDialog = function () {
         subscribeDialog.Show();
       }
@@ -39,8 +47,8 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$document', '$r
       }
 
       scope.footerTopCalculator = function () {
-        var pageHeight = $document.height();
-        var footerTop = pageHeight + 10;
+        var top = $document.height();
+        var footerTop = top + 10;
         scope.footerStyle={top: footerTop, position: 'absolute', width: '100%'};
       }
     }
