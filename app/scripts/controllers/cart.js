@@ -310,8 +310,9 @@ angular.module('angularApp')
       }else if($scope.selectedDelivery.id === '4') {
         if ($scope.orderAmountWithDiscount >= 100) {
           $scope.deliveryCost = 0;
-        } else
-        $scope.deliveryCost = 30;
+        } else {
+          $scope.deliveryCost = 30;
+        }
       }
       $scope.totalAmount = $scope.orderAmountWithDiscount + $scope.deliveryCost;
     }
