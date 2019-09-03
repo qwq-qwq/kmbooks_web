@@ -77,8 +77,8 @@
  <h1 style="font-family: Calibri;" class="brand-color">
    Рецензії
  </h1>
- <div class="row">
-   <a href="/book?code={{comment.code}}" style="color: black;" ng-repeat="comment in comments">
+ <div class="row book-reviews">
+   <a class="book-review" href="/book?code={{comment.code}}" style="color: black;" ng-repeat="comment in comments">
      <div class="col-sm-4" style="text-align: center">
        <h4 class="brand-color">{{comment.bookName}}</h4>
        <p class="brand-color">{{comment.bookAuthor}}</p>
