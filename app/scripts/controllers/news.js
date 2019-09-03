@@ -12,7 +12,7 @@ angular.module('angularApp')
 
     $http.get(config.url() + '/api/news/get_news_by_id?id=' + id)
       .success(function (response) {
-        $scope.news = news;
+        $scope.news = response;
         $scope.videoLink = $scope.news.videoLink;
         if ($scope.videoLink !== '') {
           $scope.news.sceLink = $sce.trustAsResourceUrl($scope.news.videoLink);
