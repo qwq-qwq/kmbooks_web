@@ -6,7 +6,7 @@
       <i class="fa fa-eye" aria-hidden="true"></i><span style="margin-left: 5px">{{news.viewsCount}}</span>
       <bk-social-buttons item="news" kind="news" abs-url="absUrl" class="pull-right"></bk-social-buttons>
     </div>
-    <div ng-if="videoLink !== ''" class="embed-responsive embed-responsive-4by3">
+    <div ng-if="videoLink !== '' && showIframe"  class="embed-responsive embed-responsive-4by3">
       <iframe class="embed-responsive-item" src="{{news.sceLink}}"></iframe>
     </div>
     <img ng-if="videoLink === ''" class="img-responsive center-block visible-md visible-lg" src="{{news.image + '_original.jpg'}}" style="margin-top: 10px; margin-bottom: 25px;">

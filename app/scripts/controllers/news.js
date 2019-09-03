@@ -7,7 +7,7 @@ angular.module('angularApp')
     if (id === ''){
       $location.url('/news_list')
     }
-
+    $scope.showIframe = false;
     $scope.absUrl = $location.absUrl();
 
     $http.get(config.url() + '/api/news/get_news_by_id?id=' + id)
@@ -16,6 +16,7 @@ angular.module('angularApp')
         $scope.videoLink = news.videoLink;
         if ($scope.videoLink !== '') {
           news.sceLink = $sce.trustAsResourceUrl(news.videoLink);
+          $scope.showIframe = true;
         }
         if (news.secondImage !== null) {
           news.image = news.secondImage;
