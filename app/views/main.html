@@ -77,9 +77,10 @@
  <h1 style="font-family: Calibri;" class="brand-color">
    Рецензії
  </h1>
- <div class="row book-reviews">
-   <a class="book-review" href="/book?code={{comment.code}}" style="color: black;" ng-repeat="comment in comments">
-     <div class="col-sm-4" style="text-align: center">
+ <div class="row">
+   <a href="/book?code={{comment.code}}" style="color: black;" ng-repeat="comment in comments">
+     <div class="col-sm-4 book-review" style="text-align: center">
+       <div class="book-review-inner">
        <h4 class="brand-color">{{comment.bookName}}</h4>
        <p class="brand-color">{{comment.bookAuthor}}</p>
        <p style="text-align: center; text-decoration: none" ng-bind-html="getCommentText(comment.text)"></p>
@@ -88,6 +89,7 @@
        </div>&nbsp;&nbsp;
        <i style="font-size: smaller" class="glyphicon glyphicon-time"></i>&nbsp;
        <span style="font-style: italic; font-size: smaller">{{toDateTime(comment.id)}}</span>
+       </div>
      </div>
    </a>
  </div>
