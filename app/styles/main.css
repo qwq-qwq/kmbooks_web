@@ -497,6 +497,15 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   border-radius: 5px;
 }
 
+.invisibleTableLines thead tr th, .invisibleTableLines tbody tr td {
+  border: 0;
+
+}
+
+.solidBlackTableLines thead tr th, .solidBlackTableLines tbody tr td {
+  border: 1px solid black;
+}
+
 @media (min-width: 1100px) {
   .footer{
     height: 90px;
