@@ -12,15 +12,17 @@ angular.module('angularApp')
 
     $http.get(config.url() + '/api/news/get_news_by_id?id=' + id)
       .success(function (response) {
-        $scope.news = response;
-        if ($scope.news.videoLink !== '') {
-          $scope.news.sceLink = $sce.trustAsResourceUrl($scope.news.videoLink);
+        var news = response;
+        $scope.videoLink = news.videoLink;
+        if ($scope.videoLink !== '') {
+          news.sceLink = $sce.trustAsResourceUrl(news.videoLink);
         }
-        if ($scope.news.secondImage !== null) {
-          $scope.news.image = $scope.news.secondImage;
+        if (news.secondImage !== null) {
+          news.image = news.secondImage;
         }
-        pageTitle.SetTitle($scope.news.title);
-        pageTitle.SetDescription('Інтернет-магазин kmbooks.com.ua: ' + $scope.news.text.substring(0, 300));
+        pageTitle.SetTitle(news.title);
+        pageTitle.SetDescription('Інтернет-магазин kmbooks.com.ua: ' + news.text.substring(0, 300));
+        $scope.news = news;
         if ($scope.news !== undefined &&
           $scope.news.bookCodes !== null &&
           $scope.news.bookCodes !== ''){
