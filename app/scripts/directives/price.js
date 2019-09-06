@@ -21,9 +21,9 @@ angular.module('angularApp').directive('bkPrice', ['authorization', '$rootScope'
         var discount = 0;
         if (authorization.isAuthorized()) {
           if (authorization.getUser().valueOfPurchases <= 1000){
-            discount = 3;
+            discount = 25;
           }else{
-            discount = 5;
+            discount = 25;
           }
         }
         if (scope.book !== undefined){
