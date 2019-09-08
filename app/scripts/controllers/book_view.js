@@ -54,7 +54,7 @@ angular.module('angularApp')
         }
       }
     })
-    $scope.actionExpiredAt = new Date(2019, 7, 4);
+    $scope.actionExpiredAt = new Date(2019, 8, 13);
     $interval(function(){
       var now = new Date().getTime();
       var timeLeft = $scope.actionExpiredAt - now;
@@ -286,7 +286,7 @@ angular.module('angularApp')
           leftBookInfoMargin = (bannerWidth - 1100) / 2;
         }
         $scope.flatImageHeight={height: flatImageHeight, width: flatImageWidth};
-        $scope.bookInfoStyle={position: 'absolute', left: leftBookInfoMargin,  top: bannerHeight - 20, "margin-left": 30, "margin-top": 20, "max-width": 1100};
+        $scope.bookInfoStyle={position: 'absolute', left: leftBookInfoMargin,  top: bannerHeight - 20};
         $scope.favoriteStyle={position: 'absolute', left: leftBookInfoMargin,  top: bannerHeight - 20};
         $scope.bootTitleStyle = {left: leftBookInfoMargin};
       })

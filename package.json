@@ -2,8 +2,8 @@
   "name": "angular",
   "version": "0.0.1",
   "dependencies": {
+    "bower": "^1.8.8",
     "connect-modrewrite": "^0.9.0",
-    "grunt": "^0.4.5",
     "grunt-cli": "^1.2.0"
   },
   "repository": {},

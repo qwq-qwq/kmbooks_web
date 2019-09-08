@@ -272,7 +272,16 @@ angular
     };
   }])
   .value('froalaConfig', {
-     imageUploadURL: 'https://api.kmbooks.com.ua/api/news/upload_editor_images'
+     imageUploadURL: 'https://api.kmbooks.com.ua/api/news/upload_editor_images',
+     tableStyles: {
+       invisibleTableLines: 'Invisible lines',
+       solidBlackTableLines: 'Solid black lines',
+     },
+     fontFamily: {
+       "Calibri": 'Calibri'
+     },
+     fontFamilySelection: true,
+     fontSize: ['8', '9', '10', '11', '12', '14', '18', '20', '22', '24', '30', '36', '48', '60', '72', '96']
   });
 ;
 

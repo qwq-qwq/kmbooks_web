@@ -479,6 +479,33 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   top: 50%;
 }
 
+.book-view{
+  margin-left: 30px;
+  margin-top: 20px;
+  max-width: 1100px;
+}
+
+.book-review-inner{
+  padding: 40px 30px 30px;
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.invisibleTableLines thead tr th, .invisibleTableLines tbody tr td {
+  border: 0;
+
+}
+
+.solidBlackTableLines thead tr th, .solidBlackTableLines tbody tr td {
+  border: 1px solid black;
+}
+
 @media (min-width: 1100px) {
   .footer{
     height: 90px;
@@ -662,6 +689,10 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     height: auto !important;
   }
 
+  .book-view{
+    margin: 5px;
+  }
+
 }
 @media (max-width: 320px){
   ol.carousel-indicators{
@@ -716,6 +747,10 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   .news-container img{
     width: 100% !important;
     height: auto !important;
+  }
+
+  .book-view{
+    margin: 5px;
   }
 
 }
