@@ -54,7 +54,8 @@ angular.module('angularApp')
         }
       }
     })
-    $scope.actionExpiredAt = new Date(2019, 8, 13);
+  #  Month - 1, Day +1. For 2019.09.19  set (2019,8,20)
+    $scope.actionExpiredAt = new Date(2019, 8, 20);
     $interval(function(){
       var now = new Date().getTime();
       var timeLeft = $scope.actionExpiredAt - now;
