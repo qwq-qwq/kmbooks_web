@@ -24,7 +24,7 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$interval', '$d
         }else if((next.$$route.originalPath === '/wish_list')){
           scope.footerStyle={display: 'none'};
         }else{
-          scope.footerStyle={};
+          scope.footerStyle={display: 'block'};
         }
       })
 
@@ -90,7 +90,7 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$interval', '$d
         }
         var top = evContHeight + maxItemBottom;
         var footerTop = top + 10;
-        scope.footerStyle={top: footerTop, position: 'absolute', width: '100%'};
+        scope.footerStyle={display: 'block', top: footerTop, position: 'absolute', width: '100%'};
       }
     }
   };
