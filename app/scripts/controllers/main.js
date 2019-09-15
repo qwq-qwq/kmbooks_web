@@ -121,8 +121,8 @@ angular.module('angularApp')
       .then(function () {
       $timeout(function(){
         $rootScope.$broadcast("layout", function(){
-          // The layout animations have completed
         });
+        $rootScope.$broadcast('change_event_cards');
       }, 2000);
     });
 
@@ -148,20 +148,4 @@ angular.module('angularApp')
       }
     }
 
-  })
-  .controller('Work1Controller', ['$scope', '$rootScope', '$timeout',
-  function($scope, $rootScope, $timeout) {
-    $scope.showingMoreText = false;
-
-    $scope.toggleText = function(){
-      $scope.showingMoreText = !$scope.showingMoreText;
-      // We need to broacast the layout on the next digest once the text
-      // is actually shown
-      // TODO: for some reason 2 a $timeout is here necessary
-      $timeout(function(){
-        $rootScope.$broadcast("layout", function(){
-          // The layout animations have completed
-        });
-      }, 20);
-    }
-  }]);;
+  });
