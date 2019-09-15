@@ -82,12 +82,10 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$interval', '$d
         var eventContainer = $document[0].querySelector(
           '.events-container'
         );
-        var evContHeight;
-        if (eventContainer !== null){
-          evContHeight = eventContainer.offsetTop;
-        }else{
-          evContHeight = 0;
+        if (eventContainer === null){
+           exit;
         }
+        var evContHeight = eventContainer.offsetTop;
         var top = evContHeight + maxItemBottom;
         var footerTop = top + 10;
         scope.footerStyle={display: 'block', top: footerTop, position: 'absolute', width: '100%'};
