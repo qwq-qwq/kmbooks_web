@@ -21,11 +21,9 @@ angular.module('angularApp')
       // is actually shown
       // TODO: for some reason 2 a $timeout is here necessary
       $timeout(function(){
-        $rootScope.$broadcast("layout", function(){
-        });
-        $timeout(function(){
+        $rootScope.$broadcast("layout", function () {
           $rootScope.$broadcast('change_event_cards');
-        }, 500);
+        });
       }, 2);
     }
   }]);

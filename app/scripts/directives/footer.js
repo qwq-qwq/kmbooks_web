@@ -83,7 +83,7 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$interval', '$d
           '.events-container'
         );
         if (eventContainer === null){
-           exit;
+           return;
         }
         var evContHeight = eventContainer.offsetTop;
         var top = evContHeight + maxItemBottom;
