@@ -1,4 +1,4 @@
-<div id="bookBanner" style="position: absolute; left: 0; top: 0; height: 60%; width: 100%"><!--{{bannerImage}}-->
+<div id="bookBanner" style="position: absolute; left: 0; top: 0; height: 60vh; width: 100%"><!--{{bannerImage}}-->
     <div class="book-banner" ng-dblclick="editItem(book)" style="background-image:url('{{bannerImage}}'); background-position: center; background-size: cover; height: 100%; margin-top: -40px">
       <div class="book-caption hidden-xs" style="font-family:Calibri; position: relative;
                   top: 50%; color: white; text-shadow: 0 1px 2px rgba(0,0,0,.6);
@@ -15,6 +15,7 @@
       </div>
     </div>
 </div>
+<div style="position: relative; height: calc(60vh - 120px); width: 100%"></div>
 <div class="container book-view" ng-if="isEditor()" ng-style="bookInfoStyle">
   <div class="panel panel-default" ng-if="book.editing">
     <div class="panel-heading">
@@ -78,7 +79,6 @@
     </form>
   </div>
 </div>
-
 <div class="row book-view" ng-style="bookInfoStyle" ng-hide="book.editing">
   <div bk-photoswipe slides="gallery.images" show="gallery.show" slide-selector=".slide-list > a > img"
        on-close="closeGallery()" options="gallery.opts">
@@ -205,7 +205,7 @@
         <div ng-if="book.actionKM != null" style="position: absolute; top: -1%; left: -10%">
           <img width="80" src="img/minus_{{book.actionKM}}_baloon.png">
         </div>
-        <img class="img-responsive point_img" src="{{flatImage}}" ng-style="flatImageHeight" ng-click="showGallery(flatImageIndex)" style="box-shadow: 0px 0px 10px #d8d8d8;">
+        <img class="img-responsive point_img" src="{{flatImage}}" ng-style="flatImageHeight" ng-click="showGallery(flatImageIndex)" style="box-shadow: 0px 0px 10px #d8d8d8; margin: auto">
         <p style="margin-top: 30px; text-align: center">
           <bk-price book="book" div="false"></bk-price>
           <bk-buy-button book="book">
@@ -215,7 +215,7 @@
           <div style="color: red; font-size: 15px; text-align: center">﻿26 BOOKFORUM! ДО -25% НА НОВЕНЬКЕ І НЕ ТІЛЬКИ...</div>
         -20% на книги у спецпропозиції.<br>
         -10% на новинки та передпродажні видання.<br>
-        Ціну на сайті вже знижено.<br>         
+        Ціну на сайті вже знижено.<br>
           <div style="display: flex">
             <div style="flex: 1">
               До кінця акції: <br>
@@ -244,7 +244,6 @@
     </div>
   </div>
 </div>
-
 
 
 

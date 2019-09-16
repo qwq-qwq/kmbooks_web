@@ -11,8 +11,7 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$interval', '$d
     templateUrl: 'views/bk_footer.html',
     link: function(scope, element, attributes) {
       $rootScope.$on("$routeChangeSuccess", function (event, next, current) {
-        if ((next.$$route.originalPath === '/search') ||
-          (next.$$route.originalPath === '/book')){
+        if ((next.$$route.originalPath === '/search')){
           scope.footerStyle={display: 'none'};
         }else if((next.$$route.originalPath === '/login') ||
                  (next.$$route.originalPath === '/user_registration') ||
