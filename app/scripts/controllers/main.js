@@ -122,7 +122,9 @@ angular.module('angularApp')
       $timeout(function(){
         $rootScope.$broadcast("layout", function(){
         });
-        $rootScope.$broadcast('change_event_cards');
+        $timeout(function(){
+           $rootScope.$broadcast('change_event_cards');
+        }, 500);
       }, 2000);
     });
 
