@@ -287,7 +287,7 @@ angular.module('angularApp')
           leftBookInfoMargin = (bannerWidth - 1100) / 2;
         }
         $scope.flatImageHeight={height: flatImageHeight, width: flatImageWidth};
-        $scope.bookInfoStyle={position: 'relative', left: leftBookInfoMargin};
+        $scope.bookInfoStyle={position: 'relative', margin: 'auto'};
         $scope.bootTitleStyle = {left: leftBookInfoMargin};
       })
 
