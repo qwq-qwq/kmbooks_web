@@ -15,6 +15,10 @@ angular.module('angularApp').factory('utils', function ($http, $rootScope, confi
     toUnixTime: function (ObjId) {
       return parseInt(ObjId.toString().slice(0,8), 16);
     },
+    fromUnixTime: function (UnixTime) {
+      var ObjDate = new Date(UnixTime);
+      return ObjDate.toLocaleDateString() + ' ' + ObjDate.toLocaleTimeString();
+    },
     GetRandomColorSchemes: function () {
       if ($rootScope.newsColorSchemes === undefined) {
         $http.get(config.url() + "/api/news/get_news_color_schemes")

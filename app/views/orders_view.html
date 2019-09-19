@@ -32,7 +32,7 @@
       <p>Номер</p>
     </th>
     <th style="text-align: center">
-      <p>Дата створення</p>
+      <p>Дата завершення</p>
     </th>
     <th style="text-align: center">
       <p>Статус</p>
@@ -53,7 +53,7 @@
            <p>{{order.number}}</p>
          </td>
          <td style="text-align: center">
-           <p>{{toDateTime(order.id)}}</p>
+           <p>{{fromUnixTime(order.completeDate)}}</p>
          </td>
          <td style="text-align: center">
            <p>{{order.orderState}}</p>

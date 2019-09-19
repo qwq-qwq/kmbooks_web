@@ -96,6 +96,10 @@ angular.module('angularApp')
       return utils.toDateTime(ObjId);
     }
 
+    $scope.fromUnixTime = function(UnixTime) {
+      return utils.fromUnixTime(UnixTime);
+    }
+
     $scope.setGoodsTable = function (order){
       angular.forEach($scope.orders, function (value, key) {
         if(value.number === order.number){
