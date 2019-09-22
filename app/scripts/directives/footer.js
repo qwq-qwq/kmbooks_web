@@ -15,7 +15,7 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$interval', '$d
             (next.$$route.originalPath === '/events') ){
           scope.footerEventCardsTopCalculator();
         }else{
-          scope.footerStyle={display: 'block', position: 'absolute', bottom: 0};
+          scope.footerStyle={bottom: 0};
         }
       })
 
@@ -79,7 +79,7 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$interval', '$d
         var evContHeight = eventContainer.offsetTop;
         var top = evContHeight + maxItemBottom;
         var footerTop = top + 10;
-        scope.footerStyle={display: 'block', top: footerTop, position: 'absolute', width: '100%'};
+        scope.footerStyle={top: footerTop};
       }
     }
   };
