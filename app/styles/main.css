@@ -611,13 +611,13 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     display: none;
   }
   [dynamic-layout]{
-    width: 700px;
+    min-width: 700px;
   }
   .dynamic-layout-col-4{
-    width : 350px;
+    width : 370px;
   }
   .dynamic-layout-col-8{
-    width : 700px;
+    min-width : 700px;
   }
   .carousel {
     height: 220px;
@@ -652,13 +652,13 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     display: none;
   }
   [dynamic-layout]{
-    width: 375px;
+    min-width: 375px;
   }
   .dynamic-layout-col-4{
-    width : 375px;
+    min-width : 375px;
   }
   .dynamic-layout-col-8{
-    width : 375px;
+    min-width : 375px;
   }
   .carousel {
     height: 20%;
@@ -715,13 +715,13 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
     display: none;
   }
   [dynamic-layout]{
-    width: 310px;
+    min-width: 310px;
   }
   .dynamic-layout-col-4{
-    width : 310px;
+    min-width : 310px;
   }
   .dynamic-layout-col-8{
-    width : 310px;
+    min-width : 310px;
   }
   .carousel {
     height: 20%;
