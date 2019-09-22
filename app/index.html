@@ -184,6 +184,7 @@
           </div>
       </div>
     </div>
+    <div style="position: relative; min-height: 100vh;">
     <span ng-controller="HeaderCtrl">
       <div style="background-color: black; height: 53px"></div>
       <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" ng-if="isMain()">
@@ -204,7 +205,7 @@
     <span ng-controller="HeaderCtrl">
       <div style="height: 30px;" ng-if="!isMain()"></div>
     </span>
-    <div class="container" style="padding-left: 5px; padding-right: 5px">
+    <div class="container" style="padding-left: 5px; padding-right: 5px; padding-bottom: 90px">
       <div ng-view="" autoscroll="true"></div>
     </div>
     <span ng-controller="HeaderCtrl" style="position: fixed; bottom: 20px; right: 10px">
@@ -236,6 +237,7 @@
       </md-fab-speed-dial>
     </span>
     <bk-footer></bk-footer>
+    </div>
       <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){

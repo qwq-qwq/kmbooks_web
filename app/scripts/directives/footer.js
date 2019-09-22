@@ -11,19 +11,11 @@ angular.module('angularApp').directive('bkFooter', ['$timeout', '$interval', '$d
     templateUrl: 'views/bk_footer.html',
     link: function(scope, element, attributes) {
       $rootScope.$on("$routeChangeSuccess", function (event, next, current) {
-        if ((next.$$route.originalPath === '/search')){
-          scope.footerStyle={display: 'none'};
-        }else if((next.$$route.originalPath === '/login') ||
-                 (next.$$route.originalPath === '/user_registration') ||
-                 (next.$$route.originalPath === '/user_update_password')){
-          scope.footerTopCalculator();
-        }else if((next.$$route.originalPath === '/') ||
-                 (next.$$route.originalPath === '/events') ){
+        if ((next.$$route.originalPath === '/') ||
+            (next.$$route.originalPath === '/events') ){
           scope.footerEventCardsTopCalculator();
-        }else if((next.$$route.originalPath === '/wish_list')){
-          scope.footerStyle={display: 'none'};
         }else{
-          scope.footerStyle={display: 'block'};
+          scope.footerStyle={display: 'block', position: 'absolute', bottom: 0};
         }
       })
 
