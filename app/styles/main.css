@@ -5,6 +5,12 @@
   padding: 0.2em 0;
 }
 
+.main-view{
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 90px;
+}
+
 .md-checked .md-bar {
   background-color: rgba(16,108,200,0.5);
 }
@@ -507,6 +513,9 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
 }
 
 @media (min-width: 1100px) {
+  .main-view{
+    padding-bottom: 90px;
+  }
   .footer{
     height: 90px;
   }
@@ -595,8 +604,8 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   }*/
 }
 @media (min-width: 700px) and (max-width: 1100px){
-  .footer{
-    height: 90px;
+  .main-view{
+    padding-bottom: 390px;
   }
   ol.carousel-indicators{
     display: none;
@@ -633,8 +642,12 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
    padding: 0 0 0 0;
   }*/
 
+
 }
 @media (max-width: 700px){
+  .main-view{
+    padding-bottom: 390px;
+  }
   ol.carousel-indicators{
     display: none;
   }
@@ -695,6 +708,9 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
 
 }
 @media (max-width: 320px){
+  .main-view{
+    padding-bottom: 390px;
+  }
   ol.carousel-indicators{
     display: none;
   }
