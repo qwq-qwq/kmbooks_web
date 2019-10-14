@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('angularApp').factory('api', function (utils, wishList, cart, order, $http, $rootScope, $cookies, authorization, elBooks) {
+angular.module('angularApp').factory('api', function (utils, wishList, cart, order, $http, $location,
+                                                      $rootScope, $cookies, authorization, elBooks) {
   return {
     init: function () {
       $http.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
@@ -20,6 +21,11 @@ angular.module('angularApp').factory('api', function (utils, wishList, cart, ord
       authorization.login().success(success);
       order.GetStoredData();
       utils.GetRandomColorSchemes();
+    },
+    checkOnConfigRights: function () {
+       if(!authorization.canAccessToAdminPart()){
+         $location.url('/login');
+       }
     }
   };
 });

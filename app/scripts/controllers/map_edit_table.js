@@ -4,8 +4,8 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('MapEditTableCtrl', function($scope, $http, $location, $anchorScroll, $route, config) {
-
+  .controller('MapEditTableCtrl', function($scope, $http, $location, $anchorScroll, $route, config, api) {
+    api.checkOnConfigRights();
     $http.get(config.url() + "/api/get_cities")
       .success(function(response) {
         $scope.cities = response;

@@ -1,8 +1,10 @@
 'use strict';
 angular.module('angularApp')
-  .controller('BannersEditTableCtrl', function($scope, $http, $location, FileUploader, $route, $timeout, config) {
-    $scope.editing = 1;
+  .controller('BannersEditTableCtrl', function($scope, $http, $location, FileUploader,
+                                               $route, $timeout, config, api) {
 
+    api.checkOnConfigRights();
+    $scope.editing = 1;
     $scope.uploader = new FileUploader({
       url: config.url() + '/api/edit/banner_upload',
       removeAfterUpload: true,

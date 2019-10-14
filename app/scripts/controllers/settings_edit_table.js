@@ -4,7 +4,9 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('SettingsEditTableCtrl', function($scope, $http, config) {
+  .controller('SettingsEditTableCtrl', function($scope, $http, config, api) {
+
+    api.checkOnConfigRights();
 
     $http.get(config.url() + "/api/settings")
       .success(function (response) {

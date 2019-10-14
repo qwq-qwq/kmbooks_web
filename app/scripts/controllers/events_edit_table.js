@@ -1,7 +1,10 @@
 angular.module('angularApp')
-  .controller('EventsEditTableCtrl', function($scope, $http, $location, FileUploader, $route, $timeout, config) {
-    $scope.editing = 1;
+  .controller('EventsEditTableCtrl', function($scope, $http,
+                                              $location, FileUploader, $route, $timeout, config,
+                                              api) {
 
+    api.checkOnConfigRights();
+    $scope.editing = 1;
     function compare_desc(a,b) {
       if (a.when > b.when)
         return -1;

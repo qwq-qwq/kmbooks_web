@@ -3,7 +3,9 @@
 
 
 angular.module('angularApp')
-  .controller('UpdateByCallCtrl', function($scope, $http, config, authorization) {
+  .controller('UpdateByCallCtrl', function($scope, $http, config, authorization, api) {
+
+    api.checkOnConfigRights();
 
     $scope.updateCatalog = function() {
        if (confirm("Оновити ?")) {

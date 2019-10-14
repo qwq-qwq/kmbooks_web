@@ -2,9 +2,11 @@
  * Created by sergey on 13.02.17.
  */
 angular.module('angularApp')
-  .controller('HtmlPagesEditCtrl', function($scope, $http, $location, FileUploader, $route, $timeout, config) {
-    $scope.editing = 1;
+  .controller('HtmlPagesEditCtrl', function($scope, $http, $location, FileUploader,
+                                            $route, $timeout, config, api) {
 
+    api.checkOnConfigRights();
+    $scope.editing = 1;
     $http.get(config.url() + "/api/html_pages")
       .success(function(response) {
         for(var k in response) {

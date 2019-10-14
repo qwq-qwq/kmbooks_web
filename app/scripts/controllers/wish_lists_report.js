@@ -5,7 +5,11 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('WishListsReportCtrl', function($scope, $http, $location, $route, config, authorization, utils, $rootScope) {
+  .controller('WishListsReportCtrl', function($scope, $http, $location, $route, config,
+                                              authorization, utils, $rootScope, api) {
+
+    api.checkOnConfigRights();
+
     $scope.username = authorization.username();
     $scope.selectors = {};
     $scope.dateEnd = new Date(new Date().getTime() + 1 * 1000 * 60 * 60 * 24); //taking tomorrow date for covering current day

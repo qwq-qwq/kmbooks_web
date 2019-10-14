@@ -4,9 +4,10 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('CommentsEditCtrl', function(order, $scope, $http, config, utils) {
-    $scope.selector = {};
+  .controller('CommentsEditCtrl', function(order, $scope, $http, config, utils, api) {
 
+    api.checkOnConfigRights();
+    $scope.selector = {};
     $http.get(config.url() + "/api/edit/comments", {withCredentials: true})
       .success(function (response) {
         $scope.comments = response;

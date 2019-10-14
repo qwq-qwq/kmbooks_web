@@ -31,10 +31,10 @@ angular.module('angularApp').factory('authorization', function ($rootScope, $htt
         return false}
     },
     isAdmin: function() {
-    if ($rootScope.role == 'ADMIN') {
-      return true
-    }else{
-      return false}
+      if ($rootScope.role == 'ADMIN') {
+        return true
+      }else{
+        return false}
     },
     isEditor: function() {
     if ($rootScope.role === 'EDITOR'|| $rootScope.role === 'ADMIN') {
@@ -60,6 +60,12 @@ angular.module('angularApp').factory('authorization', function ($rootScope, $htt
       return true
     }else{
       return false}
+    },
+    canAccessToAdminPart: function() {
+      if ($rootScope.authenticated == true && $rootScope.role !== 'USER') {
+        return true
+      }else{
+        return false}
     },
     onlyIsUser: function() {
     if ($rootScope.role === 'USER') {

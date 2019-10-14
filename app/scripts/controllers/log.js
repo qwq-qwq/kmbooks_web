@@ -4,8 +4,8 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('LogTableCtrl', function($scope, $http, config, utils) {
-
+  .controller('LogTableCtrl', function($scope, $http, config, utils, api) {
+    api.checkOnConfigRights();
     $http.get(config.url() + "/api/admin/log/last", {withCredentials: true})
       .success(function(response) {
         $scope.logs = response;

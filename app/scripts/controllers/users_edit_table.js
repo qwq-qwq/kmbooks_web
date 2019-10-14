@@ -1,6 +1,10 @@
 
 angular.module('angularApp')
-  .controller('UsersEditTableCtrl', function($scope, $http, $location, FileUploader, $route, $timeout, config) {
+  .controller('UsersEditTableCtrl', function($scope, $http, $location, FileUploader, $route,
+                                             $timeout, config, api) {
+
+    api.checkOnConfigRights();
+
     $scope.roles = ['USER', 'COPYWRITER', 'ORDERS_ADMIN', 'EDITOR', 'ADMIN'];
     $http.get(config.url() + "/api/admin/get_users", {withCredentials: true})
       .success(function(response) {
