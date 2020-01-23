@@ -315,7 +315,7 @@ angular.module('angularApp')
         }
       }
       $scope.totalAmount = $scope.orderAmountWithDiscount + $scope.deliveryCost;
-    }
+    };
 
     $scope.SelectDelivery = function () {
       $scope.selectedPayment = $scope.selectedDelivery.payments[0];
