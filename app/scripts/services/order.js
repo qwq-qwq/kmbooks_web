@@ -95,8 +95,7 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
         if (order.orderAmountWithDiscount >= 1000) {
           order.deliveryCost = 0;
         } else {
-          order.deliveryCost = 60;
-          /* order.deliveryCost = 0;    20.01.2020*/        
+          order.deliveryCost = 60;     
         }
       }else if (order.delivery.id === '3'){
         order.deliveryCost = 0;
