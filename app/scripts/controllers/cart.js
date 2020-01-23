@@ -292,28 +292,36 @@ angular.module('angularApp')
         itemsCount = cart.ItemsCount();
       }else{
         $scope.orderAmountWithDiscount = 0;
-      }
+      };
+      
       if ($scope.selectedDelivery.id === '1') {
         if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
           $scope.deliveryCost = 60;      
         }
-      }else if ($scope.selectedDelivery.id === '3'){
+      };
+      
+      if ($scope.selectedDelivery.id === '3'){
         $scope.deliveryCost = 0;
-      }else if ($scope.selectedDelivery.id === '5'){
+      };
+      
+      if ($scope.selectedDelivery.id === '5'){
         if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
          $scope.deliveryCost = 45;        
         }
-      }else if($scope.selectedDelivery.id === '4') {
+      };
+      
+      if($scope.selectedDelivery.id === '4') {
         if ($scope.orderAmountWithDiscount >= 200) {
           $scope.deliveryCost = 0;
         } else {
          $scope.deliveryCost = 30;       
         }
-      }
+      };
+      
       $scope.totalAmount = $scope.orderAmountWithDiscount + $scope.deliveryCost;
     };
 
