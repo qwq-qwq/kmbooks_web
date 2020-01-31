@@ -52,6 +52,41 @@
         </div>
       </th>
     </tr>
+    <br>
+    <h2>Акции</h2>
+    <tr>
+      <th>
+        <h4 class="text-left" ng-hide="settings.editing" ng-dblclick="editItem(settings)">Акция: {{settings.actionText}}</h4>
+        <div ng-show="settings.editing" class="form-group">
+          <label class="col-md-12" ng-show="settings.editing">Акция:</label>
+          <textarea class="form-control" rows="2" ng-show="settings.editing" ng-model="settings.actionText"
+                    autofocus></textarea>
+        </div>
+      </th>
+    </tr>
+
+    <tr>
+      <th>
+        <h4 class="text-left" ng-hide="settings.editing" ng-dblclick="editItem(settings)">Акция мобильный вид: {{settings.actionTextMobile}}</h4>
+        <div ng-show="settings.editing" class="form-group">
+          <label class="col-md-12" ng-show="settings.editing">Акция мобильный вид:</label>
+          <textarea class="form-control" rows="2" ng-show="settings.editing" ng-model="settings.actionTextMobile"
+                    autofocus></textarea>
+        </div>
+      </th>
+    </tr>
+
+    <tr>
+      <th>
+        <h4 class="text-left" ng-hide="settings.editing" ng-dblclick="editItem(settings)">Последний день акции: {{settings.actionLastDay}}</h4>
+        <div ng-show="settings.editing" class="form-group">
+          <label class="col-md-12" ng-show="settings.editing">Последний день акции:</label>
+          <md-datepicker ng-show="settings.editing" ng-model="settings.actionLastDay"
+                    autofocus></md-datepicker>
+        </div>
+      </th>
+    </tr>
+
     </tbody>
   </table>
 </div>
