@@ -11,19 +11,17 @@ angular.module('angularApp')
     $http.get(config.url() + "/api/settings")
       .success(function (response) {
         $scope.settings = response;
+        $scope.settings.actionLastDay = new Date($scope.settings.actionLastDay);
       })
 
     $scope.editItem = function (item) {
       item.editing = true;
     }
+
     $scope.doneEditing = function (item) {
       item.editing = false;
-      var actionLastDay = item.actionLastDay;
-      if (actionLastDay !== null && actionLastDay){
-        actionLastDay.setHours(0, -actionLastDay.getTimezoneOffset(), 0, 0);
-      }
       var event = {id: item.id, recommended: item.recommended, soonOnSale: item.soonOnSale, customTop: item.customTop,
-        actionText: item.actionText, actionTextMobile: item.actionTextMobile, actionLastDay: actionLastDay};
+        actionText: item.actionText, actionTextMobile: item.actionTextMobile, actionLastDay: item.actionLastDay};
       $http.post(config.url() + "/api/edit/settings_update", event, {withCredentials: true})
         .success(function(response) {
             if (event.id == 0) {

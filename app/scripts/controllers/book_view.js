@@ -54,8 +54,16 @@ angular.module('angularApp')
         }
       }
     })
+
+    $http.get(config.url() + "/api/settings")
+      .success(function (response) {
+        $scope.settings = response;
+        if ($scope.settings.actionLastDay !== null && $scope.settings.actionLastDay) {
+          $scope.actionExpiredAt = $scope.settings.actionLastDay;
+        }
+      })
+
 /*  Month - 1, Day +1. For 2019.09.19  set (2019,9,05) */
-    $scope.actionExpiredAt = new Date(2020, 01,05 );
     $interval(function(){
       var now = new Date().getTime();
       var timeLeft = $scope.actionExpiredAt - now;
