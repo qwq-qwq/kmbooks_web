@@ -202,6 +202,10 @@ angular
           window.location = "https://kmbooks.com.ua/stipend/";
         }
       })
+      .when('/e_books', {
+        templateUrl: 'views/e_books_view.html',
+        controller: 'EBooksViewCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })

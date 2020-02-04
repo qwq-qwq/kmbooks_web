@@ -45,7 +45,7 @@ angular.module('angularApp')
 
     $rootScope.$on('el_books_has_added', function () {
       if($scope.book !== undefined){
-        $scope.elBookLink = elBooks.GetElBookLink($scope.book.code);
+        $scope.book.link = elBooks.GetElBookLink($scope.book.code);
         if (authorization.isAuthorized()){
           $http.get(config.url() + '/api/user/files_for_book/get_file_formats_by_code?code=' + $scope.book.code, {withCredentials: true})
             .success(function (response) {
@@ -63,7 +63,6 @@ angular.module('angularApp')
         }
       })
 
-/*  Month - 1, Day +1. For 2019.09.19  set (2019,9,05) */
     $interval(function(){
       var now = new Date().getTime();
       var timeLeft = $scope.actionExpiredAt - now;
@@ -72,7 +71,6 @@ angular.module('angularApp')
       $scope.discountCountdownMinutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
       $scope.discountCountdownSeconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
     },1000,0);
-
 
     $scope.SaveOrder = function (book) {
       function successAdded(response) {
@@ -242,13 +240,7 @@ angular.module('angularApp')
         description += '. Доставка: Киев, Украина. ' + $scope.book.description
         pageTitle.SetDescription(description);
 
-        $scope.elBookLink = elBooks.GetElBookLink($scope.book.code);
-        if (authorization.isAuthorized()){
-          $http.get(config.url() + '/api/user/files_for_book/get_file_formats_by_code?code=' + $scope.book.code, {withCredentials: true})
-            .success(function (response) {
-              $scope.existedFormats = response;
-            })
-        }
+        $scope.book.link = elBooks.GetElBookLink($scope.book.code);
 
         if (wishList.AlreadyInWishList($scope.book.code)) {
           $scope.alreadyInWishList = true;
@@ -422,10 +414,6 @@ angular.module('angularApp')
 
     $scope.OpenFragment = function (url) {
       $window.open('http://kmbooks.com.ua' + url);
-    }
-
-    $scope.DownloadElBook = function (elBookLink, bookFormat) {
-      $window.open('http://api.kmbooks.com.ua/api/user/files_for_book/get_el_book?link=' + elBookLink + '&format=' + bookFormat, {withCredentials: true});
     }
 
     $scope.onMouseLeave = function () {

@@ -11,9 +11,9 @@ angular.module('angularApp').factory('api', function (utils, wishList, cart, ord
           $rootScope.user = data;
           $rootScope.username = data.email;
           $rootScope.role = data.role;
-          $rootScope.$broadcast('successful_authorization');
           wishList.GetStoredWishList();
           elBooks.SetElBooks(data.elBooks);
+          $rootScope.$broadcast('successful_authorization');
         } else {
           $rootScope.authenticated = false;
         }

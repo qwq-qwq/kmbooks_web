@@ -1,0 +1,37 @@
+<h1 class="brand-color">Мої електронні книжки</h1>
+<h4>{{username}}</h4>
+<div class="row">
+  <table ng-if="wishList.length > 0" class="table-striped table-hover" width="100%">
+    <thead>
+    <th class="col-md-1">
+
+    </th>
+    <th class="col-md-3">
+
+    </th>
+    <th class="col-md-7">
+      Товар
+    </th>
+    </thead>
+    <tbody>
+    <tr ng-repeat="book in elBooks">
+      <td>
+        <a href="/book?code={{book.code}}">
+          <img class="img-responsive" style="max-width: 70px" ng-src="/img/pics/{{book.code}}.jpg"/>
+        </a>
+      </td>
+      <td style="text-align: center">
+        <bk-el-books-buttons></bk-el-books-buttons>
+      </td>
+      <td>
+        <a href="/book?code={{book.code}}">
+          <p>{{book.name}}</p>
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div ng-if="!elBooks.length > 0" class="jumbotron" style="margin-top: 20px">
+  <p>У вас немає електронних книжок</p>
+</div>
