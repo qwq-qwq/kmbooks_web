@@ -104,11 +104,11 @@
       <bk-el-books-buttons></bk-el-books-buttons>
       <bk-price style="display: inline-block; vertical-align: middle" book="book" div="false"></bk-price>
       <bk-buy-button book="book"></bk-buy-button>
-      <p ng-if="bookFragment !== ''" style="text-align: center">
+      <div ng-if="bookFragment !== ''" style="text-align: center">
         <md-button ng-click="OpenFragment(bookFragment.file)" class="">
           <span style="font-size: large" class="glyphicon glyphicon-book brand-color"></span>&nbsp;&nbsp;читати фрагмент
         </md-button>
-      </p>
+      </div>
       <div style="font-size: 12px; border: 1.5px solid #0089cf; padding: 0px; background-color: #ddecf7; text-align: center; width: 70%; margin: auto" ng-if="book.actionKM != null">
         <span ng-bind-html="settings.actionText"></span>
         <div style="text-transform: uppercase; color: grey; margin-top: 4px; font-size: 13px">До кінця акції залишилось:</div>
@@ -227,16 +227,16 @@
         </div>
       <div style="background: rgba(255, 255, 255, 0.4); padding: 2px;">
         <bk-el-books-buttons></bk-el-books-buttons>
-        <p style="text-align: center">
+        <div style="text-align: center">
           <bk-price style="display: inline-block; vertical-align: middle" book="book" div="false"></bk-price>
           <bk-buy-button book="book">
           </bk-buy-button>
-        </p>
-        <p ng-if="bookFragment !== ''" style="text-align: center; margin: 0">
+        </div>
+        <div ng-if="bookFragment !== ''" style="text-align: center;">
           <md-button ng-click="OpenFragment(bookFragment.file)">
             <span style="font-size: large" class="glyphicon glyphicon-book brand-color"></span>&nbsp;&nbsp;читати фрагмент
           </md-button>
-        </p>
+        </div>
         <div style="font-size: 12px; border: 1.5px solid #0089cf; padding: 0px; background-color: #ddecf7; text-align: center" ng-if="book.actionKM != null">
           <span ng-bind-html="settings.actionText"></span>
           <div style="text-transform: uppercase; color: grey; margin-top: 4px; font-size: 13px">До кінця акції залишилось:</div>
