@@ -217,16 +217,25 @@
           <bk-buy-button book="book">
           </bk-buy-button>
         </p>
-        <div style="font-size: 12px; border: 1.5px solid #0089cf; padding: 5px; background-color: #ddecf7" ng-if="book.actionKM != null">
+        <div style="font-size: 12px; border: 1.5px solid #0089cf; padding: 0px; background-color: #ddecf7; text-align: center" ng-if="book.actionKM != null">
           <span ng-bind-html="settings.actionText"></span>
-          <div style="display: flex">
+          <div style="text-transform: uppercase; color: grey; margin-top: 4px; font-size: 13px">До кінця акції залишилось:</div>
+          <div style="display: flex; width: 70%; margin: auto">
             <div style="flex: 1">
-              До кінця акції: <br>
-              <span style="font-size: 16px">{{discountCountdownDays}}<sub>д</sub>
-                {{discountCountdownHours}}<sub>ч</sub>
-                {{discountCountdownMinutes}}<sub>м</sub>
-                {{discountCountdownSeconds}}<sub>с</sub>
-              </span>
+              <div style="font-size: 16px">{{discountCountdownDays}}</div>
+              <div style="text-transform: uppercase; font-size: 8px">днів</div>
+            </div>
+            <div style="flex: 1">
+              <div style="font-size: 16px">{{discountCountdownHours}}</div>
+              <div style="text-transform: uppercase; font-size: 8px">годин</div>
+            </div>
+            <div style="flex: 1">
+              <div style="font-size: 16px">{{discountCountdownMinutes}}</div>
+              <div style="text-transform: uppercase; font-size: 8px">хвилин</div>
+            </div>
+            <div style="flex: 1">
+              <div style="font-size: 16px">{{discountCountdownSeconds}}</div>
+              <div style="text-transform: uppercase; font-size: 8px">секунд</div>
             </div>
           </div>
         </div>
