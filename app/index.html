@@ -199,7 +199,7 @@
 <!--        </div>-->
 <!--      </div>-->
 
-      <ng-owl-carousel class="owl-theme" owl-items="slides" owl-properties="{items: 1}">
+      <ng-owl-carousel class="owl-theme" owl-items="slides" owl-properties="{items: 1}" ng-if="isMain()">
          <div class="point_img" ng-click="OnBannerClick(slide)" ng-repeat="slide in slides track by slide.id">
                      <img class="item" src="{{slide.image}}">
                      <div style="font-family: Calibri" class="carousel-caption">
