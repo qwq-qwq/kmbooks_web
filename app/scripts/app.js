@@ -31,7 +31,8 @@ angular
     'ngMaterial',
     'ui.mask',
     'angular-loading-bar',
-    'froala'
+    'froala',
+    'angular-owl-carousel-2'
   ])
   .config(function ($routeProvider, $locationProvider, $mdDateLocaleProvider) {
 

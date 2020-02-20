@@ -41,6 +41,8 @@
     <link rel="stylesheet" href="bower_components/froala-wysiwyg-editor/css/plugins/video.min.css" />
     <link rel="stylesheet" href="bower_components/froala-wysiwyg-editor/css/third_party/embedly.min.css" />
     <link rel="stylesheet" href="bower_components/froala-wysiwyg-editor/css/third_party/spell_checker.min.css" />
+    <link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.carousel.css" />
+    <link rel="stylesheet" href="bower_components/owl.carousel/dist/assets/owl.theme.default.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -187,15 +189,26 @@
     <div style="position: relative; min-height: 100vh;">
     <span ng-controller="HeaderCtrl">
       <div style="background-color: black; height: 53px"></div>
-      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" ng-if="isMain()">
-        <div class="point_img" ng-click="OnBannerClick(slide)" uib-slide ng-repeat="slide in slides track by slide.id" active="slide.active" index="slide.id">
-          <div class="item" style="background-image:url('{{slide.image}}');"></div>
-          <div style="font-family: Calibri" class="carousel-caption">
-            <h1>{{slide.header}}</h1>
-            <p>{{slide.text}}</p>
-          </div>
-        </div>
-      </div>
+<!--      <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" ng-if="isMain()">-->
+<!--        <div class="point_img" ng-click="OnBannerClick(slide)" uib-slide ng-repeat="slide in slides track by slide.id" active="slide.active" index="slide.id">-->
+<!--          <div class="item" style="background-image:url('{{slide.image}}');"></div>-->
+<!--          <div style="font-family: Calibri" class="carousel-caption">-->
+<!--            <h1>{{slide.header}}</h1>-->
+<!--            <p>{{slide.text}}</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <ng-owl-carousel class="owl-theme" owl-items="slides" owl-properties="{items: 1}">
+         <div class="point_img" ng-click="OnBannerClick(slide)" ng-repeat="slide in slides track by slide.id">
+                     <img class="item" src="{{slide.image}}">
+                     <div style="font-family: Calibri" class="carousel-caption">
+                       <h1>{{slide.header}}</h1>
+                       <p>{{slide.text}}</p>
+                     </div>
+         </div>
+      </ng-owl-carousel>
+
       <span ng-show="removeDiv()"></span>
     </span>
     <span ng-controller="HeaderCtrl">
@@ -325,6 +338,8 @@
     <script src="bower_components/froala-wysiwyg-editor/js/plugins/word_paste.min.js"></script>
     <script src="bower_components/froala-wysiwyg-editor/js/third_party/embedly.min.js"></script>
     <script src="bower_components/froala-wysiwyg-editor/js/third_party/spell_checker.min.js"></script>
+    <script src="bower_components/owl.carousel/dist/owl.carousel.js"></script>
+    <script src="bower_components/angular-owl-carousel2/src/angular-owl-carousel-2.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfNNbpR86HGa23PuqGYgjbAsgG73e7g6g"></script>

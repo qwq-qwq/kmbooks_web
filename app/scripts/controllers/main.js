@@ -135,6 +135,13 @@ angular.module('angularApp')
       return "\"" + text.substring(0, 300) + suffix + "\"";
     }
 
+    $scope.properties = {
+      items: 1,
+      onChange: function () {
+        console.dir(arguments);
+      }
+    };
+
     // $scope.deleteCard = function(id){
     //   var index = -1;
     //   for(var k in $scope.cards){
