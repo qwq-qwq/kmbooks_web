@@ -100,29 +100,43 @@
       </span>
     </div>
 
-    <p style="margin-top: 30px; text-align: center">
-      <bk-price book="book" div="false"></bk-price>
+    <div style="margin-top: 30px;">
+      <bk-el-books-buttons></bk-el-books-buttons>
+      <bk-price style="display: inline-block; vertical-align: middle" book="book" div="false"></bk-price>
       <bk-buy-button book="book"></bk-buy-button>
-      <p style="font-size: 12px;" ng-if="book.actionKM != null">
-        <span ng-bind-html="settings.actionTextMobile"></span>
-        До кінця акції: <br>
-              <span style="font-size: 16px">{{discountCountdownDays}}<sub>д</sub>
-                {{discountCountdownHours}}<sub>ч</sub>
-                {{discountCountdownMinutes}}<sub>м</sub>
-                {{discountCountdownSeconds}}<sub>с</sub>
-              </span>
-      </p>
       <p ng-if="bookFragment !== ''" style="text-align: center">
         <md-button ng-click="OpenFragment(bookFragment.file)" class="">
           <span style="font-size: large" class="glyphicon glyphicon-book brand-color"></span>&nbsp;&nbsp;читати фрагмент
         </md-button>
       </p>
-      <bk-el-books-buttons></bk-el-books-buttons>
-      <div style="margin-top: 30px; text-align: center">
+      <div style="font-size: 12px; border: 1.5px solid #0089cf; padding: 0px; background-color: #ddecf7; text-align: center; width: 70%; margin: auto" ng-if="book.actionKM != null">
+        <span ng-bind-html="settings.actionTextMobile"></span>
+        <div style="text-transform: uppercase; color: grey; margin-top: 4px; font-size: 13px">До кінця акції залишилось:</div>
+        <div style="display: flex; width: 70%; margin: auto">
+          <div style="flex: 1">
+            <div style="font-size: 16px">{{discountCountdownDays}}</div>
+            <div style="text-transform: uppercase; font-size: 8px">днів</div>
+          </div>
+          <div style="flex: 1">
+             <div style="font-size: 16px">{{discountCountdownHours}}</div>
+             <div style="text-transform: uppercase; font-size: 8px">годин</div>
+          </div>
+          <div style="flex: 1">
+            <div style="font-size: 16px">{{discountCountdownMinutes}}</div>
+            <div style="text-transform: uppercase; font-size: 8px">хвилин</div>
+          </div>
+          <div style="flex: 1">
+            <div style="font-size: 16px">{{discountCountdownSeconds}}</div>
+            <div style="text-transform: uppercase; font-size: 8px">секунд</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 20px; text-align: center">
         <bk-social-buttons item="book" kind="book" abs-url="absUrl"></bk-social-buttons>
       </div>
-    </p>
+    </div>
   </div>
+
   <div class="col-md-6 book-data" style="padding-left: 5px;">
     <md-button class="md-icon-button" ng-click="AddToWishList(book)"
                style="position: absolute; top: -9px; left: 80px" aria-label="Favorite">
@@ -212,10 +226,16 @@
           </div>
         </div>
       <div style="background: rgba(255, 255, 255, 0.4); padding: 2px;">
-        <p style="margin-top: 10px; text-align: center">
-          <bk-price book="book" div="false"></bk-price>
+        <bk-el-books-buttons></bk-el-books-buttons>
+        <p style="text-align: center">
+          <bk-price style="display: inline-block; vertical-align: middle" book="book" div="false"></bk-price>
           <bk-buy-button book="book">
           </bk-buy-button>
+        </p>
+        <p ng-if="bookFragment !== ''" style="text-align: center; margin: 0">
+          <md-button ng-click="OpenFragment(bookFragment.file)">
+            <span style="font-size: large" class="glyphicon glyphicon-book brand-color"></span>&nbsp;&nbsp;читати фрагмент
+          </md-button>
         </p>
         <div style="font-size: 12px; border: 1.5px solid #0089cf; padding: 0px; background-color: #ddecf7; text-align: center" ng-if="book.actionKM != null">
           <span ng-bind-html="settings.actionText"></span>
@@ -239,13 +259,7 @@
             </div>
           </div>
         </div>
-        <p ng-if="bookFragment !== ''" style="text-align: center">
-          <md-button ng-click="OpenFragment(bookFragment.file)" class="">
-            <span style="font-size: large" class="glyphicon glyphicon-book brand-color"></span>&nbsp;&nbsp;читати фрагмент
-          </md-button>
-        </p>
-        <bk-el-books-buttons></bk-el-books-buttons>
-        <div style="margin-top: 30px; text-align: center">
+        <div style="margin-top: 20px; text-align: center">
           <bk-social-buttons item="book" kind="book" abs-url="absUrl"></bk-social-buttons>
         </div>
       </div>
