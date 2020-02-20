@@ -246,6 +246,13 @@ md-input-container .md-input-message-animation:not(.ng-animate) {
 .fc-icon{
   color: #428bca;
 }
+.action-header{
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  background-color: #0089cf;
+  margin: 0 0 3px 0;
+}
 
 /*body a {
   color:black;
