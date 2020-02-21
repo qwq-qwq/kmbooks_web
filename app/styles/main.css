@@ -265,6 +265,23 @@ body a:hover {
   text-transform: uppercase;
 }
 
+.owl-dot span{
+  background-color: white !important;
+}
+
+.owl-dot.active span{
+  background-color: #0089cf !important;
+}
+
+.owl-dots{
+  margin-top: -55px !important;
+  position: relative;
+}
+
+.owl-nav {
+  height: 0px;
+}
+
 html,
 body {
   height: 100%;
