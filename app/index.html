@@ -200,7 +200,7 @@
 <!--      </div>-->
 
       <ng-owl-carousel class="owl-theme" owl-items="slides" owl-properties="{items: 1, smartSpeed:450, loop:true,
-      autoplay:true, autoplayTimeout:4000, autoplayHoverPause:false, animateOut: 'fadeInLeft',
+      autoplay:true, autoplayTimeout:4000, autoplayHoverPause:false, animateOut: 'fadeIn',
        animateIn: 'zoomOutRight'}" ng-if="isMain()">
          <div class="point_img" ng-click="OnBannerClick(slide)" ng-repeat="slide in slides track by slide.id">
                      <img class="item" src="{{slide.image}}">
