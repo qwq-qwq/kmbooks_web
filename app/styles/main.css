@@ -266,7 +266,7 @@ body a:hover {
 }
 
 .owl-dot span{
-  background-color: white !important;
+  /*background-color: white !important;*/
 }
 
 .owl-dot.active span{
@@ -749,13 +749,13 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
 
   .main-slider-arrow-left {
     font-size: 25px;
-    color: #0089cf;
-    text-shadow: 1px 1px 1px #e6e8e9, 0 0 1em #e8eaeb;
+    color: white;
+    /*text-shadow: 1px 1px 1px #e6e8e9, 0 0 1em #e8eaeb;*/
   }
   .main-slider-arrow-right {
     font-size: 25px;
-    color: #0089cf;
-    text-shadow: 1px 1px 1px #e6e8e9, 0 0 1em #e8eaeb;
+    color: white;
+    /*text-shadow: 1px 1px 1px #e6e8e9, 0 0 1em #e8eaeb;*/
   }
 
 }
