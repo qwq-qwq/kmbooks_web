@@ -274,13 +274,31 @@ body a:hover {
 }
 
 .owl-dots{
-  margin-top: -55px !important;
+  margin-top: -50px !important;
   position: relative;
 }
 
 .owl-nav {
   height: 0px;
 }
+
+.main-slider-arrow-left {
+  position: absolute;
+  left:10%;
+  top: 45%;
+  font-size: 50px;
+  color: #0089cf;
+  text-shadow: 2px 1px 1px #e6e8e9, 0 0 1em #e8eaeb;
+}
+.main-slider-arrow-right {
+  position: absolute;
+  right:10%;
+  top: 45%;
+  font-size: 50px;
+  color: #0089cf;
+  text-shadow: 2px 1px 1px #e6e8e9, 0 0 1em #e8eaeb;
+}
+
 
 html,
 body {
