@@ -293,35 +293,35 @@ angular.module('angularApp')
       }else{
         $scope.orderAmountWithDiscount = 0;
       };
-      
+
       if ($scope.selectedDelivery.id === '1') {
         if ($scope.orderAmountWithDiscount >= 500) {
           $scope.deliveryCost = 0;
         } else {
-          $scope.deliveryCost = 60;      
+          $scope.deliveryCost = 60;
         }
       };
-      
+
       if ($scope.selectedDelivery.id === '3'){
         $scope.deliveryCost = 0;
       };
-      
+
       if ($scope.selectedDelivery.id === '5'){
         if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
-         $scope.deliveryCost = 45;        
+         $scope.deliveryCost = 45;
         }
       };
-      
+
       if($scope.selectedDelivery.id === '4') {
-        if ($scope.orderAmountWithDiscount >= 200) {
          $scope.deliveryCost = 0;
-        } else {
-         $scope.deliveryCost = 30;     
-        }
       };
-      
+
+      if($scope.selectedDelivery.id === '6') {
+          $scope.deliveryCost = 0;
+      };
+
       $scope.totalAmount = $scope.orderAmountWithDiscount + $scope.deliveryCost;
     }
 

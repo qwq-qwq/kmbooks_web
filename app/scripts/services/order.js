@@ -92,7 +92,7 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
     },
     RecalculateDeliveryCost: function (order) {
       if (order.delivery.id === '1') {
-        if (order.orderAmountWithDiscount >= 1000) {
+        if (order.orderAmountWithDiscount >= 500) {
           order.deliveryCost = 0;
         } else {
           order.deliveryCost = 60;
@@ -106,6 +106,8 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
           order.deliveryCost = 45;
         }
       }else if(order.delivery.id === '4') {
+        order.deliveryCost = 0;
+      }else if(order.delivery.id === '6') {
         order.deliveryCost = 0;
       }
       order.totalAmount = order.orderAmountWithDiscount + order.deliveryCost;
