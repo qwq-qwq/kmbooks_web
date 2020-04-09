@@ -44,6 +44,9 @@ angular.module('angularApp').directive('bkCatalog', ['$http', 'config', 'authori
         if (scope.filterAgeGroups !== undefined) {
           filter += "&ageGroup=" + scope.filterAgeGroups;
         }
+        if (scope.filterElBookExist !== undefined) {
+          filter += "&elBookExist=" + scope.filterElBookExist;
+        }
         if (scope.filterSortBy !== undefined) {
           filter += "&sortBy=" + scope.filterSortBy;
         }

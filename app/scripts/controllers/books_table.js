@@ -38,6 +38,7 @@ angular.module('angularApp')
       $scope.filterPainters = $location.search().painters;
       $scope.filterIllustrations = $location.search().illustrations;
       $scope.filterAgeGroups = $location.search().ageGroups;
+      $scope.filterElBookExist = $location.search().elBookExist;
       $scope.filterSortBy = $location.search().sortBy;
       $scope.group = $location.search().group;
       if (page === undefined){
@@ -77,6 +78,7 @@ angular.module('angularApp')
           $scope.editors = response.editors;
           $scope.painters = response.painters;
           $scope.illustrations = response.illustrations;
+          $scope.elBookExistence = response.elBookExistence;
           $scope.ageGroups = [];
           angular.forEach(response.ageGroups, function (element, key) {
             if (element.name !== null){
