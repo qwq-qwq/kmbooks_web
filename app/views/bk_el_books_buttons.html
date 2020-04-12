@@ -6,11 +6,7 @@
     <i ng-show="savingInProgress" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
   </md-button>
 </div>
-<p ng-if="book.link !== ''" style="text-align: center">
-  <md-button class="md-fab md-mini green-color-background" ng-click="DownloadElBook(book.link, selectors.existedFormat)" ng-disabled="selectors.existedFormat === undefined || !selectors.existedFormat">
-    <md-tooltip md-direction="bottom">Завантажити електронну</md-tooltip>
-    <span style="font-size: medium" class="fa fa-cloud-download"></span>
-  </md-button>
+<div ng-if="book.link !== ''" style="text-align: center">
   <md-input-container>
     <label>Формат</label>
     <md-select ng-model="selectors.existedFormat" ng-click="GetAvailableFormats(book.code)">
@@ -19,4 +15,9 @@
       </md-option>
     </md-select>
   </md-input-container>
-</p>
+  <md-button class="md-button md-mini green-color-background" ng-click="DownloadElBook(book.link, selectors.existedFormat)" ng-disabled="selectors.existedFormat === undefined || !selectors.existedFormat">
+    <md-tooltip md-direction="bottom">Завантажити електронну</md-tooltip>
+    <span style="font-size: medium" class="fa fa-cloud-download"></span>
+    Завантажити
+  </md-button>
+</div>

@@ -114,6 +114,7 @@ angular.module('angularApp')
             strMenu += '<li><a href = "/catalog?group=' + response[key].group_id + '">' + response[key].name + caret_text + '</a>';
             previous_level = current_level;
           };
+          strMenu += "</ul><li><a href=\"/catalog?group=445&elBookExist=true&reload=true\">Електронні книги</a></li>";
           $scope.strMenu = strMenu;
           $scope.$broadcast('menuloaded');
         })

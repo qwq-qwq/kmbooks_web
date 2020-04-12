@@ -323,6 +323,17 @@ angular.module('angularApp')
         })
       })
 
+    if (authorization.isAuthorized()){
+      $http.get(config.url() + '/api/user/files_for_book/get_file_formats_by_code?code=' + code, {withCredentials: true})
+        .success(function (response) {
+          $scope.existedFormats = response;
+          if ($scope.existedFormats !== undefined && $scope.existedFormats.length !== 0){
+            $scope.selectors.existedFormat = $scope.existedFormats[0];
+          }
+        })
+    }
+
+
     $scope.toDateTime = function(ObjId) {
       return utils.toDateTime(ObjId);
     }
