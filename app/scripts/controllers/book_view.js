@@ -242,6 +242,16 @@ angular.module('angularApp')
 
         $scope.book.link = elBooks.GetElBookLink($scope.book.code);
 
+        if (authorization.isAuthorized()){
+          $http.get(config.url() + '/api/user/files_for_book/get_file_formats_by_code?code=' + code, {withCredentials: true})
+            .success(function (response) {
+              $scope.existedFormats = response;
+              if ($scope.existedFormats !== undefined && $scope.existedFormats.length !== 0){
+                $scope.selectors.existedFormat = $scope.existedFormats[0];
+              }
+            })
+        }
+
         if (wishList.AlreadyInWishList($scope.book.code)) {
           $scope.alreadyInWishList = true;
           $scope.wishHeart = 'fa fa-heart brand-color-hover';
@@ -322,17 +332,6 @@ angular.module('angularApp')
            value.date = value.id
         })
       })
-
-    if (authorization.isAuthorized()){
-      $http.get(config.url() + '/api/user/files_for_book/get_file_formats_by_code?code=' + code, {withCredentials: true})
-        .success(function (response) {
-          $scope.existedFormats = response;
-          if ($scope.existedFormats !== undefined && $scope.existedFormats.length !== 0){
-            $scope.selectors.existedFormat = $scope.existedFormats[0];
-          }
-        })
-    }
-
 
     $scope.toDateTime = function(ObjId) {
       return utils.toDateTime(ObjId);
