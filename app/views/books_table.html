@@ -31,6 +31,20 @@
              </label>
            </div>
          </div>-->
+         <div uib-accordion-group class="panel-default" is-open="status.open9" ng-init="status.open9 = true">
+             <div uib-accordion-heading>
+               Електронна версія
+               <span class="pull-right glyphicon ng-scope glyphicon-chevron-down"
+                     ng-class="{'fa fa-chevron-down': status.open9, 'fa fa-chevron-right': !status.open9}"
+                     style="margin-top: 2px"></span>
+             </div>
+             <div class="checkbox" ng-repeat="elBookExistenceVariant in elBookExistence | filter: {name:'!!'}">
+               <label>
+                 <input type="checkbox" ng-click="FilterApply(filters.bookExistenceChecked, 'elBookExist')" ng-model="filters.bookExistenceChecked['value' + $index]" ng-true-value="'{{quoteString(elBookExistenceVariant.name)}}'"
+                        ng-false-value=""> {{elBookExistenceVariant.name === "true"? "є"  : "немає"}}&nbsp;&nbsp;<span style="color: lightgrey">({{elBookExistenceVariant.count}})</span>
+               </label>
+             </div>
+         </div>
          <div uib-accordion-group class="panel-default" is-open="status.open1">
            <div uib-accordion-heading>
              Автори
@@ -152,20 +166,6 @@
                       ng-false-value=""> {{language.name}}&nbsp;&nbsp;<span style="color: lightgrey">({{language.count}})</span>
              </label>
            </div>
-         </div>
-         <div uib-accordion-group class="panel-default" is-open="status.open9" ng-init="status.open9 = true">
-             <div uib-accordion-heading>
-               Єлектронна версія
-               <span class="pull-right glyphicon ng-scope glyphicon-chevron-down"
-                     ng-class="{'fa fa-chevron-down': status.open9, 'fa fa-chevron-right': !status.open9}"
-                     style="margin-top: 2px"></span>
-             </div>
-             <div class="checkbox" ng-repeat="elBookExistenceVariant in elBookExistence | filter: {name:'!!'}">
-               <label>
-                 <input type="checkbox" ng-click="FilterApply(filters.bookExistenceChecked, 'elBookExist')" ng-model="filters.bookExistenceChecked['value' + $index]" ng-true-value="'{{quoteString(elBookExistenceVariant.name)}}'"
-                        ng-false-value=""> {{elBookExistenceVariant.name === "true"? "є"  : "немає"}}&nbsp;&nbsp;<span style="color: lightgrey">({{elBookExistenceVariant.count}})</span>
-               </label>
-             </div>
          </div>
          </uib-accordion>
        </div>
