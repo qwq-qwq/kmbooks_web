@@ -114,7 +114,7 @@ angular.module('angularApp')
           showFilters($location.search().painters, 'paintersChecked', $scope.painters);
           showFilters($location.search().illustrations, 'illustrationsChecked', $scope.illustrations);
           showFilters($location.search().ageGroups, 'ageGroupsChecked', $scope.ageGroups);
-
+          showFilters($location.search().elBookExist, 'bookExistenceChecked', $scope.elBookExistence);
           $scope.catalog();
         })
     }
@@ -235,6 +235,7 @@ angular.module('angularApp')
     $scope.isEditor = function() {
       return authorization.isEditor();
     }
+
 
   });
 

@@ -15,4 +15,5 @@
 <div ng-if="book.illustrations"><b>Іллюстрації: </b><a href="/catalog?illustrations={{book.illustrations}}">{{book.illustrations}}</a></div>
 <div ng-if="book.weight"><b>Вага: </b> {{book.weight}} г</div>
 <div ng-if="book.isbn"><b>ISBN: </b>{{book.isbn}}</div>
+<div ng-if="book.elBookExist"><b>Електронна версія: </b><a href="/catalog?elBookExist={{book.elBookExist}}">{{book.elBookExist ? "є" : "немає"}}</a></div>
 <div ng-if="book.dateOfRelease"><b>Дата реліза: </b> <i style="font-size: small">{{book.dateOfRelease}}</i></div>

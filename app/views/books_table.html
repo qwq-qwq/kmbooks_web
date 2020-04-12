@@ -153,6 +153,20 @@
              </label>
            </div>
          </div>
+         <div uib-accordion-group class="panel-default" is-open="status.open9" ng-init="status.open9 = true">
+             <div uib-accordion-heading>
+               Єлектронна версія
+               <span class="pull-right glyphicon ng-scope glyphicon-chevron-down"
+                     ng-class="{'fa fa-chevron-down': status.open9, 'fa fa-chevron-right': !status.open9}"
+                     style="margin-top: 2px"></span>
+             </div>
+             <div class="checkbox" ng-repeat="elBookExistenceVariant in elBookExistence | filter: {name:'!!'}">
+               <label>
+                 <input type="checkbox" ng-click="FilterApply(filters.bookExistenceChecked, 'elBookExist')" ng-model="filters.bookExistenceChecked['value' + $index]" ng-true-value="'{{quoteString(elBookExistenceVariant.name)}}'"
+                        ng-false-value=""> {{elBookExistenceVariant.name === "true"? "є"  : "немає"}}&nbsp;&nbsp;<span style="color: lightgrey">({{elBookExistenceVariant.count}})</span>
+               </label>
+             </div>
+         </div>
          </uib-accordion>
        </div>
        <div ng-show="isCatalog()" class="col-md-9">
@@ -225,6 +239,14 @@
             <span ng-repeat="(nameInModel, element) in filterEmpty(filters.illustrationsChecked)">
               <button class="btn btn-default btn-sm" ng-click="removeFromFilter(filters.illustrationsChecked, nameInModel, 'illustrations')">
                 {{element}}
+                <span>
+                    <i class="fa fa-times-circle" style="font-size: small" aria-hidden="true"></i>
+                </span>
+              </button>
+            </span>
+            <span ng-repeat="(nameInModel, element) in filterEmpty(filters.bookExistenceChecked)">
+              <button class="btn btn-default btn-sm" ng-click="removeFromFilter(filters.bookExistenceChecked, nameInModel, 'elBookExist')">
+                {{element==="true" ? "Є електронна версія" : "Немає електронної версії";}}
                 <span>
                     <i class="fa fa-times-circle" style="font-size: small" aria-hidden="true"></i>
                 </span>
