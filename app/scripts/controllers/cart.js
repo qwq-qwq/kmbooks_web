@@ -295,10 +295,10 @@ angular.module('angularApp')
       };
 
       if ($scope.selectedDelivery.id === '1') {
-        if ($scope.orderAmountWithDiscount >= 500) {
+        if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
-          $scope.deliveryCost = 60;
+          $scope.deliveryCost = 50;
         }
       };
 
@@ -315,11 +315,21 @@ angular.module('angularApp')
       };
 
       if($scope.selectedDelivery.id === '4') {
-         $scope.deliveryCost = 0;
+        if ($scope.orderAmountWithDiscount >= 1000) {
+          $scope.deliveryCost = 0;
+        } else {
+         $scope.deliveryCost = 30;
+        }
+
       };
 
       if($scope.selectedDelivery.id === '6') {
+        if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
+        } else {
+         $scope.deliveryCost = 35;
+        }
+
       };
 
       $scope.totalAmount = $scope.orderAmountWithDiscount + $scope.deliveryCost;
