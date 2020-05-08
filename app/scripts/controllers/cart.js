@@ -294,19 +294,19 @@ angular.module('angularApp')
         $scope.orderAmountWithDiscount = 0;
       };
 
-      if ($scope.selectedDelivery.id === '1') {
-        if ($scope.orderAmountWithDiscount >= 1000) {
+      if ($scope.selectedDelivery.id === '1') { // Courier
+        if ($scope.orderAmountWithDiscount >= 500) {
           $scope.deliveryCost = 0;
         } else {
           $scope.deliveryCost = 50;
         }
       };
 
-      if ($scope.selectedDelivery.id === '3'){
+      if ($scope.selectedDelivery.id === '3'){  //selfdelivery
         $scope.deliveryCost = 0;
       };
 
-      if ($scope.selectedDelivery.id === '5'){
+      if ($scope.selectedDelivery.id === '5'){ // NewPost
         if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
@@ -314,20 +314,20 @@ angular.module('angularApp')
         }
       };
 
-      if($scope.selectedDelivery.id === '4') {
+      if($scope.selectedDelivery.id === '4') {  // Ukrpost
         if ($scope.orderAmountWithDiscount >= 200) {
           $scope.deliveryCost = 0;
         } else {
-         $scope.deliveryCost = 30;
+         $scope.deliveryCost = 0;  // 30
         }
 
       };
 
-      if($scope.selectedDelivery.id === '6') {
+      if($scope.selectedDelivery.id === '6') {  //Ukrpost Courier
         if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
-         $scope.deliveryCost = 35;
+         $scope.deliveryCost = 0; //35
         }
 
       };
