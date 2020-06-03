@@ -43,6 +43,10 @@
   background-color: inherit;
 }
 
+md-dialog{
+  background: white;
+}
+
 .close {
   position: absolute;
   left: 10px;

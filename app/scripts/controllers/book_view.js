@@ -6,7 +6,7 @@
 angular.module('angularApp')
   .controller('BookViewCtrl', function ($scope, $http, $window, $location, $interval, authorization,
                                         FileUploader, config, pageTitle, utils, confirmDialog,
-                                        $rootScope, elBooks, urlBeforeWrongAuth, wishList) {
+                                        $rootScope, elBooks, urlBeforeWrongAuth, wishList, $mdDialog) {
     var code = $location.search().code;
     if (code === ''){
        $location.url('/catalog')
@@ -180,13 +180,32 @@ angular.module('angularApp')
         })
     }
 
+    $scope.showConfirmBuyElBook = function(book) {
+      // Appending dialog to document.body to cover sidenav in docs app
+      var confirm = $mdDialog.confirm()
+        .title('Згода')
+        .textContent('Натискаючи кнопку «оплатити», я безумовно погоджуюсь з тим, що:\n' +
+          'Придбана мною електронна книга (надалі – книга) після  скачування може бути використана мною виключно в особистих цілях шляхом копіювання, перегляду чи інших дій, виключно на моєму обладнанні.\n' +
+          'Я не маю права використовувати книгу будь-яким способом з метою передачі третім особам, в підприємницьких цілях або з метою отримання будь-якої вигоди.\n' +
+          'Я не маю права переробляти, поширювати, публічно показувати, публікувати в глобальній мережі Інтернет, імпортувати, здавати в прокат, публічно виконувати, доводити до загального відома книгу, розміщувати посилання на книгу, на будь-яких ресурсах таким чином, щоб третя особа мала доступ до книги. \n' +
+          'В книзі міститься спеціальний код-ідентифікатор, за допомогою якого можна визначити будь-які дії спрямовані на неправомірне використання книги.')
+        .ariaLabel('Ок')
+        .ok('Так, погоджуюсь')
+        .cancel('Ні');
+      $mdDialog.show(confirm).then(function() {
+        $scope.SaveOrder(book);
+      }, function() {
+
+      });
+    };
+
     $scope.BuyElBook = function (book) {
       if (!authorization.isAuthorized()) {
         urlBeforeWrongAuth.SetUrlBeforeWrongAuth($location.url());
         confirmDialog.ShowRegistrationConfirm('Для придбання електронних книг будь ласка зарееструйтесь');
         return;
       }
-      $scope.SaveOrder(book);
+      $scope.showConfirmBuyElBook(book);
     }
 
     $scope.editItem = function (item) {
