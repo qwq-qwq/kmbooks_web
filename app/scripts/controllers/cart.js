@@ -289,6 +289,9 @@ angular.module('angularApp')
         }else{
           $scope.orderAmountWithDiscount = cart.GetCart().orderAmount;
         }
+        if ($scope.selectedPayment.id === '5') {
+          $scope.orderAmountWithDiscount = $scope.orderAmountWithDiscount * (1 - 0.15);
+        }
         itemsCount = cart.ItemsCount();
       }else{
         $scope.orderAmountWithDiscount = 0;
@@ -342,6 +345,10 @@ angular.module('angularApp')
       }else if ($scope.selectedDelivery.id === '3'){
         $scope.selectedShop = $scope.selectedCity.shops[0];
       }
+      $scope.RecalculateDeliveryCost();
+    }
+
+    $scope.SelectPayment = function () {
       $scope.RecalculateDeliveryCost();
     }
 

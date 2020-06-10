@@ -106,7 +106,7 @@
          <p ng-hide="currentOrder.editing" ng-dblclick="editItem(currentOrder)">Оплата: {{currentOrder.payment.name}}</p>
          <md-input-container ng-show="currentOrder.editing">
            <label>Оплата:</label>
-           <md-select ng-model="selectors.payment">
+           <md-select ng-model="selectors.payment" ng-change="RecalculationOrder(order)">
              <md-option ng-repeat="orderPayment in orderPayments" ng-value="orderPayment">
                {{orderPayment.name}}
              </md-option>
@@ -114,7 +114,8 @@
          </md-input-container>
 
          <p>Сума: {{currentOrder.orderAmount | currency: ""}} грн</p>
-         <p ng-if="currentOrder.promoCode">Вартість товарів з урахуванням промо-коду: {{currentOrder.orderAmountWithDiscount | currency: ""}} грн</p>
+         <p ng-if="currentOrder.orderAmount !== currentOrder.orderAmountWithDiscount">Вартість товарів з урахуванням знижки: {{currentOrder.orderAmountWithDiscount | currency: ""}} грн</p>
+         <!--<p ng-if="currentOrder.promoCode">Вартість товарів з урахуванням промо-коду: {{currentOrder.orderAmountWithDiscount | currency: ""}} грн</p>-->
          <p>Сума доставки: {{currentOrder.deliveryCost | currency: ""}} грн</p>
          <p>Сума всього: {{currentOrder.totalAmount | currency: ""}} грн</p>
 

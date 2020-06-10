@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('OrdersCtrl', function($scope, $http, $location, $route, config, authorization, utils, $rootScope) {
+  .controller('OrdersCtrl', function($scope, $http, $location, $route, config, authorization, utils, $rootScope, order) {
     $scope.username = authorization.username();
     $scope.orderStates = ['Робиться', 'Зроблений', 'Підтверджено', 'Зібраний', 'Сплачений'];
     $scope.orderStatesFilter = ['Всі', 'Робиться', 'Зроблений', 'Підтверджено', 'Зібраний', 'Сплачений'];
@@ -91,6 +91,12 @@ angular.module('angularApp')
     }
 
     $scope.updateOrdersTable();
+
+    $scope.RecalculationOrder = function (orderForChange) {
+      orderForChange.payment = $scope.selectors.payment;
+      order.RecalculateOrder(orderForChange);
+      order.RecalculateDeliveryCost(orderForChange);
+    }
 
     $scope.toDateTime = function(ObjId) {
       return utils.toDateTime(ObjId);

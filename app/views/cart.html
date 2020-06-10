@@ -139,7 +139,7 @@
       <label>
         Метод платежу
       </label>
-      <select class="form-control" ng-model="selectedPayment" ng-options="payment as payment.name for payment in selectedDelivery.payments">
+      <select class="form-control" ng-model="selectedPayment" ng-change="SelectPayment()" ng-options="payment as payment.name for payment in selectedDelivery.payments">
       </select>
     </div>
     <div ng-show="selectedDelivery.id === '5'" class="form-group">
@@ -286,7 +286,8 @@
         </div>
 
         <p>Вартість товарів: {{cart.orderAmount | currency: ""}} грн</p>
-        <p ng-if="promoCode">Вартість товарів з урахуванням промо-коду: {{orderAmountWithDiscount | currency: ""}} грн</p>
+        <p ng-if="cart.orderAmount !== orderAmountWithDiscount">Вартість товарів з урахуванням знижки: {{orderAmountWithDiscount | currency: ""}} грн</p>
+        <!--<p ng-if="promoCode">Вартість товарів з урахуванням промо-коду: {{orderAmountWithDiscount | currency: ""}} грн</p>-->
         <p ng-hide="selector.interDelivery">Вартість доставки: {{deliveryCost | currency: ""}} грн</p>
         <p ng-show="selector.interDelivery">Вартість доставки: розраховується менеджером</p>
         <p>До сплати: {{totalAmount | currency: ""}} грн</p>

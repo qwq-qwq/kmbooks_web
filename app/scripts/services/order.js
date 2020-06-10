@@ -87,6 +87,9 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
         }else{
           order.orderAmountWithDiscount = order.orderAmount;
         }
+        if (order.payment.id === '5') {
+          order.orderAmountWithDiscount = order.orderAmountWithDiscount * (1 - 0.15);
+        }
         order.totalAmount = order.orderAmountWithDiscount + order.deliveryCost;
       }
     },
