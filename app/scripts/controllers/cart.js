@@ -290,7 +290,19 @@ angular.module('angularApp')
           $scope.orderAmountWithDiscount = cart.GetCart().orderAmount;
         }
         if ($scope.selectedPayment.id === '5') {
-          $scope.orderAmountWithDiscount = $scope.orderAmountWithDiscount * (1 - 0.15);
+           //
+           var orderAmountWithDiscount = 0;
+           angular.forEach(cart.GetCart().goodsTable, function(value, key) {
+             if (value !== undefined) {
+               if (!value.preorder) {
+                 orderAmountWithDiscount += Math.round(value.quantity * value.price / (1 - value.discount/100) * (1 - 0.15) * 100) / 100;
+               }else{
+                 orderAmountWithDiscount += Math.round(value.quantity * value.price * 100) / 100;
+               }
+             }
+           });
+          $scope.orderAmountWithDiscount = orderAmountWithDiscount;
+          //
         }
         itemsCount = cart.ItemsCount();
       }else{
