@@ -89,6 +89,17 @@
             {{orderAmountWithDiscount | currency: ""}} грн
           </th>
         </tr>
+        <tr ng-if="cart.orderAmount !== orderAmountWithDiscount">
+          <th colspan="2">
+            <p>з урахуванням знижки:</p>
+          </th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th colspan="2" style="text-align: right">
+            {{orderAmountWithDiscount | currency: ""}} грн
+          </th>
+        </tr>
       </tbody>
     </table>
 
