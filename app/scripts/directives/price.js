@@ -27,15 +27,21 @@ angular.module('angularApp').directive('bkPrice', ['authorization', '$rootScope'
           }
         }
         if (scope.book !== undefined){
-          if (scope.book.priceWithoutDiscount === undefined){
-            scope.book.priceWithoutDiscount = scope.book.price;
-          }
-          if (discount > 0 && !scope.book.discountForbidden){
+          if (scope.book.actionKM !== null) {
+            discount = parseInt(scope.book.actionKM);
+            scope.book.priceWithoutDiscount = Math.round(scope.book.price * 100 / (100 - discount) * 10) / 10;
             scope.book.discount = discount;
-            scope.book.price = Math.round(scope.book.priceWithoutDiscount * (1 - discount/100) * 10) / 10;
           }else{
-            scope.book.discount = 0;
-            scope.book.price = scope.book.priceWithoutDiscount;
+            if (scope.book.priceWithoutDiscount === undefined) {
+              scope.book.priceWithoutDiscount = scope.book.price;
+            }
+            if (discount > 0 && !scope.book.discountForbidden) {
+              scope.book.discount = discount;
+              scope.book.price = Math.round(scope.book.priceWithoutDiscount * (1 - discount / 100) * 10) / 10;
+            } else {
+              scope.book.discount = 0;
+              scope.book.price = scope.book.priceWithoutDiscount;
+            }
           }
         }
       }
