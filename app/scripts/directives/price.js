@@ -30,7 +30,7 @@ angular.module('angularApp').directive('bkPrice', ['authorization', '$rootScope'
           if (scope.book.actionKM !== null) {
             discount = parseInt(scope.book.actionKM);
             scope.book.priceWithoutDiscount = Math.round(scope.book.price * 100 / (100 - discount) * 10) / 10;
-            scope.book.discount = discount;
+            scope.book.discount = 0;
           }else{
             if (scope.book.priceWithoutDiscount === undefined) {
               scope.book.priceWithoutDiscount = scope.book.price;
