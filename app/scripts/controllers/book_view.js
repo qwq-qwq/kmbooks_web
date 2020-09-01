@@ -202,7 +202,7 @@ angular.module('angularApp')
     $scope.BuyElBook = function (book) {
       if (!authorization.isAuthorized()) {
         urlBeforeWrongAuth.SetUrlBeforeWrongAuth($location.url());
-        confirmDialog.ShowRegistrationConfirm('Для придбання електронних книг будь ласка зарееструйтесь');
+        confirmDialog.ShowRegistrationConfirm('Щоб замовити електронну книгу, будь ласка, зареєструйтесь');
         return;
       }
       $scope.showConfirmBuyElBook(book);
