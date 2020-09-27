@@ -498,6 +498,11 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   color: #626262;
 }
 
+.price-inline{
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .line_through{
   position: relative;
   margin: auto;
