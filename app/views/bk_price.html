@@ -1,4 +1,4 @@
-<div ng-if="book.priceWithoutDiscount !== book.price" class="line_through" ng-style="lineThroughStyle">
+<div ng-if="book.priceWithoutDiscount !== book.price" class="line_through">
     <div class="price_without_discount_value" style="margin-top: 0px">{{book.priceWithoutDiscount}} <span style="font-size: 16px">грн</span></div>
 </div>
 <div ng-if="book.price > 0 && div === true" class="price_value">{{book.price | currency: ""}} <span style="font-size: 14px">грн</span></div>
