@@ -12,11 +12,11 @@ angular.module('angularApp').directive('bkPrice', ['authorization', '$rootScope'
       book: '='
     },
     link: function(scope, element, attributes) {
-      if (scope.div === false){
-         //scope.lineThroughStyle = {'width': '40%'};
-      }else{
-         scope.lineThroughStyle = {'margin-left': 'auto', 'margin-right': 'auto', 'max-width': '110px'};
-      }
+      // if (scope.div === false){
+      //    //scope.lineThroughStyle = {'width': '40%'};
+      // }else{
+      //    scope.lineThroughStyle = {'margin-left': 'auto', 'margin-right': 'auto', 'max-width': '110px'};
+      // }
       scope.updateAuthorization = function () {
         var discount = 0;
         if (authorization.isAuthorized()) {

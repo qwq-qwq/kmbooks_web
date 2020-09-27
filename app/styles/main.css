@@ -43,6 +43,10 @@
   background-color: inherit;
 }
 
+.lineThroughStyle{
+  max-width: 110px;
+}
+
 md-dialog{
   background: white;
 }
