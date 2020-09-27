@@ -43,10 +43,6 @@
   background-color: inherit;
 }
 
-.lineThroughStyle{
-  max-width: 110px;
-}
-
 md-dialog{
   background: white;
 }
@@ -505,6 +501,7 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
 .line_through{
   position: relative;
   margin: auto;
+  max-width: 110px;
 }
 
 .line_through:before{
