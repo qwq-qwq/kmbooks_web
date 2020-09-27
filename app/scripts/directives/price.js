@@ -8,15 +8,9 @@ angular.module('angularApp').directive('bkPrice', ['authorization', '$rootScope'
     restrict: 'E',
     templateUrl: 'views/bk_price.html',
     scope: {
-      div: '=',
       book: '='
     },
     link: function(scope, element, attributes) {
-      // if (scope.div === false){
-      //    //scope.lineThroughStyle = {'width': '40%'};
-      // }else{
-      //    scope.lineThroughStyle = {'margin-left': 'auto', 'margin-right': 'auto', 'max-width': '110px'};
-      // }
       scope.updateAuthorization = function () {
         var discount = 0;
         if (authorization.isAuthorized()) {
