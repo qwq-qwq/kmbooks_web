@@ -268,7 +268,7 @@
           <label>
             Адреса:
           </label>
-          <span ng-if="selectedDelivery.id === '1' || selectedDelivery.id === '4'">
+          <span ng-if="selectedDelivery.id === '1' || selectedDelivery.id === '4' || selectedDelivery.id === '6'">
              <input name="address" type="text" class="form-control" ng-model="selector.address" required>
           </span>
           <span ng-if="selectedDelivery.id === '3' || selectedDelivery.id === '5'">
@@ -279,7 +279,7 @@
           </div>
         </div>
 
-        <div class="form-group" ng-if="selectedDelivery.id === '4'">
+        <div class="form-group" ng-if="selectedDelivery.id === '4' || selectedDelivery.id === '6'">
           <label>
             Індекс:
           </label>
