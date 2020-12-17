@@ -92,7 +92,7 @@
   </div>
   <div class="hidden-md hidden-lg text-center">
     <div style="display: inline-block; position: relative;">
-      <span ng-if="book.actionKM != null" style="position: absolute; top: 0%; left: -3%">
+      <span ng-if="book.actionKM != null && book.actionKM >= 5" style="position: absolute; top: 0%; left: -3%">
         <img width="60" src="img/minus_{{book.actionKM}}_baloon.png">
       </span>
       <span>
@@ -217,7 +217,7 @@
   </div>
   <div class="col-md-3 hidden-xs hidden-sm">
     <div style="position: fixed; top: 60px;">
-        <div ng-if="book.actionKM != null" style="position: absolute; top: -1%; left: -10%">
+        <div ng-if="book.actionKM != null && book.actionKM >= 5" style="position: absolute; top: -1%; left: -10%">
           <img width="80" src="img/minus_{{book.actionKM}}_baloon.png">
         </div>
         <div style="text-align: center">
