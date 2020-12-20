@@ -207,6 +207,10 @@ angular
         templateUrl: 'views/e_books_view.html',
         controller: 'EBooksViewCtrl'
       })
+      .when('/posts_delivery_documents', {
+        templateUrl: 'views/posts_delivery_documents.html',
+        controller: 'PostDeliveryDocsCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })

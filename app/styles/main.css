@@ -514,9 +514,13 @@ filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#33492e07', e
   width: 100%;
   height: 1px;
   position: absolute;
-  background: #fb515d;
+  /*background: #fb515d;*/
+  background: black;
   left: 0;
   top: 50%;
+  -webkit-transform: translateY(-1px)
+  translateX(2px)
+  rotate(14deg);
 }
 
 .book-view{

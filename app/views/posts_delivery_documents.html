@@ -1,0 +1,123 @@
+<h1 class="brand-color">Відправка СМС</h1>
+<div class="row">
+  <md-input-container>
+    <label>Номер</label>
+    <input ng-model="orderNumber">
+  </md-input-container>
+  <md-input-container ng-hide="orderNumber">
+    <label>Дата с</label>
+    <md-datepicker ng-model="dateStart"></md-datepicker>
+  </md-input-container>
+  <md-input-container ng-hide="orderNumber">
+    <label>по</label>
+    <md-datepicker ng-model="dateEnd"></md-datepicker>
+  </md-input-container>
+  <md-input-container style="margin-top: -10px" ng-hide="orderNumber">
+    <label>Статус</label>
+    <md-select ng-model="selectors.orderStateFilter">
+      <md-option ng-repeat="state in orderStatesFilter" ng-value="state">
+        {{state}}
+      </md-option>
+    </md-select>
+  </md-input-container>
+  <md-button class="md-raised brand-color-background" ng-click="updateOrdersTable()">
+    <i ng-show="saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    ЗАПОВНИТИ
+  </md-button>
+</div>
+
+  <h1>Новая почта</h1>
+  <input type="file" nv-file-select="" uploader="uploaderFile" options="{formData: [{type: 'ukr_post_numbers'}]}" style="padding-bottom: 10px">
+  <md-button ng-click="saveFileItem(book)" ng-disabled="!userForm.$valid || fileSaving" style="min-width: 100px">
+      Завантажити
+      <i ng-show="fileSaving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+  </md-button>
+  <table class="table-striped table-bordered table-hover" style="width: 100%">
+    <thead>
+      <th>
+        dateTime
+      </th>
+      <th>
+        intDocNumber
+      </th>
+      <th>
+        recipientContactPerson
+      </th>
+      <th>
+        recipientContactPhone
+      </th>
+      <th>
+        estimatedDeliveryDate
+      </th>
+      <th>
+        state
+      </th>
+      <th>
+        smshasSent
+      </th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="document in newPostDocuments">
+        <td>
+          {{fromUnixTime(document.dateTime)}}
+        </td>
+        <td>
+          {{document.intDocNumber}}
+        </td>
+        <td>
+          {{document.recipientContactPerson}}
+        </td>
+        <td>
+          {{document.recipientContactPhone}}
+        </td>
+        <td>
+          {{fromUnixTime(document.estimatedDeliveryDate)}}
+        </td>
+        <td>
+          {{document.stateId}} : {{document.stateName}}
+        </td>
+        <td>
+          {{document.smshasSent}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h1>Укр почта</h1>
+    <table class="table-striped table-bordered table-hover" style="width: 100%">
+      <thead>
+      <th>
+        dateTime
+      </th>
+      <th>
+        intDocNumber
+      </th>
+      <th>
+        recipientContactPerson
+      </th>
+      <th>
+        recipientContactPhone
+      </th>
+      <th>
+        smshasSent
+      </th>
+      </thead>
+      <tbody>
+      <tr ng-repeat="document in ukrPostDocuments">
+        <td>
+          {{fromUnixTime(document.dateTime)}}
+        </td>
+        <td>
+          {{document.intDocNumber}}
+        </td>
+        <td>
+          {{document.recipientContactPerson}}
+        </td>
+        <td>
+          {{document.recipientContactPhone}}
+        </td>
+        <td>
+          {{document.smshasSent}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
