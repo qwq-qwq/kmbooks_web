@@ -2,5 +2,5 @@
     <div class="price_without_discount_value" style="margin-top: 0px">{{book.priceWithoutDiscount}} <span style="font-size: 16px">грн</span></div>
 </div>
 <div ng-if="book.price > 0" class="price_value">{{book.price | currency: ""}} <span style="font-size: 14px">грн</span></div>
-<div ng-if="book.price > 0 && !value.preorder" class="price_value" style="font-size: 20px"><i class="fa fa-cc-visa"></i>&nbsp;{{book.price * (1 - 0.15) | currency: ""}} <span style="font-size: 14px">грн</span></div>
+<div ng-if="book.price > 0 && !book.preorder" class="price_value" style="font-size: 20px"><i class="fa fa-cc-visa"></i>&nbsp;{{book.price * (1 - 0.15) | currency: ""}} <span style="font-size: 14px">грн</span></div>
 <div ng-if="!book.price > 0" class="price_value" style="font-size: 18px; color: black;">Ціна формується</div>
