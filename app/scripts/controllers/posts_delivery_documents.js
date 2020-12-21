@@ -26,7 +26,7 @@ angular.module('angularApp')
         //   link += "&OrderState=" + $scope.selectors.orderStateFilter;
         // }
       }
-        if ($scope.kindOfPost == "Новая почта") {
+        if ($scope.selectors.kindOfPost == "Новая почта") {
           $scope.newPostDocuments = undefined;
           $http.get(config.url() + "/api/new_post_documents?" + link, {withCredentials: true})
             .success(function (response) {

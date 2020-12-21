@@ -20,7 +20,7 @@
       <!--</md-option>-->
     <!--</md-select>-->
   <!--</md-input-container>-->
-  <md-input-container>
+  <md-input-container style="margin-top: -10px">
     <label>Почта</label>
     <md-select ng-model="selectors.kindOfPost">
       <md-option ng-repeat="kindOfPost in kindOfPosts" ng-value="kindOfPost">
@@ -33,6 +33,7 @@
     ЗАПОВНИТИ
   </md-button>
 </div>
+<div>
   <h1>Новая почта</h1>
   <table class="table-striped table-bordered table-hover" style="width: 100%">
     <thead>
@@ -84,6 +85,7 @@
       </tr>
     </tbody>
   </table>
+</div>
   <h1>Укр почта</h1>
 <input type="file" nv-file-select="" uploader="uploaderFile" options="{formData: [{type: 'ukr_post_numbers'}]}" style="padding-bottom: 10px; display: inline">
 <md-button ng-click="saveFileItem()" ng-disabled="fileSaving" style="min-width: 100px; display: inline">
