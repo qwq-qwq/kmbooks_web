@@ -295,7 +295,7 @@ angular.module('angularApp')
            angular.forEach(cart.GetCart().goodsTable, function(value, key) {
              if (value !== undefined) {
                if (!value.preorder) {
-                 orderAmountWithDiscount += Math.round(value.quantity * value.price / (1 - value.discount/100) * (1 - 0.15) * 100) / 100;
+                 orderAmountWithDiscount += Math.round(value.quantity * value.price / (1 - value.discount/100) * (1 - 0.08) * 100) / 100;
                }else{
                  orderAmountWithDiscount += Math.round(value.quantity * value.price * 100) / 100;
                }

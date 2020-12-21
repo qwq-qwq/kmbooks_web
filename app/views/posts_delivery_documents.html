@@ -2,36 +2,38 @@
 <div class="row">
   <md-input-container>
     <label>Номер</label>
-    <input ng-model="orderNumber">
+    <input ng-model="intDocNumber">
   </md-input-container>
-  <md-input-container ng-hide="orderNumber">
+  <md-input-container ng-hide="intDocNumber">
     <label>Дата с</label>
     <md-datepicker ng-model="dateStart"></md-datepicker>
   </md-input-container>
-  <md-input-container ng-hide="orderNumber">
+  <md-input-container ng-hide="intDocNumber">
     <label>по</label>
     <md-datepicker ng-model="dateEnd"></md-datepicker>
   </md-input-container>
-  <md-input-container style="margin-top: -10px" ng-hide="orderNumber">
-    <label>Статус</label>
-    <md-select ng-model="selectors.orderStateFilter">
-      <md-option ng-repeat="state in orderStatesFilter" ng-value="state">
-        {{state}}
+  <!--<md-input-container style="margin-top: -10px" ng-hide="orderNumber">-->
+    <!--<label>Статус</label>-->
+    <!--<md-select ng-model="selectors.orderStateFilter">-->
+      <!--<md-option ng-repeat="state in orderStatesFilter" ng-value="state">-->
+        <!--{{state}}-->
+      <!--</md-option>-->
+    <!--</md-select>-->
+  <!--</md-input-container>-->
+  <md-input-container>
+    <label>Почта</label>
+    <md-select ng-model="selectors.kindOfPost">
+      <md-option ng-repeat="kindOfPost in kindOfPosts" ng-value="kindOfPost">
+        {{kindOfPost}}
       </md-option>
     </md-select>
   </md-input-container>
-  <md-button class="md-raised brand-color-background" ng-click="updateOrdersTable()">
+  <md-button class="md-raised brand-color-background" ng-click="updateDocumentsTable()">
     <i ng-show="saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
     ЗАПОВНИТИ
   </md-button>
 </div>
-
   <h1>Новая почта</h1>
-  <input type="file" nv-file-select="" uploader="uploaderFile" options="{formData: [{type: 'ukr_post_numbers'}]}" style="padding-bottom: 10px">
-  <md-button ng-click="saveFileItem(book)" ng-disabled="!userForm.$valid || fileSaving" style="min-width: 100px">
-      Завантажити
-      <i ng-show="fileSaving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-  </md-button>
   <table class="table-striped table-bordered table-hover" style="width: 100%">
     <thead>
       <th>
@@ -83,6 +85,11 @@
     </tbody>
   </table>
   <h1>Укр почта</h1>
+<input type="file" nv-file-select="" uploader="uploaderFile" options="{formData: [{type: 'ukr_post_numbers'}]}" style="padding-bottom: 10px; display: inline">
+<md-button ng-click="saveFileItem()" ng-disabled="fileSaving" style="min-width: 100px; display: inline">
+  Завантажити
+  <i ng-show="fileSaving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+</md-button>
     <table class="table-striped table-bordered table-hover" style="width: 100%">
       <thead>
       <th>
@@ -104,7 +111,7 @@
       <tbody>
       <tr ng-repeat="document in ukrPostDocuments">
         <td>
-          {{fromUnixTime(document.dateTime)}}
+          {{toDateTime(document.id)}}
         </td>
         <td>
           {{document.intDocNumber}}
