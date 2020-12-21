@@ -35,10 +35,10 @@ angular.module('angularApp')
                 response[k].row_id = k;
               }
               $scope.newPostDocuments = response;
+              $scope.styleOrdersList = {opacity: 1};
+              $scope.saving = false;
             })
-        }
-
-
+        }else if ($scope.selectors.kindOfPost == "Укр. почта") {
           $http.get(config.url() + "/api/ukr_post_documents?" + link, {withCredentials: true})
             .success(function (response) {
               for(var k in response) {
@@ -46,11 +46,10 @@ angular.module('angularApp')
                 response[k].row_id = k;
               }
               $scope.ukrPostDocuments = response;
+              $scope.styleOrdersList = {opacity: 1};
+              $scope.saving = false;
             })
-
-          $scope.styleOrdersList = {opacity: 1};
-          $scope.saving = false;
-
+        }
     }
 
     $scope.fromUnixTime = function(UnixTime) {
@@ -96,5 +95,14 @@ angular.module('angularApp')
       $scope.upl_itemFile = null;
       alert("При загрузке файла на сервер возникла ошибка");
     };
+
+    $scope.sendSMSUkrPost = function () {
+      $scope.SMSSending = true;
+      $http.get(config.url() + "/api/ukr_post_documents/send_sms", {withCredentials: true})
+        .success(function (response) {
+          $scope.updateDocumentsTable();
+        })
+    }
+
 
   });
