@@ -35,7 +35,7 @@
   </md-button>
 </div>
 <div ng-if="selectors.kindOfPost == 'Новая почта'">
-  <h1>Новая почта</h1>
+  <h1 class="brand-color">Новая почта</h1>
   <table class="table-striped table-bordered table-hover" style="width: 100%">
     <thead>
       <th>
@@ -88,7 +88,7 @@
   </table>
 </div>
 <div ng-if="selectors.kindOfPost == 'Укр. почта'">
-  <h1>Укр почта</h1>
+  <h1 class="brand-color">Укр почта</h1>
 <input type="file" nv-file-select="" uploader="uploaderFile" options="{formData: [{type: 'ukr_post_numbers'}]}" style="padding-bottom: 10px; display: inline">
 <md-button ng-click="saveFileItem()" ng-disabled="fileSaving" class="md-raised brand-color-background" style="min-width: 100px; display: inline">
   Завантажити
