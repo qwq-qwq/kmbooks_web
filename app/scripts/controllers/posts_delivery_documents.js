@@ -8,6 +8,11 @@ angular.module('angularApp')
     $scope.dateEnd = new Date(new Date().getTime() + 1 * 1000 * 60 * 60 * 24); //taking tomorrow date for covering current day
     $scope.dateStart = new Date($scope.dateEnd - 10 * 1000 * 60 * 60 * 24);
 
+    $http.get(config.url() + "/api/sms_service/check_balance", {withCredentials: true})
+      .success(function (response) {
+        $scope.balance = response;
+      })
+
     $scope.updateDocumentsTable = function () {
       var link = '';
       var dateStart, dateEnd;
