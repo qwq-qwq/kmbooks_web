@@ -101,6 +101,7 @@ angular.module('angularApp')
       $http.get(config.url() + "/api/ukr_post_documents/send_sms", {withCredentials: true})
         .success(function (response) {
           $scope.updateDocumentsTable();
+          $scope.SMSSending = false;
         })
     }
 
