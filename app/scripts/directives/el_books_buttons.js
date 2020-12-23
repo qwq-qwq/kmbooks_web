@@ -9,7 +9,7 @@ angular.module('angularApp').directive('bkElBooksButtons', ['$window', 'authoriz
     templateUrl: 'views/bk_el_books_buttons.html',
     link: function(scope, element, attributes) {
       scope.DownloadElBook = function (elBookLink, bookFormat) {
-        $window.open('http://api.kmbooks.com.ua/api/user/files_for_book/get_el_book?link=' + elBookLink + '&format=' + bookFormat, {withCredentials: true});
+        $window.open('https://api.kmbooks.com.ua/api/user/files_for_book/get_el_book?link=' + elBookLink + '&format=' + bookFormat, {withCredentials: true});
       }
       scope.GetAvailableFormats = function (code) {
         if (authorization.isAuthorized()){
