@@ -322,7 +322,7 @@ angular.module('angularApp')
       };
 
       if ($scope.selectedDelivery.id === '5'){ // NewPost
-        if ($scope.orderAmountWithDiscount >= 1000) {
+        if ($scope.orderAmountWithDiscount >= 500) {
           $scope.deliveryCost = 0;
         } else {
          $scope.deliveryCost = 45;
