@@ -110,5 +110,23 @@ angular.module('angularApp')
         })
     }
 
+    $scope.loadFromNewPostByAPI = function (){
+        $scope.updateTable = true;
+        $http.get(config.url() + "/api/new_post_documents/update", {withCredentials: true})
+        .success(function (response) {
+           $scope.newPostDocuments = response;
+           $scope.updateTable = false;
+        })
+    }
+
+    $scope.sendSMSNewPost = function () {
+      $scope.SMSSending = true;
+      $http.get(config.url() + "/api/new_post_documents/send_sms", {withCredentials: true})
+        .success(function (response) {
+          $scope.updateDocumentsTable();
+          $scope.SMSSending = false;
+        })
+    }
+
 
   });
