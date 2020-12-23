@@ -114,7 +114,7 @@ angular.module('angularApp')
         $scope.updateTable = true;
         $http.get(config.url() + "/api/new_post_documents/update", {withCredentials: true})
         .success(function (response) {
-           $scope.newPostDocuments = response;
+           $scope.updateDocumentsTable();
            $scope.updateTable = false;
         })
     }
