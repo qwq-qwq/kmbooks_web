@@ -5,8 +5,8 @@ angular.module('angularApp')
 
     $scope.selectors = {};
     $scope.kindOfPosts = ['Новая почта', 'Укр. почта'];
-    $scope.dateEnd = new Date(new Date().getTime() + 1 * 1000 * 60 * 60 * 24); //taking tomorrow date for covering current day
-    $scope.dateStart = new Date($scope.dateEnd - 10 * 1000 * 60 * 60 * 24);
+    $scope.dateEnd = new Date(new Date().getTime() + 1 * 1000 * 60 * 60 * 24);
+    $scope.dateStart = new Date(new Date().getTime());
 
     $http.get(config.url() + "/api/sms_service/check_balance", {withCredentials: true})
       .success(function (response) {
@@ -110,6 +110,15 @@ angular.module('angularApp')
         })
     }
 
+    $scope.deleteTodayUkrPost = function () {
+      $scope.deletingDocuments = true;
+      $http.get(config.url() + "/api/ukr_post_documents/delete_today", {withCredentials: true})
+        .success(function (response) {
+          $scope.updateDocumentsTable();
+          $scope.deletingDocuments = false;
+        })
+    }
+
     $scope.loadFromNewPostByAPI = function (){
         $scope.updateTable = true;
         $http.get(config.url() + "/api/new_post_documents/update", {withCredentials: true})
@@ -127,6 +136,5 @@ angular.module('angularApp')
           $scope.SMSSending = false;
         })
     }
-
 
   });

@@ -106,6 +106,10 @@
     <i ng-show="SMSSending" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
     Надіслати SMS
   </md-button>
+  <md-button ng-click="deleteTodayUkrPost()" ng-disabled="deletingDocuments" class="md-raised brand-color-background" style="min-width: 100px; display: inline">
+    Видалити невідправлені
+    <i ng-show="deletingDocuments" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+  </md-button>
     <table class="table-striped table-bordered table-hover" style="width: 100%">
       <thead>
       <th>
