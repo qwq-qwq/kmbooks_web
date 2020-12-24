@@ -20,14 +20,12 @@ angular.module('angularApp')
 
     $scope.doneEditing = function (item) {
       item.editing = false;
-      var event = {id: item.id, recommended: item.recommended, soonOnSale: item.soonOnSale, customTop: item.customTop,
+      var settings = {id: item.id, recommended: item.recommended, soonOnSale: item.soonOnSale, customTop: item.customTop,
         actionText: item.actionText, actionLastDay: item.actionLastDay, smsTextUkrPost: item.smsTextUkrPost,
         smsTextNewPost: item.smsTextNewPost};
-      $http.post(config.url() + "/api/edit/settings_update", event, {withCredentials: true})
+      $http.post(config.url() + "/api/edit/settings_update", settings, {withCredentials: true})
         .success(function(response) {
-            if (event.id == 0) {
-                $route.reload();
-            }
+
         });
     }
 
