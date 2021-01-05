@@ -29,7 +29,7 @@
       </md-option>
     </md-select>
   </md-input-container>
-  <md-button class="md-raised brand-color-background" ng-click="updateDocumentsTable()">
+  <md-button class="md-raised brand-color-background" ng-click="updateDocumentsTable()" ng-disabled="selectors.kindOfPost === undefined">
     <i ng-show="saving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
     ЗАПОВНИТИ
   </md-button>
@@ -98,7 +98,7 @@
 <div ng-if="selectors.kindOfPost == 'Укр. почта'">
   <h1 class="brand-color">Укр почта</h1>
 <input type="file" nv-file-select="" uploader="uploaderFile" options="{formData: [{type: 'ukr_post_numbers'}]}" style="padding-bottom: 10px; display: inline">
-<md-button ng-click="saveFileItem()" ng-disabled="fileSaving" class="md-raised brand-color-background" style="min-width: 100px; display: inline">
+<md-button ng-click="saveFileItem()" ng-disabled="fileSaving || upl_itemFile === undefined" class="md-raised brand-color-background" style="min-width: 100px; display: inline">
   Завантажити
   <i ng-show="fileSaving" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
 </md-button>
