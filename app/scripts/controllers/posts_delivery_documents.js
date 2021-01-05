@@ -8,7 +8,7 @@ angular.module('angularApp')
     $scope.dateEnd = new Date(new Date().getTime() + 1 * 1000 * 60 * 60 * 24);
     $scope.dateStart = new Date(new Date().getTime());
 
-    $http.get(config.url() + "/api/sms_service/check_balance", {withCredentials: true})
+    $http.get(config.url() + "/api/edit/sms_service/check_balance", {withCredentials: true})
       .success(function (response) {
         $scope.balance = response;
       })
@@ -33,7 +33,7 @@ angular.module('angularApp')
       }
         if ($scope.selectors.kindOfPost == "Новая почта") {
           $scope.newPostDocuments = undefined;
-          $http.get(config.url() + "/api/new_post_documents?" + link, {withCredentials: true})
+          $http.get(config.url() + "/api/edit/new_post_documents?" + link, {withCredentials: true})
             .success(function (response) {
               for(var k in response) {
                 response[k].editing = false;
@@ -44,7 +44,7 @@ angular.module('angularApp')
               $scope.saving = false;
             })
         }else if ($scope.selectors.kindOfPost == "Укр. почта") {
-          $http.get(config.url() + "/api/ukr_post_documents?" + link, {withCredentials: true})
+          $http.get(config.url() + "/api/edit/ukr_post_documents?" + link, {withCredentials: true})
             .success(function (response) {
               for(var k in response) {
                 response[k].editing = false;
@@ -66,7 +66,7 @@ angular.module('angularApp')
     }
 
     $scope.uploaderFile = new FileUploader({
-      url: config.url() + '/api/ukr_post_documents/upload',
+      url: config.url() + '/api/edit/ukr_post_documents/upload',
       removeAfterUpload: true,
       withCredentials: true
     });
@@ -83,7 +83,7 @@ angular.module('angularApp')
     };
 
     uploaderFile.onSuccessItem = function(fileItem, response, status, headers) {
-      $http.get(config.url() + "/api/ukr_post_documents", {withCredentials: true})
+      $http.get(config.url() + "/api/edit/ukr_post_documents", {withCredentials: true})
         .success(function (response) {
           for(var k in response) {
             response[k].editing = false;
@@ -103,7 +103,7 @@ angular.module('angularApp')
 
     $scope.sendSMSUkrPost = function () {
       $scope.SMSSending = true;
-      $http.get(config.url() + "/api/ukr_post_documents/send_sms", {withCredentials: true})
+      $http.get(config.url() + "/api/edit/ukr_post_documents/send_sms", {withCredentials: true})
         .success(function (response) {
           $scope.updateDocumentsTable();
           $scope.SMSSending = false;
@@ -112,7 +112,7 @@ angular.module('angularApp')
 
     $scope.deleteTodayUkrPost = function () {
       $scope.deletingDocuments = true;
-      $http.get(config.url() + "/api/ukr_post_documents/delete_today", {withCredentials: true})
+      $http.get(config.url() + "/api/edit/ukr_post_documents/delete_today", {withCredentials: true})
         .success(function (response) {
           $scope.updateDocumentsTable();
           $scope.deletingDocuments = false;
@@ -121,7 +121,7 @@ angular.module('angularApp')
 
     $scope.loadFromNewPostByAPI = function (){
         $scope.updateTable = true;
-        $http.get(config.url() + "/api/new_post_documents/update", {withCredentials: true})
+        $http.get(config.url() + "/api/edit/new_post_documents/update", {withCredentials: true})
         .success(function (response) {
            $scope.updateDocumentsTable();
            $scope.updateTable = false;
@@ -130,7 +130,7 @@ angular.module('angularApp')
 
     $scope.sendSMSNewPost = function () {
       $scope.SMSSending = true;
-      $http.get(config.url() + "/api/new_post_documents/send_sms", {withCredentials: true})
+      $http.get(config.url() + "/api/edit/new_post_documents/send_sms", {withCredentials: true})
         .success(function (response) {
           $scope.updateDocumentsTable();
           $scope.SMSSending = false;
