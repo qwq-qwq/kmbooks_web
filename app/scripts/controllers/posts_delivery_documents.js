@@ -35,11 +35,11 @@ angular.module('angularApp')
           $scope.newPostDocuments = undefined;
           $http.get(config.url() + "/api/edit/new_post_documents?" + link, {withCredentials: true})
             .success(function (response) {
-              for(let k of response) {
-                if (k.smshasSent) {
-                  k.smshasSent = 'Да'
+              for(var k in response) {
+                if (response[k].smshasSent) {
+                  response[k].smshasSent = 'Да'
                 } else {
-                  k.smshasSent = 'Нет'
+                  response[k].smshasSent = 'Нет'
                 }
               }
               $scope.newPostDocuments = response;
@@ -51,11 +51,11 @@ angular.module('angularApp')
         }else if ($scope.selectors.kindOfPost === "Укр. почта") {
           $http.get(config.url() + "/api/edit/ukr_post_documents?" + link, {withCredentials: true})
             .success(function (response) {
-              for(let k of response) {
-                if (k.smshasSent) {
-                  k.smshasSent = 'Да'
+              for(var k in response) {
+                if (response[k].smshasSent) {
+                  response[k].smshasSent = 'Да'
                 } else {
-                  k.smshasSent = 'Нет'
+                  response[k].smshasSent = 'Нет'
                 }
               }
               $scope.ukrPostDocuments = response;
