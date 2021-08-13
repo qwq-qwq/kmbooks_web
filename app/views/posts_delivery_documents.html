@@ -34,7 +34,7 @@
     ЗАПОВНИТИ
   </md-button>
 </div>
-<div ng-if="selectors.kindOfPost == 'Новая почта'">
+<div ng-if="selectors.kindOfPost === 'Новая почта'">
   <h1 class="brand-color">Новая почта</h1>
   <md-button ng-click="loadFromNewPostByAPI()" ng-disabled="updateTable" class="md-raised brand-color-background" style="min-width: 100px; display: inline">
     Завантажити по API
@@ -44,10 +44,13 @@
     <i ng-show="SMSSending" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
     Надіслати SMS
   </md-button>
-  <table class="table-striped table-bordered table-hover" style="width: 100%">
+  <table ng-if="newPostDocuments.length > 0" class="table-striped table-bordered table-hover" style="width: 100%">
     <thead>
       <th>
         Дата
+      </th>
+      <th>
+        Дата оновлення ст.
       </th>
       <th>
         № документа
@@ -74,6 +77,9 @@
           {{fromUnixTime(document.dateTime)}}
         </td>
         <td>
+          {{fromUnixTime(document.dateLastUpdatedStatus)}}
+        </td>
+        <td>
           {{document.intDocNumber}}
         </td>
         <td>
@@ -95,7 +101,7 @@
     </tbody>
   </table>
 </div>
-<div ng-if="selectors.kindOfPost == 'Укр. почта'">
+<div ng-if="selectors.kindOfPost === 'Укр. почта'">
   <h1 class="brand-color">Укр почта</h1>
 <input type="file" nv-file-select="" uploader="uploaderFile" options="{formData: [{type: 'ukr_post_numbers'}]}" style="padding-bottom: 10px; display: inline">
 <md-button ng-click="saveFileItem()" ng-disabled="fileSaving || upl_itemFile === undefined" class="md-raised brand-color-background" style="min-width: 100px; display: inline">
@@ -110,7 +116,7 @@
     Видалити невідправлені
     <i ng-show="deletingDocuments" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
   </md-button>
-    <table class="table-striped table-bordered table-hover" style="width: 100%">
+    <table ng-if="ukrPostDocuments.length > 0" class="table-striped table-bordered table-hover" style="width: 100%">
       <thead>
       <th>
         Дата
@@ -148,4 +154,8 @@
       </tr>
       </tbody>
     </table>
+</div>
+<div ng-if="(selectors.kindOfPost === 'Новая почта' && !newPostDocuments || newPostDocuments.length === 0)
+           || (selectors.kindOfPost === 'Укр. почта' && !ukrPostDocuments || ukrPostDocuments.length === 0)" class="jumbotron" style="margin-top: 20px">
+  <p>Нічого не знайдено</p>
 </div>

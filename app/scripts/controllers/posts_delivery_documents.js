@@ -5,7 +5,7 @@ angular.module('angularApp')
 
     $scope.selectors = {};
     $scope.kindOfPosts = ['Новая почта', 'Укр. почта'];
-    $scope.dateEnd = new Date(new Date().getTime() + 1 * 1000 * 60 * 60 * 24);
+    $scope.dateEnd = new Date(new Date().getTime() + 1000 * 60 * 60 * 24);
     $scope.dateStart = new Date(new Date().getTime());
 
     $http.get(config.url() + "/api/edit/sms_service/check_balance", {withCredentials: true})
@@ -31,7 +31,7 @@ angular.module('angularApp')
         //   link += "&OrderState=" + $scope.selectors.orderStateFilter;
         // }
       }
-        if ($scope.selectors.kindOfPost == "Новая почта") {
+        if ($scope.selectors.kindOfPost === "Новая почта") {
           $scope.newPostDocuments = undefined;
           $http.get(config.url() + "/api/edit/new_post_documents?" + link, {withCredentials: true})
             .success(function (response) {
@@ -42,8 +42,10 @@ angular.module('angularApp')
               $scope.newPostDocuments = response;
               $scope.styleOrdersList = {opacity: 1};
               $scope.saving = false;
+            }).error(function () {
+              $scope.saving = false;
             })
-        }else if ($scope.selectors.kindOfPost == "Укр. почта") {
+        }else if ($scope.selectors.kindOfPost === "Укр. почта") {
           $http.get(config.url() + "/api/edit/ukr_post_documents?" + link, {withCredentials: true})
             .success(function (response) {
               for(var k in response) {
@@ -53,6 +55,8 @@ angular.module('angularApp')
               $scope.ukrPostDocuments = response;
               $scope.styleOrdersList = {opacity: 1};
               $scope.saving = false;
+            }).error(function () {
+               $scope.saving = false;
             })
         }
     }
