@@ -87,9 +87,9 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
         }else{
           order.orderAmountWithDiscount = order.orderAmount;
         }
-        if (order.payment.id === '5') {
-          order.orderAmountWithDiscount = order.orderAmountWithDiscount * (1 - 0.05);
-        }
+        // if (order.payment.id === '5') {
+        //   order.orderAmountWithDiscount = order.orderAmountWithDiscount * (1 - 0.05);
+        // }
         order.totalAmount = order.orderAmountWithDiscount + order.deliveryCost;
       }
     },
@@ -109,6 +109,11 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
           order.deliveryCost = 45;
         }
       }else if(order.delivery.id === '4') {
+        if (order.orderAmountWithDiscount >= 300) {
+          order.deliveryCost = 0;
+        } else {
+          order.deliveryCost = 30;  // 30
+        }
         order.deliveryCost = 0;
       }else if(order.delivery.id === '6') {
         order.deliveryCost = 0;

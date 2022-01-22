@@ -291,17 +291,17 @@ angular.module('angularApp')
         }
         if ($scope.selectedPayment.id === '5') {
            //
-           var orderAmountWithDiscount = 0;
-           angular.forEach(cart.GetCart().goodsTable, function(value, key) {
-             if (value !== undefined) {
-               if (!value.preorder) {
-                 orderAmountWithDiscount += Math.round(value.quantity * value.price / (1 - value.discount/100) * (1 - 0.08) * 100) / 100;
-               }else{
-                 orderAmountWithDiscount += Math.round(value.quantity * value.price * 100) / 100;
-               }
-             }
-           });
-          $scope.orderAmountWithDiscount = orderAmountWithDiscount;
+          //  var orderAmountWithDiscount = 0;
+          //  angular.forEach(cart.GetCart().goodsTable, function(value, key) {
+          //    if (value !== undefined) {
+          //      if (!value.preorder) {
+          //        orderAmountWithDiscount += Math.round(value.quantity * value.price / (1 - value.discount/100) * (1 - 0.08) * 100) / 100;
+          //      }else{
+          //        orderAmountWithDiscount += Math.round(value.quantity * value.price * 100) / 100;
+          //      }
+          //    }
+          //  });
+          // $scope.orderAmountWithDiscount = orderAmountWithDiscount;
           //
         }
         itemsCount = cart.ItemsCount();
@@ -330,10 +330,10 @@ angular.module('angularApp')
       };
 
       if($scope.selectedDelivery.id === '4') {  // Ukrpost
-        if ($scope.orderAmountWithDiscount >= 200) {
+        if ($scope.orderAmountWithDiscount >= 300) {
           $scope.deliveryCost = 0;
         } else {
-         $scope.deliveryCost = 0;  // 30
+         $scope.deliveryCost = 30;  // 30
         }
 
       };
