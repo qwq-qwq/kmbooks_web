@@ -93,14 +93,15 @@ angular.module('angularApp')
     };
 
     uploaderFile.onSuccessItem = function(fileItem, response, status, headers) {
-      $http.get(config.url() + "/api/edit/ukr_post_documents", {withCredentials: true})
-        .success(function (response) {
-          for(var k in response) {
-            response[k].editing = false;
-            response[k].row_id = k;
-          }
-          $scope. ukrPostDocuments = response;
-        })
+      // $http.get(config.url() + "/api/edit/ukr_post_documents", {withCredentials: true})
+      //   .success(function (response) {
+      //     for(var k in response) {
+      //       response[k].editing = false;
+      //       response[k].row_id = k;
+      //     }
+      //     $scope. ukrPostDocuments = response;
+      //   })
+      $scope.updateDocumentsTable()
       $scope.fileSaving = false;
       $scope.upl_itemFile = null;
     };
