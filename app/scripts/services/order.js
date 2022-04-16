@@ -94,28 +94,28 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
       }
     },
     RecalculateDeliveryCost: function (order) {
-      if (order.delivery.id === '1') {
+      if (order.delivery.id === '1') {    //Курьер
         if (order.orderAmountWithDiscount >= 500) {
           order.deliveryCost = 0;
         } else {
           order.deliveryCost = 60;
         }
-      }else if (order.delivery.id === '3'){
+      }else if (order.delivery.id === '3'){   // Самовивіз
         order.deliveryCost = 0;
-      }else if (order.delivery.id === '5'){
+      }else if (order.delivery.id === '5'){  // Нова пошта
         if (order.orderAmountWithDiscount >= 1000) {
           order.deliveryCost = 0;
         } else {
-          order.deliveryCost = 45;
+          order.deliveryCost = 55;
         }
-      }else if(order.delivery.id === '4') {
-        if (order.orderAmountWithDiscount >= 300) {
+      }else if(order.delivery.id === '4') {   //Укрпошта
+        if (order.orderAmountWithDiscount >= 1000) {
           order.deliveryCost = 0;
         } else {
-          order.deliveryCost = 30;  // 30
+          order.deliveryCost = 35;  // 30
         }
         order.deliveryCost = 0;
-      }else if(order.delivery.id === '6') {
+      }else if(order.delivery.id === '6') {  //Курьер в обл. центры
         order.deliveryCost = 0;
       }
       order.totalAmount = order.orderAmountWithDiscount + order.deliveryCost;
