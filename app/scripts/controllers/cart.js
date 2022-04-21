@@ -322,18 +322,18 @@ angular.module('angularApp')
       };
 
       if ($scope.selectedDelivery.id === '5'){ // NewPost
-        if ($scope.orderAmountWithDiscount >= 500) {
+        if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
-         $scope.deliveryCost = 45;
+         $scope.deliveryCost = 55;
         }
       };
 
       if($scope.selectedDelivery.id === '4') {  // Ukrpost
-        if ($scope.orderAmountWithDiscount >= 300) {
+        if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
-         $scope.deliveryCost = 30;  // 30
+         $scope.deliveryCost = 35;  // 30
         }
 
       };
