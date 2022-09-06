@@ -40,7 +40,7 @@
 </div>
 <div ng-if="book.priceElBook > 0 && book.link === ''" style="text-align: center">
   <span class="price_value" style="font-size: 25px; color: black; vertical-align: middle">{{book.priceElBook | currency: ""}} <span style="font-size: 15px">грн</span></span>
-<!--   <md-button class="md-raised brand-color-background" ng-click="BuyElBook(book)" ng-disabled="savingInProgress">   -->
+   <md-button class="md-raised brand-color-background" ng-click="BuyElBook(book)" ng-disabled="savingInProgress">  
 <!--    <md-tooltip md-direction="bottom">Купити електронну</md-tooltip>
     <span ng-hide="savingInProgress" class="fa fa-cart-arrow-down"></span>&nbsp;електронна*
     <i ng-show="savingInProgress" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
