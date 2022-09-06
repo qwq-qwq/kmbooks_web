@@ -17,7 +17,7 @@
       {{book.name}}
     </a>
   </div>
-  <bk-price book="book"></bk-price>
+  <!-- <bk-price book="book"></bk-price> -->
   <div class="bukva-hidden">
     <!--<a href="" ng-click="AddToWishList(book); $event.preventDefault();" style="position: absolute; top: 15px; right: 15px">
       <i ng-class="wishHeart" ng-mouseleave="onMouseLeave()" ng-mouseenter="onMouseEnter()" style="font-size: medium" aria-hidden="true"></i>
@@ -52,7 +52,7 @@
     <label>Формат</label>
     <md-select ng-model="selectors.existedFormat" ng-click="GetAvailableFormats(book.code)">
       <md-option ng-repeat="existedFormat in existedFormats" ng-value="existedFormat">
-        {{existedFormat}}
+        {{existedFormat}} 
       </md-option>
     </md-select>
   </md-input-container>
