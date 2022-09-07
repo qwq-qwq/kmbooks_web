@@ -1,12 +1,13 @@
 <div ng-if="book.priceElBook > 0 && book.link === ''" style="text-align: center">
   <span class="price_value" style="font-size: 25px; color: black; vertical-align: middle">{{book.priceElBook | currency: ""}} <span style="font-size: 15px">грн</span></span>
   <md-button class="md-raised brand-color-background" ng-click="BuyElBook(book)" ng-disabled="savingInProgress">
-    <md-tooltip md-direction="bottom">Купити електронну</md-tooltip>
+    <md-tooltip md-direction="bottom">Купити електронну книжку</md-tooltip>
     <span ng-hide="savingInProgress" class="fa fa-cart-arrow-down"></span>&nbsp;електронна *
-    <i ng-show="savingInProgress" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    <i ng-show="savingInProgress" style="font-size: small" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>    
   </md-button>
+<div> *Ціна на ЕЛЕКТРОННУ зі знижкою 50%></div><br><br>  
 </div>
-<div *Ціна на ЕЛЕКТРОННУ зі знижкою 50%</div><br><br>
+
 <div ng-if="book.link !== ''" style="text-align: center">
   <md-input-container>
     <label>Формат</label>
