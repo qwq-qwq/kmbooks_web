@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularApp')
-  .controller('CartCtrl', function(cart, order, $scope, $http, $location, config, $rootScope, $cookies, $window, authorization) {
+  .controller('CartCtrl', function(cart, order, $scope, $http, $location, config, $rootScope, $cookies,  $window, authorization) {
     $scope.selector = {};
 
     var goodToAddCode = $location.search().goodCodeToAdd;
@@ -325,7 +325,7 @@ angular.module('angularApp')
         if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
-         $scope.deliveryCost = 55;
+         $scope.deliveryCost = 60;
         }
       };
 
