@@ -321,7 +321,7 @@ angular.module('angularApp')
         $scope.deliveryCost = 0;
       };
 
-      if ($scope.selectedDelivery.id === '5'){ // NewPost Нова пошта
+      if ($scope.selectedDelivery.id === '5'){ // NewPost Нова пошта = 60
         if ($scope.orderAmountWithDiscount >= 1000) {
           $scope.deliveryCost = 0;
         } else {
