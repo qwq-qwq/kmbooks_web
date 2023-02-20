@@ -102,7 +102,7 @@ angular.module('angularApp').factory('order', function (authorization, cart, con
         }
       }else if (order.delivery.id === '3'){   // Самовивіз
         order.deliveryCost = 0;
-      }else if (order.delivery.id === '5'){  // Нова пошта
+      }else if (order.delivery.id === '5'){  // Нова пошта 60 грн.
         if (order.orderAmountWithDiscount >= 1000) {
           order.deliveryCost = 0;
         } else {
